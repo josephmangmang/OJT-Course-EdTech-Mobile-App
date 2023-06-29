@@ -3,10 +3,10 @@ import 'package:stacked/stacked.dart';
 
 import 'intro_1_viewmodel.dart';
 
-class Intro1View extends StackedView<Intro1ViewModel> {
-  Intro1View({Key? key}) : super(key: key);
+class Intro1Page extends StackedView<Intro1ViewModel> {
+  Intro1Page({Key? key}) : super(key: key);
 
-  final PageController _pageController = PageController(initialPage: 0);
+  final PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget builder(
@@ -27,16 +27,16 @@ class Intro1View extends StackedView<Intro1ViewModel> {
             child: Stack(
               children: [
                 PageView(
-                  controller: _pageController,
+                  controller: pageController,
                   physics: const AlwaysScrollableScrollPhysics(),
                   onPageChanged: (int index) {
                     if (index == 2) {
-                      viewModel.changeTxt();
+                      viewModel.changeText();
                     }
                     viewModel.updateCurrentPageIndex(index);
 
                     if (index < 2) {
-                      viewModel.changeTxt2();
+                      viewModel.changeTextToNext();
                     }
                     viewModel.updateCurrentPageIndex(index);
                   },
@@ -44,7 +44,6 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                     Container(
                       width: 375,
                       height: 812,
-                      clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(color: Colors.white),
                       child: Stack(
                         children: [
@@ -62,7 +61,7 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          "assets/png/Cool_Kids_Long _Distance_Relationship.png"),
+                                          "assets/png/Cool_Kids_Long_Distance_Relationship.png"),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -70,45 +69,34 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                                 const SizedBox(height: 16),
                                 const SizedBox(
                                   width: 375,
-                                  child: Row(
+                                  child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Learn anytime \nand anywhere',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF3B3936),
-                                                fontSize: 24,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w500,
-                                                height: 1.33,
-                                                letterSpacing: -0.50,
-                                              ),
-                                            ),
-                                            SizedBox(height: 8),
-                                            Text(
-                                              'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF78746D),
-                                                fontSize: 14,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        'Learn anytime \nand anywhere',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF3B3936),
+                                          fontSize: 24,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w500,
+                                          height: 1.33,
+                                          letterSpacing: -0.50,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF78746D),
+                                          fontSize: 14,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5,
                                         ),
                                       ),
                                     ],
@@ -123,7 +111,6 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                     Container(
                       width: 375,
                       height: 812,
-                      clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(color: Colors.white),
                       child: Stack(
                         children: [
@@ -149,45 +136,34 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                                 const SizedBox(height: 16),
                                 const SizedBox(
                                   width: 375,
-                                  child: Row(
+                                  child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Find a Course \nfor you',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF3B3936),
-                                                fontSize: 24,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w500,
-                                                height: 1.33,
-                                                letterSpacing: -0.50,
-                                              ),
-                                            ),
-                                            SizedBox(height: 8),
-                                            Text(
-                                              'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF78746D),
-                                                fontSize: 14,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        'Find a Course \nfor you',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF3B3936),
+                                          fontSize: 24,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w500,
+                                          height: 1.33,
+                                          letterSpacing: -0.50,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF78746D),
+                                          fontSize: 14,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5,
                                         ),
                                       ),
                                     ],
@@ -203,7 +179,6 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                     Container(
                       width: 375,
                       height: 812,
-                      clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(color: Colors.white),
                       child: Stack(
                         children: [
@@ -221,7 +196,7 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          "assets/png/Cool_Kids_Hig_Tech.png"),
+                                          "assets/png/Cool_Kids_High_Tech.png"),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -229,45 +204,34 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                                 const SizedBox(height: 16),
                                 const SizedBox(
                                   width: 375,
-                                  child: Row(
+                                  child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Improve your skills',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF3B3936),
-                                                fontSize: 24,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w500,
-                                                height: 2.60,
-                                                letterSpacing: -0.50,
-                                              ),
-                                            ),
-                                            SizedBox(height: 8),
-                                            Text(
-                                              'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF78746D),
-                                                fontSize: 14,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        'Improve your skills',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF3B3936),
+                                          fontSize: 24,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w500,
+                                          height: 1.33,
+                                          letterSpacing: -0.50,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF78746D),
+                                          fontSize: 14,
+                                          fontFamily: 'Rubik',
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5,
                                         ),
                                       ),
                                     ],
@@ -281,7 +245,6 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                     )
                   ],
                 ),
-                
                 Positioned(
                   right: 10,
                   top: 60,
@@ -319,20 +282,19 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                     width: 320,
                     child: ElevatedButton(
                       onPressed: () {
+                        // ignore: non_constant_identifier_names
                         final int currentPageIndex =
-                            _pageController.page?.round() ?? 0;
+                            pageController.page?.round() ?? 0;
                         const int lastPageIndex = 2;
-
-                        print('$lastPageIndex $currentPageIndex');
                         if (currentPageIndex == lastPageIndex) {
                           // Navigate to the home page
                           viewModel.goToHomePage();
                         } else {
                           if (currentPageIndex == 1) {
-                            viewModel.changeTxt();
+                            viewModel.changeText();
                           }
                           // Move to the next page
-                          _pageController.nextPage(
+                          pageController.nextPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );
@@ -353,7 +315,7 @@ class Intro1View extends StackedView<Intro1ViewModel> {
                         children: [
                           Expanded(
                             child: Text(
-                              viewModel.btntext,
+                              viewModel.buttontext,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,

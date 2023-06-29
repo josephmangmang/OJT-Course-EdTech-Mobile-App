@@ -12,7 +12,7 @@ import 'package:edtechapp/ui/views/intro_1/intro_1_view.dart';
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: Intro1View),
+    MaterialRoute(page: Intro1Page),
 
 // @stacked-route
   ],

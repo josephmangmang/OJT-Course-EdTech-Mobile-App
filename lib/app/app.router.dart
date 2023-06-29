@@ -45,11 +45,11 @@ class StackedRouter extends _i1.RouterBase {
     ),
     _i1.RouteDef(
       Routes.intro1View,
-      page: _i4.Intro1View,
+      page: _i4.Intro1Page,
     ),
     _i1.RouteDef(
       Routes.intro1View,
-      page: _i4.Intro1View,
+      page: _i4.Intro1Page,
     ),
   ];
 
@@ -66,9 +66,9 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i4.Intro1View: (data) {
+    _i4.Intro1Page: (data) {
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => _i4.Intro1View(),
+        builder: (context) => _i4.Intro1Page(),
         settings: data,
       );
     },
