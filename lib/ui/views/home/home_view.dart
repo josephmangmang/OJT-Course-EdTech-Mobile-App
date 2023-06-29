@@ -38,6 +38,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Rubik',
+                                  fontWeight: FontWeight.w400,
                                   letterSpacing: -0.5,
                                   height: 1.7,
                                 ),
@@ -48,6 +49,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   fontSize: 32,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'Rubik',
+                                  fontStyle: FontStyle.normal,
                                   letterSpacing: -1,
                                   height: 1.5,
                                 ),
@@ -324,11 +326,14 @@ class HomeView extends StackedView<HomeViewModel> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(hour,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            )),
+                        Text(
+                          hour,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF5BA092),
+                          ),
+                        )
                       ],
                     ),
                     Row(
@@ -338,6 +343,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w500,
+                              letterSpacing: -0.5,
                             ))
                       ],
                     ),
@@ -348,6 +354,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
                             ))
                       ],
                     )

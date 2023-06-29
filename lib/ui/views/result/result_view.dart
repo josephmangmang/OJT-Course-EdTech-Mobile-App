@@ -107,7 +107,7 @@ class ResultView extends StackedView<ResultViewModel> {
                                       color: Color(0xFF3B3936),
                                       fontSize: 24,
                                       fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.bold,
                                       letterSpacing: -0.50,
                                     ),
                                   ),
@@ -206,11 +206,14 @@ class ResultView extends StackedView<ResultViewModel> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(hour,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            )),
+                        Text(
+                          hour,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF5BA092),
+                          ),
+                        )
                       ],
                     ),
                     Row(
@@ -220,6 +223,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w500,
+                              letterSpacing: -0.5,
                             ))
                       ],
                     ),
@@ -230,6 +234,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
                             ))
                       ],
                     )
