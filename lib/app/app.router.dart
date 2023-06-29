@@ -6,20 +6,34 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:edtechapp/ui/views/home/home_view.dart' as _i2;
+import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart'
+    as _i6;
+import 'package:edtechapp/ui/views/project_detail/project_detail_view.dart'
+    as _i4;
 import 'package:edtechapp/ui/views/startup/startup_view.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
+import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart' as _i5;
+import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i5;
+import 'package:stacked_services/stacked_services.dart' as _i8;
 
 class Routes {
   static const homeView = '/home-view';
 
   static const startupView = '/startup-view';
 
+  static const projectDetailView = '/project-detail-view';
+
+  static const yourCoursesView = '/your-courses-view';
+
+  static const lessonCoursesView = '/lesson-courses-view';
+
   static const all = <String>{
     homeView,
     startupView,
+    projectDetailView,
+    yourCoursesView,
+    lessonCoursesView,
   };
 }
 
@@ -33,18 +47,48 @@ class StackedRouter extends _i1.RouterBase {
       Routes.startupView,
       page: _i3.StartupView,
     ),
+    _i1.RouteDef(
+      Routes.projectDetailView,
+      page: _i4.ProjectDetailView,
+    ),
+    _i1.RouteDef(
+      Routes.yourCoursesView,
+      page: _i5.YourCoursesView,
+    ),
+    _i1.RouteDef(
+      Routes.lessonCoursesView,
+      page: _i6.LessonCoursesView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i4.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i4.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
+        settings: data,
+      );
+    },
+    _i4.ProjectDetailView: (data) {
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.ProjectDetailView(),
+        settings: data,
+      );
+    },
+    _i5.YourCoursesView: (data) {
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.YourCoursesView(),
+        settings: data,
+      );
+    },
+    _i6.LessonCoursesView: (data) {
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i6.LessonCoursesView(),
         settings: data,
       );
     },
@@ -56,7 +100,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i5.NavigationService {
+extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -85,6 +129,48 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToProjectDetailView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.projectDetailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToYourCoursesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.yourCoursesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToLessonCoursesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.lessonCoursesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -107,6 +193,48 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.startupView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProjectDetailView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.projectDetailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithYourCoursesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.yourCoursesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithLessonCoursesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.lessonCoursesView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
