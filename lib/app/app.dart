@@ -4,13 +4,21 @@ import 'package:edtechapp/ui/views/home/home_view.dart';
 import 'package:edtechapp/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:edtechapp/ui/views/login/login_view.dart';
+import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart';
+import 'package:edtechapp/ui/views/profile/profile_view.dart';
+import 'package:edtechapp/ui/views/settings/settings_view.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    // @stacked-route
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: SignUpView),
+    MaterialRoute(page: ProfileView),
+    MaterialRoute(page: SettingsView),
+// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: BottomSheetService),
