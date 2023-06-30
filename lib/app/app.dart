@@ -12,7 +12,7 @@ import 'package:edtechapp/ui/views/result/result_view.dart';
 import 'package:edtechapp/ui/views/project_detail/project_detail_view.dart';
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart';
-import 'package:edtechapp/ui/views/intro_1/intro_view.dart';
+import 'package:edtechapp/ui/views/intro/intro_view.dart';
 
 // @stacked-import
 

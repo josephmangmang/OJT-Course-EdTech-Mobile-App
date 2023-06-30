@@ -6,7 +6,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:edtechapp/ui/views/home/home_view.dart' as _i2;
-import 'package:edtechapp/ui/views/intro_1/intro_view.dart' as _i12;
+import 'package:edtechapp/ui/views/intro/intro_view.dart' as _i12;
 import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart'
     as _i11;
 import 'package:edtechapp/ui/views/login/login_view.dart' as _i4;
