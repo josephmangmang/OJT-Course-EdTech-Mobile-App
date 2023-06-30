@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:edtechapp/ui/common/app_colors.dart';
-import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:flutter_svg/svg.dart';
 import 'home_viewmodel.dart';
 
@@ -25,7 +23,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 child: Column(
                   children: [
                     //verticalSpaceLarge,
-                    Container(
+                    SizedBox(
                       width: 343,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -284,13 +282,13 @@ class HomeView extends StackedView<HomeViewModel> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(image),
-                  Container(
+                  SizedBox(
                     width: 343,
                     height: 40,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Spacer(flex: 21),
+                        const Spacer(flex: 21),
                         ElevatedButton(
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all<Size>(
@@ -308,7 +306,7 @@ class HomeView extends StackedView<HomeViewModel> {
                           },
                           child: Text(price),
                         ),
-                        Spacer(flex: 1)
+                        const Spacer(flex: 1)
                       ],
                     ),
                   ),
@@ -320,7 +318,7 @@ class HomeView extends StackedView<HomeViewModel> {
               height: 103,
               color: Colors.white,
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
                     Row(

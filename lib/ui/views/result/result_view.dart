@@ -164,13 +164,13 @@ class ResultView extends StackedView<ResultViewModel> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(image),
-                  Container(
+                  SizedBox(
                     width: 343,
                     height: 40,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Spacer(flex: 21),
+                        const Spacer(flex: 21),
                         ElevatedButton(
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all<Size>(
@@ -188,7 +188,7 @@ class ResultView extends StackedView<ResultViewModel> {
                           },
                           child: Text(price),
                         ),
-                        Spacer(flex: 1)
+                        const Spacer(flex: 1)
                       ],
                     ),
                   ),
@@ -200,7 +200,7 @@ class ResultView extends StackedView<ResultViewModel> {
               height: 103,
               color: Colors.white,
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
                     Row(
