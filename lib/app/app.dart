@@ -8,6 +8,7 @@ import 'package:edtechapp/ui/views/login/login_view.dart';
 import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart';
 import 'package:edtechapp/ui/views/profile/profile_view.dart';
 import 'package:edtechapp/ui/views/settings/settings_view.dart';
+import 'package:edtechapp/ui/views/result/result_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -18,6 +19,7 @@ import 'package:edtechapp/ui/views/settings/settings_view.dart';
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: ProfileView),
     MaterialRoute(page: SettingsView),
+    MaterialRoute(page: ResultView),
 // @stacked-route
   ],
   dependencies: [
