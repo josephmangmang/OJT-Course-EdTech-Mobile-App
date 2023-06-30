@@ -8,16 +8,14 @@
 import 'package:edtechapp/ui/views/home/home_view.dart' as _i2;
 import 'package:edtechapp/ui/views/login/login_view.dart' as _i4;
 import 'package:edtechapp/ui/views/profile/profile_view.dart' as _i6;
+import 'package:edtechapp/ui/views/result/result_view.dart' as _i8;
 import 'package:edtechapp/ui/views/settings/settings_view.dart' as _i7;
 import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart' as _i5;
-import 'package:edtechapp/ui/views/result/result_view.dart' as _i4;
 import 'package:edtechapp/ui/views/startup/startup_view.dart' as _i3;
-import 'package:flutter/material.dart' as _i8;
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i9;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:stacked_services/stacked_services.dart' as _i10;
 
 class Routes {
   static const homeView = '/home-view';
@@ -73,52 +71,50 @@ class StackedRouter extends _i1.RouterBase {
     ),
     _i1.RouteDef(
       Routes.resultView,
-      page: _i4.ResultView,
+      page: _i8.ResultView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
-    _i4.ResultView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.ResultView(),
-        settings: data,
-      );
-    },
     _i4.LoginView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.SignUpView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SignUpView(),
         settings: data,
       );
     },
     _i6.ProfileView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ProfileView(),
         settings: data,
       );
     },
     _i7.SettingsView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.SettingsView(),
+        settings: data,
+      );
+    },
+    _i8.ResultView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.ResultView(),
         settings: data,
       );
     },
@@ -130,8 +126,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i9.NavigationService {
-extension NavigatorStateExtension on _i6.NavigationService {
+extension NavigatorStateExtension on _i10.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
