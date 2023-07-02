@@ -69,12 +69,9 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                 ),
               ),
             ),
-            
           ],
         ),
-
       ),
-      
     );
   }
 

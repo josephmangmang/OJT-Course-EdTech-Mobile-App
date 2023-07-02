@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'result_viewmodel.dart';
 
 class ResultView extends StackedView<ResultViewModel> {
@@ -18,233 +18,170 @@ class ResultView extends StackedView<ResultViewModel> {
           child: Padding(
             padding: const EdgeInsets.only(),
             child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: 375,
-                    height: 132,
-                    padding: const EdgeInsets.all(16),
-                    child: SizedBox(
-                      width: 343,
-                      height: 56,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: const Color(0xFFBEBAB3)),
-                                ),
-                                child: ClipOval(
-                                  child: SizedBox(
-                                    height: 48,
-                                    width: 48,
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: SvgPicture.asset(
-                                          'assets/svg/Go-back.svg'),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 287,
-                                height: 65,
-                                padding: const EdgeInsets.all(16),
-                                decoration: ShapeDecoration(
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.50, color: Color(0xFFBEBAB3)),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Expanded(
-                                      child: TextField(
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Rubik',
-                                            height: 2.8,
-                                            color: Colors.black),
-                                        decoration: InputDecoration(
-                                            hintText: 'UI',
-                                            border: InputBorder.none),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          child: IconButton(
-                                            onPressed: () {},
-                                            icon: SvgPicture.asset(
-                                              'assets/svg/Search Icon.svg',
-                                            ),
-                                            iconSize: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(3.0),
-                                  child: Text(
-                                    '2 Results',
-                                    style: TextStyle(
-                                      color: Color(0xFF3B3936),
-                                      fontSize: 24,
-                                      fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: -0.50,
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Column(
+              child: Column(children: [
+                //verticalSpaceLarge,
+                Container(
+                  width: 375,
+                  height: 40,
+                  child: Row(
                     children: [
-                      buildCard(
-                          image: 'assets/png/Cool Kids High Tech.png',
-                          price: "\$50",
-                          hour: "3 h 30 min ",
-                          title: "UI Advanced",
-                          description: "Advanced mobile interface design",
-                          color: 0xFFE6EDF4),
-                      const SizedBox(height: 12),
-                      buildCard(
-                          image: 'assets/png/Cool Kids Alone Time.png',
-                          price: "\$50",
-                          hour: "3 h 30 min ",
-                          title: "UI",
-                          description: "Advanced web applications",
-                          color: 0xFFF7F2EE),
-                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: ClipOval(
+                              child: SizedBox(
+                                height: 48,
+                                width: 48,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: SvgPicture.asset(
+                                      'assets/svg/Go-back.svg'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 263,
+                            height: 32,
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'Results',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF3B3936),
+                                fontSize: 24,
+                                fontFamily: 'Rubik',
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: -0.50,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  width: 375,
+                  height: 620,
+                  padding: const EdgeInsets.only(top: 163),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 375,
+                        height: 253,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/png/Cool Kids Xmas Morning.png"),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 341,
+                        padding: const EdgeInsets.only(top: 32),
+                        child: const Text(
+                          'Congratulations',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF3B3936),
+                            fontSize: 24,
+                            fontFamily: 'Rubik',
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.50,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 341,
+                        padding: const EdgeInsets.only(top: 8),
+                        child: const Text(
+                          'Congratulations for getting \nall the answers corrects!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF78746D),
+                            fontSize: 14,
+                            fontFamily: 'Rubik',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 343,
+                  height: 120,
+                  padding: const EdgeInsets.only(top: 17, bottom: 8, left: 116),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFF65A9E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child: Container(
+                          width: 24,
+                          height: 24,
+                          alignment: Alignment.center,
+                          child: SvgPicture.asset('assets/svg/facebook-icon.svg'),
+                        )
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(right: 16),
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFF65A9E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child: Container(
+                          width: 24,
+                          height: 24,
+                          alignment: Alignment.center,
+                          child: SvgPicture.asset('assets/svg/Instagram-icon.svg'),
+                        )
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(right: 16),
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFF65A9E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                       child: Container(
+                          width: 24,
+                          height: 24,
+                          alignment: Alignment.center,
+                          child: SvgPicture.asset('assets/svg/Google-icon.svg'),
+                        )
+                      ),
+                    ],
+                  ),
+                )
+              ]),
             ),
           ),
         ),
       ),
     );
   }
-
-  Widget buildCard(
-          {required String image,
-          required String price,
-          required String hour,
-          required String description,
-          required String title,
-          required int color}) =>
-      ClipRRect(
-        child: Column(
-          children: [
-            Container(
-              width: 343,
-              height: 194,
-              color: Color(color),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(image),
-                  SizedBox(
-                    width: 343,
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Spacer(flex: 21),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(63, 24)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    12.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: Text(price),
-                        ),
-                        const Spacer(flex: 1)
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 343,
-              height: 103,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          hour,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF5BA092),
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(title,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: -0.5,
-                            ))
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(description,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                            ))
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      );
 
   @override
   ResultViewModel viewModelBuilder(

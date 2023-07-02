@@ -16,6 +16,7 @@ class IntroViewModel extends BaseViewModel {
     buttontext = 'Let\'s Start';
     rebuildUi();
   }
+
   void changeTextToNext() {
     buttontext = "Next";
     notifyListeners();

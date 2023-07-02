@@ -27,8 +27,7 @@ class StartupView extends StackedView<StartupViewModel> {
                   height: 250,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image:
-                          AssetImage("assets/png/Cool_Kids_On_Wheels.png"),
+                      image: AssetImage("assets/png/Cool_Kids_On_Wheels.png"),
                       fit: BoxFit.contain,
                     ),
                   ),
