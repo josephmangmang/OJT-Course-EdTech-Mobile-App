@@ -14,6 +14,7 @@ import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart';
 import 'package:edtechapp/ui/views/intro/intro_view.dart';
 
+import 'package:edtechapp/ui/views/course_lesson/course_lesson_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -30,6 +31,7 @@ import 'package:edtechapp/ui/views/intro/intro_view.dart';
     MaterialRoute(page: LessonCoursesView),
     MaterialRoute(page: IntroPage),
 
+    MaterialRoute(page: CourseLessonView),
 // @stacked-route
   ],
   dependencies: [

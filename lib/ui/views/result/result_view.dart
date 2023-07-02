@@ -72,7 +72,7 @@ class ResultView extends StackedView<ResultViewModel> {
                                             fontSize: 14,
                                             fontFamily: 'Rubik',
                                             height: 2.8,
-                                            color: Colors.black),      
+                                            color: Colors.black),
                                         decoration: InputDecoration(
                                             hintText: 'UI',
                                             border: InputBorder.none),
