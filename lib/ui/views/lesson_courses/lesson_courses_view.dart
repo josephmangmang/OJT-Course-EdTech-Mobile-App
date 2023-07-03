@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-
 import 'lesson_courses_viewmodel.dart';
 
 class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
