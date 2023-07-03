@@ -6,27 +6,33 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:edtechapp/ui/views/course_lesson/course_lesson_view.dart'
-    as _i12;
-import 'package:edtechapp/ui/views/course_test/course_test_view.dart' as _i13;
+    as _i17;
+import 'package:edtechapp/ui/views/course_test/course_test_view.dart' as _i18;
 import 'package:edtechapp/ui/views/home/home_view.dart' as _i2;
-import 'package:edtechapp/ui/views/intro/intro_view.dart' as _i11;
+import 'package:edtechapp/ui/views/intro/intro_view.dart' as _i16;
 import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart'
     as _i10;
 import 'package:edtechapp/ui/views/login/login_view.dart' as _i4;
+import 'package:edtechapp/ui/views/no_payment/no_payment_view.dart' as _i12;
+import 'package:edtechapp/ui/views/not_found/not_found_view.dart' as _i15;
+import 'package:edtechapp/ui/views/not_saved/not_saved_view.dart' as _i11;
+import 'package:edtechapp/ui/views/payment_addded/payment_addded_view.dart'
+    as _i14;
 import 'package:edtechapp/ui/views/profile/profile_view.dart' as _i6;
 import 'package:edtechapp/ui/views/project_detail/project_detail_view.dart'
     as _i8;
-import 'package:edtechapp/ui/views/result/result_view.dart' as _i15;
+import 'package:edtechapp/ui/views/result/result_view.dart' as _i20;
+import 'package:edtechapp/ui/views/saved/saved_view.dart' as _i13;
 import 'package:edtechapp/ui/views/settings/settings_view.dart' as _i7;
 import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart' as _i5;
 import 'package:edtechapp/ui/views/startup/startup_view.dart' as _i3;
 import 'package:edtechapp/ui/views/test_question/test_question_view.dart'
-    as _i14;
+    as _i19;
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart' as _i9;
-import 'package:flutter/material.dart' as _i16;
+import 'package:flutter/material.dart' as _i21;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i17;
+import 'package:stacked_services/stacked_services.dart' as _i22;
 
 class Routes {
   static const homeView = '/home-view';
@@ -46,6 +52,16 @@ class Routes {
   static const yourCoursesView = '/your-courses-view';
 
   static const lessonCoursesView = '/lesson-courses-view';
+
+  static const notSavedView = '/not-saved-view';
+
+  static const noPaymentView = '/no-payment-view';
+
+  static const savedView = '/saved-view';
+
+  static const paymentAdddedView = '/payment-addded-view';
+
+  static const notFoundView = '/not-found-view';
 
   static const introPage = '/intro-page';
 
@@ -67,6 +83,11 @@ class Routes {
     projectDetailView,
     yourCoursesView,
     lessonCoursesView,
+    notSavedView,
+    noPaymentView,
+    savedView,
+    paymentAdddedView,
+    notFoundView,
     introPage,
     courseLessonView,
     courseTestView,
@@ -114,112 +135,162 @@ class StackedRouter extends _i1.RouterBase {
       page: _i10.LessonCoursesView,
     ),
     _i1.RouteDef(
+      Routes.notSavedView,
+      page: _i11.NotSavedView,
+    ),
+    _i1.RouteDef(
+      Routes.noPaymentView,
+      page: _i12.NoPaymentView,
+    ),
+    _i1.RouteDef(
+      Routes.savedView,
+      page: _i13.SavedView,
+    ),
+    _i1.RouteDef(
+      Routes.paymentAdddedView,
+      page: _i14.PaymentAdddedView,
+    ),
+    _i1.RouteDef(
+      Routes.notFoundView,
+      page: _i15.NotFoundView,
+    ),
+    _i1.RouteDef(
       Routes.introPage,
-      page: _i11.IntroPage,
+      page: _i16.IntroPage,
     ),
     _i1.RouteDef(
       Routes.courseLessonView,
-      page: _i12.CourseLessonView,
+      page: _i17.CourseLessonView,
     ),
     _i1.RouteDef(
       Routes.courseTestView,
-      page: _i13.CourseTestView,
+      page: _i18.CourseTestView,
     ),
     _i1.RouteDef(
       Routes.testQuestionView,
-      page: _i14.TestQuestionView,
+      page: _i19.TestQuestionView,
     ),
     _i1.RouteDef(
       Routes.resultView,
-      page: _i15.ResultView,
+      page: _i20.ResultView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.SignUpView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SignUpView(),
         settings: data,
       );
     },
     _i6.ProfileView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ProfileView(),
         settings: data,
       );
     },
     _i7.SettingsView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.SettingsView(),
         settings: data,
       );
     },
     _i8.ProjectDetailView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProjectDetailView(),
         settings: data,
       );
     },
     _i9.YourCoursesView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.YourCoursesView(),
         settings: data,
       );
     },
     _i10.LessonCoursesView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.LessonCoursesView(),
         settings: data,
       );
     },
-    _i11.IntroPage: (data) {
+    _i11.NotSavedView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.NotSavedView(),
+        settings: data,
+      );
+    },
+    _i12.NoPaymentView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.NoPaymentView(),
+        settings: data,
+      );
+    },
+    _i13.SavedView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.SavedView(),
+        settings: data,
+      );
+    },
+    _i14.PaymentAdddedView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i14.PaymentAdddedView(),
+        settings: data,
+      );
+    },
+    _i15.NotFoundView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i15.NotFoundView(),
+        settings: data,
+      );
+    },
+    _i16.IntroPage: (data) {
       final args = data.getArgs<IntroPageArguments>(
         orElse: () => const IntroPageArguments(),
       );
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => _i11.IntroPage(key: args.key),
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => _i16.IntroPage(key: args.key),
         settings: data,
       );
     },
-    _i12.CourseLessonView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i12.CourseLessonView(),
+    _i17.CourseLessonView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i17.CourseLessonView(),
         settings: data,
       );
     },
-    _i13.CourseTestView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i13.CourseTestView(),
+    _i18.CourseTestView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i18.CourseTestView(),
         settings: data,
       );
     },
-    _i14.TestQuestionView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i14.TestQuestionView(),
+    _i19.TestQuestionView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i19.TestQuestionView(),
         settings: data,
       );
     },
-    _i15.ResultView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i15.ResultView(),
+    _i20.ResultView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i20.ResultView(),
         settings: data,
       );
     },
@@ -234,7 +305,7 @@ class StackedRouter extends _i1.RouterBase {
 class IntroPageArguments {
   const IntroPageArguments({this.key});
 
-  final _i16.Key? key;
+  final _i21.Key? key;
 
   @override
   String toString() {
@@ -253,7 +324,7 @@ class IntroPageArguments {
   }
 }
 
-extension NavigatorStateExtension on _i17.NavigationService {
+extension NavigatorStateExtension on _i22.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -380,8 +451,78 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToNotSavedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.notSavedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNoPaymentView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.noPaymentView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSavedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.savedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToPaymentAdddedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.paymentAdddedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNotFoundView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.notFoundView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> navigateToIntroPage({
-    _i16.Key? key,
+    _i21.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -578,8 +719,78 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> replaceWithNotSavedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.notSavedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithNoPaymentView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.noPaymentView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSavedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.savedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPaymentAdddedView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.paymentAdddedView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithNotFoundView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.notFoundView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithIntroPage({
-    _i16.Key? key,
+    _i21.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,

@@ -108,7 +108,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                   progressImage: 'assets/svg/Progress Bars.svg',
                 ),
                 buildCard(
-                  image: 'assets/png/Cool Kids On Wheels.png',
+                  image: 'assets/png/Cool Kids On Wheels (1).png',
                   txt: 'Tags For Header',
                   progressImage: 'assets/svg/Progress Bars (1).svg',
                 ),
