@@ -7,17 +7,18 @@ import '../../../app/app.locator.dart';
 class Intro1ViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
-  String buttontext = 'Next';
+  String buttonText = 'Next';
   void goToHomePage() {
     _navigationService.replaceWithHomeView();
   }
 
   void changeText() {
-    buttontext = 'Let\'s Start';
+    buttonText = 'Let\'s Start';
     rebuildUi();
   }
+
   void changeTextToNext() {
-    buttontext = "Next";
+    buttonText = "Next";
     notifyListeners();
   }
 

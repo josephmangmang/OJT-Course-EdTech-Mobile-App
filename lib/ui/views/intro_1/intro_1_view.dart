@@ -315,7 +315,7 @@ class Intro1Page extends StackedView<Intro1ViewModel> {
                         children: [
                           Expanded(
                             child: Text(
-                              viewModel.buttontext,
+                              viewModel.buttonText,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,
