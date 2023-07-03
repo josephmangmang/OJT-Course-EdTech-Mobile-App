@@ -49,7 +49,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
-                  padding: EdgeInsets.all(1),
+                  padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
                     border:
                         Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
@@ -109,7 +109,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                   progressImage: 'assets/svg/Progress Bars.svg',
                 ),
                 buildCard(
-                  image: 'assets/png/Cool Kids On Wheels.png',
+                  image: 'assets/png/Cool Kids On Wheels (1).png',
                   txt: 'Tags For Header',
                   progressImage: 'assets/svg/Progress Bars (1).svg',
                 ),

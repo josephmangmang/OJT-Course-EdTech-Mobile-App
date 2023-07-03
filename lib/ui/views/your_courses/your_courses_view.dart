@@ -52,7 +52,7 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                       height: 16,
                     ),
                     buildCard(
-                      image: 'assets/png/Cool Kids Alone Time.png',
+                      image: 'assets/png/Cool Kids Alone Time (2).png',
                       subtitle: 'Left 1h 20 min',
                       title: 'Swift',
                       body: 'Advanced iOS apps',
@@ -69,12 +69,9 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                 ),
               ),
             ),
-            
           ],
         ),
-
       ),
-      
     );
   }
 
