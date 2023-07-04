@@ -48,7 +48,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
               const SizedBox(
                 height: 32,
               ),
-              Image.asset('assets/png/Cool Kids On Wheels.png'),
+              Image.asset('assets/png/Cool Kids On Wheels (2).png'),
               const SizedBox(
                 height: 16,
               ),

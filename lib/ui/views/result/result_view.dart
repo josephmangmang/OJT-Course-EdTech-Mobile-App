@@ -122,56 +122,56 @@ class ResultView extends StackedView<ResultViewModel> {
                   child: Row(
                     children: [
                       Container(
-                        width: 40,
-                        height: 40,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF65A9E9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                        child: Container(
-                          width: 24,
-                          height: 24,
-                          alignment: Alignment.center,
-                          child: SvgPicture.asset('assets/svg/facebook-icon.svg'),
-                        )
-                      ),
+                          width: 40,
+                          height: 40,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF65A9E9),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                          ),
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            alignment: Alignment.center,
+                            child: SvgPicture.asset(
+                                'assets/svg/facebook-icon.svg'),
+                          )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
                       ),
                       Container(
-                        width: 40,
-                        height: 40,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF65A9E9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                        child: Container(
-                          width: 24,
-                          height: 24,
-                          alignment: Alignment.center,
-                          child: SvgPicture.asset('assets/svg/Instagram-icon.svg'),
-                        )
-                      ),
+                          width: 40,
+                          height: 40,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF65A9E9),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                          ),
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            alignment: Alignment.center,
+                            child: SvgPicture.asset(
+                                'assets/svg/Instagram-icon.svg'),
+                          )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
                       ),
                       Container(
-                        width: 40,
-                        height: 40,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF65A9E9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                       child: Container(
-                          width: 24,
-                          height: 24,
-                          alignment: Alignment.center,
-                          child: SvgPicture.asset('assets/svg/Google-icon.svg'),
-                        )
-                      ),
+                          width: 40,
+                          height: 40,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF65A9E9),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                          ),
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            alignment: Alignment.center,
+                            child:
+                                SvgPicture.asset('assets/svg/Google-icon.svg'),
+                          )),
                     ],
                   ),
                 )

@@ -187,7 +187,7 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                     ),
                   ),
                   buildCard(
-                      image: 'assets/png/Cool Kids On Wheels.png',
+                      image: 'assets/png/Cool Kids On Wheels (4).png',
                       quiz: 'Quiz 1',
                       description:
                           'Lets put your memory on this topic test. Solve task and check your knowledge',
@@ -197,7 +197,7 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                     height: 16,
                   ),
                   buildCard(
-                      image: 'assets/png/Cool Kids On Wheels.png',
+                      image: 'assets/png/Cool Kids On Wheels (4).png',
                       quiz: 'Quiz 1',
                       description:
                           'Lets put your memory on this topic test. Solve task and check your knowledge',

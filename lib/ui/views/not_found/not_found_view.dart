@@ -36,19 +36,18 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        width: 1,
-                        color: Color(0xFFBEBAB3),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Color(0xFFBEBAB3),
+                        ),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    semanticCounterText: 'Cooking',
-                    suffixIcon: Transform.scale(
-                      scale: 0.6,
-                      child: SvgPicture.asset('assets/svg/Search Icon.svg'))
-                  ),
-
+                      hintText: "Search courses",
+                      suffixIcon: Transform.scale(
+                          scale: 0.6,
+                          child:
+                              SvgPicture.asset('assets/svg/Search Icon.svg'))),
                 ),
                 const SizedBox(
                   height: 32,

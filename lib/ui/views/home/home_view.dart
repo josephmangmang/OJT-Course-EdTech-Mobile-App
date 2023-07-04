@@ -68,7 +68,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                     child: IconButton(
                                       onPressed: () {},
                                       icon: SvgPicture.asset(
-                                          'assets/svg/Notification.svg'),
+                                          'assets/svg/notification.svg'),
                                     ),
                                   ),
                                 ),
@@ -78,48 +78,21 @@ class HomeView extends StackedView<HomeViewModel> {
                         ],
                       ),
                     ),
-                    Container(
-                        width: 343,
-                        height: 65,
-                        padding: const EdgeInsets.all(16),
-                        decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 0.50, color: Color(0xFFBEBAB3)),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
+                     TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Color(0xFFBEBAB3),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Expanded(
-                              child: TextField(
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Rubik',
-                                    height: 2.8),
-                                decoration: InputDecoration(
-                                    hintText: 'Search course',
-                                    border: InputBorder.none),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: SvgPicture.asset(
-                                      'assets/svg/Search Icon.svg',
-                                    ),
-                                    iconSize: 24,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        )),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      hintText: "Search course",
+                      suffixIcon: Transform.scale(
+                          scale: 0.6,
+                          child:
+                              SvgPicture.asset('assets/svg/Search Icon.svg'))),
+                ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -206,7 +179,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             color: 0xFFF7F2EE),
                         const SizedBox(height: 12),
                         buildCard(
-                            image: 'assets/png/Cool Kids Alone Time.png',
+                            image: 'assets/png/Cool Kids Alone Time (3).png',
                             price: "\$50",
                             hour: "3 h 30 min ",
                             title: "UI",
