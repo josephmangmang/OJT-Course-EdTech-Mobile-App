@@ -13,12 +13,10 @@ class SignUpViewModel extends BaseViewModel {
   final passwordTextController = TextEditingController();
 
   final _navigatorService = locator<NavigationService>();
-   final _snackBarService = locator<SnackbarService>();
+  final _snackBarService = locator<SnackbarService>();
 
   bool obscureText = true;
 
-  
-   
   void visibility() {
     obscureText = !obscureText;
     notifyListeners();
