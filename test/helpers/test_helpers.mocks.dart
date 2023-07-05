@@ -555,6 +555,7 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
     _i5.Color? barrierColor = const _i5.Color(2315255808),
     bool? barrierDismissible = false,
     String? barrierLabel = r'',
+    bool? useSafeArea = true,
     dynamic customData,
     R? data,
   }) =>
@@ -578,6 +579,7 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
             #barrierColor: barrierColor,
             #barrierDismissible: barrierDismissible,
             #barrierLabel: barrierLabel,
+            #useSafeArea: useSafeArea,
             #customData: customData,
             #data: data,
           },

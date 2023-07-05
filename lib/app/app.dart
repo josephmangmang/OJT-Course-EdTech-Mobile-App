@@ -54,6 +54,7 @@ import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: SnackbarService),
     // @stacked-service
   ],
   bottomsheets: [

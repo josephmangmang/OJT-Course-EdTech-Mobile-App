@@ -67,6 +67,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                 height: 16.0,
               ),
               TextField(
+                controller: viewModel.nameTextController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -83,6 +84,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                 height: 16.0,
               ),
               TextField(
+                controller: viewModel.emailTextController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -99,7 +101,8 @@ class SignUpView extends StackedView<SignUpViewModel> {
                 height: 16.0,
               ),
               TextField(
-                obscureText: true,
+                controller: viewModel.passwordTextController,
+                obscureText: viewModel.obscureText,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -110,10 +113,15 @@ class SignUpView extends StackedView<SignUpViewModel> {
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
-                  suffixIcon: Transform.scale(
-                    scale: 0.6,
-                    child: SvgPicture.asset(
-                      'assets/svg/visibility 1 (1).svg',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      viewModel.visibility();
+                    },
+                    icon: Transform.scale(
+                      scale: 0.6,
+                      child: SvgPicture.asset(
+                        'assets/svg/visibility 1 (1).svg',
+                      ),
                     ),
                   ),
                 ),
@@ -121,14 +129,31 @@ class SignUpView extends StackedView<SignUpViewModel> {
               const SizedBox(
                 height: 16.0,
               ),
-              Container(
-                padding:
+              ElevatedButton(
+                onPressed: () {
+                  viewModel.signupPressed();
+                },
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                alignment: Alignment.center,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: const Color(0xFFE35629),
+                  ),
+                  alignment: Alignment.center,
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    const Color(0xFFE35629),
+                  ),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  textStyle: MaterialStateProperty.all<TextStyle>(
+                    const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
                 child: const Text(
                   'Sign up',
@@ -142,12 +167,15 @@ class SignUpView extends StackedView<SignUpViewModel> {
               const SizedBox(
                 height: 16.0,
               ),
-              const Text(
-                'Log in',
-                style: TextStyle(
-                  color: Color(0xFF78746D),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Log in',
+                  style: TextStyle(
+                    color: Color(0xFF78746D),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],
@@ -162,4 +190,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
     BuildContext context,
   ) =>
       SignUpViewModel();
+
+  void fold(
+      void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
 }
