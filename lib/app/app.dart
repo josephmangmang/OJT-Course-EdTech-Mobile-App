@@ -65,5 +65,6 @@ import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
     StackedDialog(classType: InfoAlertDialog),
     // @stacked-dialog
   ],
+
 )
 class App {}
