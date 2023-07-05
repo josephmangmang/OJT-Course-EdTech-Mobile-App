@@ -16,6 +16,7 @@ void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
+  
   // @stacked-mock-register
 }
 

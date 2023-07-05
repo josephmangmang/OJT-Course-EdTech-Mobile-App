@@ -96,6 +96,7 @@ class LoginView extends StackedView<LoginViewModel> {
                 height: 16.0,
               ),
               TextField(
+                controller: viewModel.emailController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -112,62 +113,58 @@ class LoginView extends StackedView<LoginViewModel> {
                 height: 16.0,
               ),
               TextField(
-                obscureText: true,
+                controller: viewModel.passwordController,
+                obscureText: !viewModel.isPasswordVisible,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  labelText: 'Password',
-                  labelStyle: const TextStyle(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    labelText: 'Password',
+                    labelStyle: const TextStyle(
+                      color: Color(0xFF78746D),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: SvgPicture.asset('assets/svg/visibility 1.svg'),
+                      onPressed: viewModel.showPassword,
+                    )),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Forgot Password?',
+                  style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  suffixIcon: Transform.scale(
-                    scale: 0.6,
-                    child: SvgPicture.asset(
-                      'assets/svg/visibility 1.svg',
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              const Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: Color(0xFF78746D),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                alignment: Alignment.center,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: const Color(0xFFE35629),
-                ),
-                child: const Text(
-                  'Log in',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 16.0,
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: viewModel.logIn,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFE35629),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32, vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
               ),
-              GestureDetector(
-                onTap: viewModel.signUp,
+              TextButton(
+                onPressed: viewModel.signUp,
                 child: const Text(
                   'Sign up',
                   style: TextStyle(
