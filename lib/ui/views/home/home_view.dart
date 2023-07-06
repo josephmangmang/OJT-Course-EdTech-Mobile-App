@@ -78,21 +78,21 @@ class HomeView extends StackedView<HomeViewModel> {
                         ],
                       ),
                     ),
-                     TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          width: 1,
-                          color: Color(0xFFBEBAB3),
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      hintText: "Search course",
-                      suffixIcon: Transform.scale(
-                          scale: 0.6,
-                          child:
-                              SvgPicture.asset('assets/svg/Search Icon.svg'))),
-                ),
+                    TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              width: 1,
+                              color: Color(0xFFBEBAB3),
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          hintText: "Search course",
+                          suffixIcon: Transform.scale(
+                              scale: 0.6,
+                              child: SvgPicture.asset(
+                                  'assets/svg/Search Icon.svg'))),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,

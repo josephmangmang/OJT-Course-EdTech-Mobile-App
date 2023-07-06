@@ -100,7 +100,6 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
       required String title,
       required int color}) {
     return Container(
-     
       padding: const EdgeInsets.all(3),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -118,7 +117,6 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
             width: 343,
             height: 194,
             color: Color(color),
-            
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -132,8 +130,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                       const Spacer(flex: 21),
                       ElevatedButton(
                         style: ButtonStyle(
-                          minimumSize:
-                              MaterialStateProperty.all<Size>(const Size(63, 24)),
+                          minimumSize: MaterialStateProperty.all<Size>(
+                              const Size(63, 24)),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
