@@ -39,4 +39,8 @@ class SignUpViewModel extends BaseViewModel {
       _snackBarService.showSnackbar(message: 'Signup failed');
     }
   }
+
+  void goToLoginPage() {
+    _navigatorService.replaceWithLoginView();
+  }
 }

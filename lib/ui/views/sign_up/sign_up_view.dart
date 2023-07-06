@@ -23,16 +23,26 @@ class SignUpView extends StackedView<SignUpViewModel> {
               const SizedBox(
                 height: 16,
               ),
-              Container(
-                alignment: Alignment.bottomLeft,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    SvgPicture.asset('assets/svg/Background.svg'),
-                    SvgPicture.asset('assets/svg/Go-back.svg'),
-                  ],
+               
+               Container(
+                  
+                  alignment: Alignment.centerLeft,
+                  child: Transform.scale(
+                    scale: 1.5,
+                    child: IconButton(             
+                      alignment: Alignment.centerLeft,
+                      icon: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset('assets/svg/Background.svg'),
+                            SvgPicture.asset('assets/svg/Go-back.svg'),
+                          ],
+                        ),
+                      onPressed: viewModel.goToLoginPage,
+                    ),
+                  ),
                 ),
-              ),
+              
               Image.asset(
                 'assets/png/Cool Kids Standing (1).png',
               ),
@@ -167,11 +177,8 @@ class SignUpView extends StackedView<SignUpViewModel> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 16.0,
-              ),
               TextButton(
-                onPressed: () {},
+                onPressed: viewModel.goToLoginPage,
                 child: const Text(
                   'Log in',
                   style: TextStyle(
