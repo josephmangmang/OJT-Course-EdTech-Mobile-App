@@ -26,13 +26,14 @@ class SignUpViewModel extends BaseViewModel {
 
   Future<void> signupPressed() async {
     final response = await _repository.signup(
+      nameTextController.text,
       emailTextController.text,
       passwordTextController.text,
     );
 
     if (response == true) {
       _snackBarService.showSnackbar(message: response.toString());
-      _navigatorService.replaceWithHomeView();
+      _navigatorService.replaceWithLoginView();
     } else {
       // Signup failed
       _snackBarService.showSnackbar(message: 'Signup failed');

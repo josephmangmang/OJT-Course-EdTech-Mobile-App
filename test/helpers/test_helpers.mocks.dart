@@ -636,12 +636,30 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
 class MockRepositoryService extends _i1.Mock implements _i6.RepositoryService {
   @override
   _i4.Future<bool?> signup(
+    String? name,
     String? email,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #signup,
+          [
+            name,
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
+  @override
+  _i4.Future<bool?> login(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #login,
           [
             email,
             password,
@@ -656,4 +674,39 @@ class MockRepositoryService extends _i1.Mock implements _i6.RepositoryService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRepositoryImplService extends _i1.Mock
-    implements _i7.RepositoryImplService {}
+    implements _i7.RepositoryImplService {
+  @override
+  _i4.Future<bool?> signup(
+    String? name,
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signup,
+          [
+            name,
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
+  @override
+  _i4.Future<bool?> login(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #login,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
+}
