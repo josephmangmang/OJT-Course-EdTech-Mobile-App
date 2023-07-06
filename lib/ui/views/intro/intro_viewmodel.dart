@@ -8,8 +8,8 @@ class IntroViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   String buttontext = 'Next';
-  void goToHomePage() {
-    _navigationService.replaceWithHomeView();
+  void goToLoginPage() {
+    _navigationService.replaceWithLoginView();
   }
 
   void changeText() {

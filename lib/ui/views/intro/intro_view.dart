@@ -250,7 +250,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                   top: 60,
                   child: ElevatedButton(
                     onPressed: () {
-                      viewModel.goToHomePage();
+                      viewModel.goToLoginPage();
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(16),
@@ -288,7 +288,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                         const int lastPageIndex = 2;
                         if (currentPageIndex == lastPageIndex) {
                           // Navigate to the home page
-                          viewModel.goToHomePage();
+                          viewModel.goToLoginPage();
                         } else {
                           if (currentPageIndex == 1) {
                             viewModel.changeText();
