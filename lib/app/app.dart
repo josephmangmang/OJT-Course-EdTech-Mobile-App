@@ -24,6 +24,7 @@ import 'package:edtechapp/ui/views/test_question/test_question_view.dart';
 import 'package:edtechapp/ui/views/result/result_view.dart';
 import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
 import 'package:edtechapp/services/repository_service.dart';
+import 'package:edtechapp/services/repository_impl_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -56,7 +57,7 @@ import 'package:edtechapp/services/repository_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SnackbarService),
-    LazySingleton(classType: RepositoryService),
+    LazySingleton(classType: RepositoryImplService , asType: RepositoryService),
 // @stacked-service
   ],
   bottomsheets: [

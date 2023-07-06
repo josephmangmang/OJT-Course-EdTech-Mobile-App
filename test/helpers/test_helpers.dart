@@ -3,6 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:edtechapp/services/repository_service.dart';
+import 'package:edtechapp/services/repository_impl_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -12,6 +13,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<RepositoryService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<RepositoryImplService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -20,6 +22,7 @@ void registerServices() {
   getAndRegisterDialogService();
 
   getAndRegisterRepositoryService();
+  getAndRegisterRepositoryImplService();
 // @stacked-mock-register
 }
 
@@ -77,6 +80,13 @@ MockRepositoryService getAndRegisterRepositoryService() {
   _removeRegistrationIfExists<RepositoryService>();
   final service = MockRepositoryService();
   locator.registerSingleton<RepositoryService>(service);
+  return service;
+}
+
+MockRepositoryImplService getAndRegisterRepositoryImplService() {
+  _removeRegistrationIfExists<RepositoryImplService>();
+  final service = MockRepositoryImplService();
+  locator.registerSingleton<RepositoryImplService>(service);
   return service;
 }
 // @stacked-mock-create

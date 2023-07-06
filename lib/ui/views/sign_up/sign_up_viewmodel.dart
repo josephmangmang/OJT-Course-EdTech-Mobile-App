@@ -12,8 +12,8 @@ class SignUpViewModel extends BaseViewModel {
   final nameTextController = TextEditingController();
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
-  
-    final _repository = locator<RepositoryService>();
+
+  final _repository = locator<RepositoryService>();
   final _navigatorService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
 
@@ -24,18 +24,18 @@ class SignUpViewModel extends BaseViewModel {
     notifyListeners();
   }
 
- Future<void> signupPressed() async {
-  final response = await _repository.signup(
-    emailTextController.text,
-    passwordTextController.text,
-  );
+  Future<void> signupPressed() async {
+    final response = await _repository.signup(
+      emailTextController.text,
+      passwordTextController.text,
+    );
 
-  if (response == true) {
-    _snackBarService.showSnackbar(message: response.toString() );
-    _navigatorService.replaceWithHomeView();
-  } else {
-    // Signup failed
-    _snackBarService.showSnackbar(message: 'Signup failed');
+    if (response == true) {
+      _snackBarService.showSnackbar(message: response.toString());
+      _navigatorService.replaceWithHomeView();
+    } else {
+      // Signup failed
+      _snackBarService.showSnackbar(message: 'Signup failed');
+    }
   }
-}
 }
