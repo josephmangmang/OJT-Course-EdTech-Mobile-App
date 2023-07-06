@@ -129,38 +129,41 @@ class SignUpView extends StackedView<SignUpViewModel> {
               const SizedBox(
                 height: 16.0,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  viewModel.signupPressed();
-                },
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  ),
-                  alignment: Alignment.center,
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    viewModel.signupPressed();
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    ),
+                    alignment: Alignment.center,
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      const Color(0xFFE35629),
+                    ),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    textStyle: MaterialStateProperty.all<TextStyle>(
+                      const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xFFE35629),
-                  ),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    const TextStyle(
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(
+                      color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
-                  ),
-                ),
-                child: const Text(
-                  'Sign up',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
