@@ -322,7 +322,6 @@ class IntroPage extends StackedView<IntroViewModel> {
                                 fontSize: 16,
                                 fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w500,
-                                height: 1.12,
                               ),
                             ),
                           ),
