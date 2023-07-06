@@ -632,4 +632,21 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
 /// A class which mocks [RepositoryService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRepositoryService extends _i1.Mock implements _i6.RepositoryService {}
+class MockRepositoryService extends _i1.Mock implements _i6.RepositoryService {
+  @override
+  _i4.Future<bool> signup(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signup,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+}
