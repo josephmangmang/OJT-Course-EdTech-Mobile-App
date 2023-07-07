@@ -1,9 +1,15 @@
-import 'package:freezed/builder.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class User{
-  final String name;
-  final String email;
-  final String uid;
+part 'user.freezed.dart';
+part 'user.g.dart';
 
-  const User(this.name, this.email, this.uid);  
+@Freezed()
+class User with _$User {
+  const factory User({
+    required String name,
+    required String email,
+    required String uid,
+  }) = _User;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

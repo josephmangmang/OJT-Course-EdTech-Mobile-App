@@ -6,10 +6,9 @@ import '../model/user.dart';
 
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
-    final db = FirebaseFirestore.instance;
+  final db = FirebaseFirestore.instance;
   @override
   Future<bool?> signup(String name, String email, String password) async {
-    
     try {
       UserCredential userCredential =
           await auth0.createUserWithEmailAndPassword(
@@ -17,7 +16,7 @@ class RepositoryImplService extends RepositoryService {
         password: password,
       );
 
-      User user = User(name, email, userCredential.user!.uid);
+      User user = User(name: name, email: email, uid: userCredential.user!.uid);
 
       db.collection('users').doc(userCredential.user?.uid).set(
         {
