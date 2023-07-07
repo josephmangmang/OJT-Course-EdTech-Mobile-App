@@ -13,6 +13,10 @@ class StartupViewModel extends BaseViewModel {
     // This is where you can make decisions on where your app should navigate when
     // you have custom startup logic
 
+<<<<<<< Updated upstream
     _navigationService.replaceWithEnterOtpView();
+=======
+    _navigationService.replaceWithHomeView();
+>>>>>>> Stashed changes
   }
 }
