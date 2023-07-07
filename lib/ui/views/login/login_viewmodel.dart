@@ -25,7 +25,7 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<void> logIn() async{
+  Future<void> logIn() async {
     final response = await _repository.login(
       emailController.text,
       passwordController.text,

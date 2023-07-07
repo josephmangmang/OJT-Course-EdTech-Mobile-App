@@ -13,10 +13,14 @@ class RepositoryImplService extends RepositoryService {
         email: email,
         password: password,
       );
-      if (userCredential != null) {
-        db.collection('users').doc(userCredential.user?.uid).set(
-            {'name': name, 'email': email, 'uid': userCredential.user?.uid});
-      }
+
+      db.collection('users').doc(userCredential.user?.uid).set(
+        {
+          'name': name,
+          'email': email,
+          'uid': userCredential.user?.uid,
+        },
+      );
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -40,17 +44,16 @@ class RepositoryImplService extends RepositoryService {
         password: password,
       );
       final user = credential.user?.uid;
-      FirebaseFirestore.instance.collection('users').doc(user).get().then((DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-      },
+      FirebaseFirestore.instance.collection('users').doc(user).get().then(
+        (DocumentSnapshot doc) {
+          final data = doc.data() as Map<String, dynamic>;
+        },
       );
       return true;
-    }
-    on FirebaseAuthException catch(e) {
-      if(e.code == 'user-not-found') {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
         print('No user found for that email.');
-      }
-      else if(e.code == 'wrong password') {
+      } else if (e.code == 'wrong password') {
         print('Wrong password provided for that user');
       }
       return false;

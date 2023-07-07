@@ -25,6 +25,9 @@ import 'package:edtechapp/ui/views/result/result_view.dart';
 import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
+import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
+import 'package:edtechapp/ui/views/enter_otp/enter_otp_view.dart';
+import 'package:edtechapp/ui/views/reset_password/reset_password_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -50,6 +53,9 @@ import 'package:edtechapp/services/repository_impl_service.dart';
     MaterialRoute(page: TestQuestionView),
     MaterialRoute(page: ResultView),
     MaterialRoute(page: SearchResultsView),
+    MaterialRoute(page: ForgotPasswordView),
+    MaterialRoute(page: EnterOtpView),
+    MaterialRoute(page: ResetPasswordView),
 // @stacked-route
   ],
   dependencies: [
@@ -57,7 +63,7 @@ import 'package:edtechapp/services/repository_impl_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SnackbarService),
-    LazySingleton(classType: RepositoryImplService , asType: RepositoryService),
+    LazySingleton(classType: RepositoryImplService, asType: RepositoryService),
 // @stacked-service
   ],
   bottomsheets: [
