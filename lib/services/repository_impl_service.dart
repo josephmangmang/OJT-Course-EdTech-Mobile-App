@@ -1,18 +1,22 @@
 import 'package:edtechapp/services/repository_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../model/user.dart';
+
 class RepositoryImplService extends RepositoryService {
+  final auth0 = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
   @override
   Future<bool?> signup(String name, String email, String password) async {
-    final auth0 = FirebaseAuth.instance;
-    final db = FirebaseFirestore.instance;
     try {
       UserCredential userCredential =
           await auth0.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      User user = User(name: name, email: email, uid: userCredential.user!.uid);
 
       db.collection('users').doc(userCredential.user?.uid).set(
         {
@@ -39,12 +43,12 @@ class RepositoryImplService extends RepositoryService {
   @override
   Future<bool?> login(String email, String password) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await auth0.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       final user = credential.user?.uid;
-      FirebaseFirestore.instance.collection('users').doc(user).get().then(
+      db.collection('users').doc(user).get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
         },
