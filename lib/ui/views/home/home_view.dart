@@ -1,10 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
 import 'home_viewmodel.dart';
+import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
+import 'package:edtechapp/ui/views/profile/profile_view.dart';
+import 'package:edtechapp/ui/views/settings/settings_view.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
+
+  set index(int index) {}
 
   @override
   Widget builder(
@@ -12,229 +20,311 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(),
-              child: Center(
-                child: Column(
-                  children: [
-                    //verticalSpaceLarge,
-                    SizedBox(
-                      width: 343,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Hello,',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'Rubik',
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: -0.5,
-                                  height: 1.7,
-                                ),
-                              ),
-                              Text(
-                                'Juana Antonieta',
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'Rubik',
-                                  fontStyle: FontStyle.normal,
-                                  letterSpacing: -1,
-                                  height: 1.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.grey),
-                                ),
-                                child: ClipOval(
-                                  child: SizedBox(
-                                    height: 48,
-                                    width: 48,
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: SvgPicture.asset(
-                                          'assets/svg/notification.svg'),
+    final PageController pageController =
+        PageController(initialPage: 0); // Added currentIndex variable
+    int currentPageIndex = 0;
+
+    return ViewModelBuilder<HomeViewModel>.reactive(
+        viewModelBuilder: () => HomeViewModel(),
+        builder: (context, viewModel, child) {
+          return Scaffold(
+            body: Column(
+              children: [
+                Expanded(
+                  child: PageView(
+                    controller: pageController,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    onPageChanged: (int index) {
+                      currentPageIndex = index;
+                      viewModel.changePage();
+                      print('currentPageIndex: $currentPageIndex');
+                    },
+                    children: [
+                      SafeArea(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.only(),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  //verticalSpaceLarge,
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Hello,',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Rubik',
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: -0.5,
+                                                height: 1.7,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Juana Antonieta',
+                                              style: TextStyle(
+                                                fontSize: 32,
+                                                fontWeight: FontWeight.w700,
+                                                fontFamily: 'Rubik',
+                                                fontStyle: FontStyle.normal,
+                                                letterSpacing: -1,
+                                                 height: 1.5,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                    color: Colors.grey),
+                                              ),
+                                              child: ClipOval(
+                                                child: SizedBox(
+                                                  height: 48,
+                                                  width: 48,
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: SvgPicture.asset(
+                                                        'assets/svg/notification.svg'),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
-                                ),
+                                  TextField(
+                                    decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            width: 1,
+                                            color: Color(0xFFBEBAB3),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: "Search course",
+                                        suffixIcon: Transform.scale(
+                                            scale: 0.6,
+                                            child: SvgPicture.asset(
+                                                'assets/svg/Search Icon.svg'))),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text('Category:'),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(54, 24)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  10.0), // Adjust the radius as per your needs
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // Button press event
+                                        },
+                                        child: const Text('#CSS'),
+                                      ),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(47, 24)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  10.0), // Adjust the radius as per your needs
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // Button press event
+                                        },
+                                        child: const Text('#UX'),
+                                      ),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(62, 24)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  10.0), // Adjust the radius as per your needs
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // Button press event
+                                        },
+                                        child: const Text('#Swift'),
+                                      ),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(43, 24)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  10.0), // Adjust the radius as per your needs
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // Button press event
+                                        },
+                                        child: const Text('#UI'),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      buildCard(
+                                          image:
+                                              'assets/png/Cool Kids Discussion.png',
+                                          price: "\$50",
+                                          hour: "3 h 30 min ",
+                                          title: "UI",
+                                          description:
+                                              "Advanced mobile interface design",
+                                          color: 0xFFF7F2EE),
+                                      const SizedBox(height: 12),
+                                      buildCard(
+                                          image:
+                                              'assets/png/Cool Kids Alone Time (3).png',
+                                          price: "\$50",
+                                          hour: "3 h 30 min ",
+                                          title: "UI",
+                                          description:
+                                              "Advanced web applications",
+                                          color: 0xFFBEBAB3),
+                                      const SizedBox(height: 12),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          )
-                        ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              width: 1,
-                              color: Color(0xFFBEBAB3),
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          hintText: "Search course",
-                          suffixIcon: Transform.scale(
-                              scale: 0.6,
-                              child: SvgPicture.asset(
-                                  'assets/svg/Search Icon.svg'))),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text('Category:'),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(54, 24)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    10.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: const Text('#CSS'),
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(47, 24)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    10.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: const Text('#UX'),
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(62, 24)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    10.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: const Text('#Swift'),
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(43, 24)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    10.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: const Text('#UI'),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        buildCard(
-                            image: 'assets/png/Cool Kids Discussion.png',
-                            price: "\$50",
-                            hour: "3 h 30 min ",
-                            title: "UI",
-                            description: "Advanced mobile interface design",
-                            color: 0xFFF7F2EE),
-                        const SizedBox(height: 12),
-                        buildCard(
-                            image: 'assets/png/Cool Kids Alone Time (3).png',
-                            price: "\$50",
-                            hour: "3 h 30 min ",
-                            title: "UI",
-                            description: "Advanced web applications",
-                            color: 0xFFBEBAB3),
-                        const SizedBox(height: 12),
-                      ],
-                    ),
-                  ],
+                      const YourCoursesView(),
+                      const ProfileView(),
+                      const SettingsView(),
+                    ],
+                  ),
                 ),
-              ),
+                NavigationBarTheme(
+                  data: NavigationBarThemeData(
+                      indicatorColor: Colors.white,
+                      labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return const TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Rubik',
+                              fontWeight: FontWeight.w400,
+                              color: Colors.orange,
+                            );
+                          } else {
+                            return const TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Rubik',
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                            );
+                          }
+                        }
+                      ),
+                      ),
+                  child: NavigationBar(
+                    backgroundColor: Colors.white,
+                    height: 60,
+                    selectedIndex: currentPageIndex != 0 ? currentPageIndex - 1 : currentPageIndex,
+                    onDestinationSelected: (index) {
+                      currentPageIndex = index + 1;
+                      if (currentPageIndex == 0 || currentPageIndex == 1) {
+                        pageController.animateToPage(
+                          1,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      } else if (currentPageIndex == 2) {
+                        pageController.animateToPage(
+                          2,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        pageController.animateToPage(
+                          3,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                    destinations: [
+                      NavigationDestination(
+                          icon: SvgPicture.asset(
+                            'assets/svg/courses.svg',
+                          ),
+                          selectedIcon: SvgPicture.asset(
+                            'assets/svg/courses.svg',
+                            color: Colors.orange,
+                          ),
+                          label: 'Courses'),
+                      NavigationDestination(
+                        icon: SvgPicture.asset(
+                          'assets/svg/Profile Icon.svg',
+                        ),
+                        selectedIcon: SvgPicture.asset(
+                          'assets/svg/Profile Icon.svg',
+                          color: Colors.orange,
+                        ),
+                        label: 'Profile',
+                      ),
+                      NavigationDestination(
+                        icon: SvgPicture.asset(
+                          'assets/svg/Frame 4.svg',
+                        ),
+                        selectedIcon: SvgPicture.asset(
+                          'assets/svg/Frame 4.svg',
+                          color: Colors.orange,
+                        ),
+                        label: 'Settings',
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-          ),
-        ),
-        bottomNavigationBar: Container(
-          width: 375,
-          height: 98,
-          padding: const EdgeInsets.only(top: 8),
-          clipBehavior: Clip.antiAlias,
-          decoration: const ShapeDecoration(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(width: 0.50, color: Color(0xFFBEBAB3)),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-            ),
-          ),
-          child: BottomNavigationBar(
-            selectedItemColor: Colors.orange,
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/courses.svg',
-                ),
-                label: 'Courses',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/Profile Icon.svg',
-                ),
-                label: 'Profile',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/Frame 4.svg',
-                ),
-                label: 'Settings',
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+          );
+        });
   }
 
   Widget buildCard(
@@ -244,12 +334,22 @@ class HomeView extends StackedView<HomeViewModel> {
           required String description,
           required String title,
           required int color}) =>
-      ClipRRect(
+      Container(
+        margin: const EdgeInsets.only(top: 16),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              width: 0.50,
+              strokeAlign: BorderSide.strokeAlignOutside,
+              color: Color(0xFFBEBAB3),
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
         child: Column(
           children: [
             Container(
               width: 343,
-              height: 194,
               color: Color(color),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -3,10 +3,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RepositoryImplService extends RepositoryService {
+<<<<<<< HEAD
   @override
   Future<bool?> signup(String name, String email, String password) async {
     final auth0 = FirebaseAuth.instance;
     final db = FirebaseFirestore.instance;
+=======
+  
+  final auth0 = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
+  @override
+  Future<bool?> signup(String name, String email, String password) async {
+>>>>>>> c21902071a6725c9e8e74a6a775bc53e14ed0e9a
     try {
       UserCredential userCredential =
           await auth0.createUserWithEmailAndPassword(
@@ -14,6 +22,11 @@ class RepositoryImplService extends RepositoryService {
         password: password,
       );
 
+<<<<<<< HEAD
+=======
+      User user = User(name: name, email: email, uid: userCredential.user!.uid);
+
+>>>>>>> c21902071a6725c9e8e74a6a775bc53e14ed0e9a
       db.collection('users').doc(userCredential.user?.uid).set(
         {
           'name': name,
