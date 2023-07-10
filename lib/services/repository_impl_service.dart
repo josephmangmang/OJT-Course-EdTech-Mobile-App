@@ -17,11 +17,7 @@ class RepositoryImplService extends RepositoryService {
 
       User user = User(name: name, email: email, uid: userCredential.user!.uid);
 
-      db.collection('users').doc(userCredential.user?.uid).set(
-        {
-         user.toJson()
-        } as Map<String, dynamic>,
-      );
+      db.collection('users').doc(userCredential.user?.uid).set(user.toJson());
 
       return true;
     } on FirebaseAuthException catch (e) {

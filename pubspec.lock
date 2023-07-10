@@ -49,8 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-<<<<<<< HEAD
-=======
   bottom_nav_bar:
     dependency: "direct main"
     description:
@@ -67,7 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
->>>>>>> c21902071a6725c9e8e74a6a775bc53e14ed0e9a
   build:
     dependency: transitive
     description:
@@ -331,8 +328,16 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed:
+    dependency: "direct main"
+    description:
+      name: freezed
+      sha256: a9520490532087cf38bf3f7de478ab6ebeb5f68bb1eb2641546d92719b224445
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.5"
   freezed_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: freezed_annotation
       sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
@@ -428,7 +433,7 @@ packages:
     source: hosted
     version: "0.6.7"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
