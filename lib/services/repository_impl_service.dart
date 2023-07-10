@@ -19,10 +19,8 @@ class RepositoryImplService extends RepositoryService {
 
       db.collection('users').doc(userCredential.user?.uid).set(
         {
-          'name': name,
-          'email': email,
-          'uid': userCredential.user?.uid,
-        },
+         user.toJson()
+        } as Map<String, dynamic>,
       );
 
       return true;
