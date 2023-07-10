@@ -665,24 +665,18 @@ class MockRepositoryService extends _i1.Mock implements _i6.RepositoryService {
             password,
           ],
         ),
-<<<<<<< HEAD
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
   @override
-  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+  _i4.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
-=======
         returnValue: _i4.Future<bool?>.value(),
         returnValueForMissingStub: _i4.Future<bool?>.value(),
       ) as _i4.Future<bool?>);
->>>>>>> 31c184620c48136289a8253d732ec7855171b382
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -721,22 +715,16 @@ class MockRepositoryImplService extends _i1.Mock
             password,
           ],
         ),
-<<<<<<< HEAD
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
   @override
-  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+  _i4.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
-=======
         returnValue: _i4.Future<bool?>.value(),
         returnValueForMissingStub: _i4.Future<bool?>.value(),
       ) as _i4.Future<bool?>);
->>>>>>> 31c184620c48136289a8253d732ec7855171b382
 }
