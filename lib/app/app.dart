@@ -28,6 +28,7 @@ import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
 import 'package:edtechapp/ui/views/enter_otp/enter_otp_view.dart';
 import 'package:edtechapp/ui/views/reset_password/reset_password_view.dart';
+import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -56,6 +57,7 @@ import 'package:edtechapp/ui/views/reset_password/reset_password_view.dart';
     MaterialRoute(page: ForgotPasswordView),
     MaterialRoute(page: EnterOtpView),
     MaterialRoute(page: ResetPasswordView),
+    MaterialRoute(page: NavigationBarView),
 // @stacked-route
   ],
   dependencies: [

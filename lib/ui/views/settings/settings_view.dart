@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'settings_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,8 +13,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
     SettingsViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
+    return SafeArea(
           child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -133,8 +132,8 @@ class SettingsView extends StackedView<SettingsViewModel> {
             ],
           ),
         ),
-      )),
-    );
+      ),
+    ); 
   }
 
   @override

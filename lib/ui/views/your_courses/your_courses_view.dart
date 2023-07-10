@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'your_courses_viewmodel.dart';
 
 class YourCoursesView extends StackedView<YourCoursesViewModel> {
@@ -13,66 +13,66 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
     YourCoursesViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
+    return SafeArea(
         child: Column(
           children: [
-            SingleChildScrollView(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Wrap(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 56 - 16),
-                      child: Row(
-                        children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SvgPicture.asset('assets/svg/Background.svg'),
-                              SvgPicture.asset('assets/svg/Go-back.svg'),
-                            ],
-                          ),
-                          const Expanded(
-                            child: Text(
-                              'Your Courses',
-                              style: TextStyle(
-                                color: Color(0xFF3B3936),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: -0.50,
-                              ),
-                              textAlign: TextAlign.center,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Wrap(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 56 - 16),
+                        child: Row(
+                          children: [
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SvgPicture.asset('assets/svg/Background.svg'),
+                                SvgPicture.asset('assets/svg/Go-back.svg'),
+                              ],
                             ),
-                          )
-                        ],
+                            const Expanded(
+                              child: Text(
+                                'Your Courses',
+                                style: TextStyle(
+                                  color: Color(0xFF3B3936),
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: -0.50,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    buildCard(
-                      image: 'assets/png/Cool Kids Alone Time (2).png',
-                      subtitle: 'Left 1h 20 min',
-                      title: 'Swift',
-                      body: 'Advanced iOS apps',
-                      color: const Color(0xFFF7F2EE),
-                    ),
-                    buildCard(
-                      image: 'assets/png/Cool Kids Performing.png',
-                      subtitle: 'Left 1h 20 min',
-                      title: 'Scrum',
-                      body: 'Advanced project prganization course',
-                      color: const Color(0xFFF7F2EE),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      buildCard(
+                        image: 'assets/png/Cool Kids Alone Time (2).png',
+                        subtitle: 'Left 1h 20 min',
+                        title: 'Swift',
+                        body: 'Advanced iOS apps',
+                        color: const Color(0xFFF7F2EE),
+                      ),
+                      buildCard(
+                        image: 'assets/png/Cool Kids Performing.png',
+                        subtitle: 'Left 1h 20 min',
+                        title: 'Scrum',
+                        body: 'Advanced project prganization course',
+                        color: const Color(0xFFF7F2EE),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 
   @override
