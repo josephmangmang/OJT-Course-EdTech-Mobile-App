@@ -13,9 +13,4 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  factory User.fromDocument(DocumentSnapshot <Map<String, dynamic>> doc) {
-    final data = doc.data()!;
-    return User.fromJson(data).copyWith(uid: doc.id);
-  }
 }

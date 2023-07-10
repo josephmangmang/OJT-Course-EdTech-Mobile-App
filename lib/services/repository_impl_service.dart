@@ -5,6 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user.dart';
 
 class RepositoryImplService extends RepositoryService {
+
+   final auth0 = FirebaseAuth.instance;
+    final db = FirebaseFirestore.instance;
+    
   @override
   Future<bool?> signup(String name, String email, String password) async {
     final auth0 = FirebaseAuth.instance;
