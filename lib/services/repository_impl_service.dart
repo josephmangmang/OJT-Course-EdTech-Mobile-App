@@ -19,13 +19,9 @@ class RepositoryImplService extends RepositoryService {
 
       User user = User(name: name, email: email, uid: userCredential.user!.uid);
 
-      db.collection('users').doc(userCredential.user?.uid).set(
-        {
-          'name': name,
-          'email': email,
-          'uid': userCredential.user?.uid,
-        },
-      );
+      //db.collection('users').doc(userCredential.user?.uid).set(
+        
+      //);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
