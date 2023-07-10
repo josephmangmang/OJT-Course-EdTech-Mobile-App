@@ -1,3 +1,4 @@
+
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,6 +8,7 @@ import '../model/user.dart';
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
+
   @override
   Future<bool?> signup(String name, String email, String password) async {
     try {
@@ -65,5 +67,18 @@ class RepositoryImplService extends RepositoryService {
       print("Error: ${e.toString()}");
       return null;
     }
+  }
+
+  @override
+  Future<bool?> forgetPassword(String email) async {
+   
+    try {
+      await auth0.sendPasswordResetEmail(email: email);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print ("Error: ${e.toString()}");
+      return false;
+    }
+    
   }
 }

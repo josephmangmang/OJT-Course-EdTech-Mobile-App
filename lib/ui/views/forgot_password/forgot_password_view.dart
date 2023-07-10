@@ -75,6 +75,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                 height: 40.0,
               ),
               TextField(
+                controller: viewModel.emailController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -96,7 +97,9 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    viewModel.submit();
+                  },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 16),

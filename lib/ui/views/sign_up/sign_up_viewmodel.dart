@@ -32,11 +32,11 @@ class SignUpViewModel extends BaseViewModel {
     );
 
     if (response == true) {
-      _snackBarService.showSnackbar(message: response.toString());
+      _snackBarService.showSnackbar(message: "Account created successfully.");
       _navigatorService.replaceWithLoginView();
     } else {
       // Signup failed
-      _snackBarService.showSnackbar(message: 'Signup failed');
+      _snackBarService.showSnackbar(message: 'Signup failed.');
     }
   }
 

@@ -335,17 +335,17 @@ class HomeView extends StackedView<HomeViewModel> {
           required String title,
           required int color}) =>
       Container(
-        margin: const EdgeInsets.only(top: 16),
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(
-              width: 0.50,
-              strokeAlign: BorderSide.strokeAlignOutside,
-              color: Color(0xFFBEBAB3),
-            ),
-            borderRadius: BorderRadius.circular(8),
+       padding: const EdgeInsets.all(3),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(
+            width: 0.50,
+            strokeAlign: BorderSide.strokeAlignOutside,
+            color: Color(0xFFBEBAB3),
           ),
+          borderRadius: BorderRadius.circular(8),
         ),
+      ),
         child: Column(
           children: [
             Container(

@@ -119,7 +119,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                   'Lessons',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Color(0xFF3B3936),
+                                    color: Colors.grey,
                                     fontSize: 16,
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w400,

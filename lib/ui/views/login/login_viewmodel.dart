@@ -25,6 +25,10 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  void forgetPassword() {
+    _navigationService.replaceWithForgotPasswordView();
+  }
+
   Future<void> logIn() async {
     final response = await _repository.login(
       emailController.text,
@@ -32,10 +36,10 @@ class LoginViewModel extends BaseViewModel {
     );
 
     if (response == true) {
-      _snackBarService.showSnackbar(message: response.toString());
+      _snackBarService.showSnackbar(message: "Login Sucess.");
       _navigationService.replaceWithHomeView();
     } else {
-      _snackBarService.showSnackbar(message: response.toString());
+      _snackBarService.showSnackbar(message: "Email or Password incorrect.");
     }
   }
 }

@@ -26,8 +26,6 @@ import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
-import 'package:edtechapp/ui/views/enter_otp/enter_otp_view.dart';
-import 'package:edtechapp/ui/views/reset_password/reset_password_view.dart';
 import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 // @stacked-import
 
@@ -55,8 +53,6 @@ import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
     MaterialRoute(page: ResultView),
     MaterialRoute(page: SearchResultsView),
     MaterialRoute(page: ForgotPasswordView),
-    MaterialRoute(page: EnterOtpView),
-    MaterialRoute(page: ResetPasswordView),
     MaterialRoute(page: NavigationBarView),
 // @stacked-route
   ],

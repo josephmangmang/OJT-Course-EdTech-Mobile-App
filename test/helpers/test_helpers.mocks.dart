@@ -691,6 +691,15 @@ class MockRepositoryService extends _i1.Mock implements _i8.RepositoryService {
         returnValue: _i6.Future<bool?>.value(),
         returnValueForMissingStub: _i6.Future<bool?>.value(),
       ) as _i6.Future<bool?>);
+  @override
+  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [email],
+        ),
+        returnValue: _i6.Future<bool?>.value(),
+        returnValueForMissingStub: _i6.Future<bool?>.value(),
+      ) as _i6.Future<bool?>);
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -752,6 +761,15 @@ class MockRepositoryImplService extends _i1.Mock
             email,
             password,
           ],
+        ),
+        returnValue: _i6.Future<bool?>.value(),
+        returnValueForMissingStub: _i6.Future<bool?>.value(),
+      ) as _i6.Future<bool?>);
+  @override
+  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [email],
         ),
         returnValue: _i6.Future<bool?>.value(),
         returnValueForMissingStub: _i6.Future<bool?>.value(),
