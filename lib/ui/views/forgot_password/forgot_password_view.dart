@@ -42,7 +42,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                 ),
               ),
               Image.asset(
-                'assets/png/Forgot_password.png',
+                'assets/png/my-password-concept.png',
               ),
               const SizedBox(
                 height: 16,

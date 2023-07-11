@@ -18,12 +18,8 @@ final _navigationService = locator<NavigationService>();
   Future<void> submit() async {
     final response = await _repository.forgetPassword(
       emailController.text,
-    );
-
-    if (response == true) {
-      _snackBarService.showSnackbar(message: "Password reset link! Check you email.");
-    } else {
-      _snackBarService.showSnackbar(message: "Email not exist in firebase.");
-    }
+    ); 
+      _snackBarService.showSnackbar(message: response.toString().trim());
+  
   }
 }

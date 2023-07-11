@@ -67,15 +67,16 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<bool?> forgetPassword(String email) async {
-   
+  Future<String?> forgetPassword(String email) async {
+   String result;
     try {
       await auth0.sendPasswordResetEmail(email: email);
-      return true;
+      result = "Password reset link sent! Check your email";
+      return result.toString();
     } on FirebaseAuthException catch (e) {
-      print ("Error: ${e.toString()}");
-      return false;
+      return e.message.toString();
     }
     
   }
+
 }

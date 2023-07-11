@@ -6,5 +6,7 @@ abstract class RepositoryService {
 
   Future<bool?> login(String email, String password);
 
-  Future<bool?> forgetPassword(String email);
+  Future<String?> forgetPassword(String email);
+
+  
 }

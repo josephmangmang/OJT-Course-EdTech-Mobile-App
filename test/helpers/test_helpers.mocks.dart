@@ -692,14 +692,14 @@ class MockRepositoryService extends _i1.Mock implements _i8.RepositoryService {
         returnValueForMissingStub: _i6.Future<bool?>.value(),
       ) as _i6.Future<bool?>);
   @override
-  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+  _i6.Future<String?> forgetPassword(String? email) => (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
+        returnValue: _i6.Future<String?>.value(),
+        returnValueForMissingStub: _i6.Future<String?>.value(),
+      ) as _i6.Future<String?>);
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -731,6 +731,20 @@ class MockRepositoryImplService extends _i1.Mock
           Invocation.getter(#db),
         ),
       ) as _i3.FirebaseFirestore);
+  @override
+  List<String> get docIDs => (super.noSuchMethod(
+        Invocation.getter(#docIDs),
+        returnValue: <String>[],
+        returnValueForMissingStub: <String>[],
+      ) as List<String>);
+  @override
+  set docIDs(List<String>? _docIDs) => super.noSuchMethod(
+        Invocation.setter(
+          #docIDs,
+          _docIDs,
+        ),
+        returnValueForMissingStub: null,
+      );
   @override
   _i6.Future<bool?> signup(
     String? name,
@@ -766,12 +780,12 @@ class MockRepositoryImplService extends _i1.Mock
         returnValueForMissingStub: _i6.Future<bool?>.value(),
       ) as _i6.Future<bool?>);
   @override
-  _i6.Future<bool?> forgetPassword(String? email) => (super.noSuchMethod(
+  _i6.Future<String?> forgetPassword(String? email) => (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [email],
         ),
-        returnValue: _i6.Future<bool?>.value(),
-        returnValueForMissingStub: _i6.Future<bool?>.value(),
-      ) as _i6.Future<bool?>);
+        returnValue: _i6.Future<String?>.value(),
+        returnValueForMissingStub: _i6.Future<String?>.value(),
+      ) as _i6.Future<String?>);
 }
