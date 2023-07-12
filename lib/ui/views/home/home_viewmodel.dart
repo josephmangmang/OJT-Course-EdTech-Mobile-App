@@ -13,7 +13,6 @@ import '../../../services/repository_service.dart';
 
 
 class HomeViewModel extends BaseViewModel {
-  final nameController = TextEditingController();
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   
@@ -28,9 +27,5 @@ class HomeViewModel extends BaseViewModel {
   
   void changePage() {
     rebuildUi();
-  }
-
-  void name(String name) {
-    
   }
 }

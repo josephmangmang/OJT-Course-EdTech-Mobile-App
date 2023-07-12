@@ -39,7 +39,7 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<User>? login(String email, String password) async {
+  Future<User?>? login(String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -51,7 +51,7 @@ class RepositoryImplService extends RepositoryService {
       return User.fromJson(snap.data() as Map<String, dynamic>);
     } on FirebaseAuthException catch (e) {
       String error = e.message.toString();
-      rethrow;
+      return null;
     }
   }
 
