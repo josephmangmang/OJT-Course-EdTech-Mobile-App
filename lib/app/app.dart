@@ -27,6 +27,8 @@ import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
 import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
+import 'package:edtechapp/services/shared_service.dart';
+import 'package:edtechapp/services/share_impl_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -62,6 +64,7 @@ import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SnackbarService),
     LazySingleton(classType: RepositoryImplService, asType: RepositoryService),
+    LazySingleton(classType: ShareImplService, asType: SharedService),
 // @stacked-service
   ],
   bottomsheets: [

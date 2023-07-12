@@ -10,16 +10,15 @@ import '../../../services/repository_service.dart';
 class ForgotPasswordViewModel extends BaseViewModel {
   final emailController = TextEditingController();
 
-   final _snackBarService = locator<SnackbarService>();
-final _navigationService = locator<NavigationService>();
+  final _snackBarService = locator<SnackbarService>();
+  final _navigationService = locator<NavigationService>();
   final _repository = locator<RepositoryService>();
   get goToLoginPage => null;
 
   Future<void> submit() async {
     final response = await _repository.forgetPassword(
       emailController.text,
-    ); 
-      _snackBarService.showSnackbar(message: response.toString().trim());
-  
+    );
+    _snackBarService.showSnackbar(message: response.toString().trim());
   }
 }

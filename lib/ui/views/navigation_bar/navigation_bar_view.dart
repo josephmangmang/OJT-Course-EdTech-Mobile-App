@@ -13,50 +13,47 @@ class NavigationBarView extends StackedView<NavigationBarViewModel> {
     Widget? child,
   ) {
     return BottomNavigationBar(
-  
-  selectedItemColor: Colors.orange,
-  items: [
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        'assets/svg/courses.svg', 
-      ),
-      label: 'Courses',
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset('assets/svg/Profile Icon.svg',
-      
-      ),
-      label: 'Profile',
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset('assets/svg/Frame 4.svg',
-      
-      ),
-      label: 'Settings',
-    ),
-  ],
-  onTap: (index) {
-    switch (index) {
-      case 0:
-        // Navigate to the Courses screen
-        viewModel.yourCourse();
-        
-        break;
-      case 1:
-        // Navigate to the Profile screen
-        viewModel.profile();
-       
-        break;
-      case 2:
-        // Navigate to the Settings screen
-        viewModel.settings();
-       
-        break;
-    }
-  },
-);
+      selectedItemColor: Colors.orange,
+      items: [
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/svg/courses.svg',
+          ),
+          label: 'Courses',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/svg/Profile Icon.svg',
+          ),
+          label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/svg/Frame 4.svg',
+          ),
+          label: 'Settings',
+        ),
+      ],
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            // Navigate to the Courses screen
+            viewModel.yourCourse();
 
-    
+            break;
+          case 1:
+            // Navigate to the Profile screen
+            viewModel.profile();
+
+            break;
+          case 2:
+            // Navigate to the Settings screen
+            viewModel.settings();
+
+            break;
+        }
+      },
+    );
   }
 
   @override

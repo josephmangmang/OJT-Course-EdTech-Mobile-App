@@ -14,6 +14,8 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/repository_impl_service.dart';
 import '../services/repository_service.dart';
+import '../services/share_impl_service.dart';
+import '../services/shared_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -32,4 +34,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => SnackbarService());
   locator
       .registerLazySingleton<RepositoryService>(() => RepositoryImplService());
+  locator.registerLazySingleton<SharedService>(() => ShareImplService());
 }

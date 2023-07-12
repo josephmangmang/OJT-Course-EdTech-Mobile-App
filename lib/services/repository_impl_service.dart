@@ -1,14 +1,13 @@
-
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user.dart';
 
 class RepositoryImplService extends RepositoryService {
+  final auth0 = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
+  final userName = FirebaseAuth.instance.currentUser!;
 
-   final auth0 = FirebaseAuth.instance;
-    final db = FirebaseFirestore.instance;
-    
   @override
   Future<bool?> signup(String name, String email, String password) async {
     final auth0 = FirebaseAuth.instance;
@@ -40,35 +39,25 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<bool?> login(String email, String password) async {
+  Future<User>? login(String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       final user = credential.user?.uid;
-      FirebaseFirestore.instance.collection('users').doc(user).get().then(
-        (DocumentSnapshot doc) {
-          final data = doc.data() as Map<String, dynamic>;
-        },
-      );
-      return true;
+      final snap =
+          await FirebaseFirestore.instance.collection('users').doc(user).get();
+      return User.fromJson(snap.data() as Map<String, dynamic>);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong password') {
-        print('Wrong password provided for that user');
-      }
-      return false;
-    } catch (e) {
-      print("Error: ${e.toString()}");
-      return null;
+      String error = e.message.toString();
+      rethrow;
     }
   }
 
   @override
   Future<String?> forgetPassword(String email) async {
-   String result;
+    String result;
     try {
       await auth0.sendPasswordResetEmail(email: email);
       result = "Password reset link sent! Check your email";
@@ -76,7 +65,22 @@ class RepositoryImplService extends RepositoryService {
     } on FirebaseAuthException catch (e) {
       return e.message.toString();
     }
-    
   }
 
+  @override
+  Future<String?> currentUser(String name) async {
+    String nameValue;
+    String error;
+    db.collection("users").where("name", isEqualTo: name).get().then(
+        (QuerySnapshot) {
+      print("Successfully completed");
+      for (var docSnapshot in QuerySnapshot.docs) {
+        print('${docSnapshot.id} => ${docSnapshot.data()}');
+        return name;
+      }
+    }, onError: (e) {
+      error = '$e';
+      return error.toString();
+    });
+  }
 }

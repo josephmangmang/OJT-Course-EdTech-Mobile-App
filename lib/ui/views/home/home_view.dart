@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
 import 'home_viewmodel.dart';
-import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'package:edtechapp/ui/views/profile/profile_view.dart';
 import 'package:edtechapp/ui/views/settings/settings_view.dart';
+
+
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
@@ -26,9 +27,10 @@ class HomeView extends StackedView<HomeViewModel> {
 
     return ViewModelBuilder<HomeViewModel>.reactive(
         viewModelBuilder: () => HomeViewModel(),
+        onViewModelReady: (model) =>model.getUser(),
         builder: (context, viewModel, child) {
-          return Scaffold(
-            body: Column(
+          return  Scaffold(
+            body: viewModel.isBusy ? const Center(child: CircularProgressIndicator(),) : Column(
               children: [
                 Expanded(
                   child: PageView(
@@ -54,11 +56,11 @@ class HomeView extends StackedView<HomeViewModel> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        const Column(
+                                        Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
+                                            const Text(
                                               'Hello,',
                                               style: TextStyle(
                                                 fontSize: 16,
@@ -69,8 +71,9 @@ class HomeView extends StackedView<HomeViewModel> {
                                               ),
                                             ),
                                             Text(
-                                              'Juana Antonieta',
-                                              style: TextStyle(
+                                              viewModel.user!.name,
+                                              style: const TextStyle(
+                                                color: Colors.black,
                                                 fontSize: 32,
                                                 fontWeight: FontWeight.w700,
                                                 fontFamily: 'Rubik',

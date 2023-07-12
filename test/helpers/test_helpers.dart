@@ -4,6 +4,8 @@ import 'package:edtechapp/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
+import 'package:edtechapp/services/shared_service.dart';
+import 'package:edtechapp/services/share_impl_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +16,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<RepositoryService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<RepositoryImplService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SharedService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<ShareImplService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -23,6 +27,8 @@ void registerServices() {
 
   getAndRegisterRepositoryService();
   getAndRegisterRepositoryImplService();
+  getAndRegisterSharedService();
+  getAndRegisterShareImplService();
 // @stacked-mock-register
 }
 
@@ -87,6 +93,20 @@ MockRepositoryImplService getAndRegisterRepositoryImplService() {
   _removeRegistrationIfExists<RepositoryImplService>();
   final service = MockRepositoryImplService();
   locator.registerSingleton<RepositoryImplService>(service);
+  return service;
+}
+
+MockSharedService getAndRegisterSharedService() {
+  _removeRegistrationIfExists<SharedService>();
+  final service = MockSharedService();
+  locator.registerSingleton<SharedService>(service);
+  return service;
+}
+
+MockShareImplService getAndRegisterShareImplService() {
+  _removeRegistrationIfExists<ShareImplService>();
+  final service = MockShareImplService();
+  locator.registerSingleton<ShareImplService>(service);
   return service;
 }
 // @stacked-mock-create

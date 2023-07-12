@@ -5,7 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
 
 class NavigationBarViewModel extends BaseViewModel {
-final _navigatorService = locator<NavigationService>();
+  final _navigatorService = locator<NavigationService>();
 
   get selectedIndex => null;
 
@@ -22,5 +22,4 @@ final _navigatorService = locator<NavigationService>();
   }
 
   void setTabIndex(int index) {}
-
 }

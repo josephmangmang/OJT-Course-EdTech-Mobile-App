@@ -13,8 +13,12 @@ class SettingsView extends StackedView<SettingsViewModel> {
     SettingsViewModel viewModel,
     Widget? child,
   ) {
-    return SafeArea(
-          child: SingleChildScrollView(
+    return ViewModelBuilder.reactive(
+      viewModelBuilder: () => SettingsViewModel(),
+      onViewModelReady: (model) =>model.getUser(),
+      builder: (context, viewModel, child) {
+        return viewModel.isBusy ? const Center(child: CircularProgressIndicator(),) : SafeArea(
+      child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
@@ -117,12 +121,12 @@ class SettingsView extends StackedView<SettingsViewModel> {
               buildCell(
                 icon: 'assets/svg/Path.svg',
                 title: 'Name',
-                subtitle: 'Juana Antonieta',
+                subtitle: viewModel.user!.name,
               ),
               buildCell(
                 icon: 'assets/svg/Shape.svg',
                 title: 'Email',
-                subtitle: 'juanita123@gmail.com',
+                subtitle: viewModel.user!.email,
               ),
               buildCell(
                 icon: 'assets/svg/Vector.svg',
@@ -133,7 +137,9 @@ class SettingsView extends StackedView<SettingsViewModel> {
           ),
         ),
       ),
-    ); 
+    );
+      });
+    
   }
 
   @override

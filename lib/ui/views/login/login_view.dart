@@ -131,9 +131,7 @@ class LoginView extends StackedView<LoginViewModel> {
                     )),
               ),
               TextButton(
-                onPressed:  
-                  viewModel.forgetPassword,
-                
+                onPressed: viewModel.forgetPassword,
                 child: const Text(
                   'Forgot Password?',
                   style: TextStyle(
