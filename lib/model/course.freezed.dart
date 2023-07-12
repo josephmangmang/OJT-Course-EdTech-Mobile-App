@@ -22,7 +22,6 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
 mixin _$Course {
   String get title => throw _privateConstructorUsedError;
   String get subtitle => throw _privateConstructorUsedError;
-  String get intro => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -40,7 +39,6 @@ abstract class $CourseCopyWith<$Res> {
   $Res call(
       {String title,
       String subtitle,
-      String intro,
       String about,
       String duration,
       double price});
@@ -61,7 +59,6 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
   $Res call({
     Object? title = null,
     Object? subtitle = null,
-    Object? intro = null,
     Object? about = null,
     Object? duration = null,
     Object? price = null,
@@ -74,10 +71,6 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
       subtitle: null == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      intro: null == intro
-          ? _value.intro
-          : intro // ignore: cast_nullable_to_non_nullable
               as String,
       about: null == about
           ? _value.about
@@ -104,7 +97,6 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
   $Res call(
       {String title,
       String subtitle,
-      String intro,
       String about,
       String duration,
       double price});
@@ -122,7 +114,6 @@ class __$$_CourseCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? subtitle = null,
-    Object? intro = null,
     Object? about = null,
     Object? duration = null,
     Object? price = null,
@@ -135,10 +126,6 @@ class __$$_CourseCopyWithImpl<$Res>
       subtitle: null == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      intro: null == intro
-          ? _value.intro
-          : intro // ignore: cast_nullable_to_non_nullable
               as String,
       about: null == about
           ? _value.about
@@ -162,7 +149,6 @@ class _$_Course implements _Course {
   const _$_Course(
       {required this.title,
       required this.subtitle,
-      required this.intro,
       required this.about,
       required this.duration,
       required this.price});
@@ -175,8 +161,6 @@ class _$_Course implements _Course {
   @override
   final String subtitle;
   @override
-  final String intro;
-  @override
   final String about;
   @override
   final String duration;
@@ -185,7 +169,7 @@ class _$_Course implements _Course {
 
   @override
   String toString() {
-    return 'Course(title: $title, subtitle: $subtitle, intro: $intro, about: $about, duration: $duration, price: $price)';
+    return 'Course(title: $title, subtitle: $subtitle, about: $about, duration: $duration, price: $price)';
   }
 
   @override
@@ -196,7 +180,6 @@ class _$_Course implements _Course {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subtitle, subtitle) ||
                 other.subtitle == subtitle) &&
-            (identical(other.intro, intro) || other.intro == intro) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
@@ -206,7 +189,7 @@ class _$_Course implements _Course {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, title, subtitle, intro, about, duration, price);
+      Object.hash(runtimeType, title, subtitle, about, duration, price);
 
   @JsonKey(ignore: true)
   @override
@@ -226,7 +209,6 @@ abstract class _Course implements Course {
   const factory _Course(
       {required final String title,
       required final String subtitle,
-      required final String intro,
       required final String about,
       required final String duration,
       required final double price}) = _$_Course;
@@ -237,8 +219,6 @@ abstract class _Course implements Course {
   String get title;
   @override
   String get subtitle;
-  @override
-  String get intro;
   @override
   String get about;
   @override
