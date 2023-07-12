@@ -9,7 +9,6 @@ class Course with _$Course {
   const factory Course({
     required String title,
     required String subtitle,
-    required String intro,
     required String about,
     required String duration,
     required double price,
