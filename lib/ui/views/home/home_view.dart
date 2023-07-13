@@ -99,18 +99,21 @@ class HomeView extends StackedView<HomeViewModel> {
                                           ],
                                         ),
                                       ),
-                                      TextField(
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                width: 1,
-                                                color: Color(0xFFBEBAB3),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                  width: 1,
+                                                  color: Color(0xFFBEBAB3),
+                                                ),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
-                                              borderRadius: BorderRadius.circular(12),
-                                            ),
-                                            hintText: "Search course",
-                                            suffixIcon: Transform.scale(
-                                                scale: 0.6, child: SvgPicture.asset('assets/svg/Search Icon.svg'))),
+                                              hintText: "Search course",
+                                              suffixIcon: Transform.scale(
+                                                  scale: 0.6, child: SvgPicture.asset('assets/svg/Search Icon.svg'))),
+                                        ),
                                       ),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -189,7 +192,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                             description: courseItem.subtitle,
                                             title: courseItem.title,
                                             price: courseItem.price,
-                                            color: 0xFFF7F2EE,
+                                            color: viewModel.getColor(index),
                                             hour: courseItem.duration,
                                           );
                                         },
