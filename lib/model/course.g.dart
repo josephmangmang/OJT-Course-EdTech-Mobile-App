@@ -14,6 +14,7 @@ _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
       category: json['category'] as String,
       image: json['image'] as String,
       price: (json['price'] as num).toDouble(),
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
       'category': instance.category,
       'image': instance.image,
       'price': instance.price,
+      'id': instance.id,
     };
