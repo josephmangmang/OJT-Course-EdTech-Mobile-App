@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../model/course.dart';
 
 class CourseImplService {
-  Future<List<Course>?> course() async {
+  Future<List<Course>?> course([String? searchCourse]) async {
     try {
       final snap = await FirebaseFirestore.instance.collection('courses').get();
       final courses = snap.docs

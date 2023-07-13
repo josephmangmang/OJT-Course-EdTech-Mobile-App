@@ -10,12 +10,12 @@ class RepositoryImplService extends RepositoryService {
   final userName = FirebaseAuth.instance.currentUser!;
 
   @override
-  Future<List<Course>> getCourse() async {
+  Future<List<Course>> getCourse([String? searchCourse]) async {
     List<Course> listOfCourse = [];
 
     try {
-      await FirebaseFirestore.instance
-          .collection('courses')
+         await db
+          .collection('courses').where('title', isEqualTo: searchCourse)
           .get()
           .then((value) {
         if (value.docs.isNotEmpty) {
@@ -24,10 +24,12 @@ class RepositoryImplService extends RepositoryService {
               snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
+     
     } catch (e) {
       print(e.toString());
     }
     return listOfCourse;
   }
+  
   
 }

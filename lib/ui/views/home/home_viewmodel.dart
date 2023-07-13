@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/model/user.dart';
 import 'package:edtechapp/services/shared_service.dart';
@@ -9,6 +10,7 @@ import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
 
 class HomeViewModel extends BaseViewModel {
+  TextEditingController searchTextController = TextEditingController(); 
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   List<Course> listOfCourse = [];
@@ -34,6 +36,16 @@ class HomeViewModel extends BaseViewModel {
 
     print(listOfCourse.toString());
     print(listOfCourse.length);
+    setBusy(false);
+  }
+
+  Future<void> searchCourse() async {
+    setBusy(true);
+    await _repository.getCourse(
+      searchTextController.text
+      
+    );
+    print(searchTextController.text);
     setBusy(false);
   }
 

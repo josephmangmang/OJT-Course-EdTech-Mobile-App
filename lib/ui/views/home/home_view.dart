@@ -102,6 +102,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                       Container(
                                         padding: const EdgeInsets.symmetric(horizontal: 16),
                                         child: TextField(
+                                          controller: viewModel.searchTextController,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(
                                                 borderSide: const BorderSide(
@@ -110,9 +111,11 @@ class HomeView extends StackedView<HomeViewModel> {
                                                 ),
                                                 borderRadius: BorderRadius.circular(12),
                                               ),
-                                              hintText: "Search course",
+                                             
                                               suffixIcon: Transform.scale(
-                                                  scale: 0.6, child: SvgPicture.asset('assets/svg/Search Icon.svg'))),
+                                                  scale: 0.6, child: IconButton(
+                                                    onPressed: viewModel.searchCourse,
+                                                    icon: SvgPicture.asset('assets/svg/Search Icon.svg')))),
                                         ),
                                       ),
                                       Row(
