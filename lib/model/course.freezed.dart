@@ -24,6 +24,8 @@ mixin _$Course {
   String get subtitle => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,6 +43,8 @@ abstract class $CourseCopyWith<$Res> {
       String subtitle,
       String about,
       String duration,
+      String category,
+      String image,
       double price});
 }
 
@@ -61,6 +65,8 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
     Object? subtitle = null,
     Object? about = null,
     Object? duration = null,
+    Object? category = null,
+    Object? image = null,
     Object? price = null,
   }) {
     return _then(_value.copyWith(
@@ -79,6 +85,14 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
@@ -99,6 +113,8 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
       String subtitle,
       String about,
       String duration,
+      String category,
+      String image,
       double price});
 }
 
@@ -116,6 +132,8 @@ class __$$_CourseCopyWithImpl<$Res>
     Object? subtitle = null,
     Object? about = null,
     Object? duration = null,
+    Object? category = null,
+    Object? image = null,
     Object? price = null,
   }) {
     return _then(_$_Course(
@@ -135,6 +153,14 @@ class __$$_CourseCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -151,6 +177,8 @@ class _$_Course implements _Course {
       required this.subtitle,
       required this.about,
       required this.duration,
+      required this.category,
+      required this.image,
       required this.price});
 
   factory _$_Course.fromJson(Map<String, dynamic> json) =>
@@ -165,11 +193,15 @@ class _$_Course implements _Course {
   @override
   final String duration;
   @override
+  final String category;
+  @override
+  final String image;
+  @override
   final double price;
 
   @override
   String toString() {
-    return 'Course(title: $title, subtitle: $subtitle, about: $about, duration: $duration, price: $price)';
+    return 'Course(title: $title, subtitle: $subtitle, about: $about, duration: $duration, category: $category, image: $image, price: $price)';
   }
 
   @override
@@ -183,13 +215,16 @@ class _$_Course implements _Course {
             (identical(other.about, about) || other.about == about) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.price, price) || other.price == price));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, subtitle, about, duration, price);
+  int get hashCode => Object.hash(
+      runtimeType, title, subtitle, about, duration, category, image, price);
 
   @JsonKey(ignore: true)
   @override
@@ -211,6 +246,8 @@ abstract class _Course implements Course {
       required final String subtitle,
       required final String about,
       required final String duration,
+      required final String category,
+      required final String image,
       required final double price}) = _$_Course;
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$_Course.fromJson;
@@ -223,6 +260,10 @@ abstract class _Course implements Course {
   String get about;
   @override
   String get duration;
+  @override
+  String get category;
+  @override
+  String get image;
   @override
   double get price;
   @override

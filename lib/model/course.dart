@@ -11,6 +11,8 @@ class Course with _$Course {
     required String subtitle,
     required String about,
     required String duration,
+    required String category,
+    required String image,
     required double price,
   }) = _Course;
 

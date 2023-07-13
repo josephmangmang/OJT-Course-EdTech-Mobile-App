@@ -961,6 +961,12 @@ class MockCourseImplService extends _i1.Mock implements _i15.CourseImplService {
 class MockAuthenticationService extends _i1.Mock
     implements _i16.AuthenticationService {
   @override
+  bool get isLoggedIn => (super.noSuchMethod(
+        Invocation.getter(#isLoggedIn),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
   _i9.Future<_i6.Either<_i17.AppException, _i6.None<dynamic>>> signup(
     String? name,
     String? email,

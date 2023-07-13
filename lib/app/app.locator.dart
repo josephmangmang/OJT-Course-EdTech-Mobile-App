@@ -14,6 +14,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/authentication_service.dart';
 import '../services/authentication_service_impl.dart';
+import '../services/authentication_service_mock.dart';
 import '../services/course_impl_service.dart';
 import '../services/repository_impl_service.dart';
 import '../services/repository_service.dart';
@@ -42,7 +43,11 @@ Future<void> setupLocator({
   locator.registerLazySingleton<SharedService>(() => ShareImplService());
   locator.registerLazySingleton(() => CourseImplService());
   locator.registerLazySingleton<AuthenticationService>(
-      () => AuthenticationServiceImpl());
+      () => AuthenticationServiceMock(),
+      registerFor: {"dev"});
+  locator.registerLazySingleton<AuthenticationService>(
+      () => AuthenticationServiceImpl(),
+      registerFor: {"prod"});
   locator.registerLazySingleton<SharedPrefServiceService>(
       () => SharedPrefServiceServiceImpl());
 }
