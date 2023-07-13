@@ -25,11 +25,9 @@ class HomeViewModel extends BaseViewModel {
     setBusy(true);
     user = await _shared.getUser(AppConstants.userPrefKey);
     // course = await _shared.getCourse(AppConstants.coursePrefKey);
-    
-    
 
     await _repository.getCourse().then((value) {
-      if(value.isNotEmpty) {
+      if (value.isNotEmpty) {
         listOfCourse = value;
       }
     });
@@ -38,7 +36,6 @@ class HomeViewModel extends BaseViewModel {
     print(listOfCourse.length);
     setBusy(false);
   }
-
 
   void changePage() {
     rebuildUi();

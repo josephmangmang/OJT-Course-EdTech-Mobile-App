@@ -1,7 +1,6 @@
 import 'package:edtechapp/app/app.router.dart';
-import 'package:edtechapp/services/repository_service.dart';
-import 'package:edtechapp/services/shared_service.dart';
-import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/services/authentication_service.dart';
+import 'package:edtechapp/services/shared_pref_service_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,9 +12,9 @@ class LoginViewModel extends BaseViewModel {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _snackBarService = locator<SnackbarService>();
-  final _shared = locator<SharedService>();
+  final _sharedPrefService = locator<SharedPrefServiceService>();
 
-  final _repository = locator<RepositoryService>();
+  final _authenticationService = locator<AuthenticationService>();
 
   bool isPasswordVisible = false;
 
@@ -33,17 +32,18 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<void> logIn() async {
-    final response = await _repository.login(
+    setBusy(true);
+    final response = await _authenticationService.login(
       emailController.text,
       passwordController.text,
     );
 
-    if (response != null) {
-      // _snackBarService.showSnackbar(message: "Login Sucess.");
-      await _shared.setUser(AppConstants.userPrefKey, response);
+    setBusy(false);
+    response.fold((l) {
+      _snackBarService.showSnackbar(message: l.message);
+    }, (r) async {
+      await _sharedPrefService.saveUser(r);
       _navigationService.replaceWithHomeView();
-    } else {
-      _snackBarService.showSnackbar(message: "Email or Password incorrect.");
-    }
+    });
   }
 }

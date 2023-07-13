@@ -5,7 +5,6 @@ import '../model/course.dart';
 class CourseImplService {
   Future<List<Course>?> course() async {
     try {
-      
       final snap = await FirebaseFirestore.instance.collection('courses').get();
       final courses = snap.docs
           .map((doc) => Course.fromJson(doc.data() as Map<String, dynamic>))

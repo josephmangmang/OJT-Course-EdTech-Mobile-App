@@ -12,10 +12,14 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../services/authentication_service.dart';
+import '../services/authentication_service_impl.dart';
 import '../services/course_impl_service.dart';
 import '../services/repository_impl_service.dart';
 import '../services/repository_service.dart';
 import '../services/share_impl_service.dart';
+import '../services/shared_pref_service_service.dart';
+import '../services/shared_pref_service_service_impl.dart';
 import '../services/shared_service.dart';
 
 final locator = StackedLocator.instance;
@@ -37,4 +41,8 @@ Future<void> setupLocator({
       .registerLazySingleton<RepositoryService>(() => RepositoryImplService());
   locator.registerLazySingleton<SharedService>(() => ShareImplService());
   locator.registerLazySingleton(() => CourseImplService());
+  locator.registerLazySingleton<AuthenticationService>(
+      () => AuthenticationServiceImpl());
+  locator.registerLazySingleton<SharedPrefServiceService>(
+      () => SharedPrefServiceServiceImpl());
 }

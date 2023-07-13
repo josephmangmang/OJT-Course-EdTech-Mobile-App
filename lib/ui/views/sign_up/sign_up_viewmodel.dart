@@ -1,4 +1,5 @@
 import 'package:edtechapp/app/app.router.dart';
+import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/ui/views/home/home_view.dart';
 import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class SignUpViewModel extends BaseViewModel {
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
 
-  final _repository = locator<RepositoryService>();
+  final _authenticationService = locator<AuthenticationService>();
   final _navigatorService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
 
@@ -25,19 +26,21 @@ class SignUpViewModel extends BaseViewModel {
   }
 
   Future<void> signupPressed() async {
-    final response = await _repository.signup(
+    setBusy(true);
+    final response = await _authenticationService.signup(
       nameTextController.text,
       emailTextController.text,
       passwordTextController.text,
     );
 
-    if (response == true) {
+    setBusy(false);
+
+    response.fold((l) {
+      _snackBarService.showSnackbar(message: l.message);
+    }, (r) {
       _snackBarService.showSnackbar(message: "Account created successfully.");
       _navigatorService.replaceWithLoginView();
-    } else {
-      // Signup failed
-      _snackBarService.showSnackbar(message: 'Signup failed.');
-    }
+    });
   }
 
   void goToLoginPage() {

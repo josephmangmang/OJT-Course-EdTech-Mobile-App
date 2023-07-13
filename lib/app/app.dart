@@ -1,3 +1,5 @@
+import 'package:edtechapp/services/authentication_service_impl.dart';
+import 'package:edtechapp/services/shared_pref_service_service_impl.dart';
 import 'package:edtechapp/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:edtechapp/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:edtechapp/ui/views/home/home_view.dart';
@@ -30,6 +32,10 @@ import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/services/share_impl_service.dart';
 import 'package:edtechapp/services/course_impl_service.dart';
+import 'package:edtechapp/services/authentication_service.dart';
+import 'package:edtechapp/services/shared_pref_service_service.dart';
+
+import '../services/authentication_service_mock.dart';
 // @stacked-import
 
 @StackedApp(
@@ -67,6 +73,9 @@ import 'package:edtechapp/services/course_impl_service.dart';
     LazySingleton(classType: RepositoryImplService, asType: RepositoryService),
     LazySingleton(classType: ShareImplService, asType: SharedService),
     LazySingleton(classType: CourseImplService),
+    LazySingleton(environments: {Environment.dev}, classType: AuthenticationServiceMock, asType: AuthenticationService),
+    LazySingleton(environments: {Environment.prod}, classType: AuthenticationServiceImpl, asType: AuthenticationService),
+    LazySingleton(classType: SharedPrefServiceServiceImpl, asType: SharedPrefServiceService),
 // @stacked-service
   ],
   bottomsheets: [
