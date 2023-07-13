@@ -13,6 +13,7 @@ class HomeViewModel extends BaseViewModel {
   final _shared = locator<SharedService>();
   List<Course> listOfCourse = [];
   final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
+  
 
   User? user;
 
@@ -49,4 +50,11 @@ class HomeViewModel extends BaseViewModel {
       curve: Curves.easeInOut,
     );
   }
+
+  int getColor (int index) {
+    index++;
+   return index % 2 == 0? 0xFFF7F2EE : 0xFFE6EDF4;
+  
+  }
+ 
 }
