@@ -7,7 +7,6 @@ import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
@@ -16,10 +15,13 @@ class HomeViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   List<Course> listOfCourse = [];
+  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
 
   User? user;
 
   Course? course;
+
+  int currentPageIndex = 0;
 
   getData() async {
     setBusy(true);
@@ -37,7 +39,17 @@ class HomeViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-  void changePage() {
+  void onPageChanged(int index) {
+    currentPageIndex = index;
     rebuildUi();
+  }
+
+  void onDestinationSelected(int index) {
+    currentPageIndex = index;
+    pageController.animateToPage(
+      currentPageIndex,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 }

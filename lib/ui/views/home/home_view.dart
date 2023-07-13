@@ -19,9 +19,6 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
-    int currentPageIndex = 0;
-
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       onViewModelReady: (model) => model.getData(),
@@ -35,13 +32,9 @@ class HomeView extends StackedView<HomeViewModel> {
                   children: [
                     Expanded(
                       child: PageView(
-                        controller: pageController,
+                        controller: viewModel.pageController,
                         physics: const AlwaysScrollableScrollPhysics(),
-                        onPageChanged: (int index) {
-                          currentPageIndex = index;
-                          viewModel.changePage();
-                          print('currentPageIndex: $currentPageIndex');
-                        },
+                        onPageChanged: viewModel.onPageChanged,
                         children: [
                           SafeArea(
                             child: SingleChildScrollView(
@@ -207,7 +200,6 @@ class HomeView extends StackedView<HomeViewModel> {
                               ),
                             ),
                           ),
-                          const YourCoursesView(),
                           const ProfileView(),
                           const SettingsView(),
                         ],
@@ -237,29 +229,8 @@ class HomeView extends StackedView<HomeViewModel> {
                       child: NavigationBar(
                         backgroundColor: Colors.white,
                         height: 60,
-                        selectedIndex: currentPageIndex != 0 ? currentPageIndex - 1 : currentPageIndex,
-                        onDestinationSelected: (index) {
-                          currentPageIndex = index + 1;
-                          if (currentPageIndex == 0 || currentPageIndex == 1) {
-                            pageController.animateToPage(
-                              1,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                          } else if (currentPageIndex == 2) {
-                            pageController.animateToPage(
-                              2,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                          } else {
-                            pageController.animateToPage(
-                              3,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                          }
-                        },
+                        selectedIndex: viewModel.currentPageIndex,
+                        onDestinationSelected: viewModel.onDestinationSelected,
                         destinations: [
                           NavigationDestination(
                               icon: SvgPicture.asset(
