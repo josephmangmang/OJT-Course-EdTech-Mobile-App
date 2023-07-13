@@ -10,7 +10,7 @@ class ProfileViewModel extends BaseViewModel {
 
   User? user;
 
-  getUser() async{
+  getUser() async {
     setBusy(true);
     user = await _shared.getUser(AppConstants.userPrefKey);
     notifyListeners();

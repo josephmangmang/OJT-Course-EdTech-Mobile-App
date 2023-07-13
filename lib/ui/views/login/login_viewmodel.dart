@@ -19,7 +19,6 @@ class LoginViewModel extends BaseViewModel {
 
   bool isPasswordVisible = false;
 
-
   void signUp() {
     _navigationService.navigateToSignUpView();
   }
@@ -41,8 +40,8 @@ class LoginViewModel extends BaseViewModel {
 
     if (response != null) {
       // _snackBarService.showSnackbar(message: "Login Sucess.");
-    await _shared.setUser(AppConstants.userPrefKey, response);
-         _navigationService.replaceWithHomeView();
+      await _shared.setUser(AppConstants.userPrefKey, response);
+      _navigationService.replaceWithHomeView();
     } else {
       _snackBarService.showSnackbar(message: "Email or Password incorrect.");
     }

@@ -9,22 +9,37 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
-
 
 class HomeViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
-  
+  List<Course> listOfCourse = [];
+
   User? user;
 
-  getUser() async{
+  Course? course;
+
+  getData() async {
     setBusy(true);
     user = await _shared.getUser(AppConstants.userPrefKey);
-    notifyListeners();
+    // course = await _shared.getCourse(AppConstants.coursePrefKey);
+    
+    
+
+    await _repository.getCourse().then((value) {
+      if(value.isNotEmpty) {
+        listOfCourse = value;
+      }
+    });
+
+    print(listOfCourse.toString());
+    print(listOfCourse.length);
     setBusy(false);
   }
-  
+
+
   void changePage() {
     rebuildUi();
   }

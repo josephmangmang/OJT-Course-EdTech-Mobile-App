@@ -1,7 +1,9 @@
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../model/course.dart';
 import '../model/user.dart';
+
 
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
@@ -46,6 +48,7 @@ class RepositoryImplService extends RepositoryService {
         password: password,
       );
       final user = credential.user?.uid;
+      
       final snap =
           await FirebaseFirestore.instance.collection('users').doc(user).get();
       return User.fromJson(snap.data() as Map<String, dynamic>);
@@ -68,19 +71,24 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<String?> currentUser(String name) async {
-    String nameValue;
-    String error;
-    db.collection("users").where("name", isEqualTo: name).get().then(
-        (QuerySnapshot) {
-      print("Successfully completed");
-      for (var docSnapshot in QuerySnapshot.docs) {
-        print('${docSnapshot.id} => ${docSnapshot.data()}');
-        return name;
+    Future<List<Course>> getCourse() async {
+          List<Course> listOfCourse = [];
+
+      try {
+
+          await FirebaseFirestore.instance.collection('courses').get()
+            .then((value) {
+              if(value.docs.isNotEmpty) {
+                var snapshots = value.docs;
+                listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+              }
+            });
+
+      } catch(e) {
+        print (e.toString());
       }
-    }, onError: (e) {
-      error = '$e';
-      return error.toString();
-    });
-  }
+        return listOfCourse;
+      
+
+    }
 }

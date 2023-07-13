@@ -6,16 +6,14 @@ import '../../../services/shared_service.dart';
 import '../../common/app_constants.dart';
 
 class SettingsViewModel extends BaseViewModel {
-
   final _shared = locator<SharedService>();
 
   User? user;
 
-  getUser() async{
+  getUser() async {
     setBusy(true);
     user = await _shared.getUser(AppConstants.userPrefKey);
     notifyListeners();
     setBusy(false);
   }
-  
 }

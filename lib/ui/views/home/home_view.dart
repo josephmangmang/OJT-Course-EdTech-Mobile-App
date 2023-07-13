@@ -8,8 +8,6 @@ import 'home_viewmodel.dart';
 import 'package:edtechapp/ui/views/profile/profile_view.dart';
 import 'package:edtechapp/ui/views/settings/settings_view.dart';
 
-
-
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
@@ -26,338 +24,359 @@ class HomeView extends StackedView<HomeViewModel> {
     int currentPageIndex = 0;
 
     return ViewModelBuilder<HomeViewModel>.reactive(
-        viewModelBuilder: () => HomeViewModel(),
-        onViewModelReady: (model) =>model.getUser(),
-        builder: (context, viewModel, child) {
-          return  Scaffold(
-            body: viewModel.isBusy ? const Center(child: CircularProgressIndicator(),) : Column(
-              children: [
-                Expanded(
-                  child: PageView(
-                    controller: pageController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    onPageChanged: (int index) {
-                      currentPageIndex = index;
-                      viewModel.changePage();
-                      print('currentPageIndex: $currentPageIndex');
-                    },
-                    children: [
-                      SafeArea(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: const EdgeInsets.only(),
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  //verticalSpaceLarge,
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              'Hello,',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.w400,
-                                                letterSpacing: -0.5,
-                                                height: 1.7,
+      viewModelBuilder: () => HomeViewModel(),
+      onViewModelReady: (model) => model.getData(),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          body: viewModel.isBusy
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                children: [
+                  Expanded(
+                    child: PageView(
+                      controller: pageController,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      onPageChanged: (int index) {
+                        currentPageIndex = index;
+                        viewModel.changePage();
+                        print('currentPageIndex: $currentPageIndex');
+                      },
+                      children: [
+                        SafeArea(
+                          child: SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.only(),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    //verticalSpaceLarge,
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const Text(
+                                                'Hello,',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: 'Rubik',
+                                                  fontWeight:
+                                                      FontWeight.w400,
+                                                  letterSpacing: -0.5,
+                                                  height: 1.7,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              viewModel.user!.name,
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 32,
-                                                fontWeight: FontWeight.w700,
-                                                fontFamily: 'Rubik',
-                                                fontStyle: FontStyle.normal,
-                                                letterSpacing: -1,
-                                                 height: 1.5,
+                                              Text(
+                                                viewModel.user!.name,
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 32,
+                                                  fontWeight:
+                                                      FontWeight.w700,
+                                                  fontFamily: 'Rubik',
+                                                  fontStyle:
+                                                      FontStyle.normal,
+                                                  letterSpacing: -1,
+                                                  height: 1.5,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                    color: Colors.grey),
-                                              ),
-                                              child: ClipOval(
-                                                child: SizedBox(
-                                                  height: 48,
-                                                  width: 48,
-                                                  child: IconButton(
-                                                    onPressed: () {},
-                                                    icon: SvgPicture.asset(
-                                                        'assets/svg/notification.svg'),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                      color: Colors.grey),
+                                                ),
+                                                child: ClipOval(
+                                                  child: SizedBox(
+                                                    height: 48,
+                                                    width: 48,
+                                                    child: IconButton(
+                                                      onPressed: () {},
+                                                      icon: SvgPicture.asset(
+                                                          'assets/svg/notification.svg'),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    TextField(
+                                      decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                              width: 1,
+                                              color: Color(0xFFBEBAB3),
                                             ),
-                                          ],
-                                        )
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          hintText: "Search course",
+                                          suffixIcon: Transform.scale(
+                                              scale: 0.6,
+                                              child: SvgPicture.asset(
+                                                  'assets/svg/Search Icon.svg'))),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Text('Category:'),
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStateProperty.all<
+                                                        Size>(
+                                                    const Size(54, 24)),
+                                            shape:
+                                                MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            // Button press event
+                                          },
+                                          child: const Text('#CSS'),
+                                        ),
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStateProperty.all<
+                                                        Size>(
+                                                    const Size(47, 24)),
+                                            shape:
+                                                MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            // Button press event
+                                          },
+                                          child: const Text('#UX'),
+                                        ),
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStateProperty.all<
+                                                        Size>(
+                                                    const Size(62, 24)),
+                                            shape:
+                                                MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            // Button press event
+                                          },
+                                          child: const Text('#Swift'),
+                                        ),
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStateProperty.all<
+                                                        Size>(
+                                                    const Size(43, 24)),
+                                            shape:
+                                                MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            // Button press event
+                                          },
+                                          child: const Text('#UI'),
+                                        ),
                                       ],
                                     ),
-                                  ),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                            width: 1,
-                                            color: Color(0xFFBEBAB3),
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        hintText: "Search course",
-                                        suffixIcon: Transform.scale(
-                                            scale: 0.6,
-                                            child: SvgPicture.asset(
-                                                'assets/svg/Search Icon.svg'))),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      const Text('Category:'),
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(54, 24)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                  10.0), // Adjust the radius as per your needs
-                                            ),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          // Button press event
+                                    Container(
+                                      height: MediaQuery.of(context)
+                                          .size
+                                          .height, // Set a specific height or adjust as per your needs
+                                      child: ListView.builder(
+                                        itemCount:
+                                            viewModel.listOfCourse.length,
+                                        itemBuilder: (context, index) {
+                                          var courseItem =
+                                              viewModel.listOfCourse[index];
+                                          return buildCard(
+                                            description:
+                                                courseItem.subtitle,
+                                            title: courseItem.title,
+                                            price: courseItem.price,
+                                            color: 0xFFF7F2EE,
+                                            hour: courseItem.duration,
+                                          );
                                         },
-                                        child: const Text('#CSS'),
                                       ),
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(47, 24)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                  10.0), // Adjust the radius as per your needs
-                                            ),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          // Button press event
-                                        },
-                                        child: const Text('#UX'),
-                                      ),
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(62, 24)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                  10.0), // Adjust the radius as per your needs
-                                            ),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          // Button press event
-                                        },
-                                        child: const Text('#Swift'),
-                                      ),
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(43, 24)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                  10.0), // Adjust the radius as per your needs
-                                            ),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          // Button press event
-                                        },
-                                        child: const Text('#UI'),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      buildCard(
-                                          image:
-                                              'assets/png/Cool Kids Discussion.png',
-                                          price: "\$50",
-                                          hour: "3 h 30 min ",
-                                          title: "UI",
-                                          description:
-                                              "Advanced mobile interface design",
-                                          color: 0xFFF7F2EE),
-                                      const SizedBox(height: 12),
-                                      buildCard(
-                                          image:
-                                              'assets/png/Cool Kids Alone Time (3).png',
-                                          price: "\$50",
-                                          hour: "3 h 30 min ",
-                                          title: "UI",
-                                          description:
-                                              "Advanced web applications",
-                                          color: 0xFFBEBAB3),
-                                      const SizedBox(height: 12),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const YourCoursesView(),
-                      const ProfileView(),
-                      const SettingsView(),
-                    ],
+                        const YourCoursesView(),
+                        const ProfileView(),
+                        const SettingsView(),
+                      ],
+                    ),
                   ),
-                ),
-                NavigationBarTheme(
-                  data: NavigationBarThemeData(
+                  NavigationBarTheme(
+                    data: NavigationBarThemeData(
                       indicatorColor: Colors.white,
-                      labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.selected)) {
-                            return const TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.w400,
-                              color: Colors.orange,
-                            );
-                          } else {
-                            return const TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black,
-                            );
-                          }
+                      labelTextStyle:
+                          MaterialStateProperty.resolveWith<TextStyle>(
+                              (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return const TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'Rubik',
+                            fontWeight: FontWeight.w400,
+                            color: Colors.orange,
+                          );
+                        } else {
+                          return const TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'Rubik',
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          );
                         }
-                      ),
-                      ),
-                  child: NavigationBar(
-                    backgroundColor: Colors.white,
-                    height: 60,
-                    selectedIndex: currentPageIndex != 0 ? currentPageIndex - 1 : currentPageIndex,
-                    onDestinationSelected: (index) {
-                      currentPageIndex = index + 1;
-                      if (currentPageIndex == 0 || currentPageIndex == 1) {
-                        pageController.animateToPage(
-                          1,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      } else if (currentPageIndex == 2) {
-                        pageController.animateToPage(
-                          2,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      } else {
-                        pageController.animateToPage(
-                          3,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      }
-                    },
-                    destinations: [
-                      NavigationDestination(
+                      }),
+                    ),
+                    child: NavigationBar(
+                      backgroundColor: Colors.white,
+                      height: 60,
+                      selectedIndex: currentPageIndex != 0
+                          ? currentPageIndex - 1
+                          : currentPageIndex,
+                      onDestinationSelected: (index) {
+                        currentPageIndex = index + 1;
+                        if (currentPageIndex == 0 ||
+                            currentPageIndex == 1) {
+                          pageController.animateToPage(
+                            1,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        } else if (currentPageIndex == 2) {
+                          pageController.animateToPage(
+                            2,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        } else {
+                          pageController.animateToPage(
+                            3,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                      destinations: [
+                        NavigationDestination(
+                            icon: SvgPicture.asset(
+                              'assets/svg/courses.svg',
+                            ),
+                            selectedIcon: SvgPicture.asset(
+                              'assets/svg/courses.svg',
+                              color: Colors.orange,
+                            ),
+                            label: 'Courses'),
+                        NavigationDestination(
                           icon: SvgPicture.asset(
-                            'assets/svg/courses.svg',
+                            'assets/svg/Profile Icon.svg',
                           ),
                           selectedIcon: SvgPicture.asset(
-                            'assets/svg/courses.svg',
+                            'assets/svg/Profile Icon.svg',
                             color: Colors.orange,
                           ),
-                          label: 'Courses'),
-                      NavigationDestination(
-                        icon: SvgPicture.asset(
-                          'assets/svg/Profile Icon.svg',
+                          label: 'Profile',
                         ),
-                        selectedIcon: SvgPicture.asset(
-                          'assets/svg/Profile Icon.svg',
-                          color: Colors.orange,
+                        NavigationDestination(
+                          icon: SvgPicture.asset(
+                            'assets/svg/Frame 4.svg',
+                          ),
+                          selectedIcon: SvgPicture.asset(
+                            'assets/svg/Frame 4.svg',
+                            color: Colors.orange,
+                          ),
+                          label: 'Settings',
                         ),
-                        label: 'Profile',
-                      ),
-                      NavigationDestination(
-                        icon: SvgPicture.asset(
-                          'assets/svg/Frame 4.svg',
-                        ),
-                        selectedIcon: SvgPicture.asset(
-                          'assets/svg/Frame 4.svg',
-                          color: Colors.orange,
-                        ),
-                        label: 'Settings',
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          );
-        });
+                      ],
+                    ),
+                  )
+                ],
+              ),
+        );
+      },
+    );
   }
 
-  Widget buildCard(
-          {required String image,
-          required String price,
-          required String hour,
-          required String description,
-          required String title,
-          required int color}) =>
-      Container(
-       padding: const EdgeInsets.all(3),
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            width: 0.50,
-            strokeAlign: BorderSide.strokeAlignOutside,
-            color: Color(0xFFBEBAB3),
+  Widget buildCard({
+    required double price,
+    required String hour,
+    required String description,
+    required String title,
+    required int color,
+  }) {
+    return ListTile(
+      title: Container(
+        padding: const EdgeInsets.all(3),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              width: 0.50,
+              strokeAlign: BorderSide.strokeAlignOutside,
+              color: Color(0xFFBEBAB3),
+            ),
+            borderRadius: BorderRadius.circular(8),
           ),
-          borderRadius: BorderRadius.circular(8),
         ),
-      ),
         child: Column(
           children: [
             Container(
-              width: 343,
+              width: double.infinity,
               color: Color(color),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(image),
+                  Image.asset('assets/png/Cool Kids Discussion.png'),
                   SizedBox(
                     width: 343,
                     height: 40,
@@ -368,7 +387,8 @@ class HomeView extends StackedView<HomeViewModel> {
                         ElevatedButton(
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(63, 24)),
+                              const Size(63, 24),
+                            ),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
@@ -380,9 +400,9 @@ class HomeView extends StackedView<HomeViewModel> {
                           onPressed: () {
                             // Button press event
                           },
-                          child: Text(price),
+                          child: Text("$price"),
                         ),
-                        const Spacer(flex: 1)
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -390,8 +410,7 @@ class HomeView extends StackedView<HomeViewModel> {
               ),
             ),
             Container(
-              width: 343,
-              height: 103,
+              width: double.infinity,
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -407,42 +426,45 @@ class HomeView extends StackedView<HomeViewModel> {
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF5BA092),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(title,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: -0.5,
-                            ))
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
                       ],
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(description,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                            ))
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
-      );
+      ),
+    );
+  }
 
   @override
-  HomeViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      HomeViewModel();
+  HomeViewModel viewModelBuilder(BuildContext context) => HomeViewModel();
 }
