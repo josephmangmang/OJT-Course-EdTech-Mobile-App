@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
@@ -19,31 +20,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.only(right: 56 - 16),
-                child: Row(
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SvgPicture.asset('assets/svg/Background.svg'),
-                        SvgPicture.asset('assets/svg/Go-back.svg'),
-                      ],
-                    ),
-                    const Expanded(
-                      child: Text(
-                        'Profile',
-                        style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: -0.50),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const AppbarView(),
               const SizedBox(
                 height: 32,
               ),
