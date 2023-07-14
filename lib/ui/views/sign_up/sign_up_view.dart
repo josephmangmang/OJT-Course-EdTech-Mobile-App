@@ -1,4 +1,4 @@
-import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
+import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -26,7 +26,9 @@ class SignUpView extends StackedView<SignUpViewModel> {
                         const SizedBox(
                           height: 16,
                         ),
-                        const AppbarView(),
+                        CustomAppBar(
+                          action: viewModel.goToLoginPage,
+                        ),
                         Image.asset(
                           'assets/png/Cool Kids Standing (1).png',
                         ),

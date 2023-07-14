@@ -36,7 +36,6 @@ import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 
 import '../services/authentication_service_mock.dart';
-import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -64,7 +63,6 @@ import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
     MaterialRoute(page: SearchResultsView),
     MaterialRoute(page: ForgotPasswordView),
     MaterialRoute(page: NavigationBarView),
-    MaterialRoute(page: AppbarView),
 // @stacked-route
   ],
   dependencies: [
