@@ -13,8 +13,12 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
     SearchResultsViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
+    return ViewModelBuilder<SearchResultsViewModel>.reactive(viewModelBuilder: () => SearchResultsViewModel(), onViewModelReady: (model) => model.searchCourse(), builder:(context, viewModel, child) {
+      return Scaffold(
+      body: viewModel.isBusy
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                ) : SafeArea(
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.centerLeft,
@@ -24,12 +28,17 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SvgPicture.asset('assets/svg/Background.svg'),
-                        SvgPicture.asset('assets/svg/Go-back.svg'),
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        viewModel.back();
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SvgPicture.asset('assets/svg/Background.svg'),
+                          SvgPicture.asset('assets/svg/Go-back.svg'),
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -50,7 +59,7 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                             suffixIcon: Transform.scale(
                               scale: 0.6,
                               child: IconButton(
-                                onPressed: viewModel.searchCourse,
+                                onPressed: viewModel.searchPressed,
                                 icon: SvgPicture.asset(
                                     'assets/svg/Search Icon.svg'),
                               ),
@@ -67,9 +76,9 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
               Container(
                 alignment: Alignment.centerLeft,
                 margin: EdgeInsets.only(top: 12, bottom: 32),
-                child: const Text(
-                  '2 Results',
-                  style: TextStyle(
+                child: Text(
+                  viewModel.total,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24,
                     fontFamily: 'SF Pro Text',
@@ -99,6 +108,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
         ),
       ),
     );
+    },);
+    
   }
 
   Widget buildCard({

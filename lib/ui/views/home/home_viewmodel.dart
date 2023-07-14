@@ -52,7 +52,7 @@ class HomeViewModel extends BaseViewModel {
   ).then((value) {
     if (value.isNotEmpty) {
       listOfCourse = value;
-      _navigationService.navigateToSearchResultsView();
+     _navigationService.navigateToSearchResultsView();
     }
   });
     

@@ -19,7 +19,7 @@ class RepositoryImplService extends RepositoryService {
           .then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
-          
+
           listOfCourse =
               snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
@@ -35,7 +35,25 @@ class RepositoryImplService extends RepositoryService {
 Future<List<Course>> searchCourse(String searchCourse) async {
   List<Course> listOfCourse = [];
 
-  try {
+  if (searchCourse.isEmpty) {
+    try {
+    await db
+        .collection('courses')
+        .get()
+        .then((value) {
+      if (value.docs.isNotEmpty) {
+        var snapshots = value.docs;
+        listOfCourse =
+            snapshots.map((e) => Course.fromJson(e.data())).toList();
+      }
+    });
+
+  } catch (e) {
+    print(e.toString());
+  }
+  return listOfCourse;
+  } else {
+    try {
     await db
         .collection('courses')
         .where('keywords', arrayContains: searchCourse.toLowerCase())
@@ -52,6 +70,8 @@ Future<List<Course>> searchCourse(String searchCourse) async {
     print(e.toString());
   }
   return listOfCourse;
+  }
+  
 }
 
   
