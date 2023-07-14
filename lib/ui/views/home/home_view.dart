@@ -372,44 +372,35 @@ class HomeView extends StackedView<HomeViewModel> {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          hour,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF5BA092),
-                          ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        hour,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF5BA092),
                         ),
-                      ],
+                      ),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: -0.5,
-                          ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: -0.5,
                         ),
-                      ],
+                      ),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          description,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      description,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                      ),
                     ),
                   ],
                 ),
