@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
 import 'search_results_viewmodel.dart';
+import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
 
 class SearchResultsView extends StackedView<SearchResultsViewModel> {
   const SearchResultsView({Key? key}) : super(key: key);
@@ -33,7 +34,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                     const SizedBox(
                       width: 8,
                     ),
-                    Expanded(
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -43,11 +45,12 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            hintText: "Search courses",
                             suffixIcon: Transform.scale(
                                 scale: 0.6,
-                                child: SvgPicture.asset(
-                                    'assets/svg/Search Icon.svg'))),
+                                child: IconButton(
+                                    onPressed: viewModel.searchCourse,
+                                    icon: SvgPicture.asset(
+                                        'assets/svg/Search Icon.svg')))),
                       ),
                     ),
                   ],

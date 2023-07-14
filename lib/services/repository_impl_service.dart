@@ -10,12 +10,59 @@ class RepositoryImplService extends RepositoryService {
   final userName = FirebaseAuth.instance.currentUser!;
 
   @override
-  Future<List<Course>> getCourse([String? searchCourse]) async {
+  Future<List<Course>> getCourse() async {
     List<Course> listOfCourse = [];
 
     try {
          await db
-          .collection('courses').where('title', isEqualTo: searchCourse)
+          .collection('courses')
+          .get()
+          .then((value) {
+        if (value.docs.isNotEmpty) {
+          var snapshots = value.docs;
+          
+          listOfCourse =
+              snapshots.map((e) => Course.fromJson(e.data())).toList();
+        }
+      });
+     
+    } catch (e) {
+      print(e.toString());
+    }
+    return listOfCourse;
+  }
+  
+ @override
+Future<List<Course>> searchCourse(String searchCourse) async {
+  List<Course> listOfCourse = [];
+
+  try {
+    await db
+        .collection('courses')
+        .where('keywords', arrayContains: searchCourse.toLowerCase())
+        .get()
+        .then((value) {
+      if (value.docs.isNotEmpty) {
+        var snapshots = value.docs;
+        listOfCourse =
+            snapshots.map((e) => Course.fromJson(e.data())).toList();
+      }
+    });
+
+  } catch (e) {
+    print(e.toString());
+  }
+  return listOfCourse;
+}
+
+  
+  @override
+  Future<List<Course>> categoryCourse(String categoryCourse) async {
+    List<Course> listOfCourse = [];
+
+    try {
+         await db
+          .collection('courses').where('category', isEqualTo: categoryCourse)
           .get()
           .then((value) {
         if (value.docs.isNotEmpty) {
@@ -30,6 +77,7 @@ class RepositoryImplService extends RepositoryService {
     }
     return listOfCourse;
   }
+ 
   
   
 }

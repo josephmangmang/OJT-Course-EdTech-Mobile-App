@@ -118,72 +118,189 @@ class HomeView extends StackedView<HomeViewModel> {
                                                     icon: SvgPicture.asset('assets/svg/Search Icon.svg')))),
                                         ),
                                       ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          const Text('Category:'),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              minimumSize: MaterialStateProperty.all<Size>(const Size(54, 24)),
-                                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                      10.0), // Adjust the radius as per your needs
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            const Text('Category:'),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(54, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
                                                 ),
                                               ),
+                                              onPressed: () {
+                                                viewModel.category = '#Java';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Java'),
                                             ),
-                                            onPressed: () {
-                                              // Button press event
-                                            },
-                                            child: const Text('#CSS'),
-                                          ),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              minimumSize: MaterialStateProperty.all<Size>(const Size(47, 24)),
-                                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                      10.0), // Adjust the radius as per your needs
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(47, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
                                                 ),
                                               ),
+                                             onPressed: () {
+                                                viewModel.category = '#App Dev';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#App Dev'),
                                             ),
-                                            onPressed: () {
-                                              // Button press event
-                                            },
-                                            child: const Text('#UX'),
-                                          ),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              minimumSize: MaterialStateProperty.all<Size>(const Size(62, 24)),
-                                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                      10.0), // Adjust the radius as per your needs
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(62, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
                                                 ),
                                               ),
+                                              onPressed: () {
+                                                viewModel.category = '#Mobile App';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Mobile App'),
                                             ),
-                                            onPressed: () {
-                                              // Button press event
-                                            },
-                                            child: const Text('#Swift'),
-                                          ),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                      10.0), // Adjust the radius as per your needs
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
                                                 ),
                                               ),
+                                              onPressed: () {
+                                                viewModel.category = '#HTML/CSS';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#HTML/CSS'),
                                             ),
-                                            onPressed: () {
-                                              // Button press event
-                                            },
-                                            child: const Text('#UI'),
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                viewModel.category = '#Javascript';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Javascript'),
+                                            ),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
+                                                ),
+                                              ),
+                                             onPressed: () {
+                                                viewModel.category = '#Web';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Web'),
+                                            ),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                viewModel.category = '#Swift';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Swift'),
+                                            ),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                viewModel.category = '#Sql';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Sql'),
+                                            ),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            ElevatedButton(
+                                              style: ButtonStyle(
+                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
+                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        10.0), // Adjust the radius as per your needs
+                                                  ),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                viewModel.category = '#Telecom';
+                                                viewModel.categoryCourse();
+                                              },
+                                              child: const Text('#Telecom'),
+                                            ),
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       ListView.builder(
                                         shrinkWrap: true,
