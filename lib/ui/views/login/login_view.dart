@@ -59,29 +59,39 @@ class LoginView extends StackedView<LoginViewModel> {
                             Container(
                               alignment: Alignment.center,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset('assets/svg/Social Networks Icons.svg'),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        'assets/svg/Social Networks Icons.svg'),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset('assets/svg/Social Networks Icons (1).svg'),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        'assets/svg/Social Networks Icons (1).svg'),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset('assets/svg/Social Networks Icons (2).svg'),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        'assets/svg/Social Networks Icons (2).svg'),
                                   ),
                                 ],
                               ),
@@ -122,7 +132,8 @@ class LoginView extends StackedView<LoginViewModel> {
                                 fontWeight: FontWeight.w400,
                               ),
                               suffixIcon: IconButton(
-                                icon: SvgPicture.asset('assets/svg/visibility 1.svg'),
+                                icon: SvgPicture.asset(
+                                    'assets/svg/visibility 1.svg'),
                                 onPressed: viewModel.showPassword,
                               )),
                         ),
@@ -143,7 +154,8 @@ class LoginView extends StackedView<LoginViewModel> {
                             onPressed: viewModel.logIn,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFE35629),
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),

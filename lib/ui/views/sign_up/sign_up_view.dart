@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -25,23 +26,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                         const SizedBox(
                           height: 16,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Transform.scale(
-                            scale: 1.5,
-                            child: IconButton(
-                              alignment: Alignment.centerLeft,
-                              icon: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  SvgPicture.asset('assets/svg/Background.svg'),
-                                  SvgPicture.asset('assets/svg/Go-back.svg'),
-                                ],
-                              ),
-                              onPressed: viewModel.goToLoginPage,
-                            ),
-                          ),
-                        ),
+                        const AppbarView(),
                         Image.asset(
                           'assets/png/Cool Kids Standing (1).png',
                         ),
@@ -145,11 +130,14 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               viewModel.signupPressed();
                             },
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              padding:
+                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                const EdgeInsets.symmetric(
+                                    horizontal: 32, vertical: 16),
                               ),
                               alignment: Alignment.center,
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(16),
                                 ),
@@ -157,7 +145,8 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color(0xFFE35629),
                               ),
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
                               textStyle: MaterialStateProperty.all<TextStyle>(
                                 const TextStyle(
                                   fontSize: 16,
@@ -199,5 +188,6 @@ class SignUpView extends StackedView<SignUpViewModel> {
   ) =>
       SignUpViewModel();
 
-  void fold(void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
+  void fold(
+      void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
 }

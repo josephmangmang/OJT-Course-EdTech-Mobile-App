@@ -19,7 +19,8 @@ class AuthenticationServiceMock implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, None>> signup(String name, String email, String password) {
+  Future<Either<AppException, None>> signup(
+      String name, String email, String password) {
     // TODO: implement signup
     throw UnimplementedError();
   }

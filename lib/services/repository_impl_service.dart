@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/course.dart';
 
-
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;

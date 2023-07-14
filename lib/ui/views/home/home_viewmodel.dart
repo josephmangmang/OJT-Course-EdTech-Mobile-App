@@ -91,10 +91,8 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  int getColor (int index) {
+  int getColor(int index) {
     index++;
-   return index % 2 == 0? 0xFFF7F2EE : 0xFFE6EDF4;
-  
+    return index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4;
   }
- 
 }

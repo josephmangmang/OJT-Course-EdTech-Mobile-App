@@ -47,10 +47,12 @@ class HomeView extends StackedView<HomeViewModel> {
                                       SizedBox(
                                         width: double.infinity,
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
                                           children: [
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 const Text(
                                                   'Hello,',
@@ -81,7 +83,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    border: Border.all(color: Colors.grey),
+                                                    border: Border.all(
+                                                        color: Colors.grey),
                                                   ),
                                                   child: ClipOval(
                                                     child: SizedBox(
@@ -89,7 +92,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                                       width: 48,
                                                       child: IconButton(
                                                         onPressed: () {},
-                                                        icon: SvgPicture.asset('assets/svg/notification.svg'),
+                                                        icon: SvgPicture.asset(
+                                                            'assets/svg/notification.svg'),
                                                       ),
                                                     ),
                                                   ),
@@ -100,7 +104,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                         ),
                                       ),
                                       Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: TextField(
                                           controller: viewModel.searchTextController,
                                           decoration: InputDecoration(
@@ -109,7 +114,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   width: 1,
                                                   color: Color(0xFFBEBAB3),
                                                 ),
-                                                borderRadius: BorderRadius.circular(12),
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
                                               ),
                                              
                                               suffixIcon: Transform.scale(
@@ -305,9 +311,11 @@ class HomeView extends StackedView<HomeViewModel> {
                                       ListView.builder(
                                         shrinkWrap: true,
                                         primary: false,
-                                        itemCount: viewModel.listOfCourse.length,
+                                        itemCount:
+                                            viewModel.listOfCourse.length,
                                         itemBuilder: (context, index) {
-                                          var courseItem = viewModel.listOfCourse[index];
+                                          var courseItem =
+                                              viewModel.listOfCourse[index];
                                           return buildCard(
                                             description: courseItem.subtitle,
                                             title: courseItem.title,
@@ -331,7 +339,9 @@ class HomeView extends StackedView<HomeViewModel> {
                     NavigationBarTheme(
                       data: NavigationBarThemeData(
                         indicatorColor: Colors.white,
-                        labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
+                        labelTextStyle:
+                            MaterialStateProperty.resolveWith<TextStyle>(
+                                (Set<MaterialState> states) {
                           if (states.contains(MaterialState.selected)) {
                             return const TextStyle(
                               fontSize: 14,
@@ -435,9 +445,11 @@ class HomeView extends StackedView<HomeViewModel> {
                             minimumSize: MaterialStateProperty.all<Size>(
                               const Size(63, 24),
                             ),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0), // Adjust the radius as per your needs
+                                borderRadius: BorderRadius.circular(
+                                    12.0), // Adjust the radius as per your needs
                               ),
                             ),
                           ),
