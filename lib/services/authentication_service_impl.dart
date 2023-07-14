@@ -24,7 +24,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, User>> login(String email, String password) async {
+  Future<Either<AppException, User>> login(
+      String email, String password) async {
     try {
       final credential = await auth.signInWithEmailAndPassword(
         email: email,
@@ -43,7 +44,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, None>> signup(String name, String email, String password) async {
+  Future<Either<AppException, None>> signup(
+      String name, String email, String password) async {
     try {
       UserCredential credential = await auth.createUserWithEmailAndPassword(
         email: email,

@@ -145,11 +145,14 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               viewModel.signupPressed();
                             },
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              padding:
+                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                const EdgeInsets.symmetric(
+                                    horizontal: 32, vertical: 16),
                               ),
                               alignment: Alignment.center,
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(16),
                                 ),
@@ -157,7 +160,8 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color(0xFFE35629),
                               ),
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
                               textStyle: MaterialStateProperty.all<TextStyle>(
                                 const TextStyle(
                                   fontSize: 16,
@@ -199,5 +203,6 @@ class SignUpView extends StackedView<SignUpViewModel> {
   ) =>
       SignUpViewModel();
 
-  void fold(void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
+  void fold(
+      void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
 }

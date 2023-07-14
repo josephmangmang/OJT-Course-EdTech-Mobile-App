@@ -12,8 +12,8 @@ class HomeViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   List<Course> listOfCourse = [];
-  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
-  
+  final PageController pageController =
+      PageController(initialPage: 0); // Added currentIndex variable
 
   User? user;
 
@@ -51,10 +51,8 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  int getColor (int index) {
+  int getColor(int index) {
     index++;
-   return index % 2 == 0? 0xFFF7F2EE : 0xFFE6EDF4;
-  
+    return index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4;
   }
- 
 }

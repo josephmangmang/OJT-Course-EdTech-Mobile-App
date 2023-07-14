@@ -36,6 +36,7 @@ import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 
 import '../services/authentication_service_mock.dart';
+import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -63,6 +64,7 @@ import '../services/authentication_service_mock.dart';
     MaterialRoute(page: SearchResultsView),
     MaterialRoute(page: ForgotPasswordView),
     MaterialRoute(page: NavigationBarView),
+    MaterialRoute(page: AppbarView),
 // @stacked-route
   ],
   dependencies: [
@@ -73,9 +75,17 @@ import '../services/authentication_service_mock.dart';
     LazySingleton(classType: RepositoryImplService, asType: RepositoryService),
     LazySingleton(classType: ShareImplService, asType: SharedService),
     LazySingleton(classType: CourseImplService),
-    LazySingleton(environments: {Environment.dev}, classType: AuthenticationServiceMock, asType: AuthenticationService),
-    LazySingleton(environments: {Environment.prod}, classType: AuthenticationServiceImpl, asType: AuthenticationService),
-    LazySingleton(classType: SharedPrefServiceServiceImpl, asType: SharedPrefServiceService),
+    LazySingleton(
+        environments: {Environment.dev},
+        classType: AuthenticationServiceMock,
+        asType: AuthenticationService),
+    LazySingleton(
+        environments: {Environment.prod},
+        classType: AuthenticationServiceImpl,
+        asType: AuthenticationService),
+    LazySingleton(
+        classType: SharedPrefServiceServiceImpl,
+        asType: SharedPrefServiceService),
 // @stacked-service
   ],
   bottomsheets: [

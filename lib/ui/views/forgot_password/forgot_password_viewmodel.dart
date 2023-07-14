@@ -22,7 +22,8 @@ class ForgotPasswordViewModel extends BaseViewModel {
     response.fold((l) {
       _snackBarService.showSnackbar(message: l.message);
     }, (r) {
-      _snackBarService.showSnackbar(message: "Password reset link sent! Check your email");
+      _snackBarService.showSnackbar(
+          message: "Password reset link sent! Check your email");
     });
   }
 
