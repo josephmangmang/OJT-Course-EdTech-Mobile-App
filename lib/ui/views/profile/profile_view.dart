@@ -1,4 +1,4 @@
-import 'package:edtechapp/ui/views/appbar/appbar_view.dart';
+import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
@@ -20,7 +20,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
-              const AppbarView(),
+              CustomAppBar(
+                action: viewModel.goBack,
+                title: "Profile",   
+              ),
               const SizedBox(
                 height: 32,
               ),

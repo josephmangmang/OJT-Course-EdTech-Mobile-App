@@ -760,15 +760,6 @@ class MockRepositoryImplService extends _i1.Mock
         ),
       ) as _i2.User);
   @override
-  _i9.Future<String?> forgetPassword(String? email) => (super.noSuchMethod(
-        Invocation.method(
-          #forgetPassword,
-          [email],
-        ),
-        returnValue: _i9.Future<String?>.value(),
-        returnValueForMissingStub: _i9.Future<String?>.value(),
-      ) as _i9.Future<String?>);
-  @override
   _i9.Future<List<_i5.Course>> getCourse() => (super.noSuchMethod(
         Invocation.method(
           #getCourse,
