@@ -707,11 +707,32 @@ class MockDialogService extends _i1.Mock implements _i7.DialogService {
 /// See the documentation for Mockito's code generation for more information.
 class MockRepositoryService extends _i1.Mock implements _i11.RepositoryService {
   @override
-  _i9.Future<List<_i5.Course>> getCourse([String? searchCourse]) =>
-      (super.noSuchMethod(
+  _i9.Future<List<_i5.Course>> getCourse() => (super.noSuchMethod(
         Invocation.method(
           #getCourse,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> searchCourse(String? searchCourse) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #searchCourse,
           [searchCourse],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> categoryCourse(String? categoryCourse) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #categoryCourse,
+          [categoryCourse],
         ),
         returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
         returnValueForMissingStub:
@@ -761,11 +782,32 @@ class MockRepositoryImplService extends _i1.Mock
         ),
       ) as _i2.User);
   @override
-  _i9.Future<List<_i5.Course>> getCourse([String? searchCourse]) =>
-      (super.noSuchMethod(
+  _i9.Future<List<_i5.Course>> getCourse() => (super.noSuchMethod(
         Invocation.method(
           #getCourse,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> searchCourse(String? searchCourse) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #searchCourse,
           [searchCourse],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> categoryCourse(String? categoryCourse) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #categoryCourse,
+          [categoryCourse],
         ),
         returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
         returnValueForMissingStub:

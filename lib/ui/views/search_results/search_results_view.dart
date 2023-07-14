@@ -34,10 +34,12 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                     const SizedBox(
                       width: 8,
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: TextField(
-                        decoration: InputDecoration(
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: TextField(
+                          controller: viewModel.searchTextController,
+                          decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 width: 1,
@@ -46,11 +48,17 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             suffixIcon: Transform.scale(
-                                scale: 0.6,
-                                child: IconButton(
-                                    onPressed: viewModel.searchCourse,
-                                    icon: SvgPicture.asset(
-                                        'assets/svg/Search Icon.svg')))),
+                              scale: 0.6,
+                              child: IconButton(
+                                onPressed: viewModel.searchCourse,
+                                icon: SvgPicture.asset(
+                                    'assets/svg/Search Icon.svg'),
+                              ),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 63), // Add this line
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -71,23 +79,21 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                   textAlign: TextAlign.start,
                 ),
               ),
-              //build Card
-              buildCard(
-                  image: 'assets/png/Cool Kids High Tech.png',
-                  price: "\$50",
-                  hour: "3 h 30 min ",
-                  title: "UI Advanced",
-                  description: "Advanced mobile interface design",
-                  color: 0xFFE6EDF4),
-              const SizedBox(height: 12),
-              buildCard(
-                  image: 'assets/png/Cool Kids Alone Time (3).png',
-                  price: "\$50",
-                  hour: "3 h 30 min ",
-                  title: "UI",
-                  description: "Advanced web applications",
-                  color: 0xFFF7F2EE),
-              const SizedBox(height: 12),
+              ListView.builder(
+                shrinkWrap: true,
+                primary: false,
+                itemCount: viewModel.listOfCourse.length,
+                itemBuilder: (context, index) {
+                  var courseItem = viewModel.listOfCourse[index];
+                  return buildCard(
+                    description: courseItem.subtitle,
+                    title: courseItem.title,
+                    price: courseItem.price,
+                    color: viewModel.getColor(index),
+                    hour: courseItem.duration,
+                  );
+                },
+              ),
             ]),
           ),
         ),
@@ -95,114 +101,110 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
     );
   }
 
-  Widget buildCard(
-      {required String image,
-      required String price,
-      required String hour,
-      required String description,
-      required String title,
-      required int color}) {
-    return Container(
-      padding: const EdgeInsets.all(3),
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            width: 1,
-            strokeAlign: BorderSide.strokeAlignOutside,
-            color: Color(0xFFBEBAB3),
+  Widget buildCard({
+    required double price,
+    required String hour,
+    required String description,
+    required String title,
+    required int color,
+  }) {
+    return ListTile(
+      title: Container(
+        padding: const EdgeInsets.all(3),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              width: 0.50,
+              strokeAlign: BorderSide.strokeAlignOutside,
+              color: Color(0xFFBEBAB3),
+            ),
+            borderRadius: BorderRadius.circular(8),
           ),
-          borderRadius: BorderRadius.circular(8),
         ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 343,
-            height: 194,
-            color: Color(color),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(image),
-                SizedBox(
-                  width: 343,
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(flex: 21),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all<Size>(
-                              const Size(63, 24)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  12.0), // Adjust the radius as per your needs
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              color: Color(color),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/png/Cool Kids Discussion.png'),
+                  SizedBox(
+                    width: 343,
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Spacer(flex: 21),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all<Size>(
+                              const Size(63, 24),
+                            ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    12.0), // Adjust the radius as per your needs
+                              ),
                             ),
                           ),
+                          onPressed: () {
+                            // Button press event
+                          },
+                          child: Text("$price"),
                         ),
-                        onPressed: () {
-                          // Button press event
-                        },
-                        child: Text(price),
-                      ),
-                      const Spacer(flex: 1)
-                    ],
+                        const Spacer(flex: 1),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            width: 343,
-            height: 103,
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
+            Container(
+              width: double.infinity,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
                         hour,
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: Color(0xFF5BA092),
                         ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(title,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: -0.5,
-                          ))
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(description,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                          ))
-                    ],
-                  )
-                ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      description,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
