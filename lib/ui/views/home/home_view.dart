@@ -323,7 +323,10 @@ class HomeView extends StackedView<HomeViewModel> {
                                             price: courseItem.price,
                                             color: viewModel.getColor(index),
                                             hour: courseItem.duration,
-                                            image: courseItem.image
+                                            image: courseItem.image,
+                                            courseSelected: () {
+                                              viewModel.coursePressed(courseItem.id);
+                                            }
                                           );
                                         },
                                       ),

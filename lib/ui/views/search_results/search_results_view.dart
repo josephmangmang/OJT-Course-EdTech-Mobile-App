@@ -107,7 +107,10 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                                 price: courseItem.price,
                                 color: viewModel.getColor(index),
                                 hour: courseItem.duration,
-                                image: courseItem.image);
+                                image: courseItem.image,
+                                courseSelected: () {
+                                  viewModel.coursePressed(courseItem.id);
+                                });
                           },
                         ),
                       ]),

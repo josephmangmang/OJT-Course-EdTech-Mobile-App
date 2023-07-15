@@ -1,3 +1,40 @@
+import 'package:edtechapp/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-class ProjectDetailViewModel extends BaseViewModel {}
+import '../../../app/app.locator.dart';
+import '../../../model/course.dart';
+import '../../../services/repository_service.dart';
+import '../../../services/shared_service.dart';
+
+
+
+class ProjectDetailViewModel extends BaseViewModel {
+  final _repository = locator<RepositoryService>();
+  final _shared = locator<SharedService>();
+  final _navigationService = locator<NavigationService>();
+  List<Course> listOfCourse = [];
+
+  addCourse() async {
+    setBusy(true);
+
+    await _repository.addCourse().then((value) {
+      if (value.isNotEmpty) {
+        listOfCourse = value;
+      }
+    });
+
+    print(listOfCourse.toString());
+    print(listOfCourse.length);
+    setBusy(false);
+  }
+
+  void goBack() {
+    _navigationService.replaceWithHomeView();
+  }
+
+  void addToCart() {
+    _navigationService.navigateToPaymentAdddedView();
+  }
+
+}

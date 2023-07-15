@@ -77,6 +77,12 @@ class HomeViewModel extends BaseViewModel {
   rebuildUi();
 }
 
+  void coursePressed(String courseId) {
+    itemId = courseId;
+    print(courseId);
+    _navigationService.replaceWithProjectDetailView();
+  }
+
   void onPageChanged(int index) {
     currentPageIndex = index;
     rebuildUi();

@@ -1,3 +1,4 @@
+import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
@@ -45,6 +46,10 @@ String total = "";
     }
   });
   setBusy(false);
+  }
+
+  void coursePressed(String courseId) {
+    _navigationService.replaceWithProjectDetailView();
   }
 
   int getColor(int index) {

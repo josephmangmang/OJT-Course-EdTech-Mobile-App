@@ -84,11 +84,10 @@ class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
                   height: 32,
                 ),
                 Container(
-                  width: 309,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32,
-                    vertical: 16,
-                  ),
+                  width: double.infinity,
+                 padding:
+                        const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 33 - 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     color: const Color(0xFFE35629),

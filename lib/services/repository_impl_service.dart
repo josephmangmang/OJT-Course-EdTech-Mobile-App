@@ -1,4 +1,5 @@
 import 'package:edtechapp/services/repository_service.dart';
+import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/course.dart';
@@ -96,7 +97,26 @@ Future<List<Course>> searchCourse(String searchCourse) async {
     }
     return listOfCourse;
   }
- 
   
-  
+  @override
+  Future<List<Course>> addCourse() async {
+    List<Course> listOfCourse = [];
+
+     try {
+         await db
+          .collection('courses').where('id', isEqualTo: itemId)
+          .get()
+          .then((value) {
+        if (value.docs.isNotEmpty) {
+          var snapshots = value.docs;
+          listOfCourse =
+              snapshots.map((e) => Course.fromJson(e.data())).toList();
+        }
+      });
+     
+    } catch (e) {
+      print(e.toString());
+    }
+    return listOfCourse;
+  }
 }

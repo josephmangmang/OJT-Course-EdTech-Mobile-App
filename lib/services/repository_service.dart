@@ -6,4 +6,6 @@ abstract class RepositoryService {
   Future<List<Course>> searchCourse(String searchCourse);
 
   Future<List<Course>> categoryCourse(String categoryCourse);
+
+  Future<List<Course>> addCourse();
 }
