@@ -1,3 +1,32 @@
+import 'package:edtechapp/app/app.router.dart';
+import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-class PaymentAdddedViewModel extends BaseViewModel {}
+import '../../../app/app.locator.dart';
+import '../../../services/repository_service.dart';
+import '../../../services/shared_service.dart';
+
+class PaymentAdddedViewModel extends BaseViewModel {
+  final _repository = locator<RepositoryService>();
+  final _shared = locator<SharedService>();
+  final _navigationService = locator<NavigationService>();
+   final _snackBarService = locator<SnackbarService>();
+  
+  Future<void> payCourse() async {
+    setBusy(true);
+    final response = await _repository.buyCourse(
+      itemId
+    );
+
+    setBusy(false);
+
+    response.fold((l) {
+      _snackBarService.showSnackbar(message: l.message);
+    }, (r) {
+      _snackBarService.showSnackbar(message: "Course Add Successfully.");
+      _navigationService.replaceWithYourCoursesView();
+    });
+  }
+
+}

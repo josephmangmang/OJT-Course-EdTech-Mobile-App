@@ -1,13 +1,22 @@
+import 'package:dartz/dartz.dart';
+import 'package:edtechapp/exception/app_exception.dart';
 import 'package:edtechapp/services/repository_service.dart';
+import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../app/app.locator.dart';
 import '../model/course.dart';
+import '../model/user.dart';
+import '../ui/common/app_constants.dart';
 
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
   final userName = FirebaseAuth.instance.currentUser!;
+  final _shared = locator<SharedService>();
+
+  User? user;
 
   @override
   Future<List<Course>> getCourse() async {
@@ -118,5 +127,20 @@ Future<List<Course>> searchCourse(String searchCourse) async {
       print(e.toString());
     }
     return listOfCourse;
+  }
+
+  @override
+  Future<Either<AppException, None>> buyCourse(String courseId) async {
+    try {
+      user = await _shared.getUser(AppConstants.userPrefKey); 
+
+      await db.collection('users').doc(user!.uid).update({'course': FieldValue.arrayUnion([courseId]),
+      }).then((value) {
+        return const Right(None());
+      });
+    }  on FirebaseAuthException catch (e) {
+      return Left(AppException(e.message.toString()));
+    }
+    throw UnimplementedError();
   }
 }

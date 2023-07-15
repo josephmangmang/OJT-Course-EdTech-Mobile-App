@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../exception/app_exception.dart';
 import '../model/course.dart';
 
 abstract class RepositoryService {
@@ -8,4 +11,10 @@ abstract class RepositoryService {
   Future<List<Course>> categoryCourse(String categoryCourse);
 
   Future<List<Course>> addCourse();
+
+   Future<Either<AppException, None>> buyCourse(
+      String courseId) {
+        throw UnimplementedError();
+      }
+       
 }
