@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'settings_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
 class SettingsView extends StackedView<SettingsViewModel> {
-  const SettingsView({Key? key}) : super(key: key);
+  final Function() onBackPressed;
+  const SettingsView({Key? key, required this.onBackPressed}) : super(key: key);
 
   @override
   Widget builder(
@@ -30,28 +31,9 @@ class SettingsView extends StackedView<SettingsViewModel> {
                         children: [
                           Container(
                             margin: const EdgeInsets.only(right: 56 - 16),
-                            child: Row(
-                              children: [
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                        'assets/svg/Background.svg'),
-                                    SvgPicture.asset('assets/svg/Go-back.svg'),
-                                  ],
-                                ),
-                                const Expanded(
-                                  child: Text(
-                                    'Settings',
-                                    style: TextStyle(
-                                        color: Color(0xFF3B3936),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: -0.50),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ],
+                            child: CustomAppBar(
+                              action: onBackPressed,
+                              title: "Settings",
                             ),
                           ),
                           const SizedBox(

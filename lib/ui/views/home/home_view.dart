@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -316,12 +317,13 @@ class HomeView extends StackedView<HomeViewModel> {
                                         itemBuilder: (context, index) {
                                           var courseItem =
                                               viewModel.listOfCourse[index];
-                                          return buildCard(
+                                          return CourseCard(
                                             description: courseItem.subtitle,
                                             title: courseItem.title,
                                             price: courseItem.price,
                                             color: viewModel.getColor(index),
                                             hour: courseItem.duration,
+                                            image: courseItem.image
                                           );
                                         },
                                       ),
@@ -331,8 +333,16 @@ class HomeView extends StackedView<HomeViewModel> {
                               ),
                             ),
                           ),
-                          const ProfileView(),
-                          const SettingsView(),
+                          ProfileView(
+                            onBackPressed: () {
+                              viewModel.onDestinationSelected(0);
+                            },
+                          ),
+                          SettingsView(
+                            onBackPressed: () {
+                              viewModel.onDestinationSelected(0);
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -404,113 +414,7 @@ class HomeView extends StackedView<HomeViewModel> {
     );
   }
 
-  Widget buildCard({
-    required double price,
-    required String hour,
-    required String description,
-    required String title,
-    required int color,
-  }) {
-    return ListTile(
-      title: Container(
-        padding: const EdgeInsets.all(3),
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(
-              width: 0.50,
-              strokeAlign: BorderSide.strokeAlignOutside,
-              color: Color(0xFFBEBAB3),
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              color: Color(color),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/png/Cool Kids Discussion.png'),
-                  SizedBox(
-                    width: 343,
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Spacer(flex: 21),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                              const Size(63, 24),
-                            ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    12.0), // Adjust the radius as per your needs
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Button press event
-                          },
-                          child: Text("$price"),
-                        ),
-                        const Spacer(flex: 1),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        hour,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF5BA092),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        title,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: -0.5,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      description,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+ 
 
   @override
   HomeViewModel viewModelBuilder(BuildContext context) => HomeViewModel();

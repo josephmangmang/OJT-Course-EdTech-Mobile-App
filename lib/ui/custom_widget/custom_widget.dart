@@ -8,6 +8,7 @@ Widget CourseCard(
     required String hour,
     required String description,
     required String title,
+    required String image,
     required int color,
   }
 ) {
@@ -32,7 +33,7 @@ Widget CourseCard(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/png/Cool Kids Discussion.png'),
+                  Image.network(image),
                   SizedBox(
                     width: 343,
                     height: 40,

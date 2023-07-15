@@ -8,7 +8,7 @@ import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
+import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
 
@@ -83,12 +83,13 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onDestinationSelected(int index) {
-    currentPageIndex = index;
+      currentPageIndex = index;
     pageController.animateToPage(
       currentPageIndex,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+    rebuildUi();
   }
 
   int getColor(int index) {

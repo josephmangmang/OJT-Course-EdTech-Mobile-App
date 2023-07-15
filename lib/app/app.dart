@@ -28,7 +28,6 @@ import 'package:edtechapp/ui/views/search_results/search_results_view.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
-import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/services/share_impl_service.dart';
 import 'package:edtechapp/services/course_impl_service.dart';
@@ -62,7 +61,6 @@ import '../services/authentication_service_mock.dart';
     MaterialRoute(page: ResultView),
     MaterialRoute(page: SearchResultsView),
     MaterialRoute(page: ForgotPasswordView),
-    MaterialRoute(page: NavigationBarView),
 // @stacked-route
   ],
   dependencies: [

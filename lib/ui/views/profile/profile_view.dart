@@ -1,12 +1,12 @@
 import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:edtechapp/ui/views/navigation_bar/navigation_bar_view.dart';
 import 'profile_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
-  const ProfileView({Key? key}) : super(key: key);
+  final Function() onBackPressed;
+  const ProfileView({Key? key, required this.onBackPressed}) : super(key: key);
 
   @override
   Widget builder(
@@ -21,7 +21,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
           child: Column(
             children: [
               CustomAppBar(
-                action: viewModel.goBack,
+                action: onBackPressed,
                 title: "Profile",   
               ),
               const SizedBox(
