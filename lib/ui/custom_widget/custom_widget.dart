@@ -227,6 +227,7 @@ Widget CustomAppBar({String title = "",  required Function() action}) {
                 fontWeight: FontWeight.w700,
                 letterSpacing: -0.50,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ],
