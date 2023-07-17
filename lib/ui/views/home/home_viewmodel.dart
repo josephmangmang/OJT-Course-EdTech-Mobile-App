@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
@@ -10,26 +12,33 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import '../../../model/course.dart';
+import '../../../services/authentication_service.dart';
 import '../../../services/repository_service.dart';
+import '../../../services/shared_pref_service_service.dart';
 
 class HomeViewModel extends BaseViewModel {
-  TextEditingController searchTextController = TextEditingController(); 
+  TextEditingController searchTextController = TextEditingController();
   String category = "";
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
+  final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];
   final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
 
-  User? user;
+  late User user;
 
   Course? course;
 
   int currentPageIndex = 0;
 
-  getData() async {
+  init() async {
     setBusy(true);
-    user = await _shared.getUser(AppConstants.userPrefKey);
+
+    final response = await _authenticationService.getCurrentUser();
+
+    response.fold((l) => print(l.message), (r) => user = r);
+
     // course = await _shared.getCourse(AppConstants.coursePrefKey);
 
     await _repository.getCourse().then((value) {
@@ -43,44 +52,38 @@ class HomeViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-  Future<void> searchCourse() async{
-  setBusy(true);
-  searchText = searchTextController.text;
-  listOfCourse = [];
-  await _repository.searchCourse(
-    searchTextController.text
-  ).then((value) {
-    if (value.isNotEmpty) {
-      listOfCourse = value;
-     _navigationService.navigateToSearchResultsView();
-    }
-  });
-    
-  print(searchTextController.text);  
-  setBusy(false);
-  rebuildUi();
-}
+  Future<void> searchCourse() async {
+    setBusy(true);
+    searchText = searchTextController.text;
+    listOfCourse = [];
+    await _repository.searchCourse(searchTextController.text).then((value) {
+      if (value.isNotEmpty) {
+        listOfCourse = value;
+        _navigationService.navigateToSearchResultsView();
+      }
+    });
 
-  Future<void> categoryCourse() async{
-  setBusy(true);
-  listOfCourse = [];
-  await _repository.categoryCourse(
-    category
-  ).then((value) {
-    if (value.isNotEmpty) {
-      listOfCourse = value;
-    }
-  });
-    
-  print(searchTextController.text);  
-  setBusy(false);
-  rebuildUi();
-}
+    print(searchTextController.text);
+    setBusy(false);
+    rebuildUi();
+  }
 
-  void coursePressed(String courseId) {
-    itemId = courseId;
-    print(courseId);
-    _navigationService.replaceWithProjectDetailView();
+  Future<void> categoryCourse() async {
+    setBusy(true);
+    listOfCourse = [];
+    await _repository.categoryCourse(category).then((value) {
+      if (value.isNotEmpty) {
+        listOfCourse = value;
+      }
+    });
+
+    print(searchTextController.text);
+    setBusy(false);
+    rebuildUi();
+  }
+
+  void coursePressed(Course course) {
+    _navigationService.navigateToProjectDetailView(course: course);
   }
 
   void onPageChanged(int index) {
@@ -89,17 +92,12 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onDestinationSelected(int index) {
-      currentPageIndex = index;
+    currentPageIndex = index;
     pageController.animateToPage(
       currentPageIndex,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
     rebuildUi();
-  }
-
-  int getColor(int index) {
-    index++;
-    return index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4;
   }
 }

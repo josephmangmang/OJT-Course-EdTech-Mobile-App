@@ -12,4 +12,14 @@ class SharedPrefServiceServiceImpl implements SharedPrefServiceService {
     final pref = await SharedPreferences.getInstance();
     pref.setString(AppConstants.userPrefKey, jsonEncode(user.toJson()));
   }
+
+  @override
+  Future<User?> getCurrentUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final user = prefs.getString(AppConstants.userPrefKey);
+
+    if (user == null) return null;
+
+    return User.fromJson(json.decode(user));
+  }
 }

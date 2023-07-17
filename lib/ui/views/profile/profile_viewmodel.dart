@@ -11,23 +11,14 @@ import '../../common/app_constants.dart';
 import '../../views/home/home_viewmodel.dart';
 
 class ProfileViewModel extends BaseViewModel {
-  final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
-
-  User? user;
 
   void goBack() {
     _navigationService.navigateToIntroPage();
     _navigationService.replaceWithHomeView();
   }
-  getUser() async {
-    setBusy(true);
-    user = await _shared.getUser(AppConstants.userPrefKey);
-    notifyListeners();
-    setBusy(false);
-  }
 
   void yourCourse() {
-    _navigationService.replaceWithYourCoursesView();
+    _navigationService.navigateToYourCoursesView();
   }
 }

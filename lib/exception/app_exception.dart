@@ -8,3 +8,7 @@ class AppException implements Exception {
     return message;
   }
 }
+
+class InvalidInputException extends AppException {
+  InvalidInputException(String message) : super(message);
+}

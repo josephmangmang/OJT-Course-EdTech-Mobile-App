@@ -5,6 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:edtechapp/model/course.dart' as _i24;
 import 'package:edtechapp/ui/views/course_lesson/course_lesson_view.dart'
     as _i17;
 import 'package:edtechapp/ui/views/course_test/course_test_view.dart' as _i18;
@@ -36,7 +37,7 @@ import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart' as _i9;
 import 'package:flutter/material.dart' as _i23;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i24;
+import 'package:stacked_services/stacked_services.dart' as _i25;
 
 class Routes {
   static const homeView = '/home-view';
@@ -236,9 +237,13 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i8.ProjectDetailView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i8.ProjectDetailView(),
+      final args = data.getArgs<ProjectDetailViewArguments>(nullOk: false);
+      return _i23.PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            _i8.ProjectDetailView(args.course, key: args.key),
         settings: data,
+        transitionsBuilder:
+            data.transition ?? _i1.TransitionsBuilders.slideLeftWithFade,
       );
     },
     _i9.YourCoursesView: (data) {
@@ -390,6 +395,33 @@ class SettingsViewArguments {
   }
 }
 
+class ProjectDetailViewArguments {
+  const ProjectDetailViewArguments({
+    required this.course,
+    this.key,
+  });
+
+  final _i24.Course course;
+
+  final _i23.Key? key;
+
+  @override
+  String toString() {
+    return '{"course": "$course", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant ProjectDetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.course == course && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return course.hashCode ^ key.hashCode;
+  }
+}
+
 class IntroPageArguments {
   const IntroPageArguments({this.key});
 
@@ -412,7 +444,7 @@ class IntroPageArguments {
   }
 }
 
-extension NavigatorStateExtension on _i24.NavigationService {
+extension NavigatorStateExtension on _i25.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -504,14 +536,17 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToProjectDetailView([
+  Future<dynamic> navigateToProjectDetailView({
+    required _i24.Course course,
+    _i23.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.projectDetailView,
+        arguments: ProjectDetailViewArguments(course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -807,14 +842,17 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithProjectDetailView([
+  Future<dynamic> replaceWithProjectDetailView({
+    required _i24.Course course,
+    _i23.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.projectDetailView,
+        arguments: ProjectDetailViewArguments(course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

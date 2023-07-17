@@ -11,26 +11,15 @@ class YourCoursesViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
-   final _snackBarService = locator<SnackbarService>();
-   List<Course> listOfCourse = [];
+  final _snackBarService = locator<SnackbarService>();
+  List<Course> courses = [];
 
-   
-  Course? course;
-  
-    yourCourse() async {
+  void init() async {
     setBusy(true);
-
-    await _repository.yourCourse().then((value) {
-      if (value.isNotEmpty) {
-        listOfCourse = value;
-      }
-    });
-
-    print(listOfCourse.toString());
-    print(listOfCourse.length);
+    await loadUserCourses();
     setBusy(false);
   }
-  
+
   void coursePressed(String courseId) {
     print(courseId);
     _navigationService.replaceWithCourseLessonView();
@@ -41,5 +30,9 @@ class YourCoursesViewModel extends BaseViewModel {
     return index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4;
   }
 
-
+  Future<void> loadUserCourses() async {
+    courses = await _repository.getUserCourses();
+    print(courses.toString());
+    print(courses.length);
+  }
 }

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../model/course.dart';
+import '../../../resources/svg_images.dart';
+import '../../custom_widget/course_card.dart';
 import 'home_viewmodel.dart';
 import 'package:edtechapp/ui/views/profile/profile_view.dart';
 import 'package:edtechapp/ui/views/settings/settings_view.dart';
@@ -22,7 +25,7 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
-      onViewModelReady: (model) => model.getData(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, viewModel, child) {
         return Scaffold(
           body: viewModel.isBusy
@@ -48,12 +51,10 @@ class HomeView extends StackedView<HomeViewModel> {
                                       SizedBox(
                                         width: double.infinity,
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                                           children: [
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 const Text(
                                                   'Hello,',
@@ -66,7 +67,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  viewModel.user!.name,
+                                                  viewModel.user.name,
                                                   style: const TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 32,
@@ -84,8 +85,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    border: Border.all(
-                                                        color: Colors.grey),
+                                                    border: Border.all(color: Colors.grey),
                                                   ),
                                                   child: ClipOval(
                                                     child: SizedBox(
@@ -93,8 +93,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                                       width: 48,
                                                       child: IconButton(
                                                         onPressed: () {},
-                                                        icon: SvgPicture.asset(
-                                                            'assets/svg/notification.svg'),
+                                                        icon: SvgPicture.asset(SvgImages.notification),
                                                       ),
                                                     ),
                                                   ),
@@ -105,8 +104,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                         ),
                                       ),
                                       Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(horizontal: 16),
                                         child: TextField(
                                           controller: viewModel.searchTextController,
                                           decoration: InputDecoration(
@@ -115,14 +113,13 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   width: 1,
                                                   color: Color(0xFFBEBAB3),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
-                                             
                                               suffixIcon: Transform.scale(
-                                                  scale: 0.6, child: IconButton(
-                                                    onPressed: viewModel.searchCourse,
-                                                    icon: SvgPicture.asset('assets/svg/Search Icon.svg')))),
+                                                  scale: 0.6,
+                                                  child: IconButton(
+                                                      onPressed: viewModel.searchCourse,
+                                                      icon: SvgPicture.asset('assets/svg/Search Icon.svg')))),
                                         ),
                                       ),
                                       SingleChildScrollView(
@@ -164,7 +161,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   ),
                                                 ),
                                               ),
-                                             onPressed: () {
+                                              onPressed: () {
                                                 viewModel.category = '#App Dev';
                                                 viewModel.categoryCourse();
                                               },
@@ -240,7 +237,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   ),
                                                 ),
                                               ),
-                                             onPressed: () {
+                                              onPressed: () {
                                                 viewModel.category = '#Web';
                                                 viewModel.categoryCourse();
                                               },
@@ -312,21 +309,15 @@ class HomeView extends StackedView<HomeViewModel> {
                                       ListView.builder(
                                         shrinkWrap: true,
                                         primary: false,
-                                        itemCount:
-                                            viewModel.listOfCourse.length,
+                                        itemCount: viewModel.listOfCourse.length,
                                         itemBuilder: (context, index) {
-                                          var courseItem =
-                                              viewModel.listOfCourse[index];
+                                          var courseItem = viewModel.listOfCourse[index];
                                           return CourseCard(
-                                            description: courseItem.subtitle,
-                                            title: courseItem.title,
-                                            price: courseItem.price,
-                                            color: viewModel.getColor(index),
-                                            hour: courseItem.duration,
-                                            image: courseItem.image,
-                                            courseSelected: () {
-                                              viewModel.coursePressed(courseItem.id);
-                                            }
+                                            course: courseItem,
+                                            onItemPressed: (Course course) {
+                                              viewModel.coursePressed(courseItem);
+                                            },
+                                            backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
                                           );
                                         },
                                       ),
@@ -352,9 +343,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     NavigationBarTheme(
                       data: NavigationBarThemeData(
                         indicatorColor: Colors.white,
-                        labelTextStyle:
-                            MaterialStateProperty.resolveWith<TextStyle>(
-                                (Set<MaterialState> states) {
+                        labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
                           if (states.contains(MaterialState.selected)) {
                             return const TextStyle(
                               fontSize: 14,
@@ -416,8 +405,6 @@ class HomeView extends StackedView<HomeViewModel> {
       },
     );
   }
-
- 
 
   @override
   HomeViewModel viewModelBuilder(BuildContext context) => HomeViewModel();

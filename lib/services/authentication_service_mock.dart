@@ -28,4 +28,10 @@ class AuthenticationServiceMock implements AuthenticationService {
   @override
   // TODO: implement isLoggedIn
   bool get isLoggedIn => false;
+
+  @override
+  Future<Either<AppException, User>> getCurrentUser() {
+    // TODO: implement getCurrentUser
+    throw UnimplementedError();
+  }
 }

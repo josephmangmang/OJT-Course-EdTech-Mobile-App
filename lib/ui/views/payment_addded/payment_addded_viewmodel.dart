@@ -1,4 +1,5 @@
 import 'package:edtechapp/app/app.router.dart';
+import 'package:edtechapp/exception/app_exception.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,21 +13,22 @@ class PaymentAdddedViewModel extends BaseViewModel {
   final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
-  
+
   Future<void> payCourse() async {
     setBusy(true);
-    final response = await _repository.buyCourse(
-      itemId
-    );
+    final response = await _repository.buyCourse(itemId);
 
     setBusy(false);
-
-    if (response != null) {
-      _snackBarService.showSnackbar(message: response.toString());
-    } else {
-      _snackBarService.showSnackbar(message: "Course purchase succefully");
+    response.fold((error) {
+      if (error is InvalidInputException) {
+        print(error.message);
+        _snackBarService.showSnackbar(message: 'Your input is invalid');
+      } else {
+        _snackBarService.showSnackbar(message: error.message);
+      }
+    }, (r) {
+      _snackBarService.showSnackbar(message: "Course purchase successfully");
       _navigationService.replaceWithYourCoursesView();
-    }
+    });
   }
-
 }

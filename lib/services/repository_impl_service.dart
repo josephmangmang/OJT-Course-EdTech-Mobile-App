@@ -1,6 +1,4 @@
-
 import 'package:dartz/dartz.dart';
-import 'package:edtechapp/exception/app_exception.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 import 'package:edtechapp/services/shared_service.dart';
@@ -10,124 +8,97 @@ import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../app/app.locator.dart';
+import '../exception/app_exception.dart';
 import '../model/course.dart';
 import '../ui/common/app_constants.dart';
+import '../ui/common/firebase_constants.dart';
+import 'authentication_service.dart';
 
 class RepositoryImplService extends RepositoryService {
   final auth0 = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
   final userName = FirebaseAuth.instance.currentUser!;
   final _shared = locator<SharedService>();
-    final _sharedPrefService = locator<SharedPrefServiceService>();
-
-
-userData.User? user;
+  final _sharedPrefService = locator<SharedPrefServiceService>();
+  final _authenticationService = locator<AuthenticationService>();
 
   @override
   Future<List<Course>> getCourse() async {
     List<Course> listOfCourse = [];
-    
+
     try {
-         await db
-          .collection('courses')
-          .get()
-          .then((value) {
+      await db.collection('courses').get().then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
 
-          listOfCourse =
-              snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
-     
     } catch (e) {
       print(e.toString());
     }
     return listOfCourse;
   }
-  
- @override
-Future<List<Course>> searchCourse(String searchCourse) async {
-  List<Course> listOfCourse = [];
 
-  if (searchCourse.isEmpty) {
-    try {
-    await db
-        .collection('courses')
-        .get()
-        .then((value) {
-      if (value.docs.isNotEmpty) {
-        var snapshots = value.docs;
-        listOfCourse =
-            snapshots.map((e) => Course.fromJson(e.data())).toList();
+  @override
+  Future<List<Course>> searchCourse(String searchCourse) async {
+    List<Course> listOfCourse = [];
+
+    if (searchCourse.isEmpty) {
+      try {
+        await db.collection('courses').get().then((value) {
+          if (value.docs.isNotEmpty) {
+            var snapshots = value.docs;
+            listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+          }
+        });
+      } catch (e) {
+        print(e.toString());
       }
-    });
-
-  } catch (e) {
-    print(e.toString());
-  }
-  return listOfCourse;
-  } else {
-    try {
-    await db
-        .collection('courses')
-        .where('keywords', arrayContains: searchCourse.toLowerCase())
-        .get()
-        .then((value) {
-      if (value.docs.isNotEmpty) {
-        var snapshots = value.docs;
-        listOfCourse =
-            snapshots.map((e) => Course.fromJson(e.data())).toList();
+      return listOfCourse;
+    } else {
+      try {
+        await db.collection('courses').where('keywords', arrayContains: searchCourse.toLowerCase()).get().then((value) {
+          if (value.docs.isNotEmpty) {
+            var snapshots = value.docs;
+            listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+          }
+        });
+      } catch (e) {
+        print(e.toString());
       }
-    });
-
-  } catch (e) {
-    print(e.toString());
+      return listOfCourse;
+    }
   }
-  return listOfCourse;
-  }
-  
-}
 
-  
   @override
   Future<List<Course>> categoryCourse(String categoryCourse) async {
     List<Course> listOfCourse = [];
 
     try {
-         await db
-          .collection('courses').where('category', isEqualTo: categoryCourse)
-          .get()
-          .then((value) {
+      await db.collection('courses').where('category', isEqualTo: categoryCourse).get().then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
-          listOfCourse =
-              snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
-     
     } catch (e) {
       print(e.toString());
     }
     return listOfCourse;
   }
-  
+
   @override
   Future<List<Course>> addCourse() async {
     List<Course> listOfCourse = [];
 
-     try {
-         await db
-          .collection('courses').where('id', isEqualTo: itemId)
-          .get()
-          .then((value) {
+    try {
+      await db.collection('courses').where('id', isEqualTo: itemId).get().then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
-          listOfCourse =
-              snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
-     
     } catch (e) {
       print(e.toString());
     }
@@ -135,50 +106,44 @@ Future<List<Course>> searchCourse(String searchCourse) async {
   }
 
   @override
-  Future<String?> buyCourse(String courseId) async {
-    try {
-      user = await _shared.getUser(AppConstants.userPrefKey); 
-
-      await db.collection('users').doc(user!.uid).update({'purchase_course': FieldValue.arrayUnion([courseId]),
-      }).then((value) {
-        return null;
-      });
-    }  on FirebaseAuthException catch (e) {
-      return e.message.toString();
+  Future<Either<AppException, None>> buyCourse(String? courseId) async {
+    if (courseId == null) {
+      return Left(InvalidInputException("Course ID is null"));
     }
-  }
-  
-@override
-Future<List<Course>> yourCourse() async {
-  List<Course> listOfCourse = [];
-  List listYourCourse = [];
 
-  try {
-    user = await _shared.getUser(AppConstants.userPrefKey); 
+    final user = await _authenticationService.getCurrentUser();
 
-    final snap = await db.collection('users').doc(user!.uid).get();
-    final courseData = userData.User.fromJson(snap.data()!);
-    await _sharedPrefService.saveUser(courseData);
-
-    // Wait for the user.purchase_course.toList() to complete and store the result in listYourCourse
-    listYourCourse = user!.purchase_course.toList();
-
-    print(listYourCourse.toList());
-
-    for (String courseId in listYourCourse) {
-      final courseSnap = await db.collection('courses').doc(courseId).get();
-      if (courseSnap.exists) {
-        Course course = Course.fromJson(courseSnap.data()!);
-        listOfCourse.add(course);
-        print(listOfCourse.toList());
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        await db.collection(FirebaseConstants.courseCollection).doc(user.uid).update({
+          'purchase_course': FieldValue.arrayUnion([courseId]),
+        });
+      } on FirebaseAuthException catch (e) {
+        return Left(AppException(e.message.toString()));
       }
-    }
-    
-
-  } on FirebaseAuthException catch (e) {
-    print(e.toString());
+      return const Right(None());
+    });
   }
 
-  return listOfCourse;
-}
+  @override
+  Future<List<Course>> getUserCourses() async {
+    final user = await _authenticationService.getCurrentUser();
+
+    return user.foldRight([], (user, previous) async {
+      final purchaseCourses = user.purchaseCourses;
+      if(purchaseCourses.isEmpty) return [];
+
+      final results = await db
+          .collection(FirebaseConstants.courseCollection)
+          .where(
+            FirebaseConstants.id,
+            whereIn: purchaseCourses.toList(),
+          )
+          .get();
+
+      return results.docs.map((doc) => Course.fromJson(doc.data())).toList();
+    });
+  }
 }

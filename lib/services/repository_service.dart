@@ -12,9 +12,7 @@ abstract class RepositoryService {
 
   Future<List<Course>> addCourse();
 
-   Future<List<Course>> yourCourse();
+  Future<List<Course>> getUserCourses();
 
-   Future<String?> buyCourse(
-      String courseId);
-       
+  Future<Either<AppException, None>> buyCourse(String? courseId);
 }

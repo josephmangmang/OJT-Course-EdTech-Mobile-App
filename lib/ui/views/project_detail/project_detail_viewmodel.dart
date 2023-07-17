@@ -7,34 +7,19 @@ import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
 import '../../../services/shared_service.dart';
 
-
-
 class ProjectDetailViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
-  List<Course> listOfCourse = [];
+  final Course course;
 
-  addCourse() async {
-    setBusy(true);
-
-    await _repository.addCourse().then((value) {
-      if (value.isNotEmpty) {
-        listOfCourse = value;
-      }
-    });
-
-    print(listOfCourse.toString());
-    print(listOfCourse.length);
-    setBusy(false);
-  }
+  ProjectDetailViewModel(this.course);
 
   void goBack() {
-    _navigationService.replaceWithHomeView();
+    _navigationService.back();
   }
 
   void addToCart() {
     _navigationService.navigateToPaymentAdddedView();
   }
-
 }
