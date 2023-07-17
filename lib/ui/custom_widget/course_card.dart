@@ -85,17 +85,12 @@ class CourseCard extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
-                        child: Hero(
-                          tag: 'title_${course.id}',
-                          child: Material(
-                            child: Text(
-                              course.title,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: -0.5,
-                              ),
-                            ),
+                        child: Text(
+                          course.title,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -0.5,
                           ),
                         ),
                       ),

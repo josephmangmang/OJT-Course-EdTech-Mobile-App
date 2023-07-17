@@ -42,20 +42,15 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                               ),
                             ),
                             Expanded(
-                              child: Hero(
-                                tag: 'title_${course.id}',
-                                child: Material(
-                                  child: Text(
-                                    viewModel.course.title,
-                                    style: const TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.5,
-                                      color: Color(0xFF3B3936),
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                              child: Text(
+                                viewModel.course.title,
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: -0.5,
+                                  color: Color(0xFF3B3936),
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ],
