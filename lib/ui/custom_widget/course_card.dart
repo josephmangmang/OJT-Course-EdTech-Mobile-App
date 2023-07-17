@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 typedef OnItemPressed = Function(Course course);
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({Key? key, required this.course, required this.onItemPressed, required this.backgroundColor})
+  const CourseCard(
+      {Key? key,
+      required this.course,
+      required this.onItemPressed,
+      required this.backgroundColor})
       : super(key: key);
 
   final Color backgroundColor;
@@ -36,7 +40,9 @@ class CourseCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(tag: 'image_cover_${course.id}', child: Image.network(course.image)),
+                    Hero(
+                        tag: 'image_cover_${course.id}',
+                        child: Image.network(course.image)),
                     SizedBox(
                       width: 343,
                       height: 40,
@@ -49,9 +55,11 @@ class CourseCard extends StatelessWidget {
                               minimumSize: MaterialStateProperty.all<Size>(
                                 const Size(63, 24),
                               ),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0), // Adjust the radius as per your needs
+                                  borderRadius: BorderRadius.circular(
+                                      12.0), // Adjust the radius as per your needs
                                 ),
                               ),
                             ),

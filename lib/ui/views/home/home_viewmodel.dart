@@ -24,7 +24,8 @@ class HomeViewModel extends BaseViewModel {
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];
-  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
+  final PageController pageController =
+      PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
 

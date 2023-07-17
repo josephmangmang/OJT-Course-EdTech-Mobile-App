@@ -51,10 +51,12 @@ class HomeView extends StackedView<HomeViewModel> {
                                       SizedBox(
                                         width: double.infinity,
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
                                           children: [
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 const Text(
                                                   'Hello,',
@@ -85,7 +87,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    border: Border.all(color: Colors.grey),
+                                                    border: Border.all(
+                                                        color: Colors.grey),
                                                   ),
                                                   child: ClipOval(
                                                     child: SizedBox(
@@ -93,7 +96,9 @@ class HomeView extends StackedView<HomeViewModel> {
                                                       width: 48,
                                                       child: IconButton(
                                                         onPressed: () {},
-                                                        icon: SvgPicture.asset(SvgImages.notification),
+                                                        icon: SvgPicture.asset(
+                                                            SvgImages
+                                                                .notification),
                                                       ),
                                                     ),
                                                   ),
@@ -104,29 +109,36 @@ class HomeView extends StackedView<HomeViewModel> {
                                         ),
                                       ),
                                       Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
                                         child: TextField(
-                                          controller: viewModel.searchTextController,
+                                          controller:
+                                              viewModel.searchTextController,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(
                                                 borderSide: const BorderSide(
                                                   width: 1,
                                                   color: Color(0xFFBEBAB3),
                                                 ),
-                                                borderRadius: BorderRadius.circular(12),
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
                                               ),
                                               suffixIcon: Transform.scale(
                                                   scale: 0.6,
                                                   child: IconButton(
-                                                      onPressed: viewModel.searchCourse,
-                                                      icon: SvgPicture.asset('assets/svg/Search Icon.svg')))),
+                                                      onPressed: viewModel
+                                                          .searchCourse,
+                                                      icon: SvgPicture.asset(
+                                                          'assets/svg/Search Icon.svg')))),
                                         ),
                                       ),
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text('Category:'),
                                             const SizedBox(
@@ -134,11 +146,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(54, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(54, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -153,11 +171,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(47, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(47, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -172,16 +196,23 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(62, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(62, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
                                               onPressed: () {
-                                                viewModel.category = '#Mobile App';
+                                                viewModel.category =
+                                                    '#Mobile App';
                                                 viewModel.categoryCourse();
                                               },
                                               child: const Text('#Mobile App'),
@@ -191,16 +222,23 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
                                               onPressed: () {
-                                                viewModel.category = '#HTML/CSS';
+                                                viewModel.category =
+                                                    '#HTML/CSS';
                                                 viewModel.categoryCourse();
                                               },
                                               child: const Text('#HTML/CSS'),
@@ -210,16 +248,23 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
                                               onPressed: () {
-                                                viewModel.category = '#Javascript';
+                                                viewModel.category =
+                                                    '#Javascript';
                                                 viewModel.categoryCourse();
                                               },
                                               child: const Text('#Javascript'),
@@ -229,11 +274,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -248,11 +299,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -267,11 +324,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -286,11 +349,17 @@ class HomeView extends StackedView<HomeViewModel> {
                                             ),
                                             ElevatedButton(
                                               style: ButtonStyle(
-                                                minimumSize: MaterialStateProperty.all<Size>(const Size(43, 24)),
-                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                minimumSize:
+                                                    MaterialStateProperty.all<
+                                                            Size>(
+                                                        const Size(43, 24)),
+                                                shape:
+                                                    MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(
-                                                        10.0), // Adjust the radius as per your needs
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0), // Adjust the radius as per your needs
                                                   ),
                                                 ),
                                               ),
@@ -309,15 +378,21 @@ class HomeView extends StackedView<HomeViewModel> {
                                       ListView.builder(
                                         shrinkWrap: true,
                                         primary: false,
-                                        itemCount: viewModel.listOfCourse.length,
+                                        itemCount:
+                                            viewModel.listOfCourse.length,
                                         itemBuilder: (context, index) {
-                                          var courseItem = viewModel.listOfCourse[index];
+                                          var courseItem =
+                                              viewModel.listOfCourse[index];
                                           return CourseCard(
                                             course: courseItem,
                                             onItemPressed: (Course course) {
-                                              viewModel.coursePressed(courseItem);
+                                              viewModel
+                                                  .coursePressed(courseItem);
                                             },
-                                            backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
+                                            backgroundColor: Color(
+                                                index + 1 % 2 == 0
+                                                    ? 0xFFF7F2EE
+                                                    : 0xFFE6EDF4),
                                           );
                                         },
                                       ),
@@ -343,7 +418,9 @@ class HomeView extends StackedView<HomeViewModel> {
                     NavigationBarTheme(
                       data: NavigationBarThemeData(
                         indicatorColor: Colors.white,
-                        labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
+                        labelTextStyle:
+                            MaterialStateProperty.resolveWith<TextStyle>(
+                                (Set<MaterialState> states) {
                           if (states.contains(MaterialState.selected)) {
                             return const TextStyle(
                               fontSize: 14,

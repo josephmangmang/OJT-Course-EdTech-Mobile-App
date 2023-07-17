@@ -31,7 +31,8 @@ class RepositoryImplService extends RepositoryService {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
 
-          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse =
+              snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
     } catch (e) {
@@ -49,7 +50,8 @@ class RepositoryImplService extends RepositoryService {
         await db.collection('courses').get().then((value) {
           if (value.docs.isNotEmpty) {
             var snapshots = value.docs;
-            listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+            listOfCourse =
+                snapshots.map((e) => Course.fromJson(e.data())).toList();
           }
         });
       } catch (e) {
@@ -58,10 +60,15 @@ class RepositoryImplService extends RepositoryService {
       return listOfCourse;
     } else {
       try {
-        await db.collection('courses').where('keywords', arrayContains: searchCourse.toLowerCase()).get().then((value) {
+        await db
+            .collection('courses')
+            .where('keywords', arrayContains: searchCourse.toLowerCase())
+            .get()
+            .then((value) {
           if (value.docs.isNotEmpty) {
             var snapshots = value.docs;
-            listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+            listOfCourse =
+                snapshots.map((e) => Course.fromJson(e.data())).toList();
           }
         });
       } catch (e) {
@@ -76,10 +83,15 @@ class RepositoryImplService extends RepositoryService {
     List<Course> listOfCourse = [];
 
     try {
-      await db.collection('courses').where('category', isEqualTo: categoryCourse).get().then((value) {
+      await db
+          .collection('courses')
+          .where('category', isEqualTo: categoryCourse)
+          .get()
+          .then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
-          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse =
+              snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
     } catch (e) {
@@ -93,10 +105,15 @@ class RepositoryImplService extends RepositoryService {
     List<Course> listOfCourse = [];
 
     try {
-      await db.collection('courses').where('id', isEqualTo: itemId).get().then((value) {
+      await db
+          .collection('courses')
+          .where('id', isEqualTo: itemId)
+          .get()
+          .then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
-          listOfCourse = snapshots.map((e) => Course.fromJson(e.data())).toList();
+          listOfCourse =
+              snapshots.map((e) => Course.fromJson(e.data())).toList();
         }
       });
     } catch (e) {
@@ -117,7 +134,10 @@ class RepositoryImplService extends RepositoryService {
       return Left(error);
     }, (user) async {
       try {
-        await db.collection(FirebaseConstants.courseCollection).doc(user.uid).update({
+        await db
+            .collection(FirebaseConstants.courseCollection)
+            .doc(user.uid)
+            .update({
           'purchase_course': FieldValue.arrayUnion([courseId]),
         });
       } on FirebaseAuthException catch (e) {
@@ -133,7 +153,7 @@ class RepositoryImplService extends RepositoryService {
 
     return user.foldRight([], (user, previous) async {
       final purchaseCourses = user.purchaseCourses;
-      if(purchaseCourses.isEmpty) return [];
+      if (purchaseCourses.isEmpty) return [];
 
       final results = await db
           .collection(FirebaseConstants.courseCollection)

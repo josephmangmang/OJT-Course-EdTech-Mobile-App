@@ -27,7 +27,8 @@ class SettingsView extends StackedView<SettingsViewModel> {
               : SafeArea(
                   child: SingleChildScrollView(
                     child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       child: Column(
                         children: [
                           Container(
@@ -48,9 +49,11 @@ class SettingsView extends StackedView<SettingsViewModel> {
                             margin: const EdgeInsets.only(bottom: 16),
                             height: 82,
                             alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
                             decoration: BoxDecoration(
-                                border: Border.all(color: const Color(0xFFBEBAB3), width: 1),
+                                border: Border.all(
+                                    color: const Color(0xFFBEBAB3), width: 1),
                                 borderRadius: BorderRadius.circular(16)),
                             width: double.infinity,
                             child: Row(
@@ -68,12 +71,14 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                     ),
                                     child: Transform.scale(
                                       scale: 0.5,
-                                      child: SvgPicture.asset(SvgImages.notification),
+                                      child: SvgPicture.asset(
+                                          SvgImages.notification),
                                     ),
                                   ),
                                   Expanded(
                                     child: Container(
-                                      margin: const EdgeInsets.only(left: 12, right: 8),
+                                      margin: const EdgeInsets.only(
+                                          left: 12, right: 8),
                                       child: const Text(
                                         'Notifications',
                                         style: TextStyle(
@@ -85,7 +90,8 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                       ),
                                     ),
                                   ),
-                                  SvgPicture.asset('assets/svg/Toggle Buttons.svg')
+                                  SvgPicture.asset(
+                                      'assets/svg/Toggle Buttons.svg')
                                 ]),
                           ),
                           Container(
@@ -144,54 +150,58 @@ Widget buildCell({
     alignment: Alignment.centerLeft,
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFBEBAB3), width: 1), borderRadius: BorderRadius.circular(16)),
+        border: Border.all(color: const Color(0xFFBEBAB3), width: 1),
+        borderRadius: BorderRadius.circular(16)),
     width: double.infinity,
-    child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start, children: [
-      Container(
-        width: 32,
-        height: 32,
-        decoration: ShapeDecoration(
-          color: const Color(0xFF65A9E9),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(56),
-          ),
-        ),
-        child: Transform.scale(
-          scale: 0.5,
-          child: SvgPicture.asset(
-            icon,
-          ),
-        ),
-      ),
-      Expanded(
-        child: Container(
-          margin: const EdgeInsets.only(left: 12, right: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Color(0xFF3B3936),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -0.50,
-                ),
+    child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: 32,
+            height: 32,
+            decoration: ShapeDecoration(
+              color: const Color(0xFF65A9E9),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(56),
               ),
-              Text(
-                subtitle,
-                style: const TextStyle(
-                  color: Color(0xFF78746D),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
+            ),
+            child: Transform.scale(
+              scale: 0.5,
+              child: SvgPicture.asset(
+                icon,
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-      SvgPicture.asset('assets/svg/Icon.svg')
-    ]),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(left: 12, right: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Color(0xFF3B3936),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.50,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      color: Color(0xFF78746D),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SvgPicture.asset('assets/svg/Icon.svg')
+        ]),
   );
 }

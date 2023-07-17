@@ -22,7 +22,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
             children: [
               CustomAppBar(
                 action: onBackPressed,
-                title: "Profile",   
+                title: "Profile",
               ),
               const SizedBox(
                 height: 32,

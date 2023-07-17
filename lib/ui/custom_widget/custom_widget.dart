@@ -86,32 +86,32 @@ Widget YourCourseCard({
 
 Widget CustomAppBar({String title = "", required Function() action}) {
   return Container(
-      width: double.infinity,
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: action,
-            icon: Stack(
-              alignment: Alignment.center,
-              children: [
-                SvgPicture.asset('assets/svg/Background.svg'),
-                SvgPicture.asset('assets/svg/Go-back.svg'),
-              ],
-            ),
+    width: double.infinity,
+    child: Row(
+      children: [
+        IconButton(
+          onPressed: action,
+          icon: Stack(
+            alignment: Alignment.center,
+            children: [
+              SvgPicture.asset('assets/svg/Background.svg'),
+              SvgPicture.asset('assets/svg/Go-back.svg'),
+            ],
           ),
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: Color(0xFF3B3936),
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -0.50,
-              ),
-              textAlign: TextAlign.center,
+        ),
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Color(0xFF3B3936),
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.50,
             ),
+            textAlign: TextAlign.center,
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
 }
