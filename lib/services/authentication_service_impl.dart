@@ -55,7 +55,7 @@ class AuthenticationServiceImpl implements AuthenticationService {
       if (credential.user == null) {
         return Left(AppException("User not found"));
       }
-      User user = User(name: name, email: email, uid: credential.user!.uid);
+      User user = User(name: name, email: email, uid: credential.user!.uid, purchase_course: List.empty());
 
       db.collection('users').doc(credential.user?.uid).set(user.toJson());
 

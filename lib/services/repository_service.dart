@@ -12,9 +12,9 @@ abstract class RepositoryService {
 
   Future<List<Course>> addCourse();
 
-   Future<Either<AppException, None>> buyCourse(
-      String courseId) {
-        throw UnimplementedError();
-      }
+   Future<List<Course>> yourCourse();
+
+   Future<String?> buyCourse(
+      String courseId);
        
 }

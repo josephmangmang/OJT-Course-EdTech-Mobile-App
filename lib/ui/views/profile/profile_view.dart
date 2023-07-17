@@ -48,24 +48,27 @@ class ProfileView extends StackedView<ProfileViewModel> {
               const SizedBox(
                 height: 16.0,
               ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                alignment: Alignment.center,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    width: 0.5,
-                    color: const Color(0xFFBEBAB3),
+              GestureDetector(
+                onTap: viewModel.yourCourse,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      width: 0.5,
+                      color: const Color(0xFFBEBAB3),
+                    ),
                   ),
-                ),
-                child: const Text(
-                  'Your Courses',
-                  style: TextStyle(
-                    color: Color(0xFF3B3936),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
+                  child: const Text(
+                    'Your Courses',
+                    style: TextStyle(
+                      color: Color(0xFF3B3936),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

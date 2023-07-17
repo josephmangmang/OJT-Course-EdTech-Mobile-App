@@ -26,4 +26,8 @@ class ProfileViewModel extends BaseViewModel {
     notifyListeners();
     setBusy(false);
   }
+
+  void yourCourse() {
+    _navigationService.replaceWithYourCoursesView();
+  }
 }

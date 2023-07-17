@@ -23,6 +23,7 @@ mixin _$User {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  List<dynamic> get purchase_course => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,8 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String name, String email, String uid});
+  $Res call(
+      {String name, String email, String uid, List<dynamic> purchase_course});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? name = null,
     Object? email = null,
     Object? uid = null,
+    Object? purchase_course = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -67,6 +70,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      purchase_course: null == purchase_course
+          ? _value.purchase_course
+          : purchase_course // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
     ) as $Val);
   }
 }
@@ -77,7 +84,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, String uid});
+  $Res call(
+      {String name, String email, String uid, List<dynamic> purchase_course});
 }
 
 /// @nodoc
@@ -92,6 +100,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? name = null,
     Object? email = null,
     Object? uid = null,
+    Object? purchase_course = null,
   }) {
     return _then(_$_User(
       name: null == name
@@ -106,6 +115,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      purchase_course: null == purchase_course
+          ? _value._purchase_course
+          : purchase_course // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
     ));
   }
 }
@@ -113,7 +126,12 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 /// @nodoc
 @JsonSerializable()
 class _$_User implements _User {
-  const _$_User({required this.name, required this.email, required this.uid});
+  const _$_User(
+      {required this.name,
+      required this.email,
+      required this.uid,
+      required final List<dynamic> purchase_course})
+      : _purchase_course = purchase_course;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -123,10 +141,17 @@ class _$_User implements _User {
   final String email;
   @override
   final String uid;
+  final List<dynamic> _purchase_course;
+  @override
+  List<dynamic> get purchase_course {
+    if (_purchase_course is EqualUnmodifiableListView) return _purchase_course;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_purchase_course);
+  }
 
   @override
   String toString() {
-    return 'User(name: $name, email: $email, uid: $uid)';
+    return 'User(name: $name, email: $email, uid: $uid, purchase_course: $purchase_course)';
   }
 
   @override
@@ -136,12 +161,15 @@ class _$_User implements _User {
             other is _$_User &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            const DeepCollectionEquality()
+                .equals(other._purchase_course, _purchase_course));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, uid);
+  int get hashCode => Object.hash(runtimeType, name, email, uid,
+      const DeepCollectionEquality().hash(_purchase_course));
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +189,8 @@ abstract class _User implements User {
   const factory _User(
       {required final String name,
       required final String email,
-      required final String uid}) = _$_User;
+      required final String uid,
+      required final List<dynamic> purchase_course}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -171,6 +200,8 @@ abstract class _User implements User {
   String get email;
   @override
   String get uid;
+  @override
+  List<dynamic> get purchase_course;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

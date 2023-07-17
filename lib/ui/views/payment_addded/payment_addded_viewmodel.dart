@@ -11,7 +11,7 @@ class PaymentAdddedViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
-   final _snackBarService = locator<SnackbarService>();
+  final _snackBarService = locator<SnackbarService>();
   
   Future<void> payCourse() async {
     setBusy(true);
@@ -21,12 +21,12 @@ class PaymentAdddedViewModel extends BaseViewModel {
 
     setBusy(false);
 
-    response.fold((l) {
-      _snackBarService.showSnackbar(message: l.message);
-    }, (r) {
-      _snackBarService.showSnackbar(message: "Course Add Successfully.");
+    if (response != null) {
+      _snackBarService.showSnackbar(message: response.toString());
+    } else {
+      _snackBarService.showSnackbar(message: "Course purchase succefully");
       _navigationService.replaceWithYourCoursesView();
-    });
+    }
   }
 
 }

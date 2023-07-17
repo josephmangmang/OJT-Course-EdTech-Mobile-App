@@ -738,6 +738,35 @@ class MockRepositoryService extends _i1.Mock implements _i11.RepositoryService {
         returnValueForMissingStub:
             _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> addCourse() => (super.noSuchMethod(
+        Invocation.method(
+          #addCourse,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> yourCourse() => (super.noSuchMethod(
+        Invocation.method(
+          #yourCourse,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<String?> buyCourse(String? courseId) => (super.noSuchMethod(
+        Invocation.method(
+          #buyCourse,
+          [courseId],
+        ),
+        returnValue: _i9.Future<String?>.value(),
+        returnValueForMissingStub: _i9.Future<String?>.value(),
+      ) as _i9.Future<String?>);
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -782,6 +811,31 @@ class MockRepositoryImplService extends _i1.Mock
         ),
       ) as _i2.User);
   @override
+  set user(dynamic _user) => super.noSuchMethod(
+        Invocation.setter(
+          #user,
+          _user,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set FirebaseAuthException(dynamic _FirebaseAuthException) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #FirebaseAuthException,
+          _FirebaseAuthException,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set listOfCourse(dynamic _listOfCourse) => super.noSuchMethod(
+        Invocation.setter(
+          #listOfCourse,
+          _listOfCourse,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i9.Future<List<_i5.Course>> getCourse() => (super.noSuchMethod(
         Invocation.method(
           #getCourse,
@@ -808,6 +862,35 @@ class MockRepositoryImplService extends _i1.Mock
         Invocation.method(
           #categoryCourse,
           [categoryCourse],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<List<_i5.Course>> addCourse() => (super.noSuchMethod(
+        Invocation.method(
+          #addCourse,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i9.Future<List<_i5.Course>>);
+  @override
+  _i9.Future<String?> buyCourse(String? courseId) => (super.noSuchMethod(
+        Invocation.method(
+          #buyCourse,
+          [courseId],
+        ),
+        returnValue: _i9.Future<String?>.value(),
+        returnValueForMissingStub: _i9.Future<String?>.value(),
+      ) as _i9.Future<String?>);
+  @override
+  _i9.Future<List<_i5.Course>> yourCourse() => (super.noSuchMethod(
+        Invocation.method(
+          #yourCourse,
+          [],
         ),
         returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
         returnValueForMissingStub:
