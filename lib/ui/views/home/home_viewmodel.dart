@@ -112,7 +112,7 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  void backOnPressed() {
+  void onBackPressed() {
     if (previousPageIndex != null) {
       onDestinationSelected(previousPageIndex!);
     }

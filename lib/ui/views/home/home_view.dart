@@ -382,12 +382,12 @@ class HomeView extends StackedView<HomeViewModel> {
                           ),
                           ProfileView(
                             onBackPressed: () {
-                              viewModel.onDestinationSelected(0);
+                              viewModel.onBackPressed();
                             },
                           ),
                           SettingsView(
                             onBackPressed: () {
-                              viewModel.onDestinationSelected(0);
+                              viewModel.onBackPressed();
                             },
                           ),
                         ],
