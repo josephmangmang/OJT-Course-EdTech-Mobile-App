@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/search_course.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
@@ -26,29 +27,18 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                 Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   alignment: Alignment.centerLeft,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      SvgPicture.asset('assets/svg/Background.svg'),
-                      SvgPicture.asset('assets/svg/Go-back.svg'),
-                    ],
+                  child: GestureDetector(
+                    onTap: viewModel.goBack,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SvgPicture.asset('assets/svg/Background.svg'),
+                        SvgPicture.asset('assets/svg/Go-back.svg'),
+                      ],
+                    ),
                   ),
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          width: 1,
-                          color: Color(0xFFBEBAB3),
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      hintText: "Search courses",
-                      suffixIcon: Transform.scale(
-                          scale: 0.6,
-                          child:
-                              SvgPicture.asset('assets/svg/Search Icon.svg'))),
-                ),
+                SearchCourse(searchPressed: viewModel.seachCourse, searchTextController: viewModel.searchTextController),
                 const SizedBox(
                   height: 32,
                 ),

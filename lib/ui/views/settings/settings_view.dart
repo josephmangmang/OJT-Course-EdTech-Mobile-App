@@ -85,7 +85,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                       ),
                                     ),
                                   ),
-                                  SvgPicture.asset('assets/svg/Toggle Buttons.svg')
+                                  SvgPicture.asset(SvgImages.toggleButtons)
                                 ]),
                           ),
                           Container(
@@ -104,17 +104,17 @@ class SettingsView extends StackedView<SettingsViewModel> {
                             height: 16,
                           ),
                           buildCell(
-                            icon: 'assets/svg/Path.svg',
+                            icon: SvgImages.path,
                             title: 'Name',
                             subtitle: viewModel.user!.name,
                           ),
                           buildCell(
-                            icon: 'assets/svg/Shape.svg',
+                            icon: SvgImages.shape,
                             title: 'Email',
                             subtitle: viewModel.user!.email,
                           ),
                           buildCell(
-                            icon: 'assets/svg/Vector.svg',
+                            icon: SvgImages.vector,
                             title: 'Password',
                             subtitle: 'changed 2 weeks ago',
                           ),

@@ -35,12 +35,15 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                     margin: const EdgeInsets.only(right: 56 - 16),
                                     child: Row(
                                       children: [
-                                        Stack(
-                                          alignment: Alignment.center,
-                                          children: [
-                                            SvgPicture.asset('assets/svg/Background.svg'),
-                                            SvgPicture.asset('assets/svg/Go-back.svg'),
-                                          ],
+                                        GestureDetector(
+                                          onTap: viewModel.goBack,
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              SvgPicture.asset('assets/svg/Background.svg'),
+                                              SvgPicture.asset('assets/svg/Go-back.svg'),
+                                            ],
+                                          ),
                                         ),
                                         const Expanded(
                                           child: Text(

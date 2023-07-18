@@ -24,6 +24,7 @@ class HomeViewModel extends BaseViewModel {
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];
+  List<int> indeces = []; 
   final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
@@ -61,6 +62,9 @@ class HomeViewModel extends BaseViewModel {
         listOfCourse = value;
         _navigationService.navigateToSearchResultsView();
       }
+      else {
+        _navigationService.navigateToNotFoundView();
+      }
     });
 
     print(searchTextController.text);
@@ -92,6 +96,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onDestinationSelected(int index) {
+    indeces.add(index);
     currentPageIndex = index;
     pageController.animateToPage(
       currentPageIndex,

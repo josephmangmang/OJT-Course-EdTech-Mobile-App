@@ -35,4 +35,8 @@ class YourCoursesViewModel extends BaseViewModel {
     print(courses.toString());
     print(courses.length);
   }
+
+  void goBack () {
+    _navigationService.back();
+  }
 }

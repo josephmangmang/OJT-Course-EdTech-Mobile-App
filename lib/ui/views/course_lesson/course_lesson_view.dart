@@ -1,3 +1,4 @@
+import 'package:edtechapp/resources/svg_images.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,7 +40,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                   child: IconButton(
                                     onPressed: () {},
                                     icon: SvgPicture.asset(
-                                        'assets/svg/Go-back.svg'),
+                                        SvgImages.goBack),
                                   ),
                                 ),
                               ),
@@ -209,7 +210,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: SvgPicture.asset(
-                      'assets/svg/Play Icon.svg',
+                      SvgImages.playIcon,
                       fit: BoxFit.contain,
                     ),
                   ),
