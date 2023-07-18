@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:dartz/dartz.dart';
@@ -24,7 +25,6 @@ class HomeViewModel extends BaseViewModel {
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];
-  List<int> indeces = []; 
   final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
@@ -32,6 +32,8 @@ class HomeViewModel extends BaseViewModel {
   Course? course;
 
   int currentPageIndex = 0;
+
+  int? previousPageIndex;
 
   init() async {
     setBusy(true);
@@ -61,8 +63,7 @@ class HomeViewModel extends BaseViewModel {
       if (value.isNotEmpty) {
         listOfCourse = value;
         _navigationService.navigateToSearchResultsView();
-      }
-      else {
+      } else {
         _navigationService.navigateToNotFoundView();
       }
     });
@@ -91,12 +92,17 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onPageChanged(int index) {
+    if (previousPageIndex != currentPageIndex) {
+      previousPageIndex = currentPageIndex;
+    }
     currentPageIndex = index;
     rebuildUi();
   }
 
   void onDestinationSelected(int index) {
-    indeces.add(index);
+    if (previousPageIndex != currentPageIndex) {
+      previousPageIndex = currentPageIndex;
+    }
     currentPageIndex = index;
     pageController.animateToPage(
       currentPageIndex,
@@ -104,5 +110,19 @@ class HomeViewModel extends BaseViewModel {
       curve: Curves.easeInOut,
     );
     rebuildUi();
+  }
+
+  void backOnPressed() {
+    if (previousPageIndex != null) {
+      onDestinationSelected(previousPageIndex!);
+    }
+    else {
+      if(_navigationService.currentRoute == Routes.homeView){
+        exit(0);
+      }
+      else {
+      _navigationService.replaceWithHomeView();
+      }
+    }
   }
 }
