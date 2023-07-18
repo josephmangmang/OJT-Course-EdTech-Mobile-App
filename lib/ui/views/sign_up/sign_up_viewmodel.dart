@@ -46,5 +46,4 @@ class SignUpViewModel extends BaseViewModel {
   void goToLoginPage() {
     _navigatorService.replaceWithLoginView();
   }
-
 }

@@ -29,7 +29,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                   child: SingleChildScrollView(
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       child: Column(children: [
                         Container(
                           child: Row(
@@ -42,7 +43,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: [
-                                    SvgPicture.asset('assets/svg/Background.svg'),
+                                    SvgPicture.asset(
+                                        'assets/svg/Background.svg'),
                                     SvgPicture.asset('assets/svg/Go-back.svg'),
                                   ],
                                 ),
@@ -82,7 +84,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                               onItemPressed: (Course course) {
                                 viewModel.coursePressed(courseItem);
                               },
-                              backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
+                              backgroundColor: Color(
+                                  index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
                             );
                           },
                         ),

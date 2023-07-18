@@ -28,11 +28,13 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                         Expanded(
                           child: SingleChildScrollView(
                             child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
                               child: Wrap(
                                 children: [
                                   Container(
-                                    margin: const EdgeInsets.only(right: 56 - 16),
+                                    margin:
+                                        const EdgeInsets.only(right: 56 - 16),
                                     child: Row(
                                       children: [
                                         GestureDetector(
@@ -71,7 +73,8 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                       primary: false,
                                       itemCount: viewModel.courses.length,
                                       itemBuilder: (context, index) {
-                                        var courseItem = viewModel.courses[index];
+                                        var courseItem =
+                                            viewModel.courses[index];
                                         return YourCourseCard(
                                             description: courseItem.subtitle,
                                             title: courseItem.title,
@@ -79,7 +82,8 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                             hour: courseItem.duration,
                                             image: courseItem.image,
                                             courseSelected: () {
-                                              viewModel.coursePressed(courseItem.id);
+                                              viewModel
+                                                  .coursePressed(courseItem.id);
                                             });
                                       },
                                     ),
@@ -102,6 +106,8 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
       YourCoursesViewModel();
 
   Widget emptyView(BuildContext context) {
-    return SizedBox(height: MediaQuery.sizeOf(context).height, child: const Center(child: Text('No courses found')));
+    return SizedBox(
+        height: MediaQuery.sizeOf(context).height,
+        child: const Center(child: Text('No courses found')));
   }
 }

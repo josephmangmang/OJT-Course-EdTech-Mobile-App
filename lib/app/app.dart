@@ -36,6 +36,8 @@ import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 
 import '../services/authentication_service_mock.dart';
+import 'package:edtechapp/ui/views/payment_methods/payment_methods_view.dart';
+import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -46,7 +48,9 @@ import '../services/authentication_service_mock.dart';
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: ProfileView),
     MaterialRoute(page: SettingsView),
-    CustomRoute(page: ProjectDetailView, transitionsBuilder: TransitionsBuilders.slideLeftWithFade),
+    CustomRoute(
+        page: ProjectDetailView,
+        transitionsBuilder: TransitionsBuilders.slideLeftWithFade),
     MaterialRoute(page: YourCoursesView),
     MaterialRoute(page: LessonCoursesView),
     MaterialRoute(page: NotSavedView),
@@ -62,6 +66,8 @@ import '../services/authentication_service_mock.dart';
     MaterialRoute(page: ResultView),
     MaterialRoute(page: SearchResultsView),
     MaterialRoute(page: ForgotPasswordView),
+    MaterialRoute(page: PaymentMethodsView),
+    MaterialRoute(page: PaymentCheckoutView),
 // @stacked-route
   ],
   dependencies: [

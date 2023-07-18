@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:edtechapp/model/course.dart' as _i24;
+import 'package:edtechapp/model/course.dart' as _i26;
 import 'package:edtechapp/ui/views/course_lesson/course_lesson_view.dart'
     as _i17;
 import 'package:edtechapp/ui/views/course_test/course_test_view.dart' as _i18;
@@ -21,6 +21,10 @@ import 'package:edtechapp/ui/views/not_found/not_found_view.dart' as _i15;
 import 'package:edtechapp/ui/views/not_saved/not_saved_view.dart' as _i11;
 import 'package:edtechapp/ui/views/payment_addded/payment_addded_view.dart'
     as _i14;
+import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart'
+    as _i24;
+import 'package:edtechapp/ui/views/payment_methods/payment_methods_view.dart'
+    as _i23;
 import 'package:edtechapp/ui/views/profile/profile_view.dart' as _i6;
 import 'package:edtechapp/ui/views/project_detail/project_detail_view.dart'
     as _i8;
@@ -34,10 +38,10 @@ import 'package:edtechapp/ui/views/startup/startup_view.dart' as _i3;
 import 'package:edtechapp/ui/views/test_question/test_question_view.dart'
     as _i19;
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart' as _i9;
-import 'package:flutter/material.dart' as _i23;
+import 'package:flutter/material.dart' as _i25;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i25;
+import 'package:stacked_services/stacked_services.dart' as _i27;
 
 class Routes {
   static const homeView = '/home-view';
@@ -82,6 +86,10 @@ class Routes {
 
   static const forgotPasswordView = '/forgot-password-view';
 
+  static const paymentMethodsView = '/payment-methods-view';
+
+  static const paymentCheckoutView = '/payment-checkout-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -104,6 +112,8 @@ class Routes {
     resultView,
     searchResultsView,
     forgotPasswordView,
+    paymentMethodsView,
+    paymentCheckoutView,
   };
 }
 
@@ -193,36 +203,44 @@ class StackedRouter extends _i1.RouterBase {
       Routes.forgotPasswordView,
       page: _i22.ForgotPasswordView,
     ),
+    _i1.RouteDef(
+      Routes.paymentMethodsView,
+      page: _i23.PaymentMethodsView,
+    ),
+    _i1.RouteDef(
+      Routes.paymentCheckoutView,
+      page: _i24.PaymentCheckoutView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.SignUpView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SignUpView(),
         settings: data,
       );
     },
     _i6.ProfileView: (data) {
       final args = data.getArgs<ProfileViewArguments>(nullOk: false);
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i6.ProfileView(key: args.key, onBackPressed: args.onBackPressed),
         settings: data,
@@ -230,7 +248,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i7.SettingsView: (data) {
       final args = data.getArgs<SettingsViewArguments>(nullOk: false);
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i7.SettingsView(key: args.key, onBackPressed: args.onBackPressed),
         settings: data,
@@ -238,7 +256,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i8.ProjectDetailView: (data) {
       final args = data.getArgs<ProjectDetailViewArguments>(nullOk: false);
-      return _i23.PageRouteBuilder<dynamic>(
+      return _i25.PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
             _i8.ProjectDetailView(args.course, key: args.key),
         settings: data,
@@ -247,43 +265,43 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i9.YourCoursesView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.YourCoursesView(),
         settings: data,
       );
     },
     _i10.LessonCoursesView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.LessonCoursesView(),
         settings: data,
       );
     },
     _i11.NotSavedView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.NotSavedView(),
         settings: data,
       );
     },
     _i12.NoPaymentView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.NoPaymentView(),
         settings: data,
       );
     },
     _i13.SavedView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i13.SavedView(),
         settings: data,
       );
     },
     _i14.PaymentAdddedView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.PaymentAdddedView(),
         settings: data,
       );
     },
     _i15.NotFoundView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.NotFoundView(),
         settings: data,
       );
@@ -292,44 +310,56 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<IntroPageArguments>(
         orElse: () => const IntroPageArguments(),
       );
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => _i16.IntroPage(key: args.key),
         settings: data,
       );
     },
     _i17.CourseLessonView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i17.CourseLessonView(),
         settings: data,
       );
     },
     _i18.CourseTestView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i18.CourseTestView(),
         settings: data,
       );
     },
     _i19.TestQuestionView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i19.TestQuestionView(),
         settings: data,
       );
     },
     _i20.ResultView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i20.ResultView(),
         settings: data,
       );
     },
     _i21.SearchResultsView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i21.SearchResultsView(),
         settings: data,
       );
     },
     _i22.ForgotPasswordView: (data) {
-      return _i23.MaterialPageRoute<dynamic>(
+      return _i25.MaterialPageRoute<dynamic>(
         builder: (context) => const _i22.ForgotPasswordView(),
+        settings: data,
+      );
+    },
+    _i23.PaymentMethodsView: (data) {
+      return _i25.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i23.PaymentMethodsView(),
+        settings: data,
+      );
+    },
+    _i24.PaymentCheckoutView: (data) {
+      return _i25.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i24.PaymentCheckoutView(),
         settings: data,
       );
     },
@@ -347,7 +377,7 @@ class ProfileViewArguments {
     required this.onBackPressed,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   final dynamic Function() onBackPressed;
 
@@ -374,7 +404,7 @@ class SettingsViewArguments {
     required this.onBackPressed,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   final dynamic Function() onBackPressed;
 
@@ -401,9 +431,9 @@ class ProjectDetailViewArguments {
     this.key,
   });
 
-  final _i24.Course course;
+  final _i26.Course course;
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   @override
   String toString() {
@@ -425,7 +455,7 @@ class ProjectDetailViewArguments {
 class IntroPageArguments {
   const IntroPageArguments({this.key});
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   @override
   String toString() {
@@ -444,7 +474,7 @@ class IntroPageArguments {
   }
 }
 
-extension NavigatorStateExtension on _i25.NavigationService {
+extension NavigatorStateExtension on _i27.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -502,7 +532,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> navigateToProfileView({
-    _i23.Key? key,
+    _i25.Key? key,
     required dynamic Function() onBackPressed,
     int? routerId,
     bool preventDuplicates = true,
@@ -519,7 +549,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> navigateToSettingsView({
-    _i23.Key? key,
+    _i25.Key? key,
     required dynamic Function() onBackPressed,
     int? routerId,
     bool preventDuplicates = true,
@@ -537,8 +567,8 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> navigateToProjectDetailView({
-    required _i24.Course course,
-    _i23.Key? key,
+    required _i26.Course course,
+    _i25.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -652,7 +682,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> navigateToIntroPage({
-    _i23.Key? key,
+    _i25.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -751,6 +781,34 @@ extension NavigatorStateExtension on _i25.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToPaymentMethodsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.paymentMethodsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToPaymentCheckoutView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.paymentCheckoutView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -808,7 +866,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> replaceWithProfileView({
-    _i23.Key? key,
+    _i25.Key? key,
     required dynamic Function() onBackPressed,
     int? routerId,
     bool preventDuplicates = true,
@@ -825,7 +883,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> replaceWithSettingsView({
-    _i23.Key? key,
+    _i25.Key? key,
     required dynamic Function() onBackPressed,
     int? routerId,
     bool preventDuplicates = true,
@@ -843,8 +901,8 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> replaceWithProjectDetailView({
-    required _i24.Course course,
-    _i23.Key? key,
+    required _i26.Course course,
+    _i25.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -958,7 +1016,7 @@ extension NavigatorStateExtension on _i25.NavigationService {
   }
 
   Future<dynamic> replaceWithIntroPage({
-    _i23.Key? key,
+    _i25.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1051,6 +1109,34 @@ extension NavigatorStateExtension on _i25.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.forgotPasswordView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPaymentMethodsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.paymentMethodsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPaymentCheckoutView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.paymentCheckoutView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

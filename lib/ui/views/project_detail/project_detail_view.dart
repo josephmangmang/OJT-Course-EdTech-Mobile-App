@@ -59,7 +59,9 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      Hero(tag: 'image_cover_${viewModel.course.id}', child: Image.network(viewModel.course.image)),
+                      Hero(
+                          tag: 'image_cover_${viewModel.course.id}',
+                          child: Image.network(viewModel.course.image)),
                       const SizedBox(
                         height: 16,
                       ),
@@ -67,7 +69,8 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         alignment: AlignmentDirectional.centerEnd,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 4),
                           decoration: BoxDecoration(
                             color: const Color(0xFF65A9E9),
                             borderRadius: BorderRadius.circular(12),
@@ -121,7 +124,10 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                             Text(
                               viewModel.course.duration,
                               style: const TextStyle(
-                                  height: 1.4, color: Color(0xFF3B3936), fontSize: 14, fontWeight: FontWeight.w500),
+                                  height: 1.4,
+                                  color: Color(0xFF3B3936),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
@@ -132,8 +138,10 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       GestureDetector(
                         onTap: viewModel.addToCart,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                          margin: const EdgeInsets.symmetric(horizontal: 33 - 16),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 16),
+                          margin:
+                              const EdgeInsets.symmetric(horizontal: 33 - 16),
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: const Color(0xFFE35629),

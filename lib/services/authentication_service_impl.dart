@@ -26,7 +26,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, User>> login(String email, String password) async {
+  Future<Either<AppException, User>> login(
+      String email, String password) async {
     try {
       final credential = await auth.signInWithEmailAndPassword(
         email: email,
@@ -45,7 +46,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, None>> signup(String name, String email, String password) async {
+  Future<Either<AppException, None>> signup(
+      String name, String email, String password) async {
     try {
       UserCredential credential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -55,7 +57,11 @@ class AuthenticationServiceImpl implements AuthenticationService {
       if (credential.user == null) {
         return Left(AppException("User not found"));
       }
-      User user = User(name: name, email: email, uid: credential.user!.uid, purchaseCourses: List.empty());
+      User user = User(
+          name: name,
+          email: email,
+          uid: credential.user!.uid,
+          purchaseCourses: List.empty());
 
       db.collection('users').doc(credential.user?.uid).set(user.toJson());
 
@@ -83,7 +89,10 @@ class AuthenticationServiceImpl implements AuthenticationService {
     if (user == null) {
       return Left(AppException('No logged in user'));
     } else {
-      final updatedUserDoc = await db.collection(FirebaseConstants.userCollection).doc(user.uid).get();
+      final updatedUserDoc = await db
+          .collection(FirebaseConstants.userCollection)
+          .doc(user.uid)
+          .get();
       return Right(User.fromJson(updatedUserDoc.data()!));
     }
   }
