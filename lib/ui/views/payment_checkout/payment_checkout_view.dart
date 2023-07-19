@@ -1,4 +1,4 @@
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -175,28 +175,10 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                 const SizedBox(
                   height: 216,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    margin: const EdgeInsets.symmetric(horizontal: 33 - 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: const Color(0xFFE35629),
-                    ),
-                    child: const Text(
-                      "Confirm Payment \$50.00",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
+                AppButton(
+                  title: "Confirm payment \$50.00",
+                  onClick: () {},
+                )
               ],
             ),
           ),

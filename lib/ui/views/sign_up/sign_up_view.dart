@@ -1,5 +1,5 @@
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -124,46 +124,9 @@ class SignUpView extends StackedView<SignUpViewModel> {
                         const SizedBox(
                           height: 16.0,
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              viewModel.signupPressed();
-                            },
-                            style: ButtonStyle(
-                              padding:
-                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                const EdgeInsets.symmetric(
-                                    horizontal: 32, vertical: 16),
-                              ),
-                              alignment: Alignment.center,
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color(0xFFE35629),
-                              ),
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              textStyle: MaterialStateProperty.all<TextStyle>(
-                                const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                            child: const Text(
-                              'Sign up',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
+                        AppButton(
+                          title: "Sign up",
+                          onClick: viewModel.signupPressed,
                         ),
                         TextButton(
                           onPressed: viewModel.goToLoginPage,
@@ -189,6 +152,5 @@ class SignUpView extends StackedView<SignUpViewModel> {
   ) =>
       SignUpViewModel();
 
-  void fold(
-      void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
+  void fold(void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
 }

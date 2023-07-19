@@ -1,7 +1,6 @@
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_svg/svg.dart';
 import 'course_test_viewmodel.dart';
 
 class CourseTestView extends StackedView<CourseTestViewModel> {

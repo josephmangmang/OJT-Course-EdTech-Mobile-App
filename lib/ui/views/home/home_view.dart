@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
+
 import 'package:edtechapp/ui/custom_widget/search_course.dart';
-import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../model/course.dart';
