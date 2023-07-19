@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -28,39 +29,11 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                         Expanded(
                           child: SingleChildScrollView(
                             child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
+                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                               child: Wrap(
                                 children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.only(right: 56 - 16),
-                                    child: Row(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: viewModel.goBack,
-                                          child: Stack(
-                                            alignment: Alignment.center,
-                                            children: [
-                                              SvgPicture.asset('assets/svg/Background.svg'),
-                                              SvgPicture.asset('assets/svg/Go-back.svg'),
-                                            ],
-                                          ),
-                                        ),
-                                        const Expanded(
-                                          child: Text(
-                                            'Your Courses',
-                                            style: TextStyle(
-                                              color: Color(0xFF3B3936),
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.w700,
-                                              letterSpacing: -0.50,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                  CustomAppBar(
+                                    title: "Your Courses",
                                   ),
                                   const SizedBox(
                                     height: 16,
@@ -73,8 +46,7 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                       primary: false,
                                       itemCount: viewModel.courses.length,
                                       itemBuilder: (context, index) {
-                                        var courseItem =
-                                            viewModel.courses[index];
+                                        var courseItem = viewModel.courses[index];
                                         return YourCourseCard(
                                             description: courseItem.subtitle,
                                             title: courseItem.title,
@@ -82,8 +54,7 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                             hour: courseItem.duration,
                                             image: courseItem.image,
                                             courseSelected: () {
-                                              viewModel
-                                                  .coursePressed(courseItem.id);
+                                              viewModel.coursePressed(courseItem.id);
                                             });
                                       },
                                     ),
@@ -106,8 +77,6 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
       YourCoursesViewModel();
 
   Widget emptyView(BuildContext context) {
-    return SizedBox(
-        height: MediaQuery.sizeOf(context).height,
-        child: const Center(child: Text('No courses found')));
+    return SizedBox(height: MediaQuery.sizeOf(context).height, child: const Center(child: Text('No courses found')));
   }
 }

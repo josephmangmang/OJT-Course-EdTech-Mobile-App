@@ -15,10 +15,6 @@ class ProjectDetailViewModel extends BaseViewModel {
 
   ProjectDetailViewModel(this.course);
 
-  void goBack() {
-    _navigationService.back();
-  }
-
   void addToCart() {
     _navigationService.navigateToPaymentAdddedView();
   }

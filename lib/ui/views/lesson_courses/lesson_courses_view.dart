@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -19,39 +20,14 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 8),
-                  padding: const EdgeInsets.only(right: 56 - 16),
-                  child: Row(
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SvgPicture.asset('assets/svg/Background.svg'),
-                          SvgPicture.asset('assets/svg/Go-back.svg'),
-                        ],
-                      ),
-                      const Expanded(
-                        child: Text(
-                          'HTML',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: -0.5,
-                            color: Color(0xFF3B3936),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                CustomAppBar(
+                  title: "HTMl",
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
+                    border: Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -60,14 +36,11 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                         color: const Color(0xFFFFF5EE),
                         child: Column(
                           children: [
-                            Image.asset(
-                                'assets/png/Cool Kids Long Distance Relationship.png'),
+                            Image.asset('assets/png/Cool Kids Long Distance Relationship.png'),
                             Container(
-                              padding: const EdgeInsets.only(
-                                  right: 8, left: 16, bottom: 8),
+                              padding: const EdgeInsets.only(right: 8, left: 16, bottom: 8),
                               alignment: Alignment.centerRight,
-                              child:
-                                  SvgPicture.asset('assets/svg/Play Icon.svg'),
+                              child: SvgPicture.asset('assets/svg/Play Icon.svg'),
                             ),
                           ],
                         ),

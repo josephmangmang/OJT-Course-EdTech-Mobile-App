@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,36 +19,7 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
           child: Padding(
             padding: const EdgeInsets.only(),
             child: Column(children: [
-              Container(
-                width: 375,
-                height: 40,
-                padding: const EdgeInsets.only(left: 16),
-                child: Row(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: ClipOval(
-                            child: SizedBox(
-                              height: 48,
-                              width: 48,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon:
-                                    SvgPicture.asset('assets/svg/Go-back.svg'),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              CustomAppBar(),
               Container(
                 width: 343,
                 height: 605,
