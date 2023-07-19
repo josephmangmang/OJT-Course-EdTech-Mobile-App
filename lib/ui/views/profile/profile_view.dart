@@ -1,9 +1,7 @@
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'profile_viewmodel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
   final Function() onBackPressed;

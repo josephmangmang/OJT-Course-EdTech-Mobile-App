@@ -1,9 +1,8 @@
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
+import 'package:edtechapp/ui/custom_widget/your_course_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'your_courses_viewmodel.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
 class YourCoursesView extends StackedView<YourCoursesViewModel> {
   const YourCoursesView({Key? key}) : super(key: key);
@@ -48,14 +47,11 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                       itemBuilder: (context, index) {
                                         var courseItem = viewModel.courses[index];
                                         return YourCourseCard(
-                                            description: courseItem.subtitle,
-                                            title: courseItem.title,
-                                            color: viewModel.getColor(index),
-                                            hour: courseItem.duration,
-                                            image: courseItem.image,
                                             courseSelected: () {
                                               viewModel.coursePressed(courseItem.id);
-                                            });
+                                            },
+                                            course: courseItem,
+                                            color: viewModel.getColor(index));
                                       },
                                     ),
                                 ],

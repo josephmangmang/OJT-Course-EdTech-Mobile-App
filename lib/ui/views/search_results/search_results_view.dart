@@ -5,7 +5,6 @@ import '../../../model/course.dart';
 import '../../custom_widget/course_card.dart';
 import '../../custom_widget/search_course.dart';
 import 'search_results_viewmodel.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
 class SearchResultsView extends StackedView<SearchResultsViewModel> {
   const SearchResultsView({Key? key}) : super(key: key);

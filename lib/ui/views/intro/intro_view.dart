@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -60,8 +61,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_Long_Distance_Relationship.png"),
+                                      image: AssetImage("assets/png/Cool_Kids_Long_Distance_Relationship.png"),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -72,8 +72,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         'Learn anytime \nand anywhere',
@@ -127,8 +126,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_Staying_Home.png"),
+                                      image: AssetImage("assets/png/Cool_Kids_Staying_Home.png"),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -139,8 +137,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         'Find a Course \nfor you',
@@ -195,8 +192,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_High_Tech.png"),
+                                      image: AssetImage("assets/png/Cool_Kids_High_Tech.png"),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -207,8 +203,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         'Improve your skills',
@@ -274,17 +269,15 @@ class IntroPage extends StackedView<IntroViewModel> {
                   ),
                 ),
                 Positioned(
-                  left: 32,
-                  right: 32,
-                  top: 706,
-                  bottom: 50,
-                  child: SizedBox(
-                    width: 320,
-                    child: ElevatedButton(
-                      onPressed: () {
+                    left: 32,
+                    right: 32,
+                    top: 706,
+                    bottom: 50,
+                    child: AppButton(
+                      title: viewModel.buttontext,
+                      onClick: () {
                         // ignore: non_constant_identifier_names
-                        final int currentPageIndex =
-                            pageController.page?.round() ?? 0;
+                        final int currentPageIndex = pageController.page?.round() ?? 0;
                         const int lastPageIndex = 2;
                         if (currentPageIndex == lastPageIndex) {
                           // Navigate to the home page
@@ -300,36 +293,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                           );
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 20),
-                        backgroundColor: const Color(0xFFE35629),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              viewModel.buttontext,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: 'Rubik',
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                    )),
               ],
             ),
           ),
