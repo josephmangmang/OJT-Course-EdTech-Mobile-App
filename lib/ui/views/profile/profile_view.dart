@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -21,7 +22,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
           child: Column(
             children: [
               CustomAppBar(
-                action: onBackPressed,
+                backButtonPressed: onBackPressed,
                 title: "Profile",
               ),
               const SizedBox(
@@ -51,8 +52,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
               GestureDetector(
                 onTap: viewModel.yourCourse,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   alignment: Alignment.center,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -76,8 +76,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -100,8 +99,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(

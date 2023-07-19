@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,50 +21,8 @@ class ResultView extends StackedView<ResultViewModel> {
             child: Center(
               child: Column(children: [
                 //verticalSpaceLarge,
-                Container(
-                  width: 375,
-                  height: 40,
-                  child: Row(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.grey),
-                            ),
-                            child: ClipOval(
-                              child: SizedBox(
-                                height: 48,
-                                width: 48,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: SvgPicture.asset(
-                                      'assets/svg/Go-back.svg'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 263,
-                            height: 32,
-                            alignment: Alignment.center,
-                            child: const Text(
-                              'Results',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF3B3936),
-                                fontSize: 24,
-                                fontFamily: 'Rubik',
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: -0.50,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                CustomAppBar(
+                  title: "Results",
                 ),
                 Container(
                   width: 375,
@@ -77,8 +36,7 @@ class ResultView extends StackedView<ResultViewModel> {
                         height: 253,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(
-                                "assets/png/Cool Kids Xmas Morning.png"),
+                            image: AssetImage("assets/png/Cool Kids Xmas Morning.png"),
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -126,15 +84,13 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset(
-                                'assets/svg/facebook-icon.svg'),
+                            child: SvgPicture.asset('assets/svg/facebook-icon.svg'),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -144,15 +100,13 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset(
-                                'assets/svg/Instagram-icon.svg'),
+                            child: SvgPicture.asset('assets/svg/Instagram-icon.svg'),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -162,15 +116,13 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child:
-                                SvgPicture.asset('assets/svg/Google-icon.svg'),
+                            child: SvgPicture.asset('assets/svg/Google-icon.svg'),
                           )),
                     ],
                   ),

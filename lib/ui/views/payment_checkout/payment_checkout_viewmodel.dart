@@ -1,3 +1,12 @@
+import 'package:edtechapp/app/app.locator.dart';
+import 'package:edtechapp/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-class PaymentCheckoutViewModel extends BaseViewModel {}
+class PaymentCheckoutViewModel extends BaseViewModel {
+  final _navigatorService = locator<NavigationService>();
+
+  void goToLoginPage() {
+    _navigatorService.replaceWithLoginView();
+  }
+}
