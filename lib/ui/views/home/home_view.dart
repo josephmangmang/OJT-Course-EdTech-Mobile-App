@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
+import 'package:edtechapp/ui/custom_widget/search_course.dart';
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,30 +109,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                           ],
                                         ),
                                       ),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16),
-                                        child: TextField(
-                                          controller:
-                                              viewModel.searchTextController,
-                                          decoration: InputDecoration(
-                                              border: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFBEBAB3),
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              suffixIcon: Transform.scale(
-                                                  scale: 0.6,
-                                                  child: IconButton(
-                                                      onPressed: viewModel
-                                                          .searchCourse,
-                                                      icon: SvgPicture.asset(
-                                                          'assets/svg/Search Icon.svg')))),
-                                        ),
-                                      ),
+                                      SearchCourse(searchPressed: viewModel.searchCourse, searchTextController: viewModel.searchTextController),
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
@@ -404,12 +382,12 @@ class HomeView extends StackedView<HomeViewModel> {
                           ),
                           ProfileView(
                             onBackPressed: () {
-                              viewModel.onDestinationSelected(0);
+                              viewModel.onBackPressed();
                             },
                           ),
                           SettingsView(
                             onBackPressed: () {
-                              viewModel.onDestinationSelected(0);
+                              viewModel.onBackPressed();
                             },
                           ),
                         ],
@@ -446,29 +424,29 @@ class HomeView extends StackedView<HomeViewModel> {
                         destinations: [
                           NavigationDestination(
                               icon: SvgPicture.asset(
-                                'assets/svg/courses.svg',
+                                SvgImages.courses,
                               ),
                               selectedIcon: SvgPicture.asset(
-                                'assets/svg/courses.svg',
+                                SvgImages.courses,
                                 color: Colors.orange,
                               ),
                               label: 'Courses'),
                           NavigationDestination(
                             icon: SvgPicture.asset(
-                              'assets/svg/Profile Icon.svg',
+                              SvgImages.profileIcon,
                             ),
                             selectedIcon: SvgPicture.asset(
-                              'assets/svg/Profile Icon.svg',
+                              SvgImages.profileIcon,
                               color: Colors.orange,
                             ),
                             label: 'Profile',
                           ),
                           NavigationDestination(
                             icon: SvgPicture.asset(
-                              'assets/svg/Frame 4.svg',
+                              SvgImages.frame4,
                             ),
                             selectedIcon: SvgPicture.asset(
-                              'assets/svg/Frame 4.svg',
+                              SvgImages.frame4,
                               color: Colors.orange,
                             ),
                             label: 'Settings',

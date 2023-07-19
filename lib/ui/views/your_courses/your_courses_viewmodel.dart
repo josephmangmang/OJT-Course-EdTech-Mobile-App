@@ -9,9 +9,7 @@ import '../../../services/shared_service.dart';
 
 class YourCoursesViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
-  final _shared = locator<SharedService>();
   final _navigationService = locator<NavigationService>();
-  final _snackBarService = locator<SnackbarService>();
   List<Course> courses = [];
 
   void init() async {
@@ -35,4 +33,6 @@ class YourCoursesViewModel extends BaseViewModel {
     print(courses.toString());
     print(courses.length);
   }
+
+  
 }

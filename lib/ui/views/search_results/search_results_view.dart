@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../model/course.dart';
 import '../../custom_widget/course_card.dart';
+import '../../custom_widget/search_course.dart';
 import 'search_results_viewmodel.dart';
 import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
@@ -52,32 +53,7 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                                 width: 8,
                               ),
                               Expanded(
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  child: TextField(
-                                    controller: viewModel.searchTextController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          width: 1,
-                                          color: Color(0xFFBEBAB3),
-                                        ),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      suffixIcon: Transform.scale(
-                                        scale: 0.6,
-                                        child: IconButton(
-                                          onPressed: viewModel.searchPressed,
-                                          icon: SvgPicture.asset(
-                                              'assets/svg/Search Icon.svg'),
-                                        ),
-                                      ),
-                                      contentPadding: const EdgeInsets.only(
-                                          right: 63), // Add this line
-                                    ),
-                                  ),
-                                ),
+                                child: SearchCourse(searchPressed: viewModel.searchCourse, searchTextController: viewModel.searchTextController),
                               ),
                             ],
                           ),
