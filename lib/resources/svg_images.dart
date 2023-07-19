@@ -1,4 +1,6 @@
 class SvgImages {
+SvgImages._();
+
   static const notification = 'assets/svg/Notification.svg';
   static const profile = 'assets/svg/profile.svg';
   static const facebookIcon = 'assets/svg/facebook-icon';
@@ -21,7 +23,7 @@ class SvgImages {
   static const socialNetworksIcons = 'assets/svg/Social Networks Icons.svg';
   static const toggleButtons = 'assets/svg/Toggle Buttons.svg';
   static const vector = 'assets/svg/Vector.svg';
-  static const visibility1_1 = 'assets/svg/visibility 1 (1).svg';
+  static const visibility1 = 'assets/svg/visibility 1 (1).svg';
   static const visibility = 'assets/svg/visibility.svg';
   static const wheel1 = 'assets/svg/wheel 1.svg';
 }

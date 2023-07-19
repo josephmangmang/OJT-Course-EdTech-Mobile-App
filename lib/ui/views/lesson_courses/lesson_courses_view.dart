@@ -1,3 +1,5 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/resources/svg_images.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,8 +29,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
+                    border: Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -37,14 +38,11 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                         color: const Color(0xFFFFF5EE),
                         child: Column(
                           children: [
-                            Image.asset(
-                                'assets/png/Cool Kids Long Distance Relationship.png'),
+                            Image.asset(PngImages.coolKidsLongDistanceRelationship1),
                             Container(
-                              padding: const EdgeInsets.only(
-                                  right: 8, left: 16, bottom: 8),
+                              padding: const EdgeInsets.only(right: 8, left: 16, bottom: 8),
                               alignment: Alignment.centerRight,
-                              child:
-                                  SvgPicture.asset('assets/svg/Play Icon.svg'),
+                              child: SvgPicture.asset(SvgImages.playIcon),
                             ),
                           ],
                         ),

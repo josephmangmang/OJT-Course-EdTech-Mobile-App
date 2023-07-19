@@ -1,3 +1,5 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
@@ -23,17 +25,17 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
             child: Column(
               children: [
                 CustomAppBar(
-                  title: "Payment",
+                  title: AppConstants.paymentText,
                 ),
                 const SizedBox(
                   height: 127,
                 ),
-                Image.asset('assets/png/Cool Kids Alone Time (1).png'),
+                Image.asset(PngImages.coolKidsAloneTime1),
                 const SizedBox(
                   height: 32,
                 ),
                 const Text(
-                  'No payment method',
+                  AppConstants.noPaymentMethodText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -46,7 +48,7 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
                   height: 8,
                 ),
                 const Text(
-                  'You don\'t have any \npayment method',
+                 AppConstants.noPaymentMethodBodyText,
                   style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,
@@ -58,7 +60,7 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
                   height: 32,
                 ),
                 AppButton(
-                  title: 'Continue',
+                  title:AppConstants.continueText,
                   onClick: () {},
                 ),
               ],

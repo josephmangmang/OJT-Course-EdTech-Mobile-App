@@ -1,3 +1,6 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/search_course.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,8 +35,8 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        SvgPicture.asset('assets/svg/Background.svg'),
-                        SvgPicture.asset('assets/svg/Go-back.svg'),
+                        SvgPicture.asset(SvgImages.background),
+                        SvgPicture.asset(SvgImages.goBack),
                       ],
                     ),
                   ),
@@ -44,12 +47,12 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                 const SizedBox(
                   height: 32,
                 ),
-                Image.asset('assets/png/Cool Kids Standing.png'),
+                Image.asset(PngImages.coolKidsStanding),
                 const SizedBox(
                   height: 32,
                 ),
                 const Text(
-                  'Course not found',
+                  AppConstants.courseNotFoundText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -62,7 +65,7 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                   height: 8,
                 ),
                 const Text(
-                  'Try searching the course with \na different keyword',
+                  AppConstants.courseNotFoundBodyText,
                   style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,

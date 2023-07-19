@@ -1,3 +1,6 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +32,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                         ),
                         CustomAppBar(),
                         Image.asset(
-                          'assets/png/Cool Kids Standing (1).png',
+                          PngImages.coolKidsStanding1,
                         ),
                         const SizedBox(
                           height: 16,
@@ -37,7 +40,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                         const Column(
                           children: [
                             Text(
-                              'Sign up',
+                              AppConstants.signUpText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 24,
@@ -49,7 +52,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               height: 8.0,
                             ),
                             Text(
-                              'Create your Account',
+                              AppConstants.signUpBodyText,
                               style: TextStyle(
                                 color: Color(0xFF78746D),
                                 fontSize: 14,
@@ -67,7 +70,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            labelText: 'Name',
+                            labelText: AppConstants.nameText,
                             labelStyle: const TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -84,7 +87,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            labelText: 'E-mail',
+                            labelText: AppConstants.eMailText,
                             labelStyle: const TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -102,7 +105,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            labelText: 'Password',
+                            labelText: AppConstants.passwordText,
                             labelStyle: const TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -115,7 +118,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               icon: Transform.scale(
                                 scale: 0.6,
                                 child: SvgPicture.asset(
-                                  'assets/svg/visibility 1 (1).svg',
+                                  SvgImages.visibility1,
                                 ),
                               ),
                             ),
@@ -125,13 +128,13 @@ class SignUpView extends StackedView<SignUpViewModel> {
                           height: 16.0,
                         ),
                         AppButton(
-                          title: "Sign up",
+                          title: AppConstants.signUpText,
                           onClick: viewModel.signupPressed,
                         ),
                         TextButton(
                           onPressed: viewModel.goToLoginPage,
                           child: const Text(
-                            'Log in',
+                            AppConstants.logInText,
                             style: TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,

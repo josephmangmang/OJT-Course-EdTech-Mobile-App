@@ -1,4 +1,5 @@
 import 'package:edtechapp/model/course.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,11 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
           : SafeArea(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 8, right: 16, left: 16),
+                  margin: const EdgeInsets.only(
+                    bottom: 8,
+                    right: 16,
+                    left: 16,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -34,7 +39,7 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                         height: 16,
                       ),
                       const Text(
-                        'About the course',
+                        AppConstants.aboutCourseText,
                         style: TextStyle(
                           color: Color(0xFF3B3936),
                           fontSize: 24,
@@ -57,7 +62,7 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Duration',
+                              AppConstants.durationText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 height: 1.4,
@@ -69,7 +74,11 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                             Text(
                               viewModel.course.duration,
                               style: const TextStyle(
-                                  height: 1.4, color: Color(0xFF3B3936), fontSize: 14, fontWeight: FontWeight.w500),
+                                height: 1.4,
+                                color: Color(0xFF3B3936),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -78,7 +87,7 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                         height: 16,
                       ),
                       AppButton(
-                        title: "Add to cart",
+                        title: AppConstants.addToCartText,
                         onClick: viewModel.addToCart,
                       ),
                     ],

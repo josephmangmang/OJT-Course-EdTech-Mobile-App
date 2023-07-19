@@ -1,6 +1,7 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../custom_widget/app_button.dart';
@@ -23,17 +24,17 @@ class NotSavedView extends StackedView<NotSavedViewModel> {
             child: Column(
               children: [
                 CustomAppBar(
-                  title: "Saved",
+                  title: AppConstants.savedText,
                 ),
                 const SizedBox(
                   height: 127,
                 ),
-                Image.asset('assets/png/Cool Kids Alone Time.png'),
+                Image.asset(PngImages.coolKidsAloneTime),
                 const SizedBox(
                   height: 32,
                 ),
                 const Text(
-                  'Course not saved',
+                  AppConstants.courseNotSavedText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -46,7 +47,7 @@ class NotSavedView extends StackedView<NotSavedViewModel> {
                   height: 8,
                 ),
                 const Text(
-                  'Try saving the course \nagain in a few minutes',
+                  AppConstants.courseNotSavedBodyText,
                   style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,
@@ -57,7 +58,7 @@ class NotSavedView extends StackedView<NotSavedViewModel> {
                 const SizedBox(
                   height: 32,
                 ),
-                AppButton( onClick: () { }, title: 'Continue', ),
+                AppButton( onClick: () { }, title: AppConstants.continueText, ),
               ],
             ),
           ),

@@ -1,8 +1,8 @@
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../model/course.dart';
+import '../../common/app_constants.dart';
 import '../../custom_widget/course_card.dart';
 import 'cart_viewmodel.dart';
 
@@ -22,7 +22,7 @@ class CartView extends StackedView<CartViewModel> {
           child: Column(
             children: [
               CustomAppBar(
-                title: 'Course Cart',
+                title: AppConstants.courseCartText,
               ),
               if (viewModel.courses.isEmpty)
                 emptyView(context)
@@ -57,6 +57,6 @@ class CartView extends StackedView<CartViewModel> {
   Widget emptyView(BuildContext context) {
     return SizedBox(
         height: MediaQuery.sizeOf(context).height,
-        child: const Center(child: Text('Cart is Empty')));
+        child: const Center(child: Text(AppConstants.emptyCartText)));
   }
 }

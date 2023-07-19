@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:edtechapp/ui/custom_widget/your_course_card.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                               child: Wrap(
                                 children: [
                                   CustomAppBar(
-                                    title: "Your Courses",
+                                    title: AppConstants.yourCourseText,
                                   ),
                                   const SizedBox(
                                     height: 16,
@@ -77,6 +78,6 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
   Widget emptyView(BuildContext context) {
     return SizedBox(
         height: MediaQuery.sizeOf(context).height,
-        child: const Center(child: Text('No courses found')));
+        child: const Center(child: Text(AppConstants.noCoursesFound)));
   }
 }

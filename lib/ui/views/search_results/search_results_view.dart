@@ -1,3 +1,4 @@
+import 'package:edtechapp/resources/svg_images.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,8 +29,7 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                   child: SingleChildScrollView(
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       child: Column(children: [
                         Container(
                           child: Row(
@@ -43,8 +43,11 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                                   alignment: Alignment.center,
                                   children: [
                                     SvgPicture.asset(
-                                        'assets/svg/Background.svg'),
-                                    SvgPicture.asset('assets/svg/Go-back.svg'),
+                                      SvgImages.background,
+                                    ),
+                                    SvgPicture.asset(
+                                      SvgImages.goBack,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -54,15 +57,14 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                               Expanded(
                                 child: SearchCourse(
                                     searchPressed: viewModel.searchCourse,
-                                    searchTextController:
-                                        viewModel.searchTextController),
+                                    searchTextController: viewModel.searchTextController),
                               ),
                             ],
                           ),
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(top: 12, bottom: 32),
+                          margin: const EdgeInsets.only(top: 12, bottom: 32),
                           child: Text(
                             viewModel.total,
                             style: const TextStyle(
@@ -86,8 +88,7 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                               onItemPressed: (Course course) {
                                 viewModel.coursePressed(courseItem);
                               },
-                              backgroundColor: Color(
-                                  index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
+                              backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
                             );
                           },
                         ),

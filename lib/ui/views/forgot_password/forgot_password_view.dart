@@ -1,7 +1,8 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
-
 import 'forgot_password_viewmodel.dart';
 
 class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
@@ -26,25 +27,11 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                         const SizedBox(
                           height: 16,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Transform.scale(
-                            scale: 1.5,
-                            child: IconButton(
-                              alignment: Alignment.centerLeft,
-                              icon: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  SvgPicture.asset('assets/svg/Background.svg'),
-                                  SvgPicture.asset('assets/svg/Go-back.svg'),
-                                ],
-                              ),
-                              onPressed: viewModel.goToLoginPage,
-                            ),
-                          ),
+                        CustomAppBar(
+                          backButtonPressed: viewModel.goToLoginPage,
                         ),
                         Image.asset(
-                          'assets/png/my-password-concept.png',
+                         PngImages.myPasswordConcept,
                         ),
                         const SizedBox(
                           height: 16,
@@ -52,7 +39,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                         const Column(
                           children: [
                             Text(
-                              'Forgot Your Password?',
+                             AppConstants.forgotPasswordText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 24,
@@ -64,7 +51,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                               height: 16.0,
                             ),
                             Text(
-                              'Enter your email below to receive\n a password reset instruction',
+                              AppConstants.forgotPasswordBodyText,
                               style: TextStyle(
                                 color: Color(0xFF78746D),
                                 fontSize: 14,
@@ -82,7 +69,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            labelText: 'Enter Your Email Here',
+                            labelText: AppConstants.enterEmailText,
                             labelStyle: const TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -103,14 +90,11 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                               viewModel.submit();
                             },
                             style: ButtonStyle(
-                              padding:
-                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                const EdgeInsets.symmetric(
-                                    horizontal: 32, vertical: 16),
+                              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                               ),
                               alignment: Alignment.center,
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(16),
                                 ),
@@ -118,8 +102,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color(0xFFE35629),
                               ),
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                               textStyle: MaterialStateProperty.all<TextStyle>(
                                 const TextStyle(
                                   fontSize: 16,
@@ -128,7 +111,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                               ),
                             ),
                             child: const Text(
-                              'Submit',
+                              AppConstants.submitText,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

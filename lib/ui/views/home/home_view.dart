@@ -1,4 +1,5 @@
 
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/search_course.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -57,10 +58,9 @@ class HomeView extends StackedView<HomeViewModel> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 const Text(
-                                                  'Hello,',
+                                                  AppConstants.hiText,
                                                   style: TextStyle(
                                                     fontSize: 16,
-                                                    fontFamily: 'Rubik',
                                                     fontWeight: FontWeight.w400,
                                                     letterSpacing: -0.5,
                                                     height: 1.7,
@@ -72,7 +72,6 @@ class HomeView extends StackedView<HomeViewModel> {
                                                     color: Colors.black,
                                                     fontSize: 32,
                                                     fontWeight: FontWeight.w700,
-                                                    fontFamily: 'Rubik',
                                                     fontStyle: FontStyle.normal,
                                                     letterSpacing: -1,
                                                     height: 1.5,
@@ -118,7 +117,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
-                                            const Text('Category:'),
+                                            const Text(AppConstants.categoryText),
                                             const SizedBox(
                                               width: 16,
                                             ),
@@ -402,14 +401,14 @@ class HomeView extends StackedView<HomeViewModel> {
                           if (states.contains(MaterialState.selected)) {
                             return const TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Rubik',
+                    
                               fontWeight: FontWeight.w400,
                               color: Colors.orange,
                             );
                           } else {
                             return const TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Rubik',
+               
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             );
@@ -430,7 +429,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                 SvgImages.courses,
                                 color: Colors.orange,
                               ),
-                              label: 'Courses'),
+                              label: AppConstants.courseText),
                           NavigationDestination(
                             icon: SvgPicture.asset(
                               SvgImages.profileIcon,
@@ -439,7 +438,7 @@ class HomeView extends StackedView<HomeViewModel> {
                               SvgImages.profileIcon,
                               color: Colors.orange,
                             ),
-                            label: 'Profile',
+                            label:AppConstants.profileText,
                           ),
                           NavigationDestination(
                             icon: SvgPicture.asset(
@@ -449,7 +448,7 @@ class HomeView extends StackedView<HomeViewModel> {
                               SvgImages.frame4,
                               color: Colors.orange,
                             ),
-                            label: 'Settings',
+                            label:AppConstants.settingText,
                           ),
                         ],
                       ),
