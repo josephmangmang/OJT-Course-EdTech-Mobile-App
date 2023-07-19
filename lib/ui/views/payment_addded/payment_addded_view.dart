@@ -1,3 +1,4 @@
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
@@ -20,36 +21,8 @@ class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
             alignment: Alignment.center,
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 56,
-                    top: 8,
-                  ),
-                  child: Row(
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SvgPicture.asset('assets/svg/Background.svg'),
-                          SvgPicture.asset('assets/svg/Go-back.svg'),
-                        ],
-                      ),
-                      const Expanded(
-                        child: Text(
-                          'Payment',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: -0.50,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                CustomAppBar(
+                  title: "Payment",
                 ),
                 const SizedBox(
                   height: 127,
@@ -87,8 +60,7 @@ class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
                   onTap: viewModel.payCourse,
                   child: Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                     margin: const EdgeInsets.symmetric(horizontal: 33 - 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
