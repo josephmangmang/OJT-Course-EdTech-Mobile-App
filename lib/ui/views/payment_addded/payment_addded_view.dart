@@ -29,12 +29,15 @@ class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
                   ),
                   child: Row(
                     children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SvgPicture.asset('assets/svg/Background.svg'),
-                          SvgPicture.asset('assets/svg/Go-back.svg'),
-                        ],
+                      GestureDetector(
+                        onTap: viewModel.backPressed,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset('assets/svg/Background.svg'),
+                            SvgPicture.asset('assets/svg/Go-back.svg'),
+                          ],
+                        ),
                       ),
                       const Expanded(
                         child: Text(

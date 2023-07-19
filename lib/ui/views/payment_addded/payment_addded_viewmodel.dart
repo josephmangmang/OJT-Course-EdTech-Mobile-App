@@ -31,4 +31,9 @@ class PaymentAdddedViewModel extends BaseViewModel {
       _navigationService.replaceWithYourCoursesView();
     });
   }
+
+  void backPressed () {
+    _navigationService.back();
+  }
 }
+
