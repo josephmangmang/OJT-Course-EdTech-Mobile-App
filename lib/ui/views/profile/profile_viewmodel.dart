@@ -13,8 +13,6 @@ import '../../views/home/home_viewmodel.dart';
 class ProfileViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
-  
-
   void yourCourse() {
     _navigationService.navigateToYourCoursesView();
   }

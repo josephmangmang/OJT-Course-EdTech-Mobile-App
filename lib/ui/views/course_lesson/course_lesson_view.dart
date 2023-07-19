@@ -66,7 +66,8 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 22, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
                                 decoration: const ShapeDecoration(
                                   color: Color(0xFFF7F2EE),
@@ -92,9 +93,11 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 33, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(color: Color(0xFFF7F2EE)),
+                                decoration: const BoxDecoration(
+                                    color: Color(0xFFF7F2EE)),
                                 child: const SizedBox(
                                   height: double.infinity,
                                   child: Text(
@@ -113,7 +116,8 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
                                 decoration: const ShapeDecoration(
                                   color: Color(0xFFF7F2EE),
@@ -151,7 +155,8 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFE6EDF4),
                       image: const DecorationImage(
-                        image: AssetImage("assets/png/Cool Kids Long Distance Relationship.png"),
+                        image: AssetImage(
+                            "assets/png/Cool Kids Long Distance Relationship.png"),
                         fit: BoxFit.contain,
                       ),
                       borderRadius: BorderRadius.circular(8),

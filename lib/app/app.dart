@@ -38,6 +38,8 @@ import 'package:edtechapp/services/shared_pref_service_service.dart';
 import '../services/authentication_service_mock.dart';
 import 'package:edtechapp/ui/views/payment_methods/payment_methods_view.dart';
 import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
+import 'package:edtechapp/ui/views/cart/cart_view.dart';
+import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -68,6 +70,8 @@ import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
     MaterialRoute(page: ForgotPasswordView),
     MaterialRoute(page: PaymentMethodsView),
     MaterialRoute(page: PaymentCheckoutView),
+    MaterialRoute(page: CartView),
+    MaterialRoute(page: AddCreditCardView),
 // @stacked-route
   ],
   dependencies: [

@@ -24,5 +24,4 @@ class SvgImages {
   static const visibility1_1 = 'assets/svg/visibility 1 (1).svg';
   static const visibility = 'assets/svg/visibility.svg';
   static const wheel1 = 'assets/svg/wheel 1.svg';
-
 }

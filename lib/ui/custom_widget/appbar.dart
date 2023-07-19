@@ -19,10 +19,9 @@ class CustomAppBar extends StatelessWidget {
   BackButtonPressed? backButtonPressed;
 
   void backButtonFunction() {
-    if(backButtonPressed == null) {
+    if (backButtonPressed == null) {
       _navigationService.back();
-    }
-    else {
+    } else {
       backButtonPressed!();
     }
   }

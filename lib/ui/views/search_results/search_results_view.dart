@@ -53,7 +53,10 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                                 width: 8,
                               ),
                               Expanded(
-                                child: SearchCourse(searchPressed: viewModel.searchCourse, searchTextController: viewModel.searchTextController),
+                                child: SearchCourse(
+                                    searchPressed: viewModel.searchCourse,
+                                    searchTextController:
+                                        viewModel.searchTextController),
                               ),
                             ],
                           ),

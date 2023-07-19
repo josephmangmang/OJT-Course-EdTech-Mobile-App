@@ -36,7 +36,8 @@ class ResultView extends StackedView<ResultViewModel> {
                         height: 253,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/png/Cool Kids Xmas Morning.png"),
+                            image: AssetImage(
+                                "assets/png/Cool Kids Xmas Morning.png"),
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -84,13 +85,15 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/facebook-icon.svg'),
+                            child: SvgPicture.asset(
+                                'assets/svg/facebook-icon.svg'),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -100,13 +103,15 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/Instagram-icon.svg'),
+                            child: SvgPicture.asset(
+                                'assets/svg/Instagram-icon.svg'),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -116,13 +121,15 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/Google-icon.svg'),
+                            child:
+                                SvgPicture.asset('assets/svg/Google-icon.svg'),
                           )),
                     ],
                   ),

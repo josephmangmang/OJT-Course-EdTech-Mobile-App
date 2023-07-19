@@ -38,7 +38,9 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
                     ),
                   ),
                 ),
-                SearchCourse(searchPressed: viewModel.seachCourse, searchTextController: viewModel.searchTextController),
+                SearchCourse(
+                    searchPressed: viewModel.seachCourse,
+                    searchTextController: viewModel.searchTextController),
                 const SizedBox(
                   height: 32,
                 ),

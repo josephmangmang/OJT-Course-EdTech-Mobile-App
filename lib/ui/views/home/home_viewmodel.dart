@@ -19,7 +19,8 @@ class HomeViewModel extends BaseViewModel {
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];
-  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
+  final PageController pageController =
+      PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
 
@@ -86,10 +87,10 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onPageChanged(int index) {
-    
     previousPageIndex = currentPageIndex;
     currentPageIndex = index;
-    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print(
+        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     rebuildUi();
   }
 
@@ -97,11 +98,12 @@ class HomeViewModel extends BaseViewModel {
     int tempIndex = currentPageIndex;
     changePage(index);
     previousPageIndex = tempIndex;
-    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print(
+        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
   }
 
   void onBackPressed() {
-    if(previousPageIndex == null){
+    if (previousPageIndex == null) {
       _navigationService.back();
     }
     if (isBackPressed == true) {
@@ -110,7 +112,8 @@ class HomeViewModel extends BaseViewModel {
     } else {
       changePage(previousPageIndex!);
       isBackPressed = true;
-      print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+      print(
+          "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     }
     previousPageIndex = null;
   }

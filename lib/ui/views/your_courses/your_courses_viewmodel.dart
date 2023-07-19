@@ -33,6 +33,4 @@ class YourCoursesViewModel extends BaseViewModel {
     print(courses.toString());
     print(courses.length);
   }
-
-  
 }

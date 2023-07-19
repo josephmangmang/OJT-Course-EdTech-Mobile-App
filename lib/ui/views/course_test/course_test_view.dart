@@ -64,7 +64,8 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 22, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
                                 decoration: const ShapeDecoration(
                                   color: Color(0xFFF7F2EE),
@@ -90,9 +91,11 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 33, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(color: Color(0xFFF7F2EE)),
+                                decoration: const BoxDecoration(
+                                    color: Color(0xFFF7F2EE)),
                                 child: const SizedBox(
                                   height: double.infinity,
                                   child: Text(
@@ -111,7 +114,8 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                               Container(
                                 width: 114,
                                 height: 42,
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 8),
                                 clipBehavior: Clip.antiAlias,
                                 decoration: const ShapeDecoration(
                                   color: Color(0xFFF7F2EE),
@@ -146,7 +150,8 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                   buildCard(
                       image: 'assets/png/Cool Kids On Wheels (4).png',
                       quiz: 'Quiz 1',
-                      description: 'Lets put your memory on this topic test. Solve task and check your knowledge',
+                      description:
+                          'Lets put your memory on this topic test. Solve task and check your knowledge',
                       title: 'Tag For Headers',
                       color: 0xFFFFFFFF),
                   Container(
@@ -155,7 +160,8 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                   buildCard(
                       image: 'assets/png/Cool Kids On Wheels (4).png',
                       quiz: 'Quiz 1',
-                      description: 'Lets put your memory on this topic test. Solve task and check your knowledge',
+                      description:
+                          'Lets put your memory on this topic test. Solve task and check your knowledge',
                       title: 'Tag For Headers',
                       color: 0xFFFFFFFF),
                 ]),
@@ -195,7 +201,9 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
       ),
       child: Column(
         children: [
-          Container(padding: const EdgeInsets.only(top: 24), child: Image.asset(image)),
+          Container(
+              padding: const EdgeInsets.only(top: 24),
+              child: Image.asset(image)),
           Container(
             alignment: Alignment.topLeft,
             width: 295,

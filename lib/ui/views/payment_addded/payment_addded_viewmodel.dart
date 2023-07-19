@@ -32,8 +32,7 @@ class PaymentAdddedViewModel extends BaseViewModel {
     });
   }
 
-  void backPressed () {
+  void backPressed() {
     _navigationService.back();
   }
 }
-

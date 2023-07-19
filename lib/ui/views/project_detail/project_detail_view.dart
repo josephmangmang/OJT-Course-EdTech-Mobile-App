@@ -26,7 +26,9 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                     CustomAppBar(title: course.title,),
+                      CustomAppBar(
+                        title: course.title,
+                      ),
                       const SizedBox(
                         height: 16,
                       ),

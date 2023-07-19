@@ -121,34 +121,48 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                               ),
                               Stack(children: [
                                 Container(
-                                    width: double.infinity,
-                                    height: 69,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5))),
-                                Row(
-                                  children: [
-                                    Image.asset('assets/png/image_2.png'),
-                                    const SizedBox(
-                                      width: 16,
+                                  width: double.infinity,
+                                  height: 69,
+                                  decoration: ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        width: 0.50,
+                                        strokeAlign:
+                                            BorderSide.strokeAlignOutside,
+                                        color: Color(0xFFBEBAB3),
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("*** *** *** 5738",
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                        Text("Expires 09/29",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                            ))
-                                      ],
-                                    )
-                                  ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/png/image_2.png'),
+                                      const SizedBox(
+                                        width: 16,
+                                      ),
+                                      const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text("*** *** *** 5738",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                              )),
+                                          Text("Expires 09/29",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ]),
                             ],

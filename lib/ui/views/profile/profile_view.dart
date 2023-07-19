@@ -52,7 +52,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
               GestureDetector(
                 onTap: viewModel.yourCourse,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   alignment: Alignment.center,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -76,7 +77,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -99,7 +101,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(

@@ -109,7 +109,10 @@ class HomeView extends StackedView<HomeViewModel> {
                                           ],
                                         ),
                                       ),
-                                      SearchCourse(searchPressed: viewModel.searchCourse, searchTextController: viewModel.searchTextController),
+                                      SearchCourse(
+                                          searchPressed: viewModel.searchCourse,
+                                          searchTextController:
+                                              viewModel.searchTextController),
                                       SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
