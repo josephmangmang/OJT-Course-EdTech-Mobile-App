@@ -13,4 +13,5 @@ abstract interface class AuthenticationService {
   Future<Either<AppException, None>> forgetPassword(String email);
 
   Future<Either<AppException, User>> getCurrentUser();
+
 }

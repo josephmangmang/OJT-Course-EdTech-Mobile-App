@@ -20,28 +20,45 @@ class SearchResultsViewModel extends BaseViewModel {
   Course? course;
 
   Future<void> searchCourse() async {
+    listOfCourse.isEmpty;
+    searchTextController.text = searchText;
     setBusy(true);
-    await _repository.searchCourse(searchText).then((value) {
+    if (searchTextController.text.isNotEmpty) {
+      await _repository.searchCourse(searchTextController.text).then((value) {
       if (value.isNotEmpty) {
         listOfCourse = value;
         total = '${listOfCourse.length}' ' Results';
         print(listOfCourse.length);
       }
     });
+    } else {
+      await _repository.searchCourse(searchText).then((value) {
+      if (value.isNotEmpty) {
+        listOfCourse = value;
+        total = '${listOfCourse.length}' ' Results';
+        print(listOfCourse.length);
+      }
+    });
+    }
+    
     setBusy(false);
     rebuildUi();
   }
 
   Future<void> searchPressed() async {
     setBusy(true);
+    searchText = searchTextController.text;
     await _repository.searchCourse(searchTextController.text).then((value) {
       if (value.isNotEmpty) {
         listOfCourse = value;
         total = '${listOfCourse.length}' ' Results';
         print(listOfCourse);
+      } else {
+        _navigationService.replaceWithNotFoundView();
       }
     });
     setBusy(false);
+    rebuildUi();
   }
 
   void coursePressed(Course course) {
@@ -53,7 +70,8 @@ class SearchResultsViewModel extends BaseViewModel {
     return index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4;
   }
 
-  void back() {
-    _navigationService.back();
+  void back() async {
+
+        _navigationService.back();
   }
 }
