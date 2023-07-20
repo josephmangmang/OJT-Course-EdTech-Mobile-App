@@ -31,6 +31,8 @@ class HomeViewModel extends BaseViewModel {
   bool isBackPressed = false;
 
   init() async {
+    listOfCourse.clear();
+    print(listOfCourse.length);
     setBusy(true);
 
     final response = await _authenticationService.getCurrentUser();
@@ -53,10 +55,8 @@ class HomeViewModel extends BaseViewModel {
   Future<void> searchCourse() async {
     setBusy(true);
     searchText = searchTextController.text;
-    listOfCourse = [];
     await _repository.searchCourse(searchTextController.text).then((value) {
       if (value.isNotEmpty) {
-        listOfCourse = value;
         _navigationService.navigateToSearchResultsView();
       } else {
         _navigationService.navigateToNotFoundView();
@@ -64,7 +64,9 @@ class HomeViewModel extends BaseViewModel {
     });
 
     print(searchTextController.text);
+    searchTextController.clear();
     setBusy(false);
+
     rebuildUi();
   }
 
