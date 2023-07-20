@@ -27,9 +27,7 @@ class ForgotPasswordView extends StackedView<ForgotPasswordViewModel> {
                         const SizedBox(
                           height: 16,
                         ),
-                        CustomAppBar(
-                          backButtonPressed: viewModel.goToLoginPage,
-                        ),
+                        CustomAppBar(),
                         Image.asset(
                          PngImages.myPasswordConcept,
                         ),

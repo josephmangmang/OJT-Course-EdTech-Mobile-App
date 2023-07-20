@@ -4,7 +4,6 @@ import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'login_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -131,7 +130,7 @@ class LoginView extends StackedView<LoginViewModel> {
                               )),
                         ),
                         TextButton(
-                          onPressed: viewModel.forgetPassword,
+                          onPressed: viewModel.goToForgetPassword,
                           child: const Text(
                           AppConstants.forgotPasswordText,
                             style: TextStyle(

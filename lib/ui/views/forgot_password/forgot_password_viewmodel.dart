@@ -11,8 +11,6 @@ class ForgotPasswordViewModel extends BaseViewModel {
 
   final _snackBarService = locator<SnackbarService>();
   final _authenticationService = locator<AuthenticationService>();
-  final _navigationService = locator<NavigationService>();
-
   Future<void> submit() async {
     setBusy(true);
     final response = await _authenticationService.forgetPassword(
@@ -25,9 +23,5 @@ class ForgotPasswordViewModel extends BaseViewModel {
       _snackBarService.showSnackbar(
           message: "Password reset link sent! Check your email");
     });
-  }
-
-  void goToLoginPage() {
-    _navigationService.back();
   }
 }

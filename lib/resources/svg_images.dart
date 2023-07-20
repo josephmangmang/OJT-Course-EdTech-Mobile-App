@@ -18,7 +18,7 @@ SvgImages._();
   static const progressBar1 = 'assets/svg/Progress Bars (1),svg';
   static const searchIcon = 'assets/svg/Search Icon.svg';
   static const shape = 'assets/svg/Shape.svg';
-  static const socialNetworksIcons1 = 'assets/svg/Social Networks Icons (1)svg';
+  static const socialNetworksIcons1 = 'assets/svg/Social Networks Icons (1).svg';
   static const socialNetworkIcons2 = 'assets/svg/Social Networks Icons (2).svg';
   static const socialNetworksIcons = 'assets/svg/Social Networks Icons.svg';
   static const toggleButtons = 'assets/svg/Toggle Buttons.svg';

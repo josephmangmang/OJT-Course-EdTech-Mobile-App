@@ -27,8 +27,8 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void forgetPassword() {
-    _navigationService.replaceWithForgotPasswordView();
+  void goToForgetPassword() {
+    _navigationService.navigateToForgotPasswordView();
   }
 
   Future<void> logIn() async {
