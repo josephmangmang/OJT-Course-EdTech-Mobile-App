@@ -102,7 +102,7 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                                     AppConstants.testText,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Color(0xFF78746D),
+                                      color: Color(0xFF3B3936),
                                       fontSize: 16,
                                       fontFamily: 'Inter',
                                       fontWeight: FontWeight.w400,
