@@ -1,3 +1,6 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -22,7 +25,7 @@ class ResultView extends StackedView<ResultViewModel> {
               child: Column(children: [
                 //verticalSpaceLarge,
                 CustomAppBar(
-                  title: "Results",
+                  title: AppConstants.resultText,
                 ),
                 Container(
                   width: 375,
@@ -36,7 +39,7 @@ class ResultView extends StackedView<ResultViewModel> {
                         height: 253,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/png/Cool Kids Xmas Morning.png"),
+                            image: AssetImage(PngImages.coolKidsXmasMorning),
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -45,12 +48,11 @@ class ResultView extends StackedView<ResultViewModel> {
                         width: 341,
                         padding: const EdgeInsets.only(top: 32),
                         child: const Text(
-                          'Congratulations',
+                          AppConstants.congratsText,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Color(0xFF3B3936),
                             fontSize: 24,
-                            fontFamily: 'Rubik',
                             fontWeight: FontWeight.w700,
                             letterSpacing: -0.50,
                           ),
@@ -65,7 +67,6 @@ class ResultView extends StackedView<ResultViewModel> {
                           style: TextStyle(
                             color: Color(0xFF78746D),
                             fontSize: 14,
-                            fontFamily: 'Rubik',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -90,7 +91,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/facebook-icon.svg'),
+                            child: SvgPicture.asset(SvgImages.facebookIcon),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -106,7 +107,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/Instagram-icon.svg'),
+                            child: SvgPicture.asset(SvgImages.instagramIcon),
                           )),
                       Container(
                         padding: const EdgeInsets.only(right: 16),
@@ -122,7 +123,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             width: 24,
                             height: 24,
                             alignment: Alignment.center,
-                            child: SvgPicture.asset('assets/svg/Google-icon.svg'),
+                            child: SvgPicture.asset(SvgImages.googleIcon),
                           )),
                     ],
                   ),

@@ -3,12 +3,13 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../resources/svg_images.dart';
 
-
 class SearchCourse extends StatefulWidget {
   final Function() searchPressed;
   TextEditingController searchTextController = TextEditingController();
-  SearchCourse({super.key, required this.searchPressed, required this.searchTextController
-  });
+  SearchCourse(
+      {super.key,
+      required this.searchPressed,
+      required this.searchTextController});
 
   @override
   State<SearchCourse> createState() => _SearchCourseState();
@@ -17,7 +18,6 @@ class SearchCourse extends StatefulWidget {
 class _SearchCourseState extends State<SearchCourse> {
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
@@ -32,7 +32,9 @@ class _SearchCourseState extends State<SearchCourse> {
             ),
             suffixIcon: Transform.scale(
                 scale: 0.6,
-                child: IconButton(onPressed: widget.searchPressed, icon: SvgPicture.asset(SvgImages.searchIcon)))),
+                child: IconButton(
+                    onPressed: widget.searchPressed,
+                    icon: SvgPicture.asset(SvgImages.searchIcon)))),
       ),
     );
   }

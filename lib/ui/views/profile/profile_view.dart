@@ -1,9 +1,9 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'profile_viewmodel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
   final Function() onBackPressed;
@@ -23,7 +23,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
             children: [
               CustomAppBar(
                 backButtonPressed: onBackPressed,
-                title: "Profile",
+                title:AppConstants.profileText,
               ),
               const SizedBox(
                 height: 32,
@@ -38,7 +38,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                   ),
                 ),
                 child: const CircleAvatar(
-                  backgroundImage: AssetImage('assets/png/Cool Kids Bust.png'),
+                  backgroundImage: AssetImage(PngImages.coolKidsBust),
                   radius: 70,
                   backgroundColor: Color(0xFFF7F2EE),
                 ),
@@ -52,7 +52,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
               GestureDetector(
                 onTap: viewModel.yourCourse,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   alignment: Alignment.center,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -63,7 +64,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ),
                   ),
                   child: const Text(
-                    'Your Courses',
+                    AppConstants.yourCourseText,
                     style: TextStyle(
                       color: Color(0xFF3B3936),
                       fontSize: 24,
@@ -76,7 +77,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -87,7 +89,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                   ),
                 ),
                 child: const Text(
-                  'Saved',
+                  AppConstants.savedText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -99,7 +101,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -110,7 +113,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                   ),
                 ),
                 child: const Text(
-                  'Payment',
+                  AppConstants.paymentText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -122,7 +125,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 height: 16.0,
               ),
               const Text(
-                'Log out',
+                AppConstants.logoutText,
                 style: TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,

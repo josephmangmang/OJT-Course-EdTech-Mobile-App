@@ -1,4 +1,6 @@
 import 'package:edtechapp/model/course.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -22,16 +24,22 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
           : SafeArea(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 8, right: 16, left: 16),
+                  margin: const EdgeInsets.only(
+                    bottom: 8,
+                    right: 16,
+                    left: 16,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                     CustomAppBar(title: course.title,),
+                      CustomAppBar(
+                        title: course.title,
+                      ),
                       const SizedBox(
                         height: 16,
                       ),
                       const Text(
-                        'About the course',
+                        AppConstants.aboutCourseText,
                         style: TextStyle(
                           color: Color(0xFF3B3936),
                           fontSize: 24,
@@ -54,7 +62,7 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Duration',
+                              AppConstants.durationText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 height: 1.4,
@@ -66,10 +74,11 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                             Text(
                               viewModel.course.duration,
                               style: const TextStyle(
-                                  height: 1.4,
-                                  color: Color(0xFF3B3936),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
+                                height: 1.4,
+                                color: Color(0xFF3B3936),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -77,28 +86,9 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      GestureDetector(
-                        onTap: viewModel.addToCart,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 32, vertical: 16),
-                          margin:
-                              const EdgeInsets.symmetric(horizontal: 33 - 16),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFE35629),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: const Text(
-                            'Add to cart',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                      AppButton(
+                        title: AppConstants.addToCartText,
+                        onClick: viewModel.addToCart,
                       ),
                     ],
                   ),

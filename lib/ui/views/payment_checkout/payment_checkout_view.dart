@@ -1,8 +1,10 @@
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
+import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-
 import 'payment_checkout_viewmodel.dart';
 
 class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
@@ -22,36 +24,8 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
             alignment: Alignment.center,
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 56,
-                    top: 8,
-                  ),
-                  child: Row(
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SvgPicture.asset('assets/svg/Background.svg'),
-                          SvgPicture.asset('assets/svg/Go-back.svg'),
-                        ],
-                      ),
-                      const Expanded(
-                        child: Text(
-                          'Checkout',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: -0.50,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                CustomAppBar(
+                  title: AppConstants.checkoutText,
                 ),
                 Column(
                   children: [
@@ -63,7 +37,7 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                           Stack(
                             children: [
                               Image.asset(
-                                "assets/png/Illustration.png",
+                                PngImages.illustration,
                                 width: 169,
                                 height: 122,
                               ),
@@ -107,12 +81,12 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 height: 31,
                               ),
                               const Text(
-                                'Payment method',
+                                AppConstants.paymentMethodText,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
-                                  fontFamily: 'Rubik',
+                    
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -121,34 +95,45 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                               ),
                               Stack(children: [
                                 Container(
-                                    width: double.infinity,
-                                    height: 69,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5))),
-                                Row(
-                                  children: [
-                                    Image.asset('assets/png/image_2.png'),
-                                    const SizedBox(
-                                      width: 16,
+                                  width: double.infinity,
+                                  height: 69,
+                                  decoration: ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        width: 0.50,
+                                        strokeAlign: BorderSide.strokeAlignOutside,
+                                        color: Color(0xFFBEBAB3),
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("*** *** *** 5738",
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                        Text("Expires 09/29",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                            ))
-                                      ],
-                                    )
-                                  ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(PngImages.image2),
+                                      const SizedBox(
+                                        width: 16,
+                                      ),
+                                      const Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text("*** *** *** 5738",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                              )),
+                                          Text("Expires 09/29",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ]),
                             ],
@@ -161,28 +146,10 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                 const SizedBox(
                   height: 216,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    margin: const EdgeInsets.symmetric(horizontal: 33 - 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: const Color(0xFFE35629),
-                    ),
-                    child: const Text(
-                      "Confirm Payment \$50.00",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
+                AppButton(
+                  title: "Confirm payment \$50.00",
+                  onClick: () {},
+                )
               ],
             ),
           ),

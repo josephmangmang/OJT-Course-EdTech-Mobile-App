@@ -1,4 +1,6 @@
+import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -78,7 +80,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                   ),
                                 ),
                                 child: const Text(
-                                  'Lessons',
+                                  AppConstants.lessonText,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.grey,
@@ -98,7 +100,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                 child: const SizedBox(
                                   height: double.infinity,
                                   child: Text(
-                                    'Tests',
+                                    AppConstants.testText,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Color(0xFF78746D),
@@ -127,7 +129,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                 child: const SizedBox(
                                   height: double.infinity,
                                   child: Text(
-                                    'Discuss',
+                                    AppConstants.discussText,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Color(0xFF78746D),
@@ -151,7 +153,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFE6EDF4),
                       image: const DecorationImage(
-                        image: AssetImage("assets/png/Cool Kids Long Distance Relationship.png"),
+                        image: AssetImage(PngImages.coolKidsLongDistanceRelationship),
                         fit: BoxFit.contain,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -175,11 +177,10 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                     width: 343,
                     padding: const EdgeInsets.only(top: 16, bottom: 8),
                     child: const Text(
-                      'Introduction',
+                      AppConstants.introText,
                       style: TextStyle(
                         color: Color(0xFF3B3936),
                         fontSize: 20,
-                        fontFamily: 'Rubik',
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.50,
                       ),
@@ -193,7 +194,6 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                       style: TextStyle(
                         color: Color(0xFF78746D),
                         fontSize: 14,
-                        fontFamily: 'Rubik',
                         fontWeight: FontWeight.w500,
                       ),
                     ),

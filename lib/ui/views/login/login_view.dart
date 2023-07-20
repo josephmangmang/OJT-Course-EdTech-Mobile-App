@@ -1,3 +1,7 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -26,7 +30,7 @@ class LoginView extends StackedView<LoginViewModel> {
                           height: 52.0,
                         ),
                         Image.asset(
-                          'assets/png/Cool Kids Sitting.png',
+                          PngImages.coolKidsSitting,
                         ),
                         const SizedBox(
                           height: 16,
@@ -34,7 +38,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         Column(
                           children: [
                             const Text(
-                              'Log in',
+                              AppConstants.logInText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 24,
@@ -46,7 +50,7 @@ class LoginView extends StackedView<LoginViewModel> {
                               height: 8.0,
                             ),
                             const Text(
-                              'Login with social networks',
+                              AppConstants.loginBodyText,
                               style: TextStyle(
                                 color: Color(0xFF78746D),
                                 fontSize: 14,
@@ -59,39 +63,29 @@ class LoginView extends StackedView<LoginViewModel> {
                             Container(
                               alignment: Alignment.center,
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        'assets/svg/Social Networks Icons.svg'),
+                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(SvgImages.socialNetworksIcons),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        'assets/svg/Social Networks Icons (1).svg'),
+                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(SvgImages.socialNetworksIcons1),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        'assets/svg/Social Networks Icons (2).svg'),
+                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(SvgImages.socialNetworkIcons2),
                                   ),
                                 ],
                               ),
@@ -107,7 +101,7 @@ class LoginView extends StackedView<LoginViewModel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            labelText: 'Email',
+                            labelText: AppConstants.emailText,
                             labelStyle: const TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -125,22 +119,21 @@ class LoginView extends StackedView<LoginViewModel> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              labelText: 'Password',
+                              labelText: AppConstants.passwordText,
                               labelStyle: const TextStyle(
                                 color: Color(0xFF78746D),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                               suffixIcon: IconButton(
-                                icon: SvgPicture.asset(
-                                    'assets/svg/visibility 1.svg'),
+                                icon: SvgPicture.asset(SvgImages.visibility1),
                                 onPressed: viewModel.showPassword,
                               )),
                         ),
                         TextButton(
                           onPressed: viewModel.forgetPassword,
                           child: const Text(
-                            'Forgot Password?',
+                          AppConstants.forgotPasswordText,
                             style: TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -148,32 +141,14 @@ class LoginView extends StackedView<LoginViewModel> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: viewModel.logIn,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFE35629),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 32, vertical: 16),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                            child: const Text(
-                              'Log in',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
+                        AppButton(
+                          title: AppConstants.logInText,
+                          onClick: viewModel.logIn,
                         ),
                         TextButton(
                           onPressed: viewModel.signUp,
                           child: const Text(
-                            'Sign up',
+                           AppConstants.signUpText,
                             style: TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,

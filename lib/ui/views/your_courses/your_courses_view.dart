@@ -1,9 +1,9 @@
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
+import 'package:edtechapp/ui/custom_widget/your_course_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'your_courses_viewmodel.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
 class YourCoursesView extends StackedView<YourCoursesViewModel> {
   const YourCoursesView({Key? key}) : super(key: key);
@@ -29,11 +29,12 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                         Expanded(
                           child: SingleChildScrollView(
                             child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
                               child: Wrap(
                                 children: [
                                   CustomAppBar(
-                                    title: "Your Courses",
+                                    title: AppConstants.yourCourseText,
                                   ),
                                   const SizedBox(
                                     height: 16,
@@ -46,16 +47,14 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                       primary: false,
                                       itemCount: viewModel.courses.length,
                                       itemBuilder: (context, index) {
-                                        var courseItem = viewModel.courses[index];
+                                        var courseItem =
+                                            viewModel.courses[index];
                                         return YourCourseCard(
-                                            description: courseItem.subtitle,
-                                            title: courseItem.title,
-                                            color: viewModel.getColor(index),
-                                            hour: courseItem.duration,
-                                            image: courseItem.image,
                                             courseSelected: () {
                                               viewModel.coursePressed(courseItem.id);
-                                            });
+                                            },
+                                            course: courseItem,
+                                            color: viewModel.getColor(index));
                                       },
                                     ),
                                 ],
@@ -77,6 +76,8 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
       YourCoursesViewModel();
 
   Widget emptyView(BuildContext context) {
-    return SizedBox(height: MediaQuery.sizeOf(context).height, child: const Center(child: Text('No courses found')));
+    return SizedBox(
+        height: MediaQuery.sizeOf(context).height,
+        child: const Center(child: Text(AppConstants.noCoursesFound)));
   }
 }

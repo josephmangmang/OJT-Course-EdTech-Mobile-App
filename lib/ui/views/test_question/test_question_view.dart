@@ -1,7 +1,9 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_svg/svg.dart';
 import 'test_question_viewmodel.dart';
 
 class TestQuestionView extends StackedView<TestQuestionViewModel> {
@@ -41,7 +43,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF78746D),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -55,7 +56,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 24,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: -0.50,
                               ),
@@ -67,8 +67,7 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                       width: 343,
                       height: 191,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: ShapeDecoration(
                         color: const Color(0xFFF7F2EE),
                         shape: RoundedRectangleBorder(
@@ -80,8 +79,7 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child:
-                          Image.asset('assets/png/Cool Kids Brainstorming.png'),
+                      child: Image.asset(PngImages.coolKidsBrainstorming),
                     ),
                     Container(
                       padding: const EdgeInsets.only(top: 16),
@@ -89,14 +87,12 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 0.50, color: Color(0xFFBEBAB3)),
+                            side: const BorderSide(width: 0.50, color: Color(0xFFBEBAB3)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
@@ -107,7 +103,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -117,7 +112,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -130,14 +124,12 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 0.50, color: Color(0xFFBEBAB3)),
+                            side: const BorderSide(width: 0.50, color: Color(0xFFBEBAB3)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
@@ -148,7 +140,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -158,7 +149,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -171,14 +161,12 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: const Color(0xFFFFF5EE),
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 1, color: Color(0xFFF3705A)),
+                            side: const BorderSide(width: 1, color: Color(0xFFF3705A)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
@@ -189,7 +177,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -199,7 +186,6 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 16,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: -0.50,
                               ),
@@ -209,40 +195,7 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                   ],
                 ),
               ),
-              Container(
-                width: 309,
-                height: 56,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFE35629),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 24,
-                        child: Text(
-                          'Continue',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontFamily: 'Rubik',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              AppButton(title: AppConstants.continueText, onClick: () {})
             ]),
           ),
         ),

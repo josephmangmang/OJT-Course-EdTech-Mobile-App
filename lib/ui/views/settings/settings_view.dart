@@ -1,10 +1,11 @@
+import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'settings_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:edtechapp/ui/custom_widget/custom_widget.dart';
 
 class SettingsView extends StackedView<SettingsViewModel> {
   final Function() onBackPressed;
@@ -35,13 +36,13 @@ class SettingsView extends StackedView<SettingsViewModel> {
                             margin: const EdgeInsets.only(right: 56 - 16),
                             child: CustomAppBar(
                               backButtonPressed: onBackPressed,
-                              title: "Settings",
+                              title: AppConstants.settingText,
                             ),
                           ),
                           const SizedBox(
                             height: 32,
                           ),
-                          Image.asset('assets/png/Cool Kids On Wheels (2).png'),
+                          Image.asset(PngImages.coolKidsOnWheels2),
                           const SizedBox(
                             height: 16,
                           ),
@@ -76,7 +77,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                     child: Container(
                                       margin: const EdgeInsets.only(left: 12, right: 8),
                                       child: const Text(
-                                        'Notifications',
+                                        AppConstants.notificationText,
                                         style: TextStyle(
                                           color: Color(0xFF3B3936),
                                           fontSize: 20,
@@ -92,7 +93,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: const Text(
-                              'Account information',
+                              AppConstants.accountInfoText,
                               style: TextStyle(
                                 color: Color(0xFF3B3936),
                                 fontSize: 20,
@@ -106,17 +107,17 @@ class SettingsView extends StackedView<SettingsViewModel> {
                           ),
                           buildCell(
                             icon: SvgImages.path,
-                            title: 'Name',
+                            title: AppConstants.nameText,
                             subtitle: viewModel.user!.name,
                           ),
                           buildCell(
                             icon: SvgImages.shape,
-                            title: 'Email',
+                            title: AppConstants.emailText,
                             subtitle: viewModel.user!.email,
                           ),
                           buildCell(
                             icon: SvgImages.vector,
-                            title: 'Password',
+                            title: AppConstants.passwordText,
                             subtitle: 'changed 2 weeks ago',
                           ),
                         ],
@@ -192,7 +193,7 @@ Widget buildCell({
           ),
         ),
       ),
-      SvgPicture.asset('assets/svg/Icon.svg')
+      SvgPicture.asset(SvgImages.icon)
     ]),
   );
 }

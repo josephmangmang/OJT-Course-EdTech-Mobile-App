@@ -1,6 +1,8 @@
+import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'intro_viewmodel.dart';
 
 class IntroPage extends StackedView<IntroViewModel> {
@@ -60,8 +62,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_Long_Distance_Relationship.png"),
+                                      image: AssetImage(PngImages.coolKidsLongDistanceRelationship1),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -72,16 +73,14 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Learn anytime \nand anywhere',
+                                        AppConstants.intro1TitleText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF3B3936),
                                           fontSize: 24,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w500,
                                           height: 1.33,
                                           letterSpacing: -0.50,
@@ -89,12 +88,11 @@ class IntroPage extends StackedView<IntroViewModel> {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        AppConstants.introDescriptionText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF78746D),
                                           fontSize: 14,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w400,
                                           height: 1.5,
                                         ),
@@ -127,8 +125,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_Staying_Home.png"),
+                                      image: AssetImage(PngImages.coolKidsStayingHome),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -139,16 +136,14 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Find a Course \nfor you',
+                                        AppConstants.intro2TitleText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF3B3936),
                                           fontSize: 24,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w500,
                                           height: 1.33,
                                           letterSpacing: -0.50,
@@ -156,12 +151,11 @@ class IntroPage extends StackedView<IntroViewModel> {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        AppConstants.introDescriptionText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF78746D),
                                           fontSize: 14,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w400,
                                           height: 1.5,
                                         ),
@@ -195,8 +189,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   height: 264,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/png/Cool_Kids_High_Tech.png"),
+                                      image: AssetImage(PngImages.coolKidsHighTech1),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -207,16 +200,14 @@ class IntroPage extends StackedView<IntroViewModel> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Improve your skills',
+                                        AppConstants.intro3TitleText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF3B3936),
                                           fontSize: 24,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w500,
                                           height: 1.33,
                                           letterSpacing: -0.50,
@@ -224,12 +215,11 @@ class IntroPage extends StackedView<IntroViewModel> {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n',
+                                        AppConstants.introDescriptionText,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Color(0xFF78746D),
                                           fontSize: 14,
-                                          fontFamily: 'Rubik',
                                           fontWeight: FontWeight.w400,
                                           height: 1.5,
                                         ),
@@ -262,11 +252,10 @@ class IntroPage extends StackedView<IntroViewModel> {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
                     child: const Text(
-                      'Skip',
+                      AppConstants.skipText,
                       style: TextStyle(
                         color: Color(0xFF78746D),
                         fontSize: 14,
-                        fontFamily: 'Rubik',
                         fontWeight: FontWeight.w500,
                         height: 1.14,
                       ),
@@ -274,17 +263,15 @@ class IntroPage extends StackedView<IntroViewModel> {
                   ),
                 ),
                 Positioned(
-                  left: 32,
-                  right: 32,
-                  top: 706,
-                  bottom: 50,
-                  child: SizedBox(
-                    width: 320,
-                    child: ElevatedButton(
-                      onPressed: () {
+                    left: 32,
+                    right: 32,
+                    top: 706,
+                    bottom: 50,
+                    child: AppButton(
+                      title: viewModel.buttontext,
+                      onClick: () {
                         // ignore: non_constant_identifier_names
-                        final int currentPageIndex =
-                            pageController.page?.round() ?? 0;
+                        final int currentPageIndex = pageController.page?.round() ?? 0;
                         const int lastPageIndex = 2;
                         if (currentPageIndex == lastPageIndex) {
                           // Navigate to the home page
@@ -300,36 +287,7 @@ class IntroPage extends StackedView<IntroViewModel> {
                           );
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 20),
-                        backgroundColor: const Color(0xFFE35629),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              viewModel.buttontext,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: 'Rubik',
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                    )),
               ],
             ),
           ),

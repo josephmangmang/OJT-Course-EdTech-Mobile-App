@@ -11,8 +11,5 @@ class NotFoundViewModel extends BaseViewModel {
     _navigationService.back();
   }
 
-  void seachCourse() {
-
-  }
-
+  void seachCourse() {}
 }
