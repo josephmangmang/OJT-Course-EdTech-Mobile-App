@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 typedef CourseSelected = Function();
 
 class YourCourseCard extends StatelessWidget {
-  YourCourseCard({
+  const YourCourseCard({
     Key? key,
     required this.courseSelected,
     required this.course,

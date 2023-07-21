@@ -38,6 +38,35 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
+                      Column(
+                        children: [
+                          Image.network(course.image),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Container(
+
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF65A9E9),
+                                borderRadius: BorderRadius.circular(12),
+
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 4),
+                              child: Text(
+                                '\$${course.price}',
+                                style: const TextStyle(
+                                  color: Color(0xFFF2F2F2),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       const Text(
                         AppConstants.aboutCourseText,
                         style: TextStyle(
@@ -86,9 +115,18 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      AppButton(
-                        title: AppConstants.addToCartText,
-                        onClick: viewModel.addToCart,
+                      Column(
+                        children: [
+                          AppButton(
+                            title: AppConstants.addToCartText,
+                            onClick: viewModel.addToCart,
+                          ),
+
+                          AppButton(
+                            title: AppConstants.buyNowText,
+                            onClick: viewModel.buyMe,
+                          ),
+                        ],
                       ),
                     ],
                   ),

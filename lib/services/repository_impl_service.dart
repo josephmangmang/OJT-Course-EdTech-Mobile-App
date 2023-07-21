@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../app/app.locator.dart';
 import '../exception/app_exception.dart';
 import '../model/course.dart';
+import '../model/credit_card.dart';
 import '../ui/common/firebase_constants.dart';
 import 'authentication_service.dart';
 
@@ -161,4 +162,35 @@ class RepositoryImplService extends RepositoryService {
       return results.docs.map((doc) => Course.fromJson(doc.data())).toList();
     });
   }
-}
+
+  @override
+  Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod) async {
+    final user = await _authenticationService.getCurrentUser();
+
+    CreditCard creditCard = CreditCard(name: name, cardNumber: cardNumber, expireDate: expireDate, cvv: cvv, paymentMethod: paymentMethod);
+
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        final CollectionReference creditCardCollection = await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid).collection('creditCardDetails');
+
+        final QuerySnapshot existingCreditCardSnapshot = await creditCardCollection.get();
+
+        if (existingCreditCardSnapshot.docs.isNotEmpty) {
+          for (DocumentSnapshot doc in existingCreditCardSnapshot.docs) {
+            await doc.reference.delete();
+          }
+        }
+
+        await creditCardCollection.add(creditCard.toJson());
+      } on FirebaseAuthException catch (e) {
+        return Left(AppException(e.message.toString()));
+      }
+      return const Right(None());
+    });
+    }
+  }
+

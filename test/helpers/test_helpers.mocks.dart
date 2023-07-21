@@ -775,6 +775,56 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCreditCard(
+    String? name,
+    String? cardNumber,
+    String? expireDate,
+    String? cvv,
+    String? paymentMethod,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addCreditCard,
+          [
+            name,
+            cardNumber,
+            expireDate,
+            cvv,
+            paymentMethod,
+          ],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+            ],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+            ],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -897,6 +947,56 @@ class MockRepositoryImplService extends _i1.Mock
         returnValueForMissingStub:
             _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i8.Future<List<_i5.Course>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCreditCard(
+    String? name,
+    String? cardNumber,
+    String? expireDate,
+    String? cvv,
+    String? paymentMethod,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addCreditCard,
+          [
+            name,
+            cardNumber,
+            expireDate,
+            cvv,
+            paymentMethod,
+          ],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+            ],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+            ],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
 }
 
 /// A class which mocks [SharedService].

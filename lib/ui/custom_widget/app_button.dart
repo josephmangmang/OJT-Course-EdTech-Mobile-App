@@ -13,7 +13,8 @@ class AppButton extends StatelessWidget {
   final OnClick onClick;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onClick,

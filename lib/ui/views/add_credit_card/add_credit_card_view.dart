@@ -2,11 +2,12 @@ import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:intl/intl.dart';
 import 'add_credit_card_viewmodel.dart';
 
 class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
-  const AddCreditCardView({Key? key}) : super(key: key);
+  final int paymentMethod;
+  const AddCreditCardView(this.paymentMethod, {Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -38,10 +39,11 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                 ),
               ),
               const SizedBox(height: 32),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: viewModel.nameController,
+                  decoration: const InputDecoration(
                     hintText: 'Name',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
@@ -62,10 +64,11 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                 ),
               ),
               const SizedBox(height: 32),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: viewModel.cardNumberController,
+                  decoration: const InputDecoration(
                     hintText: 'Credit card number',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
@@ -86,14 +89,14 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                 ),
               ),
               const SizedBox(height: 11),
-              const Row(
+               Row(
                 children: [
                   Padding(
-                   padding: EdgeInsets.symmetric(horizontal: 16),
+                   padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Expires",
                           style: TextStyle(
                             color: Colors.black,
@@ -105,8 +108,12 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                        SizedBox(
                         width: 155.50,
                          child: TextField(
-                           decoration: InputDecoration(
-                             hintText: '10/27',
+                           controller: viewModel.expireDate,
+                           onTap: () {
+                             viewModel.selectDate(context);
+                           },
+                           decoration: const InputDecoration(
+                             hintText: "07/23",
                              border: OutlineInputBorder(
                                borderRadius: BorderRadius.all(
                                  Radius.circular(10.0),
@@ -122,18 +129,17 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                                ),
                              ),
                            ),
-                           keyboardType: TextInputType.number,
                          ),
                        ),
                       ],
                     ),
                   ),
-                  Padding(
-                   padding: EdgeInsets.symmetric(horizontal: 16),
+                   Padding(
+                   padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "CVV",
                           style: TextStyle(
                             color: Colors.black,
@@ -145,8 +151,9 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                        SizedBox(
                         width: 155.50,
                          child: TextField(
+                           controller: viewModel.cvvController,
                           obscureText: true,
-                           decoration: InputDecoration(
+                           decoration: const InputDecoration(
                              hintText: '***',
                              border: OutlineInputBorder(
                                borderRadius: BorderRadius.all(
@@ -171,8 +178,10 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                   )
                 ],
               ),
-              SizedBox(height: 32),
-              AppButton(title: "Save", onClick: () {})
+              const SizedBox(height: 32),
+              AppButton(title: "Save", onClick: () {
+                viewModel.save(paymentMethod);
+              })
             ],
           ),
         ),

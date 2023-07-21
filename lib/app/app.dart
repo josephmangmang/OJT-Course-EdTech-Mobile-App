@@ -17,7 +17,7 @@ import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart';
 import 'package:edtechapp/ui/views/not_saved/not_saved_view.dart';
 import 'package:edtechapp/ui/views/no_payment/no_payment_view.dart';
 import 'package:edtechapp/ui/views/saved/saved_view.dart';
-import 'package:edtechapp/ui/views/payment_addded/payment_addded_view.dart';
+import 'package:edtechapp/ui/views/payment_addded/payment_added_view.dart';
 import 'package:edtechapp/ui/views/not_found/not_found_view.dart';
 import 'package:edtechapp/ui/views/intro/intro_view.dart';
 
@@ -58,7 +58,7 @@ import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
     MaterialRoute(page: NotSavedView),
     MaterialRoute(page: NoPaymentView),
     MaterialRoute(page: SavedView),
-    MaterialRoute(page: PaymentAdddedView),
+    MaterialRoute(page: PaymentAddedView),
     MaterialRoute(page: NotFoundView),
     MaterialRoute(page: IntroPage),
 

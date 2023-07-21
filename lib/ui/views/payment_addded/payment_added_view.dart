@@ -5,10 +5,10 @@ import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'payment_addded_viewmodel.dart';
+import 'payment_added_viewmodel.dart';
 
-class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
-  const PaymentAdddedView({Key? key}) : super(key: key);
+class PaymentAddedView extends StackedView<PaymentAdddedViewModel> {
+  const PaymentAddedView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -60,7 +60,7 @@ class PaymentAdddedView extends StackedView<PaymentAdddedViewModel> {
                 ),
                 AppButton(
                   title: AppConstants.continueText,
-                  onClick: viewModel.payCourse,
+                  onClick: viewModel.paymentMethod,
                 ),
               ],
             ),

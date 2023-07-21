@@ -13,9 +13,15 @@ class ProjectDetailViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final Course course;
 
+
+
   ProjectDetailViewModel(this.course);
 
   void addToCart() {
-    _navigationService.navigateToPaymentAdddedView();
+    _navigationService.navigateToPaymentAddedView();
+  }
+
+  void buyMe () {
+    _navigationService.navigateToPaymentAddedView();
   }
 }

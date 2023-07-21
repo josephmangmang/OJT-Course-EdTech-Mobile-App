@@ -35,4 +35,8 @@ class PaymentAdddedViewModel extends BaseViewModel {
   void backPressed() {
     _navigationService.back();
   }
+
+  void paymentMethod() {
+    _navigationService.navigateToPaymentMethodsView();
+  }
 }

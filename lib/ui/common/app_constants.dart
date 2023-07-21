@@ -9,6 +9,7 @@ class AppConstants {
   static const signUpText = "Sign up";
   static const continueText = "Continue";
   static const addToCartText = "Add to cart";
+  static const buyNowText = "Buy me";
   static const yourCourseText = "Your Courses";
   static const savedText = "Saved";
   static const paymentText = "Payment";

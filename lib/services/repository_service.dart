@@ -15,4 +15,6 @@ abstract class RepositoryService {
   Future<List<Course>> getUserCourses();
 
   Future<Either<AppException, None>> buyCourse(String? courseId);
+
+  Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod);
 }
