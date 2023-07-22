@@ -14,4 +14,6 @@ abstract interface class AuthenticationService {
 
   Future<Either<AppException, User>> getCurrentUser();
 
+  Future<Either<AppException,None>> logOutUser();
+
 }

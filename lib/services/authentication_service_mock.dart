@@ -34,4 +34,10 @@ class AuthenticationServiceMock implements AuthenticationService {
     // TODO: implement getCurrentUser
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<AppException, None>> logOutUser() {
+    // TODO: implement logOutUser
+    throw UnimplementedError();
+  }
 }

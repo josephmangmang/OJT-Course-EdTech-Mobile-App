@@ -1,13 +1,10 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/services/authentication_service.dart';
-import 'package:edtechapp/ui/views/home/home_view.dart';
-import 'package:edtechapp/ui/views/sign_up/sign_up_view.dart';
+import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:get_it/get_it.dart';
 import '../../../app/app.locator.dart';
-import 'package:edtechapp/services/repository_service.dart';
 
 class SignUpViewModel extends BaseViewModel {
   final nameTextController = TextEditingController();
@@ -26,24 +23,54 @@ class SignUpViewModel extends BaseViewModel {
   }
 
   Future<void> signupPressed() async {
-    setBusy(true);
-    final response = await _authenticationService.signup(
-      nameTextController.text,
-      emailTextController.text,
-      passwordTextController.text,
-    );
+    final verifyForm = validateForm();
+    if (verifyForm != null) {
+      _snackBarService.showSnackbar(message: verifyForm);
+    } else {
+      setBusy(true);
+      final response = await _authenticationService.signup(
+        nameTextController.text,
+        emailTextController.text,
+        passwordTextController.text,
+      );
 
-    setBusy(false);
+      setBusy(false);
 
-    response.fold((l) {
-      _snackBarService.showSnackbar(message: l.message);
-    }, (r) {
-      _snackBarService.showSnackbar(message: "Account created successfully.");
-      _navigatorService.replaceWithLoginView();
-    });
+      response.fold((l) {
+        _snackBarService.showSnackbar(message: l.message);
+      }, (r) {
+        _snackBarService.showSnackbar(message: "Account created successfully.");
+        _navigatorService.replaceWithLoginView();
+      });
+    }
   }
 
   void goToLoginPage() {
     _navigatorService.replaceWithLoginView();
+  }
+
+  String? validateForm() {
+    if (nameTextController.text.isEmpty &&
+        emailTextController.text.isEmpty &&
+        passwordTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyEmailNamePass;
+    } else if (nameTextController.text.isEmpty &&
+        emailTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyEmailName;
+    } else if (nameTextController.text.isEmpty &&
+        passwordTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyNamePass;
+    } else if (emailTextController.text.isEmpty &&
+        passwordTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyEmailPass;
+    } else if (nameTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyName;
+    } else if (emailTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyEmail;
+    } else if (passwordTextController.text.isEmpty) {
+      return AppExceptionConstants.emptyPassword;
+    } else {
+      return null;
+    }
   }
 }

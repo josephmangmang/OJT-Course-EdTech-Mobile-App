@@ -116,7 +116,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                                 viewModel.visibility();
                               },
                               icon: Transform.scale(
-                                scale: 0.6,
+                                scale: 1,
                                 child: SvgPicture.asset(
                                   SvgImages.visibility1,
                                 ),

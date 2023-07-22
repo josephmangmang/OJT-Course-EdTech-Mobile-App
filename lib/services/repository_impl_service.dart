@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:edtechapp/services/repository_service.dart';
-import 'package:edtechapp/ui/common/app_exemption_constants.dart';
+import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';

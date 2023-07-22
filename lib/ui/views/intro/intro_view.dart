@@ -263,12 +263,12 @@ class IntroPage extends StackedView<IntroViewModel> {
                   ),
                 ),
                 Positioned(
-                    left: 32,
-                    right: 32,
-                    top: 706,
-                    bottom: 50,
+                    left: 50,
+                    right: 30,
+                    top: 695,
+                    bottom: 25,
                     child: AppButton(
-                      title: viewModel.buttontext,
+                      title: viewModel.buttonText,
                       onClick: () {
                         // ignore: non_constant_identifier_names
                         final int currentPageIndex = pageController.page?.round() ?? 0;

@@ -26,58 +26,56 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                   child: CircularProgressIndicator(),
                 )
               : SafeArea(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Column(children: [
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  viewModel.back();
-                                },
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      SvgImages.background,
-                                    ),
-                                    SvgPicture.asset(
-                                      SvgImages.goBack,
-                                    ),
-                                  ],
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Column(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              viewModel.back();
+                            },
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  SvgImages.background,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Expanded(
-                                child: SearchCourse(
-                                    searchPressed: viewModel.searchPressed,
-                                    searchTextController: viewModel.searchTextController),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          margin: const EdgeInsets.only(top: 12, bottom: 32),
-                          child: Text(
-                            viewModel.total,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontFamily: 'SF Pro Text',
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: -0.30,
+                                SvgPicture.asset(
+                                  SvgImages.goBack,
+                                ),
+                              ],
                             ),
-                            textAlign: TextAlign.start,
                           ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
+                            child: SearchCourse(
+                                searchPressed: viewModel.searchPressed,
+                                searchTextController: viewModel.searchTextController),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        margin: const EdgeInsets.only(top: 12, bottom: 32),
+                        child: Text(
+                          viewModel.total,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontFamily: 'SF Pro Text',
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.30,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        ListView.builder(
+                      ),
+                      Expanded(
+                        child: ListView.builder(
                           shrinkWrap: true,
                           primary: false,
                           itemCount: viewModel.listOfCourse.length,
@@ -92,8 +90,8 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
                             );
                           },
                         ),
-                      ]),
-                    ),
+                      ),
+                    ]),
                   ),
                 ),
         );

@@ -5,6 +5,8 @@ class AppConstants {
 
   static const coursePrefKey = 'COURSE_KEY';
 
+  static const appIntroGuideKey = 'APP_INTRO_KEY';
+
   static const logInText = "Log in";
   static const signUpText = "Sign up";
   static const continueText = "Continue";
@@ -26,7 +28,7 @@ class AppConstants {
   static const accountInfoText = "Account information";
   static const aboutCourseText = "About the course";
   static const durationText = "Duration";
-  static const hiText = "Hi,";
+  static const helloText = "Hello,";
   static const searchHintText = "Search Course";
   static const categoryText = "Category:";
   static const lessonText = "Lessons";

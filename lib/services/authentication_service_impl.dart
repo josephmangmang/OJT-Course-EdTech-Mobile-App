@@ -4,7 +4,7 @@ import 'package:edtechapp/exception/app_exception.dart';
 import 'package:edtechapp/model/user.dart';
 import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
-import 'package:edtechapp/ui/common/app_exemption_constants.dart';
+import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 
@@ -27,7 +27,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, User>> login(String email, String password) async {
+  Future<Either<AppException, User>> login(
+      String email, String password) async {
     try {
       final credential = await auth.signInWithEmailAndPassword(
         email: email,
@@ -37,7 +38,10 @@ class AuthenticationServiceImpl implements AuthenticationService {
         return Left(AppException(AppExceptionConstants.userNotFound));
       }
       final userId = credential.user!.uid;
-      final snap = await db.collection(FirebaseConstants.userCollection).doc(userId).get();
+      final snap = await db
+          .collection(FirebaseConstants.userCollection)
+          .doc(userId)
+          .get();
       final user = User.fromJson(snap.data()!);
       return Right(user);
     } on FirebaseAuthException catch (e) {
@@ -46,7 +50,8 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, None>> signup(String name, String email, String password) async {
+  Future<Either<AppException, None>> signup(
+      String name, String email, String password) async {
     try {
       UserCredential credential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -56,9 +61,16 @@ class AuthenticationServiceImpl implements AuthenticationService {
       if (credential.user == null) {
         return Left(AppException(AppExceptionConstants.userNotFound));
       }
-      User user = User(name: name, email: email, uid: credential.user!.uid, purchaseCourses: List.empty());
+      User user = User(
+          name: name,
+          email: email,
+          uid: credential.user!.uid,
+          purchaseCourses: List.empty());
 
-      db.collection(FirebaseConstants.userCollection).doc(credential.user?.uid).set(user.toJson());
+      db
+          .collection(FirebaseConstants.userCollection)
+          .doc(credential.user?.uid)
+          .set(user.toJson());
 
       return const Right(None());
     } on FirebaseAuthException catch (e) {
@@ -84,8 +96,23 @@ class AuthenticationServiceImpl implements AuthenticationService {
     if (user == null) {
       return Left(AppException(AppExceptionConstants.noLoggedInUser));
     } else {
-      final updatedUserDoc = await db.collection(FirebaseConstants.userCollection).doc(user.uid).get();
+      final updatedUserDoc = await db
+          .collection(FirebaseConstants.userCollection)
+          .doc(user.uid)
+          .get();
       return Right(User.fromJson(updatedUserDoc.data()!));
+    }
+  }
+
+  @override
+  Future<Either<AppException, None>> logOutUser() async{
+    try{
+      await auth.signOut();
+      await _sharedPrefService.deleteUser();
+      return const Right(None());
+    }
+    catch(error) {
+      return Left(AppException(error.toString()));
     }
   }
 }

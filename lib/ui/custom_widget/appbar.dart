@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:edtechapp/app/app.locator.dart';
+import 'package:edtechapp/resources/svg_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -28,8 +29,9 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
+      margin: const EdgeInsets.only(top: 8, right: 40),
       child: Row(
         children: [
           IconButton(
@@ -37,8 +39,11 @@ class CustomAppBar extends StatelessWidget {
             icon: Stack(
               alignment: Alignment.center,
               children: [
-                SvgPicture.asset('assets/svg/Background.svg'),
-                SvgPicture.asset('assets/svg/Go-back.svg'),
+                Transform.scale(
+                  scale: 1.4,
+                  child: SvgPicture.asset(SvgImages.background),
+                ),
+                SvgPicture.asset(SvgImages.goBack),
               ],
             ),
           ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:edtechapp/model/user.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,5 +20,29 @@ class SharedPrefServiceServiceImpl implements SharedPrefServiceService {
     if (user == null) return null;
 
     return User.fromJson(json.decode(user));
+  }
+
+  @override
+  Future<void> deleteUser() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.remove(AppConstants.userPrefKey);
+  }
+
+  @override
+  Future<bool> appIntroGuideValidation() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final appIntroGuide = pref.getBool(AppConstants.appIntroGuideKey);
+
+    if (appIntroGuide == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  Future<void> setAppIntroGuide() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool(AppConstants.appIntroGuideKey, true);
   }
 }

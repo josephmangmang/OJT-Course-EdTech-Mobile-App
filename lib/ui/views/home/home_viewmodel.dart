@@ -15,7 +15,6 @@ class HomeViewModel extends BaseViewModel {
   TextEditingController searchTextController = TextEditingController();
   String category = "";
   final _repository = locator<RepositoryService>();
-  final _shared = locator<SharedService>();
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
   List<Course> listOfCourse = [];

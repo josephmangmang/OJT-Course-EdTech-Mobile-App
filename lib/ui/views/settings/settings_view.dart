@@ -32,12 +32,9 @@ class SettingsView extends StackedView<SettingsViewModel> {
                       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       child: Column(
                         children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 56 - 16),
-                            child: CustomAppBar(
-                              backButtonPressed: onBackPressed,
-                              title: AppConstants.settingText,
-                            ),
+                          CustomAppBar(
+                            backButtonPressed: onBackPressed,
+                            title: AppConstants.settingText,
                           ),
                           const SizedBox(
                             height: 32,
