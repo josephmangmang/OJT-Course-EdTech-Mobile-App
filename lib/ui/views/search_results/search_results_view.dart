@@ -1,4 +1,5 @@
 import 'package:edtechapp/resources/svg_images.dart';
+import 'package:edtechapp/ui/views/settings/settings_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,86 +17,80 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
     SearchResultsViewModel viewModel,
     Widget? child,
   ) {
-    return ViewModelBuilder<SearchResultsViewModel>.reactive(
-      viewModelBuilder: () => SearchResultsViewModel(),
-      onViewModelReady: (model) => model.searchCourse(),
-      builder: (context, viewModel, child) {
-        return Scaffold(
-          body: viewModel.isBusy
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SafeArea(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Column(children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              viewModel.back();
-                            },
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  SvgImages.background,
-                                ),
-                                SvgPicture.asset(
-                                  SvgImages.goBack,
-                                ),
-                              ],
+    return Scaffold(
+      body: viewModel.isBusy
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : SafeArea(
+              child: Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          viewModel.back();
+                        },
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              SvgImages.background,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Expanded(
-                            child: SearchCourse(
-                                searchPressed: viewModel.searchPressed,
-                                searchTextController: viewModel.searchTextController),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        margin: const EdgeInsets.only(top: 12, bottom: 32),
-                        child: Text(
-                          viewModel.total,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontFamily: 'SF Pro Text',
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: -0.30,
-                          ),
-                          textAlign: TextAlign.start,
+                            SvgPicture.asset(
+                              SvgImages.goBack,
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        width: 8,
                       ),
                       Expanded(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          primary: false,
-                          itemCount: viewModel.listOfCourse.length,
-                          itemBuilder: (context, index) {
-                            var courseItem = viewModel.listOfCourse[index];
-                            return CourseCard(
-                              course: courseItem,
-                              onItemPressed: (Course course) {
-                                viewModel.coursePressed(courseItem);
-                              },
-                              backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
-                            );
-                          },
-                        ),
+                        child: SearchCourse(
+                            searchPressed: viewModel.searchPressed,
+                            searchTextController: viewModel.searchTextController),
                       ),
-                    ]),
+                    ],
                   ),
-                ),
-        );
-      },
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(top: 12, bottom: 32),
+                    child: Text(
+                      viewModel.total,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'SF Pro Text',
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: -0.30,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: viewModel.listOfCourse.length,
+                      itemBuilder: (context, index) {
+                        var courseItem = viewModel.listOfCourse[index];
+                        return CourseCard(
+                          course: courseItem,
+                          onItemPressed: (Course course) {
+                            viewModel.coursePressed(courseItem);
+                          },
+                          backgroundColor: Color(index + 1 % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
+                        );
+                      },
+                    ),
+                  ),
+                ]),
+              ),
+            ),
     );
   }
 
@@ -104,4 +99,10 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
     BuildContext context,
   ) =>
       SearchResultsViewModel();
+
+  @override
+  void onViewModelReady(SearchResultsViewModel viewModel) {
+    viewModel.searchCourse();
+    super.onViewModelReady(viewModel);
+  }
 }
