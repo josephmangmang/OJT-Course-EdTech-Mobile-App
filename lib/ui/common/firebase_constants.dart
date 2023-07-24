@@ -4,6 +4,7 @@ class FirebaseConstants {
   static const id = 'id';
   static const keywords = "keywords";
   static const purchaseCourses = "purchaseCourses";
+  static const cartCourses = "cartCourses";
   static const category = "category";
 
   FirebaseConstants._();

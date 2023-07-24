@@ -3,7 +3,6 @@ import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'payment_checkout_viewmodel.dart';
 
@@ -24,8 +23,11 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
             alignment: Alignment.center,
             child: Column(
               children: [
-                CustomAppBar(
-                  title: AppConstants.checkoutText,
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomAppBar(
+                    title: AppConstants.checkoutText,
+                  ),
                 ),
                 Column(
                   children: [

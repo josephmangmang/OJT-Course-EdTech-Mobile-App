@@ -17,73 +17,67 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
     NotFoundViewModel viewModel,
     Widget? child,
   ) {
-    return ViewModelBuilder.reactive(
-      viewModelBuilder: () => NotFoundViewModel(),
-      onViewModelReady: (model) => model.init(),
-      builder: (context, viewModel, child) {
-        return Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: viewModel.goBack,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SvgPicture.asset(SvgImages.background),
+                        SvgPicture.asset(SvgImages.goBack),
+                      ],
+                    ),
+                  ),
                 ),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      alignment: Alignment.centerLeft,
-                      child: GestureDetector(
-                        onTap: viewModel.goBack,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SvgPicture.asset(SvgImages.background),
-                            SvgPicture.asset(SvgImages.goBack),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SearchCourse(
-                        searchPressed: viewModel.seachCourse,
-                        searchTextController: viewModel.searchTextController),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    Image.asset(PngImages.coolKidsStanding),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    const Text(
-                      AppConstants.courseNotFoundText,
-                      style: TextStyle(
-                        color: Color(0xFF3B3936),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: -0.50,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    const Text(
-                      AppConstants.courseNotFoundBodyText,
-                      style: TextStyle(
-                        color: Color(0xFF78746D),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                SearchCourse(
+                    searchPressed: viewModel.seachCourse,
+                    searchTextController: viewModel.searchTextController),
+                const SizedBox(
+                  height: 32,
                 ),
-              ),
+                Image.asset(PngImages.coolKidsStanding),
+                const SizedBox(
+                  height: 32,
+                ),
+                const Text(
+                  AppConstants.courseNotFoundText,
+                  style: TextStyle(
+                    color: Color(0xFF3B3936),
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -0.50,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                const Text(
+                  AppConstants.courseNotFoundBodyText,
+                  style: TextStyle(
+                    color: Color(0xFF78746D),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
@@ -92,4 +86,10 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
     BuildContext context,
   ) =>
       NotFoundViewModel();
+
+  @override
+  void onViewModelReady(NotFoundViewModel viewModel) {
+    viewModel.init();
+    super.onViewModelReady(viewModel);
+  }
 }

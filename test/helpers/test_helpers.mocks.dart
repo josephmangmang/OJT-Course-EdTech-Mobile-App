@@ -1243,6 +1243,32 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i17.User>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> logOutUser() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #logOutUser,
+          [],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #logOutUser,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #logOutUser,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
 }
 
 /// A class which mocks [SharedPrefServiceService].
@@ -1268,4 +1294,31 @@ class MockSharedPrefServiceService extends _i1.Mock
         returnValue: _i8.Future<_i17.User?>.value(),
         returnValueForMissingStub: _i8.Future<_i17.User?>.value(),
       ) as _i8.Future<_i17.User?>);
+  @override
+  _i8.Future<void> deleteUser() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUser,
+          [],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+  @override
+  _i8.Future<bool> appIntroGuideValidation() => (super.noSuchMethod(
+        Invocation.method(
+          #appIntroGuideValidation,
+          [],
+        ),
+        returnValue: _i8.Future<bool>.value(false),
+        returnValueForMissingStub: _i8.Future<bool>.value(false),
+      ) as _i8.Future<bool>);
+  @override
+  _i8.Future<void> setAppIntroGuide() => (super.noSuchMethod(
+        Invocation.method(
+          #setAppIntroGuide,
+          [],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }

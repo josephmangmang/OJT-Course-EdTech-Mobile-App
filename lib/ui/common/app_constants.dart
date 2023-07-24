@@ -11,6 +11,7 @@ class AppConstants {
   static const signUpText = "Sign up";
   static const continueText = "Continue";
   static const addToCartText = "Add to cart";
+  static const removeCart = "Remove from cart";
   static const buyNowText = "Buy me";
   static const yourCourseText = "Your Courses";
   static const savedText = "Saved";
@@ -70,4 +71,5 @@ class AppConstants {
   static const  paymentMethodText = "Payment method";
   static const notificationText = "Notifications";
   static const noCoursesFound = "No Courses Found";
+  static const cartCourseText = "Course added to your cart successfully";
 }

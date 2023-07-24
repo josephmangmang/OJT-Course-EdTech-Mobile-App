@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:ui';
+
 import 'package:dartz/dartz.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/ui/common/app_exception_constants.dart';
@@ -23,7 +26,10 @@ class RepositoryImplService extends RepositoryService {
     List<Course> listOfCourse = [];
 
     try {
-      await db.collection(FirebaseConstants.courseCollection).get().then((value) {
+      await db
+          .collection(FirebaseConstants.courseCollection)
+          .get()
+          .then((value) {
         if (value.docs.isNotEmpty) {
           var snapshots = value.docs;
 
@@ -43,7 +49,10 @@ class RepositoryImplService extends RepositoryService {
 
     if (searchCourse.isEmpty) {
       try {
-        await db.collection(FirebaseConstants.courseCollection).get().then((value) {
+        await db
+            .collection(FirebaseConstants.courseCollection)
+            .get()
+            .then((value) {
           if (value.docs.isNotEmpty) {
             var snapshots = value.docs;
             listOfCourse =
@@ -58,7 +67,8 @@ class RepositoryImplService extends RepositoryService {
       try {
         await db
             .collection(FirebaseConstants.courseCollection)
-            .where(FirebaseConstants.keywords, arrayContains: searchCourse.toLowerCase())
+            .where(FirebaseConstants.keywords,
+                arrayContains: searchCourse.toLowerCase())
             .get()
             .then((value) {
           if (value.docs.isNotEmpty) {
@@ -164,10 +174,20 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod) async {
+  Future<Either<AppException, None>> addCreditCard(
+      String name,
+      String cardNumber,
+      String expireDate,
+      String cvv,
+      String paymentMethod) async {
     final user = await _authenticationService.getCurrentUser();
 
-    CreditCard creditCard = CreditCard(name: name, cardNumber: cardNumber, expireDate: expireDate, cvv: cvv, paymentMethod: paymentMethod);
+    CreditCard creditCard = CreditCard(
+        name: name,
+        cardNumber: cardNumber,
+        expireDate: expireDate,
+        cvv: cvv,
+        paymentMethod: paymentMethod);
 
     return user.fold((error) {
       return Left(error);
@@ -175,9 +195,11 @@ class RepositoryImplService extends RepositoryService {
       try {
         final CollectionReference creditCardCollection = await db
             .collection(FirebaseConstants.userCollection)
-            .doc(user.uid).collection('creditCardDetails');
+            .doc(user.uid)
+            .collection('creditCardDetails');
 
-        final QuerySnapshot existingCreditCardSnapshot = await creditCardCollection.get();
+        final QuerySnapshot existingCreditCardSnapshot =
+            await creditCardCollection.get();
 
         if (existingCreditCardSnapshot.docs.isNotEmpty) {
           for (DocumentSnapshot doc in existingCreditCardSnapshot.docs) {
@@ -191,6 +213,37 @@ class RepositoryImplService extends RepositoryService {
       }
       return const Right(None());
     });
-    }
   }
 
+  @override
+  Future<Either<AppException, None>> addCourseToCart(String courseId) async {
+    final user = await _authenticationService.getCurrentUser();
+
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .update({
+          FirebaseConstants.cartCourses: FieldValue.arrayUnion([courseId])
+        });
+      } on FirebaseAuthException catch (error) {
+        return Left(AppException(error.message.toString()));
+      }
+      return const Right(None());
+    });
+  }
+
+  @override
+  Future<Either<AppException, bool>> isCourseCart(String courseId) async {
+    // final user = await _authenticationService.getCurrentUser();
+    // return user.fold((error) {
+    //   return Left(error);
+    // }, (user)  {
+    //
+    // });
+    throw UnimplementedError();
+  }
+}

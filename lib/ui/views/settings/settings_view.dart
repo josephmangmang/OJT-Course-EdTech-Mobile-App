@@ -18,111 +18,106 @@ class SettingsView extends StackedView<SettingsViewModel> {
     SettingsViewModel viewModel,
     Widget? child,
   ) {
-    return ViewModelBuilder.reactive(
-        viewModelBuilder: () => SettingsViewModel(),
-        onViewModelReady: (model) => model.getUser(),
-        builder: (context, viewModel, child) {
-          return viewModel.isBusy
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SafeArea(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Column(
-                        children: [
-                          CustomAppBar(
-                            backButtonPressed: onBackPressed,
-                            title: AppConstants.settingText,
-                          ),
-                          const SizedBox(
-                            height: 32,
-                          ),
-                          Image.asset(PngImages.coolKidsOnWheels2),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 16),
-                            height: 82,
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: const Color(0xFFBEBAB3), width: 1),
-                                borderRadius: BorderRadius.circular(16)),
-                            width: double.infinity,
-                            child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 32,
-                                    height: 32,
-                                    decoration: ShapeDecoration(
-                                      color: const Color(0xFF65A9E9),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(56),
-                                      ),
-                                    ),
-                                    child: Transform.scale(
-                                      scale: 0.5,
-                                      child: SvgPicture.asset(SvgImages.notification),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      margin: const EdgeInsets.only(left: 12, right: 8),
-                                      child: const Text(
-                                        AppConstants.notificationText,
-                                        style: TextStyle(
-                                          color: Color(0xFF3B3936),
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: -0.50,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SvgPicture.asset(SvgImages.toggleButtons)
-                                ]),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: const Text(
-                              AppConstants.accountInfoText,
-                              style: TextStyle(
-                                color: Color(0xFF3B3936),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: -0.50,
+    return viewModel.isBusy
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Column(
+                  children: [
+                    CustomAppBar(
+                      backButtonPressed: onBackPressed,
+                      title: AppConstants.settingText,
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    Image.asset(PngImages.coolKidsOnWheels2),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 16),
+                      height: 82,
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xFFBEBAB3), width: 1),
+                          borderRadius: BorderRadius.circular(16)),
+                      width: double.infinity,
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 32,
+                              height: 32,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFF65A9E9),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(56),
+                                ),
+                              ),
+                              child: Transform.scale(
+                                scale: 0.5,
+                                child: SvgPicture.asset(SvgImages.notification),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          buildCell(
-                            icon: SvgImages.path,
-                            title: AppConstants.nameText,
-                            subtitle: viewModel.user!.name,
-                          ),
-                          buildCell(
-                            icon: SvgImages.shape,
-                            title: AppConstants.emailText,
-                            subtitle: viewModel.user!.email,
-                          ),
-                          buildCell(
-                            icon: SvgImages.vector,
-                            title: AppConstants.passwordText,
-                            subtitle: 'changed 2 weeks ago',
-                          ),
-                        ],
+                            Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 12, right: 8),
+                                child: const Text(
+                                  AppConstants.notificationText,
+                                  style: TextStyle(
+                                    color: Color(0xFF3B3936),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: -0.50,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SvgPicture.asset(SvgImages.toggleButtons)
+                          ]),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        AppConstants.accountInfoText,
+                        style: TextStyle(
+                          color: Color(0xFF3B3936),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.50,
+                        ),
                       ),
                     ),
-                  ),
-                );
-        });
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    buildCell(
+                      icon: SvgImages.path,
+                      title: AppConstants.nameText,
+                      subtitle: viewModel.user!.name,
+                    ),
+                    buildCell(
+                      icon: SvgImages.shape,
+                      title: AppConstants.emailText,
+                      subtitle: viewModel.user!.email,
+                    ),
+                    buildCell(
+                      icon: SvgImages.vector,
+                      title: AppConstants.passwordText,
+                      subtitle: 'changed 2 weeks ago',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 
   @override
@@ -130,6 +125,12 @@ class SettingsView extends StackedView<SettingsViewModel> {
     BuildContext context,
   ) =>
       SettingsViewModel();
+
+  @override
+  void onViewModelReady(SettingsViewModel viewModel) {
+    viewModel.getUser();
+    super.onViewModelReady(viewModel);
+  }
 }
 
 Widget buildCell({

@@ -62,10 +62,12 @@ class AuthenticationServiceImpl implements AuthenticationService {
         return Left(AppException(AppExceptionConstants.userNotFound));
       }
       User user = User(
-          name: name,
-          email: email,
-          uid: credential.user!.uid,
-          purchaseCourses: List.empty());
+        name: name,
+        email: email,
+        uid: credential.user!.uid,
+        purchaseCourses: List.empty(),
+        cartCourses: List.empty(),
+      );
 
       db
           .collection(FirebaseConstants.userCollection)
@@ -105,13 +107,12 @@ class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, None>> logOutUser() async{
-    try{
+  Future<Either<AppException, None>> logOutUser() async {
+    try {
       await auth.signOut();
       await _sharedPrefService.deleteUser();
       return const Right(None());
-    }
-    catch(error) {
+    } catch (error) {
       return Left(AppException(error.toString()));
     }
   }

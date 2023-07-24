@@ -24,8 +24,11 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
             alignment: Alignment.center,
             child: Column(
               children: [
-                CustomAppBar(
-                  title: AppConstants.paymentText,
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomAppBar(
+                    title: AppConstants.paymentText,
+                  ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

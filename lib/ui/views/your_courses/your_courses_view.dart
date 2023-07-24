@@ -14,59 +14,53 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
     YourCoursesViewModel viewModel,
     Widget? child,
   ) {
-    return ViewModelBuilder<YourCoursesViewModel>.reactive(
-        viewModelBuilder: () => YourCoursesViewModel(),
-        onViewModelReady: (model) => model.init(),
-        builder: (context, viewModel, child) {
-          return Scaffold(
-            body: SafeArea(
-              child: viewModel.isBusy
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Column(
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
-                              child: Wrap(
-                                children: [
-                                  CustomAppBar(
-                                    title: AppConstants.yourCourseText,
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  if (viewModel.courses.isEmpty)
-                                    emptyView(context)
-                                  else
-                                    ListView.builder(
-                                      shrinkWrap: true,
-                                      primary: false,
-                                      itemCount: viewModel.courses.length,
-                                      itemBuilder: (context, index) {
-                                        var courseItem =
-                                            viewModel.courses[index];
-                                        return YourCourseCard(
-                                            courseSelected: () {
-                                              viewModel.coursePressed(courseItem.id);
-                                            },
-                                            course: courseItem,
-                                            color: viewModel.getColor(index));
-                                      },
-                                    ),
-                                ],
-                              ),
+    return Scaffold(
+      body: SafeArea(
+        child: viewModel.isBusy
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        child: Wrap(
+                          children: [
+                            CustomAppBar(
+                              title: AppConstants.yourCourseText,
                             ),
-                          ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            if (viewModel.courses.isEmpty)
+                              emptyView(context)
+                            else
+                              ListView.builder(
+                                shrinkWrap: true,
+                                primary: false,
+                                itemCount: viewModel.courses.length,
+                                itemBuilder: (context, index) {
+                                  var courseItem = viewModel.courses[index];
+                                  return YourCourseCard(
+                                      courseSelected: () {
+                                        viewModel.coursePressed(courseItem.id);
+                                      },
+                                      course: courseItem,
+                                      color: viewModel.getColor(index));
+                                },
+                              ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-            ),
-          );
-        });
+                  ),
+                ],
+              ),
+      ),
+    );
   }
 
   @override
@@ -74,6 +68,12 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
     BuildContext context,
   ) =>
       YourCoursesViewModel();
+
+  @override
+  void onViewModelReady(YourCoursesViewModel viewModel) {
+    viewModel.init();
+    super.onViewModelReady(viewModel);
+  }
 
   Widget emptyView(BuildContext context) {
     return SizedBox(

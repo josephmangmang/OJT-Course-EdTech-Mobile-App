@@ -21,6 +21,7 @@ class PaymentAddedView extends StackedView<PaymentAdddedViewModel> {
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 CustomAppBar(
