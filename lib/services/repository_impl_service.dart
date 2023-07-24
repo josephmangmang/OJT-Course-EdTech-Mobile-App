@@ -246,4 +246,25 @@ class RepositoryImplService extends RepositoryService {
     // });
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<CreditCard>> getCreditCard() async {
+    List<CreditCard> creditCard= [];
+
+        (user) async {
+      try {
+        db.collection(FirebaseConstants.userCollection)
+            .doc(user.uid).collection('creditCardDetails').get().then((value) {
+          if (value.docs.isNotEmpty) {
+            var snapshots = value.docs;
+            creditCard =
+                snapshots.map((e) => CreditCard.fromJson(e.data())).toList();
+          }
+        });
+      } catch (e) {
+        return e.toString();
+      }
+    };
+    return creditCard;
+  }
 }
