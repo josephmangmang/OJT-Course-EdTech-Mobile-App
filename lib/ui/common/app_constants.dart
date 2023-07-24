@@ -10,9 +10,7 @@ class AppConstants {
   static const logInText = "Log in";
   static const signUpText = "Sign up";
   static const continueText = "Continue";
-  static const addToCartText = "Add to cart";
-  static const removeCart = "Remove from cart";
-  static const buyNowText = "Buy me";
+  static const purchaseText = "Purchase";
   static const yourCourseText = "Your Courses";
   static const savedText = "Saved";
   static const paymentText = "Payment";

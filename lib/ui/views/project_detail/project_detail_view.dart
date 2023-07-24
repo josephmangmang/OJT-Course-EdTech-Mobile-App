@@ -115,19 +115,7 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      Column(
-                        children: [
-                          AppButton(
-                            title: AppConstants.addToCartText,
-                            onClick: viewModel.addToCart,
-                          ),
-
-                          AppButton(
-                            title: AppConstants.buyNowText,
-                            onClick: viewModel.buyMe,
-                          ),
-                        ],
-                      ),
+                      AppButton(title: AppConstants.purchaseText, onClick: viewModel.purchase)
                     ],
                   ),
                 ),
