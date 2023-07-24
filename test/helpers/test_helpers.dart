@@ -144,9 +144,9 @@ MockSharedPrefServiceService getAndRegisterSharedPrefServiceService() {
   return service;
 }
 
-MockCourseRepositoryService getAndRegisterCourseRepositoryService() {
+MockCourseRepository getAndRegisterCourseRepositoryService() {
   _removeRegistrationIfExists<CourseRepository>();
-  final service = MockCourseRepositoryService();
+  final service = MockCourseRepository();
   locator.registerSingleton<CourseRepository>(service);
   return service;
 }
