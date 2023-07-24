@@ -16,24 +16,20 @@ class ProjectDetailViewModel extends BaseViewModel {
   bool? isCart;
   final Course course;
 
-
-
   ProjectDetailViewModel(this.course);
 
-
-
-  Future<void> addToCart() async{
+  Future<void> addToCart() async {
     setBusy(true);
     final response = await _repositoryService.addCourseToCart(course.id);
     setBusy(false);
     response.fold((l) {
       _snackBarService.showSnackbar(message: l.message.toString());
     }, (r) {
-      _snackBarService.showSnackbar(message:AppConstants.cartCourseText);
+      _snackBarService.showSnackbar(message: AppConstants.cartCourseText);
     });
   }
 
-  void buyMe () {
+  void buyMe() {
     _navigationService.navigateToPaymentAddedView();
   }
 }

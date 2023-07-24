@@ -58,7 +58,10 @@ class NotSavedView extends StackedView<NotSavedViewModel> {
                 const SizedBox(
                   height: 32,
                 ),
-                AppButton( onClick: () { }, title: AppConstants.continueText, ),
+                AppButton(
+                  onClick: () {},
+                  title: AppConstants.continueText,
+                ),
               ],
             ),
           ),

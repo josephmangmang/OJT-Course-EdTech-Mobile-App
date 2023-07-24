@@ -11,6 +11,7 @@ class AppExceptionConstants {
   static const emptyPassword = "Please enter your password";
   static const emptyEmailPass = "Please enter your email and password";
   static const emptyEmailName = "Please enter your name and email";
-  static const emptyEmailNamePass = "Please enter your name, email and password";
+  static const emptyEmailNamePass =
+      "Please enter your name, email and password";
   static const emptyNamePass = "Please enter your name and password";
 }

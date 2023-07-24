@@ -11,6 +11,7 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:edtechapp/exception/app_exception.dart' as _i11;
 import 'package:edtechapp/model/course.dart' as _i5;
 import 'package:edtechapp/model/user.dart' as _i17;
+import 'package:edtechapp/repository/course_repository.dart' as _i19;
 import 'package:edtechapp/services/authentication_service.dart' as _i16;
 import 'package:edtechapp/services/course_impl_service.dart' as _i15;
 import 'package:edtechapp/services/repository_impl_service.dart' as _i12;
@@ -739,6 +740,59 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
             _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i8.Future<List<_i5.Course>>);
   @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCourseToCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addCourseToCart,
+          [courseId],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCourseToCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCourseToCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isCourseCart,
+          [courseId],
+        ),
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+            _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+                _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
+  @override
   _i8.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -997,6 +1051,59 @@ class MockRepositoryImplService extends _i1.Mock
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCourseToCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addCourseToCart,
+          [courseId],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCourseToCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #addCourseToCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isCourseCart,
+          [courseId],
+        ),
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+            _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+                _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
 }
 
 /// A class which mocks [SharedService].
@@ -1321,4 +1428,27 @@ class MockSharedPrefServiceService extends _i1.Mock
         returnValue: _i8.Future<void>.value(),
         returnValueForMissingStub: _i8.Future<void>.value(),
       ) as _i8.Future<void>);
+}
+
+/// A class which mocks [CourseRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCourseRepository extends _i1.Mock implements _i19.CourseRepository {
+  @override
+  _i8.Future<List<_i5.Course>> searchCourses(
+    String? query,
+    Set<String>? categories,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #searchCourses,
+          [
+            query,
+            categories,
+          ],
+        ),
+        returnValue: _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+        returnValueForMissingStub:
+            _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
+      ) as _i8.Future<List<_i5.Course>>);
 }

@@ -59,7 +59,8 @@ class IntroPage extends StackedView<IntroViewModel> {
                               height: 264,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage(PngImages.coolKidsLongDistanceRelationship1),
+                                  image: AssetImage(PngImages
+                                      .coolKidsLongDistanceRelationship1),
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -122,7 +123,8 @@ class IntroPage extends StackedView<IntroViewModel> {
                               height: 264,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage(PngImages.coolKidsStayingHome),
+                                  image:
+                                      AssetImage(PngImages.coolKidsStayingHome),
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -186,7 +188,8 @@ class IntroPage extends StackedView<IntroViewModel> {
                               height: 264,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage(PngImages.coolKidsHighTech1),
+                                  image:
+                                      AssetImage(PngImages.coolKidsHighTech1),
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -268,7 +271,8 @@ class IntroPage extends StackedView<IntroViewModel> {
                   title: viewModel.buttonText,
                   onClick: () {
                     // ignore: non_constant_identifier_names
-                    final int currentPageIndex = pageController.page?.round() ?? 0;
+                    final int currentPageIndex =
+                        pageController.page?.round() ?? 0;
                     const int lastPageIndex = 2;
                     if (currentPageIndex == lastPageIndex) {
                       // Navigate to the home page

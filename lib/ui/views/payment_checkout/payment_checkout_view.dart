@@ -88,7 +88,6 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
-                    
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -103,7 +102,8 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                     shape: RoundedRectangleBorder(
                                       side: const BorderSide(
                                         width: 0.50,
-                                        strokeAlign: BorderSide.strokeAlignOutside,
+                                        strokeAlign:
+                                            BorderSide.strokeAlignOutside,
                                         color: Color(0xFFBEBAB3),
                                       ),
                                       borderRadius: BorderRadius.circular(8),
@@ -113,14 +113,16 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Image.asset(PngImages.image2),
                                       const SizedBox(
                                         width: 16,
                                       ),
                                       const Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text("*** *** *** 5738",
                                               style: TextStyle(

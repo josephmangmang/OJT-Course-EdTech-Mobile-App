@@ -85,7 +85,8 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
@@ -101,7 +102,8 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,
@@ -117,7 +119,8 @@ class ResultView extends StackedView<ResultViewModel> {
                           height: 40,
                           decoration: ShapeDecoration(
                             color: const Color(0xFF65A9E9),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ),
                           child: Container(
                             width: 24,

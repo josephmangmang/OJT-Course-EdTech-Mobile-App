@@ -48,7 +48,7 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
                   height: 8,
                 ),
                 const Text(
-                 AppConstants.noPaymentMethodBodyText,
+                  AppConstants.noPaymentMethodBodyText,
                   style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,
@@ -60,7 +60,7 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
                   height: 32,
                 ),
                 AppButton(
-                  title:AppConstants.continueText,
+                  title: AppConstants.continueText,
                   onClick: () {},
                 ),
               ],

@@ -29,7 +29,8 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
+                    border:
+                        Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -38,9 +39,11 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                         color: const Color(0xFFFFF5EE),
                         child: Column(
                           children: [
-                            Image.asset(PngImages.coolKidsLongDistanceRelationship1),
+                            Image.asset(
+                                PngImages.coolKidsLongDistanceRelationship1),
                             Container(
-                              padding: const EdgeInsets.only(right: 8, left: 16, bottom: 8),
+                              padding: const EdgeInsets.only(
+                                  right: 8, left: 16, bottom: 8),
                               alignment: Alignment.centerRight,
                               child: SvgPicture.asset(SvgImages.playIcon),
                             ),

@@ -129,7 +129,7 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                                 child: const SizedBox(
                                   height: double.infinity,
                                   child: Text(
-                                   AppConstants.discussText,
+                                    AppConstants.discussText,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Color(0xFF78746D),

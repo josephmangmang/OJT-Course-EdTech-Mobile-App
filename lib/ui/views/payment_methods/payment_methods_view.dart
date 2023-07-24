@@ -53,10 +53,12 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                         padding: const EdgeInsets.all(14),
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         decoration: BoxDecoration(
-                          border: viewModel.isMasterCardClicked ? Border.all(
-                            color: const Color(0xFFE3562A),
-                            width: 1,
-                          ) : null,
+                          border: viewModel.isMasterCardClicked
+                              ? Border.all(
+                                  color: const Color(0xFFE3562A),
+                                  width: 1,
+                                )
+                              : null,
                         ),
                         child: Stack(children: [
                           Container(
@@ -98,10 +100,12 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                         padding: const EdgeInsets.all(14),
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         decoration: BoxDecoration(
-                          border: viewModel.isVisaCardClicked ? Border.all(
-                            color: const Color(0xFFE3562A),
-                            width: 1,
-                          ) : null,
+                          border: viewModel.isVisaCardClicked
+                              ? Border.all(
+                                  color: const Color(0xFFE3562A),
+                                  width: 1,
+                                )
+                              : null,
                         ),
                         child: Stack(children: [
                           Container(
@@ -140,9 +144,12 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                     const SizedBox(
                       height: 216,
                     ),
-                    AppButton(title: "Continue", onClick: () {
-                      viewModel.onContinuePressed(viewModel.isMasterCardClicked ? 0 : 1);
-                    })
+                    AppButton(
+                        title: "Continue",
+                        onClick: () {
+                          viewModel.onContinuePressed(
+                              viewModel.isMasterCardClicked ? 0 : 1);
+                        })
                   ],
                 ),
               ],

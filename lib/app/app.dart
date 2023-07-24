@@ -1,3 +1,4 @@
+import 'package:edtechapp/repository/course_repository_impl.dart';
 import 'package:edtechapp/services/authentication_service_impl.dart';
 import 'package:edtechapp/services/shared_pref_service_service_impl.dart';
 import 'package:edtechapp/ui/bottom_sheets/notice/notice_sheet.dart';
@@ -40,6 +41,7 @@ import 'package:edtechapp/ui/views/payment_methods/payment_methods_view.dart';
 import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
 import 'package:edtechapp/ui/views/cart/cart_view.dart';
 import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
+import 'package:edtechapp/repository/course_repository.dart';
 // @stacked-import
 
 @StackedApp(
@@ -93,6 +95,7 @@ import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
     LazySingleton(
         classType: SharedPrefServiceServiceImpl,
         asType: SharedPrefServiceService),
+    LazySingleton(classType: CourseRepositoryImpl, asType: CourseRepository),
 // @stacked-service
   ],
   bottomsheets: [

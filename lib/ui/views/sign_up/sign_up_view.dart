@@ -155,5 +155,6 @@ class SignUpView extends StackedView<SignUpViewModel> {
   ) =>
       SignUpViewModel();
 
-  void fold(void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
+  void fold(
+      void Function(dynamic l) param0, Future Function(dynamic r) param1) {}
 }

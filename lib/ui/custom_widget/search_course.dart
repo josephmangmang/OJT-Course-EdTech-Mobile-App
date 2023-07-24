@@ -8,10 +8,11 @@ class SearchCourse extends StatefulWidget {
   final Function() searchPressed;
   TextEditingController searchTextController = TextEditingController();
 
-  SearchCourse(
-      {super.key,
-      required this.searchPressed,
-      required this.searchTextController});
+  SearchCourse({
+    super.key,
+    required this.searchPressed,
+    required this.searchTextController,
+  });
 
   @override
   State<SearchCourse> createState() => _SearchCourseState();

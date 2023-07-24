@@ -12,6 +12,8 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../repository/course_repository.dart';
+import '../repository/course_repository_impl.dart';
 import '../services/authentication_service.dart';
 import '../services/authentication_service_impl.dart';
 import '../services/authentication_service_mock.dart';
@@ -50,4 +52,5 @@ Future<void> setupLocator({
       registerFor: {"prod"});
   locator.registerLazySingleton<SharedPrefServiceService>(
       () => SharedPrefServiceServiceImpl());
+  locator.registerLazySingleton<CourseRepository>(() => CourseRepositoryImpl());
 }

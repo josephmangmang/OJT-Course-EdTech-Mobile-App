@@ -14,5 +14,6 @@ class CreditCard with _$CreditCard {
     required String paymentMethod,
   }) = _CreditCard;
 
-  factory CreditCard.fromJson(Map<String, dynamic> json) => _$CreditCardFromJson(json);
+  factory CreditCard.fromJson(Map<String, dynamic> json) =>
+      _$CreditCardFromJson(json);
 }

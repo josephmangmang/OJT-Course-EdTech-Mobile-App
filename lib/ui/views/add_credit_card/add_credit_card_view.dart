@@ -89,10 +89,10 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                 ),
               ),
               const SizedBox(height: 11),
-               Row(
+              Row(
                 children: [
                   Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -105,37 +105,38 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                       SizedBox(
-                        width: 155.50,
-                         child: TextField(
-                           controller: viewModel.expireDate,
-                           onTap: () {
-                             viewModel.selectDate(context);
-                           },
-                           decoration: const InputDecoration(
-                             hintText: "07/23",
-                             border: OutlineInputBorder(
-                               borderRadius: BorderRadius.all(
-                                 Radius.circular(10.0),
-                               ),
-                             ),
-                             focusedBorder: OutlineInputBorder(
-                               borderSide: BorderSide(
-                                 color: Colors.grey, // Customize the border color here
-                                 width: 2.0,
-                               ),
-                               borderRadius: BorderRadius.all(
-                                 Radius.circular(10.0),
-                               ),
-                             ),
-                           ),
-                         ),
-                       ),
+                        SizedBox(
+                          width: 155.50,
+                          child: TextField(
+                            controller: viewModel.expireDate,
+                            onTap: () {
+                              viewModel.selectDate(context);
+                            },
+                            decoration: const InputDecoration(
+                              hintText: "07/23",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors
+                                      .grey, // Customize the border color here
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                   Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -148,40 +149,43 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                       SizedBox(
-                        width: 155.50,
-                         child: TextField(
-                           controller: viewModel.cvvController,
-                          obscureText: true,
-                           decoration: const InputDecoration(
-                             hintText: '***',
-                             border: OutlineInputBorder(
-                               borderRadius: BorderRadius.all(
-                                 Radius.circular(10.0),
-                               ),
-                             ),
-                             focusedBorder: OutlineInputBorder(
-                               borderSide: BorderSide(
-                                 color: Colors.grey, // Customize the border color here
-                                 width: 2.0,
-                               ),
-                               borderRadius: BorderRadius.all(
-                                 Radius.circular(10.0),
-                               ),
-                             ),
-                           ),
-                           keyboardType: TextInputType.number,
-                         ),
-                       ),
+                        SizedBox(
+                          width: 155.50,
+                          child: TextField(
+                            controller: viewModel.cvvController,
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              hintText: '***',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors
+                                      .grey, // Customize the border color here
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                            keyboardType: TextInputType.number,
+                          ),
+                        ),
                       ],
                     ),
                   )
                 ],
               ),
               const SizedBox(height: 32),
-              AppButton(title: "Save", onClick: () {
-                viewModel.save(paymentMethod);
-              })
+              AppButton(
+                  title: "Save",
+                  onClick: () {
+                    viewModel.save(paymentMethod);
+                  })
             ],
           ),
         ),

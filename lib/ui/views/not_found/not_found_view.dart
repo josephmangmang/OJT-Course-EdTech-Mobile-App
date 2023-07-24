@@ -17,66 +17,41 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
     NotFoundViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 8,
-            ),
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: viewModel.goBack,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SvgPicture.asset(SvgImages.background),
-                        SvgPicture.asset(SvgImages.goBack),
-                      ],
-                    ),
-                  ),
-                ),
-                SearchCourse(
-                    searchPressed: viewModel.seachCourse,
-                    searchTextController: viewModel.searchTextController),
-                const SizedBox(
-                  height: 32,
-                ),
-                Image.asset(PngImages.coolKidsStanding),
-                const SizedBox(
-                  height: 32,
-                ),
-                const Text(
-                  AppConstants.courseNotFoundText,
-                  style: TextStyle(
-                    color: Color(0xFF3B3936),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -0.50,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const Text(
-                  AppConstants.courseNotFoundBodyText,
-                  style: TextStyle(
-                    color: Color(0xFF78746D),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(PngImages.coolKidsStanding),
+          const SizedBox(
+            height: 32,
           ),
-        ),
+          const Text(
+            AppConstants.courseNotFoundText,
+            style: TextStyle(
+              color: Color(0xFF3B3936),
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.50,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Text(
+            AppConstants.courseNotFoundBodyText,
+            style: TextStyle(
+              color: Color(0xFF78746D),
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }

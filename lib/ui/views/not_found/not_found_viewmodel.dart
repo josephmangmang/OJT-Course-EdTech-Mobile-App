@@ -14,7 +14,7 @@ class NotFoundViewModel extends BaseViewModel {
 
   init() {
     setBusy(true);
-      searchTextController.text = searchText;
+    searchTextController.text = searchText;
     setBusy(false);
   }
 

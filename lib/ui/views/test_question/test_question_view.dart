@@ -67,7 +67,8 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                       width: 343,
                       height: 191,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       decoration: ShapeDecoration(
                         color: const Color(0xFFF7F2EE),
                         shape: RoundedRectangleBorder(
@@ -87,12 +88,14 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 0.50, color: Color(0xFFBEBAB3)),
+                            side: const BorderSide(
+                                width: 0.50, color: Color(0xFFBEBAB3)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
@@ -124,12 +127,14 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 0.50, color: Color(0xFFBEBAB3)),
+                            side: const BorderSide(
+                                width: 0.50, color: Color(0xFFBEBAB3)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
@@ -161,12 +166,14 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                     Container(
                         width: 343,
                         height: 58,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: const Color(0xFFFFF5EE),
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 1, color: Color(0xFFF3705A)),
+                            side: const BorderSide(
+                                width: 1, color: Color(0xFFF3705A)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),

@@ -21,13 +21,11 @@ class StartupViewModel extends BaseViewModel {
     if (_authenticationService.isLoggedIn) {
       _navigationService.replaceWithHomeView();
     } else {
-      if(await _sharedPrefService.appIntroGuideValidation()){
+      if (await _sharedPrefService.appIntroGuideValidation()) {
         _navigationService.replaceWithLoginView();
-      }
-      else {
+      } else {
         _navigationService.replaceWithIntroPage();
       }
-
     }
   }
 }

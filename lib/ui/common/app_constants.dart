@@ -39,15 +39,19 @@ class AppConstants {
   static const resultText = "Results";
   static const congratsText = "Congratulations";
   static const courseNotSavedText = "Course not saved";
-  static const courseNotSavedBodyText = "Try saving the course \nagain in a few minutes";
+  static const courseNotSavedBodyText =
+      "Try saving the course \nagain in a few minutes";
   static const noPaymentMethodText = "No payment method";
   static const noPaymentMethodBodyText = "You don't have any \npayment method";
   static const courseSavedText = "Course was saved";
-  static const courseSavedBodyText = "You can find this course in \nyour profile";
+  static const courseSavedBodyText =
+      "You can find this course in \nyour profile";
   static const paymentMethodAddedText = "Payment method added";
-  static const paymentMethodAddedBodyText = "You can now buy the course now. \nContinue to payment.";
+  static const paymentMethodAddedBodyText =
+      "You can now buy the course now. \nContinue to payment.";
   static const courseNotFoundText = "Course not found";
-  static const courseNotFoundBodyText = "Try searching the course with \na different keyword";
+  static const courseNotFoundBodyText =
+      "Try searching the course with \na different keyword";
   static const choosePaymentMethodText = "Choose payment method";
   static const checkoutText = "Checkout";
   static const saveText = "Save";
@@ -59,16 +63,18 @@ class AppConstants {
   static const intro1TitleText = "Learn anytime \nand anywhere";
   static const intro2TitleText = "Find a course \nfor you";
   static const intro3TitleText = "Improve your skills";
-  static const introDescriptionText = "Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n";
+  static const introDescriptionText =
+      "Quarantine is the perfect time to spend your\n day learning something new, from anywhere!\n\n";
   static const courseCartText = "Course Cart";
   static const emptyCartText = "Cart is empty";
   static const beginText = "Begin";
   static const forgotPasswordText = "Forgot Your Password?";
-  static const forgotPasswordBodyText = "Enter your email below to receive\n a password reset instruction";
+  static const forgotPasswordBodyText =
+      "Enter your email below to receive\n a password reset instruction";
   static const enterEmailText = "Enter Your Email Here";
   static const submitText = "Submit";
   static const skipText = "Skip";
-  static const  paymentMethodText = "Payment method";
+  static const paymentMethodText = "Payment method";
   static const notificationText = "Notifications";
   static const noCoursesFound = "No Courses Found";
   static const cartCourseText = "Course added to your cart successfully";

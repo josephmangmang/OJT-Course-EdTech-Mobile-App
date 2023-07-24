@@ -6,8 +6,10 @@ import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../model/course.dart';
+import '../../../repository/course_repository.dart';
 import '../../../services/authentication_service.dart';
 import '../../../services/repository_service.dart';
 
@@ -17,9 +19,11 @@ class HomeViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
-  List<Course> listOfCourse = [];
-  final PageController pageController =
-      PageController(initialPage: 0); // Added currentIndex variable
+
+  final _courseRepository = locator<CourseRepository>();
+
+  List<Course> courses = [];
+  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
 
@@ -29,52 +33,23 @@ class HomeViewModel extends BaseViewModel {
   int? previousPageIndex;
   bool isBackPressed = false;
 
+  Set<String> selectedCategories = {};
+
   init() async {
-    listOfCourse.clear();
-    print(listOfCourse.length);
-    setBusy(true);
-
-    final response = await _authenticationService.getCurrentUser();
-
-    response.fold((l) => print(l.message), (r) => user = r);
-
-    // course = await _shared.getCourse(AppConstants.coursePrefKey);
-
-    await _repository.getCourse().then((value) {
-      if (value.isNotEmpty) {
-        listOfCourse = value;
-      }
-    });
-
-    print(listOfCourse.toString());
-    print(listOfCourse.length);
-    setBusy(false);
+    loadUser();
+    loadCourses();
   }
 
   Future<void> searchCourse() async {
-    setBusy(true);
-    searchText = searchTextController.text;
-    await _repository.searchCourse(searchTextController.text).then((value) {
-      if (value.isNotEmpty) {
-        _navigationService.navigateToSearchResultsView();
-      } else {
-        _navigationService.navigateToNotFoundView();
-      }
-    });
-
-    print(searchTextController.text);
-    searchTextController.clear();
-    setBusy(false);
-
-    rebuildUi();
+    _navigationService.navigateToSearchResultsView();
   }
 
   Future<void> categoryCourse() async {
     setBusy(true);
-    listOfCourse = [];
+    courses = [];
     await _repository.categoryCourse(category).then((value) {
       if (value.isNotEmpty) {
-        listOfCourse = value;
+        courses = value;
       }
     });
 
@@ -90,8 +65,7 @@ class HomeViewModel extends BaseViewModel {
   void onPageChanged(int index) {
     previousPageIndex = currentPageIndex;
     currentPageIndex = index;
-    print(
-        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     rebuildUi();
   }
 
@@ -99,8 +73,7 @@ class HomeViewModel extends BaseViewModel {
     int tempIndex = currentPageIndex;
     changePage(index);
     previousPageIndex = tempIndex;
-    print(
-        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
   }
 
   void onBackPressed() {
@@ -113,8 +86,7 @@ class HomeViewModel extends BaseViewModel {
     } else {
       changePage(previousPageIndex!);
       isBackPressed = true;
-      print(
-          "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+      print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     }
     previousPageIndex = null;
   }
@@ -126,5 +98,29 @@ class HomeViewModel extends BaseViewModel {
       curve: Curves.easeInOut,
     );
     rebuildUi();
+  }
+
+  void onSelectedCategoryChanged(Set<String> category) {
+    selectedCategories = category;
+    rebuildUi();
+
+    loadCourses();
+  }
+
+  void loadCourses() {
+    setBusy(true);
+    final query = searchTextController.text;
+
+    _courseRepository.searchCourses(query, selectedCategories).then((value) {
+      courses = value;
+      setBusy(false);
+    });
+  }
+
+  Future<void> loadUser() async {
+    setBusyForObject('user', true);
+    final response = await _authenticationService.getCurrentUser();
+    response.fold((l) => print(l.message), (r) => user = r);
+    setBusyForObject('user', false);
   }
 }

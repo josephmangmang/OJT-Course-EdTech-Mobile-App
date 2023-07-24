@@ -28,7 +28,7 @@ class ProfileViewModel extends BaseViewModel {
     response.fold((l) {
       _snackBarService.showSnackbar(message: l.message);
     }, (r) {
-        _navigationService.replaceWithLoginView();
+      _navigationService.replaceWithLoginView();
     });
   }
 }

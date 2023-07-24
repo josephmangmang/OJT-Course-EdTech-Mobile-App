@@ -45,13 +45,11 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                             height: 16,
                           ),
                           Container(
-
                             alignment: Alignment.centerRight,
                             child: Container(
                               decoration: BoxDecoration(
                                 color: const Color(0xFF65A9E9),
                                 borderRadius: BorderRadius.circular(12),
-
                               ),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 4),
@@ -121,7 +119,6 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                             title: AppConstants.addToCartText,
                             onClick: viewModel.addToCart,
                           ),
-
                           AppButton(
                             title: AppConstants.buyNowText,
                             onClick: viewModel.buyMe,

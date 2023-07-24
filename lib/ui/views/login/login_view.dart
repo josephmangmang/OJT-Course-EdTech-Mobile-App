@@ -62,29 +62,39 @@ class LoginView extends StackedView<LoginViewModel> {
                             Container(
                               alignment: Alignment.center,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(SvgImages.socialNetworksIcons),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        SvgImages.socialNetworksIcons),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(SvgImages.socialNetworksIcons1),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        SvgImages.socialNetworksIcons1),
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 6),
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9), borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(SvgImages.socialNetworkIcons2),
+                                        color: const Color(0xFF65A9E9),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: SvgPicture.asset(
+                                        SvgImages.socialNetworkIcons2),
                                   ),
                                 ],
                               ),
@@ -132,7 +142,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         TextButton(
                           onPressed: viewModel.goToForgetPassword,
                           child: const Text(
-                          AppConstants.forgotPasswordText,
+                            AppConstants.forgotPasswordText,
                             style: TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
@@ -147,7 +157,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         TextButton(
                           onPressed: viewModel.signUp,
                           child: const Text(
-                           AppConstants.signUpText,
+                            AppConstants.signUpText,
                             style: TextStyle(
                               color: Color(0xFF78746D),
                               fontSize: 14,
