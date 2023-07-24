@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 
 import '../exception/app_exception.dart';
 import '../model/course.dart';
+import '../model/credit_card.dart';
 
 abstract class RepositoryService {
   Future<List<Course>> getCourse();
@@ -21,6 +22,8 @@ abstract class RepositoryService {
   Future<List<Course>> getUserCourses();
 
   Future<Either<AppException, None>> buyCourse(String? courseId);
+
+  Future<List<CreditCard>> getCreditCard();
 
   Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod);
 }
