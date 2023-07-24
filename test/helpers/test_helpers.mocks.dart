@@ -10,15 +10,16 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:edtechapp/exception/app_exception.dart' as _i11;
 import 'package:edtechapp/model/course.dart' as _i5;
-import 'package:edtechapp/model/user.dart' as _i17;
-import 'package:edtechapp/repository/course_repository.dart' as _i19;
-import 'package:edtechapp/services/authentication_service.dart' as _i16;
-import 'package:edtechapp/services/course_impl_service.dart' as _i15;
-import 'package:edtechapp/services/repository_impl_service.dart' as _i12;
+import 'package:edtechapp/model/credit_card.dart' as _i12;
+import 'package:edtechapp/model/user.dart' as _i18;
+import 'package:edtechapp/repository/course_repository.dart' as _i20;
+import 'package:edtechapp/services/authentication_service.dart' as _i17;
+import 'package:edtechapp/services/course_impl_service.dart' as _i16;
+import 'package:edtechapp/services/repository_impl_service.dart' as _i13;
 import 'package:edtechapp/services/repository_service.dart' as _i10;
-import 'package:edtechapp/services/share_impl_service.dart' as _i14;
-import 'package:edtechapp/services/shared_pref_service_service.dart' as _i18;
-import 'package:edtechapp/services/shared_service.dart' as _i13;
+import 'package:edtechapp/services/share_impl_service.dart' as _i15;
+import 'package:edtechapp/services/shared_pref_service_service.dart' as _i19;
+import 'package:edtechapp/services/shared_service.dart' as _i14;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:flutter/material.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
@@ -830,6 +831,17 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
+  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+        Invocation.method(
+          #getCreditCard,
+          [],
+        ),
+        returnValue:
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+        returnValueForMissingStub:
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+      ) as _i8.Future<List<_i12.CreditCard>>);
+  @override
   _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCreditCard(
     String? name,
     String? cardNumber,
@@ -885,7 +897,7 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRepositoryImplService extends _i1.Mock
-    implements _i12.RepositoryImplService {
+    implements _i13.RepositoryImplService {
   @override
   _i3.FirebaseAuth get auth0 => (super.noSuchMethod(
         Invocation.getter(#auth0),
@@ -1104,12 +1116,23 @@ class MockRepositoryImplService extends _i1.Mock
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
+  @override
+  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+        Invocation.method(
+          #getCreditCard,
+          [],
+        ),
+        returnValue:
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+        returnValueForMissingStub:
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+      ) as _i8.Future<List<_i12.CreditCard>>);
 }
 
 /// A class which mocks [SharedService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharedService extends _i1.Mock implements _i13.SharedService {
+class MockSharedService extends _i1.Mock implements _i14.SharedService {
   @override
   _i8.Future<void> setCourse(
     String? key,
@@ -1152,7 +1175,7 @@ class MockSharedService extends _i1.Mock implements _i13.SharedService {
 /// A class which mocks [ShareImplService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockShareImplService extends _i1.Mock implements _i14.ShareImplService {
+class MockShareImplService extends _i1.Mock implements _i15.ShareImplService {
   @override
   _i8.Future<_i5.Course> getCourse(String? key) => (super.noSuchMethod(
         Invocation.method(
@@ -1195,7 +1218,7 @@ class MockShareImplService extends _i1.Mock implements _i14.ShareImplService {
 /// A class which mocks [CourseImplService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCourseImplService extends _i1.Mock implements _i15.CourseImplService {
+class MockCourseImplService extends _i1.Mock implements _i16.CourseImplService {
   @override
   _i8.Future<List<_i5.Course>?> course([String? searchCourse]) =>
       (super.noSuchMethod(
@@ -1212,7 +1235,7 @@ class MockCourseImplService extends _i1.Mock implements _i15.CourseImplService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthenticationService extends _i1.Mock
-    implements _i16.AuthenticationService {
+    implements _i17.AuthenticationService {
   @override
   bool get isLoggedIn => (super.noSuchMethod(
         Invocation.getter(#isLoggedIn),
@@ -1262,7 +1285,7 @@ class MockAuthenticationService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, _i17.User>> login(
+  _i8.Future<_i2.Either<_i11.AppException, _i18.User>> login(
     String? email,
     String? password,
   ) =>
@@ -1274,8 +1297,8 @@ class MockAuthenticationService extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, _i17.User>>.value(
-            _FakeEither_0<_i11.AppException, _i17.User>(
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, _i18.User>>.value(
+            _FakeEither_0<_i11.AppException, _i18.User>(
           this,
           Invocation.method(
             #login,
@@ -1286,8 +1309,8 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i17.User>>.value(
-                _FakeEither_0<_i11.AppException, _i17.User>(
+            _i8.Future<_i2.Either<_i11.AppException, _i18.User>>.value(
+                _FakeEither_0<_i11.AppException, _i18.User>(
           this,
           Invocation.method(
             #login,
@@ -1297,7 +1320,7 @@ class MockAuthenticationService extends _i1.Mock
             ],
           ),
         )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i17.User>>);
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i18.User>>);
   @override
   _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> forgetPassword(
           String? email) =>
@@ -1326,14 +1349,14 @@ class MockAuthenticationService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, _i17.User>> getCurrentUser() =>
+  _i8.Future<_i2.Either<_i11.AppException, _i18.User>> getCurrentUser() =>
       (super.noSuchMethod(
         Invocation.method(
           #getCurrentUser,
           [],
         ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, _i17.User>>.value(
-            _FakeEither_0<_i11.AppException, _i17.User>(
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, _i18.User>>.value(
+            _FakeEither_0<_i11.AppException, _i18.User>(
           this,
           Invocation.method(
             #getCurrentUser,
@@ -1341,15 +1364,15 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i17.User>>.value(
-                _FakeEither_0<_i11.AppException, _i17.User>(
+            _i8.Future<_i2.Either<_i11.AppException, _i18.User>>.value(
+                _FakeEither_0<_i11.AppException, _i18.User>(
           this,
           Invocation.method(
             #getCurrentUser,
             [],
           ),
         )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i17.User>>);
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i18.User>>);
   @override
   _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> logOutUser() =>
       (super.noSuchMethod(
@@ -1382,9 +1405,9 @@ class MockAuthenticationService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSharedPrefServiceService extends _i1.Mock
-    implements _i18.SharedPrefServiceService {
+    implements _i19.SharedPrefServiceService {
   @override
-  _i8.Future<void> saveUser(_i17.User? user) => (super.noSuchMethod(
+  _i8.Future<void> saveUser(_i18.User? user) => (super.noSuchMethod(
         Invocation.method(
           #saveUser,
           [user],
@@ -1393,14 +1416,14 @@ class MockSharedPrefServiceService extends _i1.Mock
         returnValueForMissingStub: _i8.Future<void>.value(),
       ) as _i8.Future<void>);
   @override
-  _i8.Future<_i17.User?> getCurrentUser() => (super.noSuchMethod(
+  _i8.Future<_i18.User?> getCurrentUser() => (super.noSuchMethod(
         Invocation.method(
           #getCurrentUser,
           [],
         ),
-        returnValue: _i8.Future<_i17.User?>.value(),
-        returnValueForMissingStub: _i8.Future<_i17.User?>.value(),
-      ) as _i8.Future<_i17.User?>);
+        returnValue: _i8.Future<_i18.User?>.value(),
+        returnValueForMissingStub: _i8.Future<_i18.User?>.value(),
+      ) as _i8.Future<_i18.User?>);
   @override
   _i8.Future<void> deleteUser() => (super.noSuchMethod(
         Invocation.method(
@@ -1433,7 +1456,7 @@ class MockSharedPrefServiceService extends _i1.Mock
 /// A class which mocks [CourseRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCourseRepository extends _i1.Mock implements _i19.CourseRepository {
+class MockCourseRepository extends _i1.Mock implements _i20.CourseRepository {
   @override
   _i8.Future<List<_i5.Course>> searchCourses(
     String? query,
