@@ -53,7 +53,7 @@ class CourseCard extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             height: 195,
                           ),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                       SizedBox(

@@ -1,6 +1,5 @@
 import 'package:edtechapp/resources/svg_images.dart';
 import 'package:edtechapp/ui/views/not_found/not_found_view.dart';
-import 'package:edtechapp/ui/views/settings/settings_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,32 +25,33 @@ class SearchResultsView extends StackedView<SearchResultsViewModel> {
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    viewModel.back();
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        SvgImages.background,
-                      ),
-                      SvgPicture.asset(
-                        SvgImages.goBack,
-                      ),
-                    ],
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      viewModel.back();
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          SvgImages.background,
+                        ),
+                        SvgPicture.asset(
+                          SvgImages.goBack,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Expanded(
-                  child: SearchCourse(searchPressed: () {}, searchTextController: viewModel.searchTextController),
-                ),
-              ],
+
+                  Expanded(
+                    child: SearchCourse(searchPressed: () {}, searchTextController: viewModel.searchTextController),
+                  ),
+                ],
+              ),
             ),
             Visibility(
               visible: viewModel.results.isNotEmpty,

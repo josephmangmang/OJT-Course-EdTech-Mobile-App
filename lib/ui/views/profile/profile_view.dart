@@ -54,81 +54,21 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     const SizedBox(
                       height: 16.0,
                     ),
-                    GestureDetector(
-                      onTap: viewModel.yourCourse,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 16),
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            width: 0.5,
-                            color: const Color(0xFFBEBAB3),
-                          ),
-                        ),
-                        child: const Text(
-                          AppConstants.yourCourseText,
-                          style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                    profileCard(
+                      title: AppConstants.yourCourseText,
+                      onClick: viewModel.yourCourse,
                     ),
                     const SizedBox(
                       height: 16.0,
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16),
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          width: 0.5,
-                          color: const Color(0xFFBEBAB3),
-                        ),
-                      ),
-                      child: const Text(
-                        AppConstants.savedText,
-                        style: TextStyle(
-                          color: Color(0xFF3B3936),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                    profileCard(
+                      title: AppConstants.paymentText,
+                      onClick: (){},
                     ),
                     const SizedBox(
                       height: 16.0,
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16),
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          width: 0.5,
-                          color: const Color(0xFFBEBAB3),
-                        ),
-                      ),
-                      child: const Text(
-                        AppConstants.paymentText,
-                        style: TextStyle(
-                          color: Color(0xFF3B3936),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
+
                     TextButton(
                       onPressed: viewModel.logOut,
                       child: const Text(
@@ -136,13 +76,39 @@ class ProfileView extends StackedView<ProfileViewModel> {
                         style: TextStyle(
                           color: Color(0xFF78746D),
                           fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
+      ),
+    );
+  }
+
+  Widget profileCard({required String title, required Function() onClick}) {
+    return GestureDetector(
+      onTap: onClick,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+        alignment: Alignment.center,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            width: 1,
+            color: const Color(0xFFBEBAB3),
+          ),
+        ),
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Color(0xFF3B3936),
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
