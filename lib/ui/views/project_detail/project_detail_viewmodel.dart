@@ -14,6 +14,5 @@ class ProjectDetailViewModel extends BaseViewModel {
 
   void purchase () {
     _navigationService.navigateToPaymentAddedView();
-
   }
 }

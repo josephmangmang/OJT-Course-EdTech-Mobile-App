@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:edtechapp/model/course.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,7 @@ class YourCourseCard extends StatelessWidget {
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
               side: const BorderSide(
-                width: 1,
+                width: 0.50,
                 strokeAlign: BorderSide.strokeAlignOutside,
                 color: Color(0xFFBEBAB3),
               ),
@@ -41,19 +40,7 @@ class YourCourseCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CachedNetworkImage(
-                      imageUrl: course.image,
-                      errorWidget: (context, url, error) => const SizedBox(
-                          height: 195,
-                          child: Icon(
-                            Icons.error,
-                            color: Colors.red,
-                          )),
-                      placeholder: (context, url) => Container(
-                        height: 195,
-                      ),
-                      fit: BoxFit.fill ,
-                    ),
+                    Image.network(course.image),
                   ],
                 ),
               ),

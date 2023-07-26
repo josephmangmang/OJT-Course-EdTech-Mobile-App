@@ -14,6 +14,10 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      cartCourses: (json['cartCourses'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -21,4 +25,5 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'email': instance.email,
       'uid': instance.uid,
       'purchaseCourses': instance.purchaseCourses,
+      'cartCourses': instance.cartCourses,
     };

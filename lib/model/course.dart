@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'course.freezed.dart';
 part 'course.g.dart';
 
@@ -13,7 +15,6 @@ class Course with _$Course {
     required String image,
     required double price,
     required String id,
-    required String video,
   }) = _Course;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);

@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:dartz/dartz.dart';
+
 import '../exception/app_exception.dart';
 import '../model/course.dart';
 import '../model/credit_card.dart';

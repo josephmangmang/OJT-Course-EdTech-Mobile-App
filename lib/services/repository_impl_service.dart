@@ -249,16 +249,12 @@ class RepositoryImplService extends RepositoryService {
 
   @override
   Future<List<CreditCard>> getCreditCard() async {
-    List<CreditCard> creditCard = [];
+    List<CreditCard> creditCard= [];
 
-    (user) async {
+        (user) async {
       try {
-        db
-            .collection(FirebaseConstants.userCollection)
-            .doc(user.uid)
-            .collection('creditCardDetails')
-            .get()
-            .then((value) {
+        db.collection(FirebaseConstants.userCollection)
+            .doc(user.uid).collection('creditCardDetails').get().then((value) {
           if (value.docs.isNotEmpty) {
             var snapshots = value.docs;
             creditCard =
