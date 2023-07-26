@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:edtechapp/model/course.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
@@ -40,7 +41,20 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       ),
                       Column(
                         children: [
-                          Image.network(course.image),
+                          CachedNetworkImage(
+                            imageUrl: course.image,
+                            errorWidget: (context, url, error) =>
+                                const SizedBox(
+                                    height: 195,
+                                    child: Icon(
+                                      Icons.error,
+                                      color: Colors.red,
+                                    )),
+                            placeholder: (context, url) => Container(
+                              height: 195,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
                           const SizedBox(
                             height: 16,
                           ),
@@ -113,7 +127,9 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      AppButton(title: AppConstants.purchaseText, onClick: viewModel.purchase)
+                      AppButton(
+                          title: AppConstants.purchaseText,
+                          onClick: viewModel.purchase)
                     ],
                   ),
                 ),
