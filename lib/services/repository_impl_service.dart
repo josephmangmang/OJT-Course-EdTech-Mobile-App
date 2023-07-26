@@ -129,7 +129,7 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<Either<AppException, None>> buyCourse(String? courseId) async {
+  Future<Either<AppException, None>> buyCourse(String courseId) async {
     if (courseId == null) {
       return Left(InvalidInputException(AppExceptionConstants.courseIdNull));
     }
@@ -140,11 +140,8 @@ class RepositoryImplService extends RepositoryService {
       return Left(error);
     }, (user) async {
       try {
-        await db
-            .collection(FirebaseConstants.courseCollection)
-            .doc(user.uid)
-            .update({
-          FirebaseConstants.purchaseCourses: FieldValue.arrayUnion([courseId]),
+        await db.collection(FirebaseConstants.courseCollection).doc(user.uid).update({
+          FirebaseConstants.purchaseCourses: FieldValue.arrayUnion([courseId])
         });
       } on FirebaseAuthException catch (e) {
         return Left(AppException(e.message.toString()));
@@ -237,34 +234,36 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<Either<AppException, bool>> isCourseCart(String courseId) async {
-    // final user = await _authenticationService.getCurrentUser();
-    // return user.fold((error) {
-    //   return Left(error);
-    // }, (user)  {
-    //
-    // });
-    throw UnimplementedError();
-  }
+  Future<Either<AppException, CreditCard>> getCreditCard() async {
+    final user = await _authenticationService.getCurrentUser();
 
-  @override
-  Future<List<CreditCard>> getCreditCard() async {
-    List<CreditCard> creditCard= [];
+    return user.fold(
+      (error) {
+        return Left(error);
+      },
+      (user) async {
+        try {
+          final snap = await db
+              .collection(FirebaseConstants.userCollection)
+              .doc(user.uid)
+              .collection('creditCardDetails')
+              .get();
 
-        (user) async {
-      try {
-        db.collection(FirebaseConstants.userCollection)
-            .doc(user.uid).collection('creditCardDetails').get().then((value) {
-          if (value.docs.isNotEmpty) {
-            var snapshots = value.docs;
-            creditCard =
-                snapshots.map((e) => CreditCard.fromJson(e.data())).toList();
+          if (snap.docs.isNotEmpty) {
+            final paymentMethod = CreditCard.fromJson(snap.docs.first.data());
+            print(paymentMethod);
+            return Right(paymentMethod);
+          } else {
+            // If there are no credit card details for the user, you can return an appropriate error or handle it accordingly.
+            return Left(
+                AppException("No credit card details found for the user."));
           }
-        });
-      } catch (e) {
-        return e.toString();
-      }
-    };
-    return creditCard;
+        } on FirebaseException catch (error) {
+          return Left(AppException(error.message.toString()));
+        }
+      },
+    );
   }
+
+
 }

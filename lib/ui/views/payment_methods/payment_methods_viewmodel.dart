@@ -16,15 +16,6 @@ class PaymentMethodsViewModel extends BaseViewModel {
   bool existPaymentMethod = false;
   CreditCard? creditCard;
 
-  init() async {
-    setBusy(true);
-    await _repository.getCreditCard().then((value) {
-      if (value.isNotEmpty) {
-        existPaymentMethod = false;
-      }
-    });
-    setBusy(false);
-  }
 
   void onMasterCardClick() {
     isMasterCardClicked = true;
@@ -40,10 +31,11 @@ class PaymentMethodsViewModel extends BaseViewModel {
 
   void onContinuePressed(int paymentMethod) {
     if (isMasterCardClicked != true && isVisaCardClicked != true) {
-      _snackBarService.showSnackbar(message: "Select Payment Method");
+      _navigationService.navigateToNoPaymentView();
     } else {
       _navigationService.navigateToAddCreditCardView(
           paymentMethod: paymentMethod);
     }
   }
+
 }

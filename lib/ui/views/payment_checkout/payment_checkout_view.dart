@@ -1,13 +1,17 @@
+
+
 import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/common/app_temp.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import '../../../model/course.dart';
 import 'payment_checkout_viewmodel.dart';
 
 class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
-  const PaymentCheckoutView({Key? key}) : super(key: key);
+  const PaymentCheckoutView( {Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -36,45 +40,45 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
-                          Stack(
+                          Row(
                             children: [
-                              Image.asset(
-                                PngImages.illustration,
+                              Image.network(
+                                AppTempConstant.tempCourse!.image,
                                 width: 169,
                                 height: 122,
                               ),
-                              const Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "HTML",
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "50.00",
-                                        style: TextStyle(
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Wrap(
+                                      children: [Text(
+                                        AppTempConstant.tempCourse!.title,
+                                        style: const TextStyle(
                                           fontSize: 24,
-                                          fontWeight: FontWeight.w500,
+                                          fontWeight: FontWeight.w700
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                        Text(
+                                          '${AppTempConstant.tempCourse!.price}',
+                                          style: const TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),]
+                                    ),
+
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "You can launch a new career in web development today by learning HTML & CSS. You dont need a computer science degree or expensive software. All you need is a computer, a bit of time, a lot of determination, and a teacher you trust.",
-                                style: TextStyle(
+                              Text(
+                                AppTempConstant.tempCourse!.subtitle,
+                                style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -112,25 +116,26 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(16.0),
-                                  child: Row(
+                                  child: viewModel.busy('paymentMethod') ?
+                                  Container() : Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Image.asset(PngImages.image2),
                                       const SizedBox(
                                         width: 16,
                                       ),
-                                      const Column(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: [
-                                          Text("*** *** *** 5738",
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
+                                        children:  [
+                                          Text(viewModel.creditCard.cardNumber,
+                                              style: const TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w100,
                                               )),
-                                          Text("Expires 09/29",
-                                              style: TextStyle(
+                                          Text(viewModel.creditCard.expireDate,
+                                              style: const TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w400,
                                               ))
@@ -151,8 +156,8 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                   height: 216,
                 ),
                 AppButton(
-                  title: "Confirm payment \$50.00",
-                  onClick: () {},
+                  title: "Confirm payment \$${AppTempConstant.tempCourse!.price}",
+                  onClick: viewModel.payCourse,
                 )
               ],
             ),
@@ -167,4 +172,11 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
     BuildContext context,
   ) =>
       PaymentCheckoutViewModel();
+
+  @override
+  void onViewModelReady(PaymentCheckoutViewModel viewModel) {
+    viewModel.init();
+    super.onViewModelReady(viewModel);
+  }
+
 }

@@ -831,16 +831,31 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+  _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>> getCreditCard() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getCreditCard,
           [],
         ),
         returnValue:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
         returnValueForMissingStub:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
-      ) as _i8.Future<List<_i12.CreditCard>>);
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>);
   @override
   _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCreditCard(
     String? name,
@@ -1117,16 +1132,31 @@ class MockRepositoryImplService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
   @override
-  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+  _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>> getCreditCard() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getCreditCard,
           [],
         ),
         returnValue:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
         returnValueForMissingStub:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
-      ) as _i8.Future<List<_i12.CreditCard>>);
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>);
 }
 
 /// A class which mocks [SharedService].

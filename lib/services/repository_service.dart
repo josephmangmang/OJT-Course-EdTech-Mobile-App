@@ -17,13 +17,11 @@ abstract class RepositoryService {
 
   Future<Either<AppException, None>> addCourseToCart(String courseId);
 
-  Future<Either<AppException, bool>> isCourseCart(String courseId);
-
   Future<List<Course>> getUserCourses();
 
-  Future<Either<AppException, None>> buyCourse(String? courseId);
+  Future<Either<AppException, None>> buyCourse(String courseId);
 
-  Future<List<CreditCard>> getCreditCard();
+  Future<Either<AppException, CreditCard>> getCreditCard();
 
   Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod);
 }

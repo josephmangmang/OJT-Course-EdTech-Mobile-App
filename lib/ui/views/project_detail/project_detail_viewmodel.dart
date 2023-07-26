@@ -1,4 +1,7 @@
 import 'package:edtechapp/app/app.router.dart';
+import 'package:edtechapp/ui/common/app_strings.dart';
+import 'package:edtechapp/ui/common/app_temp.dart';
+import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
@@ -13,6 +16,7 @@ class ProjectDetailViewModel extends BaseViewModel {
   ProjectDetailViewModel(this.course);
 
   void purchase () {
-    _navigationService.navigateToPaymentAddedView();
+    AppTempConstant.tempCourse = course;
+    _navigationService.navigateToPaymentMethodsView();
   }
 }
