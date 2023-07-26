@@ -66,6 +66,7 @@ class AuthenticationServiceImpl implements AuthenticationService {
         email: email,
         uid: credential.user!.uid,
         purchaseCourses: List.empty(),
+        cartCourses: List.empty(),
       );
 
       db
