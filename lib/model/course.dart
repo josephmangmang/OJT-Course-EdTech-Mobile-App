@@ -15,6 +15,7 @@ class Course with _$Course {
     required String image,
     required double price,
     required String id,
+    String? video,
   }) = _Course;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);

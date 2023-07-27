@@ -1,4 +1,6 @@
 import 'package:edtechapp/repository/course_repository_impl.dart';
+import 'package:edtechapp/repository/topic_repository.dart';
+import 'package:edtechapp/repository/topic_repository_impl.dart';
 import 'package:edtechapp/services/authentication_service_impl.dart';
 import 'package:edtechapp/services/shared_pref_service_service_impl.dart';
 import 'package:edtechapp/ui/bottom_sheets/notice/notice_sheet.dart';
@@ -96,6 +98,7 @@ import 'package:edtechapp/repository/course_repository.dart';
         classType: SharedPrefServiceServiceImpl,
         asType: SharedPrefServiceService),
     LazySingleton(classType: CourseRepositoryImpl, asType: CourseRepository),
+    LazySingleton(classType: TopicRepositoryImp, asType: TopicRepository),
 // @stacked-service
   ],
   bottomsheets: [

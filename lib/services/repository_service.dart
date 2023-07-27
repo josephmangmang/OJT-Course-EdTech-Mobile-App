@@ -15,9 +15,6 @@ abstract class RepositoryService {
 
   Future<List<Course>> addCourse();
 
-  Future<Either<AppException, None>> addCourseToCart(String courseId);
-
-  Future<Either<AppException, bool>> isCourseCart(String courseId);
 
   Future<List<Course>> getUserCourses();
 

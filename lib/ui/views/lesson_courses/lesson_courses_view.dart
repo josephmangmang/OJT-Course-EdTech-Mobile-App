@@ -1,13 +1,16 @@
 import 'package:edtechapp/resources/png_images.dart';
-import 'package:edtechapp/resources/svg_images.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
+import 'package:edtechapp/ui/custom_widget/topic_card.dart';
+import 'package:edtechapp/ui/custom_widget/youtube_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
+import '../../../model/course.dart';
 import 'lesson_courses_viewmodel.dart';
 
 class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
-  const LessonCoursesView({Key? key}) : super(key: key);
+  const LessonCoursesView(this.course, {Key? key}) : super(key: key);
+
+  final Course course;
 
   @override
   Widget builder(
@@ -16,90 +19,83 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                CustomAppBar(
-                  title: "HTMl",
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 16),
-                  padding: const EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFFCDCDCD), width: 1.5),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+      body: viewModel.isBusy
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : SafeArea(
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
                       Container(
-                        color: const Color(0xFFFFF5EE),
+                        margin: const EdgeInsets.only(top: 8),
+                        child: CustomAppBar(
+                          title: course.title,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color(0xFFCDCDCD), width: 1.5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                         child: Column(
                           children: [
-                            Image.asset(
-                                PngImages.coolKidsLongDistanceRelationship1),
                             Container(
-                              padding: const EdgeInsets.only(
-                                  right: 8, left: 16, bottom: 8),
-                              alignment: Alignment.centerRight,
-                              child: SvgPicture.asset(SvgImages.playIcon),
+                              child: course.video == null
+                                  ? Image.asset(PngImages
+                                      .coolKidsLongDistanceRelationship1)
+                                  : AppYoutubePlayer(video: course.video!),
+                            ),
+                            Container(
+                              alignment: Alignment.bottomLeft,
+                              margin: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    course.title,
+                                    style: const TextStyle(
+                                      color: Color(0xFF3B3936),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.50,
+                                    ),
+                                  ),
+                                  Text(
+                                    course.subtitle,
+                                    style: const TextStyle(
+                                      color: Color(0xFF78746D),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.bottomLeft,
-                        margin: const EdgeInsets.all(16),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'HTML',
-                              style: TextStyle(
-                                color: Color(0xFF3B3936),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: -0.50,
-                              ),
-                            ),
-                            SizedBox(),
-                            Text(
-                              'Advanced web applications',
-                              style: TextStyle(
-                                color: Color(0xFF78746D),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
-                        ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        primary: false,
+                        itemCount: viewModel.topics.length,
+                        itemBuilder: (context, index) {
+                          var topicItem = viewModel.topics[index];
+                          return TopicCard(
+                           topic: topicItem, onCardPressed:() => viewModel.topicCardClick(topicItem, "${index + 1} of ${viewModel.topics.length} lessons"),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-                buildCard(
-                  image: 'assets/png/Cool Kids Study.png',
-                  txt: 'Main Tags',
-                  progressImage: 'assets/svg/Progress Bars.svg',
-                ),
-                buildCard(
-                  image: 'assets/png/Cool Kids On Wheels (1).png',
-                  txt: 'Tags For Header',
-                  progressImage: 'assets/svg/Progress Bars (1).svg',
-                ),
-                buildCard(
-                  image: 'assets/png/Cool Kids Study.png',
-                  txt: 'Style Tags',
-                  progressImage: 'assets/svg/Progress Bars (1).svg',
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 
@@ -107,48 +103,11 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
   LessonCoursesViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      LessonCoursesViewModel();
-}
+      LessonCoursesViewModel(course);
 
-Widget buildCard({
-  required String image,
-  required String txt,
-  required String progressImage,
-}) {
-  return Container(
-    width: double.infinity,
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    margin: const EdgeInsets.only(bottom: 16),
-    decoration: BoxDecoration(
-      border: Border.all(
-        width: 1,
-        color: const Color(0xFFCDCDCD),
-      ),
-      borderRadius: BorderRadius.circular(8),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Image.asset(image),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              txt,
-              style: const TextStyle(
-                color: Color(0xFF3B3936),
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -0.50,
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            SvgPicture.asset(progressImage),
-          ],
-        )
-      ],
-    ),
-  );
+  @override
+  void onViewModelReady(LessonCoursesViewModel viewModel) {
+    viewModel.init();
+    super.onViewModelReady(viewModel);
+  }
 }

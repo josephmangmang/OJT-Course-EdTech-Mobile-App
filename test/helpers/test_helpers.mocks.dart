@@ -741,59 +741,6 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
             _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i8.Future<List<_i5.Course>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCourseToCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #addCourseToCart,
-          [courseId],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isCourseCart,
-          [courseId],
-        ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-            _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-                _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
-  @override
   _i8.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -1063,59 +1010,6 @@ class MockRepositoryImplService extends _i1.Mock
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCourseToCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #addCourseToCart,
-          [courseId],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isCourseCart,
-          [courseId],
-        ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-            _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-                _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
   @override
   _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
         Invocation.method(

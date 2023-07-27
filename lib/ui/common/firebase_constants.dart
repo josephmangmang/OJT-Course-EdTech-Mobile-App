@@ -6,6 +6,7 @@ class FirebaseConstants {
   static const purchaseCourses = "purchaseCourses";
   static const cartCourses = "cartCourses";
   static const category = "category";
+  static const topics = 'topics';
 
   static const Set<String> categories = {
     "Java",

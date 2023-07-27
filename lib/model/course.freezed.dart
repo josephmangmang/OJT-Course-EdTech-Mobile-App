@@ -28,6 +28,7 @@ mixin _$Course {
   String get image => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  String? get video => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $CourseCopyWith<$Res> {
       String category,
       String image,
       double price,
-      String id});
+      String id,
+      String? video});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
     Object? image = null,
     Object? price = null,
     Object? id = null,
+    Object? video = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -105,6 +108,10 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -123,7 +130,8 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
       String category,
       String image,
       double price,
-      String id});
+      String id,
+      String? video});
 }
 
 /// @nodoc
@@ -144,6 +152,7 @@ class __$$_CourseCopyWithImpl<$Res>
     Object? image = null,
     Object? price = null,
     Object? id = null,
+    Object? video = freezed,
   }) {
     return _then(_$_Course(
       title: null == title
@@ -178,6 +187,10 @@ class __$$_CourseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -193,7 +206,8 @@ class _$_Course implements _Course {
       required this.category,
       required this.image,
       required this.price,
-      required this.id});
+      required this.id,
+      this.video});
 
   factory _$_Course.fromJson(Map<String, dynamic> json) =>
       _$$_CourseFromJson(json);
@@ -214,10 +228,12 @@ class _$_Course implements _Course {
   final double price;
   @override
   final String id;
+  @override
+  final String? video;
 
   @override
   String toString() {
-    return 'Course(title: $title, subtitle: $subtitle, about: $about, duration: $duration, category: $category, image: $image, price: $price, id: $id)';
+    return 'Course(title: $title, subtitle: $subtitle, about: $about, duration: $duration, category: $category, image: $image, price: $price, id: $id, video: $video)';
   }
 
   @override
@@ -235,13 +251,14 @@ class _$_Course implements _Course {
                 other.category == category) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.video, video) || other.video == video));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, subtitle, about, duration,
-      category, image, price, id);
+      category, image, price, id, video);
 
   @JsonKey(ignore: true)
   @override
@@ -266,7 +283,8 @@ abstract class _Course implements Course {
       required final String category,
       required final String image,
       required final double price,
-      required final String id}) = _$_Course;
+      required final String id,
+      final String? video}) = _$_Course;
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$_Course.fromJson;
 
@@ -286,6 +304,8 @@ abstract class _Course implements Course {
   double get price;
   @override
   String get id;
+  @override
+  String? get video;
   @override
   @JsonKey(ignore: true)
   _$$_CourseCopyWith<_$_Course> get copyWith =>

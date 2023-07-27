@@ -216,38 +216,6 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<Either<AppException, None>> addCourseToCart(String courseId) async {
-    final user = await _authenticationService.getCurrentUser();
-
-    return user.fold((error) {
-      return Left(error);
-    }, (user) async {
-      try {
-        await db
-            .collection(FirebaseConstants.userCollection)
-            .doc(user.uid)
-            .update({
-          FirebaseConstants.cartCourses: FieldValue.arrayUnion([courseId])
-        });
-      } on FirebaseAuthException catch (error) {
-        return Left(AppException(error.message.toString()));
-      }
-      return const Right(None());
-    });
-  }
-
-  @override
-  Future<Either<AppException, bool>> isCourseCart(String courseId) async {
-    // final user = await _authenticationService.getCurrentUser();
-    // return user.fold((error) {
-    //   return Left(error);
-    // }, (user)  {
-    //
-    // });
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<CreditCard>> getCreditCard() async {
     List<CreditCard> creditCard= [];
 
@@ -267,4 +235,6 @@ class RepositoryImplService extends RepositoryService {
     };
     return creditCard;
   }
+
+
 }
