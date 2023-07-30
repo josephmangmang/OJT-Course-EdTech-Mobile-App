@@ -1,6 +1,7 @@
 import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
+import 'package:edtechapp/ui/custom_widget/profile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'profile_viewmodel.dart';
@@ -49,86 +50,21 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       ),
                     ),
                     const SizedBox(
-                      height: 16,
+                      height: 32,
+                    ),
+
+                    ProfileCard(
+                      onCardPressed: viewModel.yourCourse,
+                      title: AppConstants.yourCourseText,
                     ),
                     const SizedBox(
                       height: 16.0,
                     ),
-                    GestureDetector(
-                      onTap: viewModel.yourCourse,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 16),
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            width: 0.5,
-                            color: const Color(0xFFBEBAB3),
-                          ),
-                        ),
-                        child: const Text(
-                          AppConstants.yourCourseText,
-                          style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                    ProfileCard(
+                      onCardPressed: () {},
+                      title: AppConstants.paymentText,
                     ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16),
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          width: 0.5,
-                          color: const Color(0xFFBEBAB3),
-                        ),
-                      ),
-                      child: const Text(
-                        AppConstants.savedText,
-                        style: TextStyle(
-                          color: Color(0xFF3B3936),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16),
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          width: 0.5,
-                          color: const Color(0xFFBEBAB3),
-                        ),
-                      ),
-                      child: const Text(
-                        AppConstants.paymentText,
-                        style: TextStyle(
-                          color: Color(0xFF3B3936),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
+
                     TextButton(
                       onPressed: viewModel.logOut,
                       child: const Text(

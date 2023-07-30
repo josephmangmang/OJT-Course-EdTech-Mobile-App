@@ -7,8 +7,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../../model/course.dart';
-import '../../../services/repository_service.dart';
-import '../../../services/shared_service.dart';
 
 class SearchResultsViewModel extends BaseViewModel {
   TextEditingController searchTextController = TextEditingController();
@@ -27,6 +25,7 @@ class SearchResultsViewModel extends BaseViewModel {
     searchTextController.addListener(() {
       searchCourses(searchTextController.text);
     });
+
   }
 
   void coursePressed(Course course) {

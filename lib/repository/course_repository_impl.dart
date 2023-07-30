@@ -4,7 +4,7 @@ import 'package:edtechapp/model/course.dart';
 import '../ui/common/firebase_constants.dart';
 import 'course_repository.dart';
 
-class CourseRepositoryImpl extends CourseRepository {
+class CourseRepositoryImpl implements CourseRepository {
   final db = FirebaseFirestore.instance;
 
   @override

@@ -58,7 +58,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                      viewModel.busy('user')
+                                    viewModel.busy('user')
                                         ? Container()
                                         : Text(
                                             viewModel.user.name,
@@ -89,13 +89,16 @@ class HomeView extends StackedView<HomeViewModel> {
                           onTap: viewModel.searchCourse,
                           child: AbsorbPointer(
                             child: SearchCourse(
-                                searchPressed: () {}, searchTextController: viewModel.searchTextController),
+                                searchPressed: () {},
+                                searchTextController:
+                                    viewModel.searchTextController),
                           ),
                         ),
                         SelectableCategory(
                           categories: FirebaseConstants.categories,
                           selectedCategories: viewModel.selectedCategories,
-                          onSelectedCategoryChanged: viewModel.onSelectedCategoryChanged,
+                          onSelectedCategoryChanged:
+                              viewModel.onSelectedCategoryChanged,
                         ),
                         Expanded(
                           child: viewModel.isBusy
@@ -113,7 +116,9 @@ class HomeView extends StackedView<HomeViewModel> {
                                       onItemPressed: (Course course) {
                                         viewModel.coursePressed(courseItem);
                                       },
-                                      backgroundColor: Color(index % 2 == 0 ? 0xFFF7F2EE : 0xFFE6EDF4),
+                                      backgroundColor: Color(index % 2 == 0
+                                          ? 0xFFF7F2EE
+                                          : 0xFFE6EDF4),
                                     );
                                   },
                                 ),
@@ -138,12 +143,13 @@ class HomeView extends StackedView<HomeViewModel> {
           NavigationBarTheme(
             data: NavigationBarThemeData(
               indicatorColor: Colors.white,
-              labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
+              labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
+                  (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected)) {
                   return const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: const Color(0xFFE35629),
+                    color: Color(0xFFE35629),
                   );
                 } else {
                   return const TextStyle(
@@ -209,7 +215,10 @@ class HomeView extends StackedView<HomeViewModel> {
 
 class SelectableCategory extends StatelessWidget {
   const SelectableCategory(
-      {super.key, required this.categories, required this.selectedCategories, required this.onSelectedCategoryChanged});
+      {super.key,
+      required this.categories,
+      required this.selectedCategories,
+      required this.onSelectedCategoryChanged});
 
   final Set<String> categories;
   final Set<String> selectedCategories;
@@ -242,7 +251,16 @@ class SelectableCategory extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: categories
                     .map((category) => FilterChip(
-                          label: Text(category),
+                          backgroundColor: const Color(0xFF65A9E9),
+                          label: Text(
+                            '#$category',
+                            style: const TextStyle(
+                              color: Color(0xFFF2F2F2),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          selectedColor: const Color(0xFF65A9E9),
                           selected: selectedCategories.contains(category),
                           onSelected: (selected) {
                             if (selected) {

@@ -1,11 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
-import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import '../../../model/course.dart';
+import '../../../model/topic.dart';
 import 'course_test_viewmodel.dart';
 
 class CourseTestView extends StackedView<CourseTestViewModel> {
-  const CourseTestView({Key? key}) : super(key: key);
+  const CourseTestView(this.topic, this.course, {Key? key}) : super(key: key);
+
+  final Topic topic;
+  final Course course;
 
   @override
   Widget builder(
@@ -14,263 +19,117 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
     Widget? child,
   ) {
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(),
-              child: Center(
-                child: Column(children: [
-                  CustomAppBar(
-                    title: "HTML",
-                  ),
-                  Container(
+      child: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          height: 500,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              width: 1,
+              color: const Color(0xFFBEBAB3),
+            ),
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 24),
+                child: CachedNetworkImage(
+                  height: 197,
+                  width: 343,
+                  imageUrl: course.image,
+                  errorWidget: (context, url, error) => const SizedBox(
+                      height: 197,
+                      width: 343,
+                      child: Icon(
+                        Icons.error,
+                        color: Colors.red,
+                      )),
+                  placeholder: (context, url) => Container(
+                    height: 197,
                     width: 343,
-                    height: 127,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    alignment: Alignment.center,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Tags For Headers',
-                          style: TextStyle(
-                            color: Color(0xFF3B3936),
-                            fontSize: 24,
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -0.50,
-                          ),
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                alignment: Alignment.topLeft,
+                width: 295,
+                height: 122,
+                padding: const EdgeInsets.only(top: 16),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: const Text(
+                        AppConstants.quizText,
+                        style: TextStyle(
+                          color: Color(0xFFE35629),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
                         ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: const Text(
-                            '3 of 11 lessons',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF78746D),
-                              fontSize: 14,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        topic.topic,
+                        style: const TextStyle(
+                          color: Color(0xFF3B3936),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.50,
                         ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                width: 114,
-                                height: 42,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 22, vertical: 8),
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const ShapeDecoration(
-                                  color: Color(0xFFF7F2EE),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(16),
-                                      bottomLeft: Radius.circular(16),
-                                    ),
-                                  ),
-                                ),
-                                child: const Text(
-                                  AppConstants.lessonText,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF3B3936),
-                                    fontSize: 16,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w400,
-                                    letterSpacing: -0.50,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 114,
-                                height: 42,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 33, vertical: 8),
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(
-                                    color: Color(0xFFF7F2EE)),
-                                child: const SizedBox(
-                                  height: double.infinity,
-                                  child: Text(
-                                    AppConstants.testText,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF3B3936),
-                                      fontSize: 16,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: -0.50,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 114,
-                                height: 42,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24, vertical: 8),
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const ShapeDecoration(
-                                  color: Color(0xFFF7F2EE),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(16),
-                                      bottomRight: Radius.circular(16),
-                                    ),
-                                  ),
-                                ),
-                                child: const SizedBox(
-                                  height: double.infinity,
-                                  child: Text(
-                                    AppConstants.discussText,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF78746D),
-                                      fontSize: 16,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: -0.50,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(top: 8),
+                      child: const Text(
+                        AppConstants.quizDescriptionText,
+                        style: TextStyle(
+                          color: Color(0xFF78746D),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
                         ),
-                      ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: (){},
+                child: AbsorbPointer(
+                  child: Container(
+                    width: 295,
+                    height: 56,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 1, color: Color(0xFFE35629)),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: const Text(
+                      AppConstants.beginText,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF3B3936),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                  buildCard(
-                      image: 'assets/png/Cool Kids On Wheels (4).png',
-                      quiz: 'Quiz 1',
-                      description:
-                          'Lets put your memory on this topic test. Solve task and check your knowledge',
-                      title: 'Tag For Headers',
-                      color: 0xFFFFFFFF),
-                  Container(
-                    height: 16,
-                  ),
-                  buildCard(
-                      image: 'assets/png/Cool Kids On Wheels (4).png',
-                      quiz: 'Quiz 1',
-                      description:
-                          'Lets put your memory on this topic test. Solve task and check your knowledge',
-                      title: 'Tag For Headers',
-                      color: 0xFFFFFFFF),
-                ]),
+                ),
               ),
-            ),
+            ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget buildCard(
-      {required String image,
-      required String quiz,
-      required String description,
-      required String title,
-      required int color}) {
-    return Container(
-      width: 343,
-      height: 463,
-      padding: const EdgeInsets.only(
-        top: 24,
-        left: 24,
-        right: 24,
-        bottom: 32,
-      ),
-      decoration: ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            width: 1,
-            strokeAlign: BorderSide.strokeAlignOutside,
-            color: Color(0xFFBEBAB3),
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-      child: Column(
-        children: [
-          Container(
-              padding: const EdgeInsets.only(top: 24),
-              child: Image.asset(image)),
-          Container(
-            alignment: Alignment.topLeft,
-            width: 295,
-            height: 122,
-            padding: const EdgeInsets.only(top: 16),
-            child: Column(
-              children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    quiz,
-                    style: const TextStyle(
-                      color: Color(0xFFE35629),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: Color(0xFF3B3936),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    description,
-                    style: const TextStyle(
-                      color: Color(0xFF78746D),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 295,
-            height: 56,
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: Color(0xFFE35629)),
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            child: const Text(
-              AppConstants.beginText,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF3B3936),
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

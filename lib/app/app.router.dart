@@ -6,6 +6,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:edtechapp/model/course.dart' as _i28;
+import 'package:edtechapp/model/topic.dart' as _i29;
 import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart'
     as _i26;
 import 'package:edtechapp/ui/views/cart/cart_view.dart' as _i25;
@@ -44,7 +45,7 @@ import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart' as _i9;
 import 'package:flutter/material.dart' as _i27;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i29;
+import 'package:stacked_services/stacked_services.dart' as _i30;
 
 class Routes {
   static const homeView = '/home-view';
@@ -288,8 +289,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i10.LessonCoursesView: (data) {
+      final args = data.getArgs<LessonCoursesViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i10.LessonCoursesView(),
+        builder: (context) =>
+            _i10.LessonCoursesView(args.course, key: args.key),
         settings: data,
       );
     },
@@ -333,14 +336,19 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i17.CourseLessonView: (data) {
+      final args = data.getArgs<CourseLessonViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i17.CourseLessonView(),
+        builder: (context) => _i17.CourseLessonView(
+            args.topic, args.lessonCount, args.course,
+            key: args.key),
         settings: data,
       );
     },
     _i18.CourseTestView: (data) {
+      final args = data.getArgs<CourseTestViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i18.CourseTestView(),
+        builder: (context) =>
+            _i18.CourseTestView(args.topic, args.course, key: args.key),
         settings: data,
       );
     },
@@ -483,6 +491,33 @@ class ProjectDetailViewArguments {
   }
 }
 
+class LessonCoursesViewArguments {
+  const LessonCoursesViewArguments({
+    required this.course,
+    this.key,
+  });
+
+  final _i28.Course course;
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return '{"course": "$course", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant LessonCoursesViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.course == course && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return course.hashCode ^ key.hashCode;
+  }
+}
+
 class IntroPageArguments {
   const IntroPageArguments({this.key});
 
@@ -502,6 +537,75 @@ class IntroPageArguments {
   @override
   int get hashCode {
     return key.hashCode;
+  }
+}
+
+class CourseLessonViewArguments {
+  const CourseLessonViewArguments({
+    required this.topic,
+    required this.lessonCount,
+    required this.course,
+    this.key,
+  });
+
+  final _i29.Topic topic;
+
+  final String lessonCount;
+
+  final _i28.Course course;
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return '{"topic": "$topic", "lessonCount": "$lessonCount", "course": "$course", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant CourseLessonViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.topic == topic &&
+        other.lessonCount == lessonCount &&
+        other.course == course &&
+        other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return topic.hashCode ^
+        lessonCount.hashCode ^
+        course.hashCode ^
+        key.hashCode;
+  }
+}
+
+class CourseTestViewArguments {
+  const CourseTestViewArguments({
+    required this.topic,
+    required this.course,
+    this.key,
+  });
+
+  final _i29.Topic topic;
+
+  final _i28.Course course;
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return '{"topic": "$topic", "course": "$course", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant CourseTestViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.topic == topic && other.course == course && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return topic.hashCode ^ course.hashCode ^ key.hashCode;
   }
 }
 
@@ -532,7 +636,7 @@ class AddCreditCardViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i29.NavigationService {
+extension NavigatorStateExtension on _i30.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -655,14 +759,17 @@ extension NavigatorStateExtension on _i29.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToLessonCoursesView([
+  Future<dynamic> navigateToLessonCoursesView({
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.lessonCoursesView,
+        arguments: LessonCoursesViewArguments(course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -755,28 +862,39 @@ extension NavigatorStateExtension on _i29.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToCourseLessonView([
+  Future<dynamic> navigateToCourseLessonView({
+    required _i29.Topic topic,
+    required String lessonCount,
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.courseLessonView,
+        arguments: CourseLessonViewArguments(
+            topic: topic, lessonCount: lessonCount, course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> navigateToCourseTestView([
+  Future<dynamic> navigateToCourseTestView({
+    required _i29.Topic topic,
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.courseTestView,
+        arguments:
+            CourseTestViewArguments(topic: topic, course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1021,14 +1139,17 @@ extension NavigatorStateExtension on _i29.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithLessonCoursesView([
+  Future<dynamic> replaceWithLessonCoursesView({
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.lessonCoursesView,
+        arguments: LessonCoursesViewArguments(course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1121,28 +1242,39 @@ extension NavigatorStateExtension on _i29.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCourseLessonView([
+  Future<dynamic> replaceWithCourseLessonView({
+    required _i29.Topic topic,
+    required String lessonCount,
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.courseLessonView,
+        arguments: CourseLessonViewArguments(
+            topic: topic, lessonCount: lessonCount, course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCourseTestView([
+  Future<dynamic> replaceWithCourseTestView({
+    required _i29.Topic topic,
+    required _i28.Course course,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.courseTestView,
+        arguments:
+            CourseTestViewArguments(topic: topic, course: course, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

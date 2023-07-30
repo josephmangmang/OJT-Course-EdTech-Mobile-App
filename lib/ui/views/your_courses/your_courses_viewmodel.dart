@@ -1,11 +1,9 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../model/course.dart';
 import '../../../services/repository_service.dart';
-import '../../../services/shared_service.dart';
 
 class YourCoursesViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
@@ -18,9 +16,8 @@ class YourCoursesViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-  void coursePressed(String courseId) {
-    print(courseId);
-    _navigationService.replaceWithCourseLessonView();
+  void coursePressed(Course course) {
+    _navigationService.navigateToLessonCoursesView(course: course);
   }
 
   int getColor(int index) {

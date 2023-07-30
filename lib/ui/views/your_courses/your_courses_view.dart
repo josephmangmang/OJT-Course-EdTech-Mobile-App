@@ -46,7 +46,7 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
                                   var courseItem = viewModel.courses[index];
                                   return YourCourseCard(
                                       courseSelected: () {
-                                        viewModel.coursePressed(courseItem.id);
+                                        viewModel.coursePressed(courseItem);
                                       },
                                       course: courseItem,
                                       color: viewModel.getColor(index));
