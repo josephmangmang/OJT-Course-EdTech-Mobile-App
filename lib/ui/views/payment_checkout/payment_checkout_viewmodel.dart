@@ -18,10 +18,16 @@ class PaymentCheckoutViewModel extends BaseViewModel {
   final _snackBarService = locator<SnackbarService>();
   final coursePrice = AppTempConstant.tempCourse!.price;
   late CreditCard creditCard;
-  init() async {
-    paymentMethod();
+
+  void init() {
+    setBusyForObject('card', true);
+    creditCard = AppTempConstant.tempCard!;
+    setBusyForObject('card', false);
   }
 
+  void check() {
+    _snackBarService.showSnackbar(message: "debug");
+  }
 
   Future<void> payCourse() async {
     final response = await _repository.buyCourse(
@@ -36,16 +42,10 @@ class PaymentCheckoutViewModel extends BaseViewModel {
         _snackBarService.showSnackbar(message: error.message);
       }
     }, (r) {
-      _snackBarService.showSnackbar(message: "Course purchase successfully");
+      _snackBarService.showSnackbar(message: "Course purchase successfully", duration: const Duration(seconds: 3));
+       Future.delayed(const Duration(seconds: 2));
       _navigationService.replaceWithYourCoursesView();
     });
   }
 
-  void paymentMethod() async {
-    setBusyForObject('paymentMethod', true);
-    final response = await _repository.getCreditCard();
-    response.fold((l) => print(l.message), (r) => creditCard = r);
-    print(response);
-    setBusyForObject('paymentMethod', false);
-  }
 }

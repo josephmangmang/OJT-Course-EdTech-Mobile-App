@@ -1,6 +1,7 @@
 class PngImages {
   PngImages._();
 
+  static const rootPath ="assets/png/";
   static const coolKidsAloneTime1 = "assets/png/Cool Kids Alone Time (1).png";
   static const coolKidsAloneTime2 = "assets/png/Cool Kids Alone Time (2).png";
   static const coolKidsAloneTime3 = "assets/png/Cool Kids Alone Time (3).png";
@@ -28,6 +29,8 @@ class PngImages {
   static const coolKidsStayingHome = "assets/png/Cool_Kids_Staying_Home.png";
   static const forgotPassword = "assets/png/Forgot_password.png";
   static const illustration = "assets/png/Illustration.png";
-  static const image2 = "assets/png/image_2.png";
+  static const image2 = "assets/png/mastercard.png";
   static const myPasswordConcept = "assets/png/my-password-concept.png";
+  static const mastercard = "${rootPath}mastercard.png";
+  static const visa = "${rootPath}visa.png";
 }

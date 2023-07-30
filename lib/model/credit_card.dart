@@ -12,6 +12,7 @@ class CreditCard with _$CreditCard {
     required String expireDate,
     required String cvv,
     required String paymentMethod,
+    required String id,
   }) = _CreditCard;
 
   factory CreditCard.fromJson(Map<String, dynamic> json) =>

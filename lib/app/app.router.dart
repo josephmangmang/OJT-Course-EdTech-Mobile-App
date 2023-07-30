@@ -397,8 +397,15 @@ class StackedRouter extends _i1.RouterBase {
     _i26.AddCreditCardView: (data) {
       final args = data.getArgs<AddCreditCardViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) =>
-            _i26.AddCreditCardView(args.paymentMethod, key: args.key),
+        builder: (context) => _i26.AddCreditCardView(
+            args.oldPaymentMethod,
+            args.name,
+            args.cardNumber,
+            args.expireDate,
+            args.cvv,
+            args.cardId,
+            args.paymentMethod,
+            key: args.key),
         settings: data,
       );
     },
@@ -611,28 +618,60 @@ class CourseTestViewArguments {
 
 class AddCreditCardViewArguments {
   const AddCreditCardViewArguments({
+    required this.oldPaymentMethod,
+    required this.name,
+    required this.cardNumber,
+    required this.expireDate,
+    required this.cvv,
+    required this.cardId,
     required this.paymentMethod,
     this.key,
   });
 
-  final int paymentMethod;
+  final bool oldPaymentMethod;
+
+  final String name;
+
+  final String cardNumber;
+
+  final String expireDate;
+
+  final String cvv;
+
+  final String cardId;
+
+  final String paymentMethod;
 
   final _i27.Key? key;
 
   @override
   String toString() {
-    return '{"paymentMethod": "$paymentMethod", "key": "$key"}';
+    return '{"oldPaymentMethod": "$oldPaymentMethod", "name": "$name", "cardNumber": "$cardNumber", "expireDate": "$expireDate", "cvv": "$cvv", "cardId": "$cardId", "paymentMethod": "$paymentMethod", "key": "$key"}';
   }
 
   @override
   bool operator ==(covariant AddCreditCardViewArguments other) {
     if (identical(this, other)) return true;
-    return other.paymentMethod == paymentMethod && other.key == key;
+    return other.oldPaymentMethod == oldPaymentMethod &&
+        other.name == name &&
+        other.cardNumber == cardNumber &&
+        other.expireDate == expireDate &&
+        other.cvv == cvv &&
+        other.cardId == cardId &&
+        other.paymentMethod == paymentMethod &&
+        other.key == key;
   }
 
   @override
   int get hashCode {
-    return paymentMethod.hashCode ^ key.hashCode;
+    return oldPaymentMethod.hashCode ^
+        name.hashCode ^
+        cardNumber.hashCode ^
+        expireDate.hashCode ^
+        cvv.hashCode ^
+        cardId.hashCode ^
+        paymentMethod.hashCode ^
+        key.hashCode;
   }
 }
 
@@ -1000,7 +1039,13 @@ extension NavigatorStateExtension on _i30.NavigationService {
   }
 
   Future<dynamic> navigateToAddCreditCardView({
-    required int paymentMethod,
+    required bool oldPaymentMethod,
+    required String name,
+    required String cardNumber,
+    required String expireDate,
+    required String cvv,
+    required String cardId,
+    required String paymentMethod,
     _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
@@ -1009,8 +1054,15 @@ extension NavigatorStateExtension on _i30.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.addCreditCardView,
-        arguments:
-            AddCreditCardViewArguments(paymentMethod: paymentMethod, key: key),
+        arguments: AddCreditCardViewArguments(
+            oldPaymentMethod: oldPaymentMethod,
+            name: name,
+            cardNumber: cardNumber,
+            expireDate: expireDate,
+            cvv: cvv,
+            cardId: cardId,
+            paymentMethod: paymentMethod,
+            key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1380,7 +1432,13 @@ extension NavigatorStateExtension on _i30.NavigationService {
   }
 
   Future<dynamic> replaceWithAddCreditCardView({
-    required int paymentMethod,
+    required bool oldPaymentMethod,
+    required String name,
+    required String cardNumber,
+    required String expireDate,
+    required String cvv,
+    required String cardId,
+    required String paymentMethod,
     _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
@@ -1389,8 +1447,15 @@ extension NavigatorStateExtension on _i30.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.addCreditCardView,
-        arguments:
-            AddCreditCardViewArguments(paymentMethod: paymentMethod, key: key),
+        arguments: AddCreditCardViewArguments(
+            oldPaymentMethod: oldPaymentMethod,
+            name: name,
+            cardNumber: cardNumber,
+            expireDate: expireDate,
+            cvv: cvv,
+            cardId: cardId,
+            paymentMethod: paymentMethod,
+            key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

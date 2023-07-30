@@ -1,17 +1,16 @@
-
-
 import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/common/app_temp.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
+import 'package:edtechapp/ui/custom_widget/credit_card.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../model/course.dart';
 import 'payment_checkout_viewmodel.dart';
 
 class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
-  const PaymentCheckoutView( {Key? key}) : super(key: key);
+  const PaymentCheckoutView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -51,23 +50,21 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Wrap(
-                                      children: [Text(
+                                    Wrap(children: [
+                                      Text(
                                         AppTempConstant.tempCourse!.title,
                                         style: const TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                      Text(
+                                        '${AppTempConstant.tempCourse!.price}',
+                                        style: const TextStyle(
                                           fontSize: 24,
-                                          fontWeight: FontWeight.w700
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                        Text(
-                                          '${AppTempConstant.tempCourse!.price}',
-                                          style: const TextStyle(
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),]
-                                    ),
-
+                                    ]),
                                   ],
                                 ),
                               ),
@@ -114,36 +111,13 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: viewModel.busy('paymentMethod') ?
-                                  Container() : Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset(PngImages.image2),
-                                      const SizedBox(
-                                        width: 16,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children:  [
-                                          Text(viewModel.creditCard.cardNumber,
-                                              style: const TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w100,
-                                              )),
-                                          Text(viewModel.creditCard.expireDate,
-                                              style: const TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
+                                CreditCards(
+                                  creditCardButton: () {},
+                                  paymentMethod: viewModel.creditCard.paymentMethod,
+                                  cardNumber: viewModel.creditCard.cardNumber,
+                                  isSelected: false,
+                                  expireDate: viewModel.creditCard.expireDate,
+                                )
                               ]),
                             ],
                           ),
@@ -156,9 +130,9 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                   height: 216,
                 ),
                 AppButton(
-                  title: "Confirm payment \$${AppTempConstant.tempCourse!.price}",
-                  onClick: viewModel.payCourse,
-                )
+                    title:
+                        "Confirm payment \$${AppTempConstant.tempCourse!.price}",
+                    onClick: viewModel.payCourse)
               ],
             ),
           ),
@@ -178,5 +152,4 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
     viewModel.init();
     super.onViewModelReady(viewModel);
   }
-
 }

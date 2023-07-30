@@ -21,6 +21,7 @@ class PaymentAdddedViewModel extends BaseViewModel {
   }
 
   void paymentMethod() {
-    _navigationService.navigateToPaymentMethodsView();
+    _navigationService.navigateToPaymentCheckoutView();
   }
+
 }

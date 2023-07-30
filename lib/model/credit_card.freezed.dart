@@ -25,6 +25,7 @@ mixin _$CreditCard {
   String get expireDate => throw _privateConstructorUsedError;
   String get cvv => throw _privateConstructorUsedError;
   String get paymentMethod => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $CreditCardCopyWith<$Res> {
       String cardNumber,
       String expireDate,
       String cvv,
-      String paymentMethod});
+      String paymentMethod,
+      String id});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$CreditCardCopyWithImpl<$Res, $Val extends CreditCard>
     Object? expireDate = null,
     Object? cvv = null,
     Object? paymentMethod = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -86,6 +89,10 @@ class _$CreditCardCopyWithImpl<$Res, $Val extends CreditCard>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$_CreditCardCopyWith<$Res>
       String cardNumber,
       String expireDate,
       String cvv,
-      String paymentMethod});
+      String paymentMethod,
+      String id});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$_CreditCardCopyWithImpl<$Res>
     Object? expireDate = null,
     Object? cvv = null,
     Object? paymentMethod = null,
+    Object? id = null,
   }) {
     return _then(_$_CreditCard(
       name: null == name
@@ -144,6 +153,10 @@ class __$$_CreditCardCopyWithImpl<$Res>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$_CreditCard implements _CreditCard {
       required this.cardNumber,
       required this.expireDate,
       required this.cvv,
-      required this.paymentMethod});
+      required this.paymentMethod,
+      required this.id});
 
   factory _$_CreditCard.fromJson(Map<String, dynamic> json) =>
       _$$_CreditCardFromJson(json);
@@ -171,10 +185,12 @@ class _$_CreditCard implements _CreditCard {
   final String cvv;
   @override
   final String paymentMethod;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'CreditCard(name: $name, cardNumber: $cardNumber, expireDate: $expireDate, cvv: $cvv, paymentMethod: $paymentMethod)';
+    return 'CreditCard(name: $name, cardNumber: $cardNumber, expireDate: $expireDate, cvv: $cvv, paymentMethod: $paymentMethod, id: $id)';
   }
 
   @override
@@ -189,13 +205,14 @@ class _$_CreditCard implements _CreditCard {
                 other.expireDate == expireDate) &&
             (identical(other.cvv, cvv) || other.cvv == cvv) &&
             (identical(other.paymentMethod, paymentMethod) ||
-                other.paymentMethod == paymentMethod));
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, cardNumber, expireDate, cvv, paymentMethod);
+      runtimeType, name, cardNumber, expireDate, cvv, paymentMethod, id);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +234,8 @@ abstract class _CreditCard implements CreditCard {
       required final String cardNumber,
       required final String expireDate,
       required final String cvv,
-      required final String paymentMethod}) = _$_CreditCard;
+      required final String paymentMethod,
+      required final String id}) = _$_CreditCard;
 
   factory _CreditCard.fromJson(Map<String, dynamic> json) =
       _$_CreditCard.fromJson;
@@ -232,6 +250,8 @@ abstract class _CreditCard implements CreditCard {
   String get cvv;
   @override
   String get paymentMethod;
+  @override
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$_CreditCardCopyWith<_$_CreditCard> get copyWith =>
