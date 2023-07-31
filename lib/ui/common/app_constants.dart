@@ -1,4 +1,6 @@
 class AppConstants {
+  static const allAnswerCorrect = "Congratulations for getting \nall the answer correct!";
+
 
   AppConstants._();
 

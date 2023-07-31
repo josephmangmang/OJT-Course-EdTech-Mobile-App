@@ -101,7 +101,7 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                 ),
               ),
               InkWell(
-                onTap: (){},
+                onTap: viewModel.goToTestViewPage,
                 child: AbsorbPointer(
                   child: Container(
                     width: 295,
@@ -138,5 +138,5 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
   CourseTestViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseTestViewModel();
+      CourseTestViewModel(course, topic);
 }

@@ -14,6 +14,8 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../repository/course_repository.dart';
 import '../repository/course_repository_impl.dart';
+import '../repository/question_repository.dart';
+import '../repository/question_repository_impl.dart';
 import '../repository/topic_repository.dart';
 import '../repository/topic_repository_impl.dart';
 import '../services/authentication_service.dart';
@@ -56,4 +58,6 @@ Future<void> setupLocator({
       () => SharedPrefServiceServiceImpl());
   locator.registerLazySingleton<CourseRepository>(() => CourseRepositoryImpl());
   locator.registerLazySingleton<TopicRepository>(() => TopicRepositoryImp());
+  locator.registerLazySingleton<QuestionRepository>(
+      () => QuestionRepositoryImpl());
 }

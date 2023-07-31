@@ -768,32 +768,6 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isCourseCart,
-          [courseId],
-        ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-            _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-                _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
-  @override
   _i8.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -1106,57 +1080,70 @@ class MockRepositoryImplService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isCourseCart,
-          [courseId],
-        ),
-        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-            _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
-                _FakeEither_0<_i11.AppException, bool>(
-          this,
-          Invocation.method(
-            #isCourseCart,
-            [courseId],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>> getCreditCard() =>
-      (super.noSuchMethod(
+  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
         Invocation.method(
           #getCreditCard,
           [],
         ),
         returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
-                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+        returnValueForMissingStub:
+            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+      ) as _i8.Future<List<_i12.CreditCard>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> editCreditCard(
+    String? name,
+    String? cardNumber,
+    String? expireDate,
+    String? cvv,
+    String? paymentMethod,
+    String? cardId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editCreditCard,
+          [
+            name,
+            cardNumber,
+            expireDate,
+            cvv,
+            paymentMethod,
+            cardId,
+          ],
+        ),
+        returnValue:
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
           this,
           Invocation.method(
-            #getCreditCard,
-            [],
+            #editCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+              cardId,
+            ],
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
-                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
           this,
           Invocation.method(
-            #getCreditCard,
-            [],
+            #editCreditCard,
+            [
+              name,
+              cardNumber,
+              expireDate,
+              cvv,
+              paymentMethod,
+              cardId,
+            ],
           ),
         )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>);
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
 }
 
 /// A class which mocks [SharedService].

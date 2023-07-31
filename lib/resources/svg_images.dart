@@ -3,7 +3,7 @@ class SvgImages {
 
   static const notification = 'assets/svg/Notification.svg';
   static const profile = 'assets/svg/profile.svg';
-  static const facebookIcon = 'assets/svg/facebook-icon';
+  static const facebookIcon = 'assets/svg/facebook-icon.svg';
   static const background = 'assets/svg/Background.svg';
   static const courses = 'assets/svg/courses.svg';
   static const frame4 = 'assets/svg/Frame 4.svg';

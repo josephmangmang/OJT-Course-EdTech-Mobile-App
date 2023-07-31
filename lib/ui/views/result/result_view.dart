@@ -8,8 +8,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'result_viewmodel.dart';
 
 class ResultView extends StackedView<ResultViewModel> {
-  const ResultView({Key? key}) : super(key: key);
+  const ResultView({required this.textResult, Key? key}) : super(key: key);
 
+  final String textResult;
   @override
   Widget builder(
     BuildContext context,
@@ -24,8 +25,11 @@ class ResultView extends StackedView<ResultViewModel> {
             child: Center(
               child: Column(children: [
                 //verticalSpaceLarge,
-                CustomAppBar(
-                  title: AppConstants.resultText,
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomAppBar(
+                    title: AppConstants.resultText,
+                  ),
                 ),
                 Container(
                   width: 375,
@@ -61,10 +65,10 @@ class ResultView extends StackedView<ResultViewModel> {
                       Container(
                         width: 341,
                         padding: const EdgeInsets.only(top: 8),
-                        child: const Text(
-                          'Congratulations for getting \nall the answers corrects!',
+                        child:  Text(
+                          textResult,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xFF78746D),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
