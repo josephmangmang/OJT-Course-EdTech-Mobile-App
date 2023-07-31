@@ -5,4 +5,5 @@ String searchText = "";
 String appBarTitle = "";
 String currentUserId = "";
 String itemId = "";
+String courseId = "";
 int homeIndex = 0;

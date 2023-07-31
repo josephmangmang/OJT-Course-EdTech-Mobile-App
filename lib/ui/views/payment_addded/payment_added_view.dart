@@ -56,6 +56,7 @@ class PaymentAddedView extends StackedView<PaymentAdddedViewModel> {
                   ),
                   textAlign: TextAlign.center,
                 ),
+
                 const SizedBox(
                   height: 32,
                 ),

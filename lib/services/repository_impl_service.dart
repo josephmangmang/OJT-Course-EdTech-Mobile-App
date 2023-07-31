@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_strings.dart';
+import 'package:edtechapp/ui/common/app_temp.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -129,7 +130,7 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<Either<AppException, None>> buyCourse(String? courseId) async {
+  Future<Either<AppException, None>> buyCourse(String courseId) async {
     if (courseId == null) {
       return Left(InvalidInputException(AppExceptionConstants.courseIdNull));
     }
@@ -141,10 +142,10 @@ class RepositoryImplService extends RepositoryService {
     }, (user) async {
       try {
         await db
-            .collection(FirebaseConstants.courseCollection)
+            .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
             .update({
-          FirebaseConstants.purchaseCourses: FieldValue.arrayUnion([courseId]),
+          FirebaseConstants.purchaseCourses: FieldValue.arrayUnion([courseId])
         });
       } on FirebaseAuthException catch (e) {
         return Left(AppException(e.message.toString()));
@@ -183,31 +184,32 @@ class RepositoryImplService extends RepositoryService {
     final user = await _authenticationService.getCurrentUser();
 
     CreditCard creditCard = CreditCard(
-        name: name,
-        cardNumber: cardNumber,
-        expireDate: expireDate,
-        cvv: cvv,
-        paymentMethod: paymentMethod);
+      name: name,
+      cardNumber: cardNumber,
+      expireDate: expireDate,
+      cvv: cvv,
+      paymentMethod: paymentMethod,
+      id: "",
+    );
 
     return user.fold((error) {
       return Left(error);
     }, (user) async {
       try {
-        final CollectionReference creditCardCollection = await db
+        final creditCardCollection = db
             .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
             .collection('creditCardDetails');
 
-        final QuerySnapshot existingCreditCardSnapshot =
-            await creditCardCollection.get();
+        final newCreditCardRef =
+            await creditCardCollection.add(creditCard.toJson());
 
-        if (existingCreditCardSnapshot.docs.isNotEmpty) {
-          for (DocumentSnapshot doc in existingCreditCardSnapshot.docs) {
-            await doc.reference.delete();
-          }
-        }
+        String newCreditCardId = newCreditCardRef.id;
 
-        await creditCardCollection.add(creditCard.toJson());
+        AppTempConstant.tempCard = creditCard;
+
+        // Update the credit card entry in Firestore with the document ID
+        await newCreditCardRef.update({'id': newCreditCardId});
       } on FirebaseAuthException catch (e) {
         return Left(AppException(e.message.toString()));
       }
@@ -216,25 +218,77 @@ class RepositoryImplService extends RepositoryService {
   }
 
   @override
-  Future<List<CreditCard>> getCreditCard() async {
-    List<CreditCard> creditCard= [];
+  Future<Either<AppException, None>> addCourseToCart(String courseId) async {
+    final user = await _authenticationService.getCurrentUser();
 
-        (user) async {
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
       try {
-        db.collection(FirebaseConstants.userCollection)
-            .doc(user.uid).collection('creditCardDetails').get().then((value) {
-          if (value.docs.isNotEmpty) {
-            var snapshots = value.docs;
-            creditCard =
-                snapshots.map((e) => CreditCard.fromJson(e.data())).toList();
-          }
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .update({
+          FirebaseConstants.cartCourses: FieldValue.arrayUnion([courseId])
         });
-      } catch (e) {
-        return e.toString();
+      } on FirebaseAuthException catch (error) {
+        return Left(AppException(error.message.toString()));
       }
-    };
-    return creditCard;
+      return const Right(None());
+    });
   }
 
+  @override
+  Future<List<CreditCard>> getCreditCard() async {
+    final user = await _authenticationService.getCurrentUser();
 
+    return user.foldRight([], (user, previous) async {
+      final results = await db
+          .collection(FirebaseConstants.userCollection)
+          .doc(user.uid)
+          .collection('creditCardDetails')
+          .get();
+
+      return results.docs
+          .map((doc) => CreditCard.fromJson(doc.data()))
+          .toList();
+    });
+  }
+
+  @override
+  Future<Either<AppException, None>> editCreditCard(
+      String name,
+      String cardNumber,
+      String expireDate,
+      String cvv,
+      String paymentMethod,
+      String cardId) async {
+    final user = await _authenticationService.getCurrentUser();
+
+    CreditCard creditCard = CreditCard(
+      name: name,
+      cardNumber: cardNumber,
+      expireDate: expireDate,
+      cvv: cvv,
+      paymentMethod: paymentMethod,
+      id: cardId,
+    );
+
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        final creditCardCollection = db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .collection('creditCardDetails').doc(cardId).set(creditCard.toJson());
+
+        AppTempConstant.tempCard = creditCard;
+
+      } on FirebaseAuthException catch (e) {
+        return Left(AppException(e.message.toString()));
+      }
+      return const Right(None());
+    });
+  }
 }

@@ -17,7 +17,7 @@ class CourseRepositoryImpl implements CourseRepository {
 
     // O(n)
     final result = await q.get().then((snap) => snap.docs.map((doc) => Course.fromJson(doc.data())).toList());
-
+    print(result);
     if (query.isNotEmpty) {
       return result.where((course) => course.title.toLowerCase().contains(query.toLowerCase())).toList();
     }

@@ -14,29 +14,14 @@ class PaymentAdddedViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
 
-  Future<void> payCourse() async {
-    setBusy(true);
-    final response = await _repository.buyCourse(itemId);
 
-    setBusy(false);
-    response.fold((error) {
-      if (error is InvalidInputException) {
-        print(error.message);
-        _snackBarService.showSnackbar(message: 'Your input is invalid');
-      } else {
-        _snackBarService.showSnackbar(message: error.message);
-      }
-    }, (r) {
-      _snackBarService.showSnackbar(message: "Course purchase successfully");
-      _navigationService.replaceWithYourCoursesView();
-    });
-  }
 
   void backPressed() {
     _navigationService.back();
   }
 
   void paymentMethod() {
-    _navigationService.navigateToPaymentMethodsView();
+    _navigationService.navigateToPaymentCheckoutView();
   }
+
 }
