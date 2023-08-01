@@ -29,9 +29,9 @@ class CreditCards extends StatelessWidget {
         decoration: BoxDecoration(
           border: isSelected == true
               ? Border.all(
-            color: const Color(0xFFE3562A),
-            width: 2,
-          )
+                  color: const Color(0xFFE3562A),
+                  width: 2,
+                )
               : null,
         ),
         child: Stack(
@@ -77,5 +77,3 @@ class CreditCards extends StatelessWidget {
     );
   }
 }
-
-

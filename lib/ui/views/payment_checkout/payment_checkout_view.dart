@@ -113,7 +113,8 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                 ),
                                 CreditCards(
                                   creditCardButton: () {},
-                                  paymentMethod: viewModel.creditCard.paymentMethod,
+                                  paymentMethod:
+                                      viewModel.creditCard.paymentMethod,
                                   cardNumber: viewModel.creditCard.cardNumber,
                                   isSelected: false,
                                   expireDate: viewModel.creditCard.expireDate,

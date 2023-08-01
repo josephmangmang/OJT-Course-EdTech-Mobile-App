@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 typedef OnCardPressed = Function();
 
 class ProfileCard extends StatelessWidget {
-  const ProfileCard(
-      {Key? key, required this.onCardPressed, required this.title,})
-      : super(key: key);
+  const ProfileCard({
+    Key? key,
+    required this.onCardPressed,
+    required this.title,
+  }) : super(key: key);
 
   final OnCardPressed onCardPressed;
   final String title;
@@ -18,7 +20,9 @@ class ProfileCard extends StatelessWidget {
       child: AbsorbPointer(
         child: Container(
           padding: const EdgeInsets.symmetric(
-              horizontal: 32, vertical: 24,),
+            horizontal: 32,
+            vertical: 24,
+          ),
           alignment: Alignment.center,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -40,5 +44,4 @@ class ProfileCard extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -15,7 +15,7 @@ class ProjectDetailViewModel extends BaseViewModel {
 
   ProjectDetailViewModel(this.course);
 
-  void purchase () {
+  void purchase() {
     AppTempConstant.tempCourse = course;
     _navigationService.navigateToPaymentMethodsView();
   }

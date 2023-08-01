@@ -87,7 +87,10 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                         itemBuilder: (context, index) {
                           var topicItem = viewModel.topics[index];
                           return TopicCard(
-                           topic: topicItem, onCardPressed:() => viewModel.topicCardClick(topicItem, "${index + 1} of ${viewModel.topics.length} lessons"),
+                            topic: topicItem,
+                            onCardPressed: () => viewModel.topicCardClick(
+                                topicItem,
+                                "${index + 1} of ${viewModel.topics.length} lessons"),
                           );
                         },
                       ),

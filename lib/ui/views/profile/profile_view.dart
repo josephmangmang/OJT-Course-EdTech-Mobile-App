@@ -34,25 +34,27 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     const SizedBox(
                       height: 32,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 3.0,
-                          strokeAlign: BorderSide.strokeAlignOutside,
-                          color: const Color(0xFF65A9E9),
+                    GestureDetector(
+                      onTap: viewModel.uploadProfile,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 3.0,
+                            strokeAlign: BorderSide.strokeAlignOutside,
+                            color: const Color(0xFF65A9E9),
+                          ),
                         ),
-                      ),
-                      child: const CircleAvatar(
-                        backgroundImage: AssetImage(PngImages.coolKidsBust),
-                        radius: 70,
-                        backgroundColor: Color(0xFFF7F2EE),
+                        child: const CircleAvatar(
+                          backgroundImage: AssetImage(PngImages.coolKidsBust),
+                          radius: 70,
+                          backgroundColor: Color(0xFFF7F2EE),
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 32,
                     ),
-
                     ProfileCard(
                       onCardPressed: viewModel.yourCourse,
                       title: AppConstants.yourCourseText,
@@ -64,7 +66,6 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       onCardPressed: () {},
                       title: AppConstants.paymentText,
                     ),
-
                     TextButton(
                       onPressed: viewModel.logOut,
                       child: const Text(

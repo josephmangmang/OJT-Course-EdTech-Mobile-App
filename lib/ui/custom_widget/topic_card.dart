@@ -29,85 +29,84 @@ class TopicCard extends StatelessWidget {
     return InkWell(
       onTap: onCardPressed,
       child: Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: const Color(0xFFCDCDCD),
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.only(bottom: 16),
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+            color: const Color(0xFFCDCDCD),
+          ),
+          borderRadius: BorderRadius.circular(8),
         ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          CachedNetworkImage(
-            imageUrl: topic.image,
-            width: 78,
-            height: 72,
-            errorWidget: (context, url, error) =>
-            const SizedBox(
-                height: 72,
-                width: 78,
-                child: Icon(
-                  Icons.error,
-                  color: Colors.red,
-                )),
-            placeholder: (context, url) =>
-                Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CachedNetworkImage(
+              imageUrl: topic.image,
+              width: 78,
+              height: 72,
+              errorWidget: (context, url, error) => const SizedBox(
                   height: 72,
                   width: 78,
-                ),
-            fit: BoxFit.cover,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    topic.topic,
-                    style: const TextStyle(
-                      color: Color(0xFF3B3936),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Stack(
-                    children: [
-                      Container(
-                        height: 11,
-                        width: progressBarWidth,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color(0xFFFFF5EE), //const Color
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Container(
-                          height: 11,
-                          width: getProgress(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: const Color(0xFF94C0E9)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  child: Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  )),
+              placeholder: (context, url) => Container(
+                height: 72,
+                width: 78,
               ),
+              fit: BoxFit.cover,
             ),
-          )
-        ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      topic.topic,
+                      style: const TextStyle(
+                        color: Color(0xFF3B3936),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: -0.50,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Stack(
+                      children: [
+                        Container(
+                          height: 11,
+                          width: progressBarWidth,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color(0xFFFFF5EE), //const Color
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          child: Container(
+                            height: 11,
+                            width: getProgress(),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: const Color(0xFF94C0E9)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
-    ),);
+    );
   }
 }

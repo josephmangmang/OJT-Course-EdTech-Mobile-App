@@ -76,35 +76,36 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                   ),
                   const SizedBox(height: 32),
                   Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: TextField(
-                            onChanged: viewModel.paymentMethodDetector,
-                            controller: viewModel.cardNumberController,
-                            decoration: InputDecoration(
-                              hintText: 'Credit card number',
-                              border: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                              ),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors
-                                      .grey, // Customize the border color here
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                              ),
-                              suffixIcon:
-                                  viewModel.cardNumberController.text.isEmpty
-                                      ? const Icon(Icons.warning)
-                                      : viewModel.busy('cardType') ? const Icon(Icons.warning) :Image.asset(viewModel.cardType),
-                            ),
-                            keyboardType: TextInputType.number,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: TextField(
+                      onChanged: viewModel.paymentMethodDetector,
+                      controller: viewModel.cardNumberController,
+                      decoration: InputDecoration(
+                        hintText: 'Credit card number',
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
                           ),
                         ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color:
+                                Colors.grey, // Customize the border color here
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                        ),
+                        suffixIcon: viewModel.cardNumberController.text.isEmpty
+                            ? const Icon(Icons.warning)
+                            : viewModel.busy('cardType')
+                                ? const Icon(Icons.warning)
+                                : Image.asset(viewModel.cardType),
+                      ),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
                   const SizedBox(height: 11),
                   Row(
                     children: [
@@ -216,7 +217,8 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
 
   @override
   void onViewModelReady(AddCreditCardViewModel viewModel) {
-    viewModel.init(oldPaymentMethod, name, cardNumber, expireDate, cvv, paymentMethod);
+    viewModel.init(
+        oldPaymentMethod, name, cardNumber, expireDate, cvv, paymentMethod);
     super.onViewModelReady(viewModel);
   }
 }

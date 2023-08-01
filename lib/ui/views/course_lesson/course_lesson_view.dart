@@ -70,7 +70,6 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                         ),
                         Container(
                           width: double.infinity,
-
                           padding: const EdgeInsets.only(top: 8),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +77,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                             children: [
                               Expanded(
                                 child: InkWell(
-                                  onTap:() => viewModel.changePage(0),
+                                  onTap: () => viewModel.changePage(0),
                                   child: AbsorbPointer(
                                     child: Container(
                                       height: 42,

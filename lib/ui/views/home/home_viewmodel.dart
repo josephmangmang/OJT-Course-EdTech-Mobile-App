@@ -23,7 +23,8 @@ class HomeViewModel extends BaseViewModel {
   final _courseRepository = locator<CourseRepository>();
 
   List<Course> courses = [];
-  final PageController pageController = PageController(initialPage: 0); // Added currentIndex variable
+  final PageController pageController =
+      PageController(initialPage: 0); // Added currentIndex variable
 
   late User user;
 
@@ -65,7 +66,8 @@ class HomeViewModel extends BaseViewModel {
   void onPageChanged(int index) {
     previousPageIndex = currentPageIndex;
     currentPageIndex = index;
-    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print(
+        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     rebuildUi();
   }
 
@@ -73,7 +75,8 @@ class HomeViewModel extends BaseViewModel {
     int tempIndex = currentPageIndex;
     changePage(index);
     previousPageIndex = tempIndex;
-    print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+    print(
+        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
   }
 
   void onBackPressed() {
@@ -86,7 +89,8 @@ class HomeViewModel extends BaseViewModel {
     } else {
       changePage(previousPageIndex!);
       isBackPressed = true;
-      print("onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+      print(
+          "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     }
     previousPageIndex = null;
   }

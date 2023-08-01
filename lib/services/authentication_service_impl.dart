@@ -5,6 +5,7 @@ import 'package:edtechapp/model/user.dart';
 import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 import 'package:edtechapp/ui/common/app_exception_constants.dart';
+import 'package:edtechapp/ui/common/app_exception.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 
@@ -28,7 +29,7 @@ class AuthenticationServiceImpl implements AuthenticationService {
 
   @override
   Future<Either<AppException, User>> login(
-      String email, String password) async {
+      {required String email, required String password}) async {
     try {
       final credential = await auth.signInWithEmailAndPassword(
         email: email,
@@ -114,6 +115,71 @@ class AuthenticationServiceImpl implements AuthenticationService {
       return const Right(None());
     } catch (error) {
       return Left(AppException(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppException, None>> updatePassword(
+      String currentPassword, String newPassword) async {
+    try {
+      var response = await login(
+          email: auth.currentUser!.email!, password: currentPassword);
+      return response.fold((l) => Left(AppException(l.message)), (r) async {
+        try {
+          // await Future.wait([
+          await auth.currentUser!.updatePassword(newPassword);
+          await db.collection(FirebaseConstants.userCollection).doc(r.uid).set(
+              {"lastUpdatedPassword": DateTime.now().toTimestamp()},
+              SetOptions(merge: true));
+          await logOutUser();
+          // ]);
+          return const Right(None());
+        } catch (e) {
+          return Left(AppException(e.toString()));
+        }
+      });
+    } catch (e) {
+      return Left(AppException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppException, Timestamp?>> getLastUpdatedPassword(
+      String uid) async {
+    try {
+      return await db
+          .collection(FirebaseConstants.userCollection)
+          .doc(uid)
+          .get()
+          .then((value) => Right(value.data()!['lastUpdatedPassword']));
+    } on FirebaseException catch (e) {
+      return Left(AppException(e.message!));
+    }
+  }
+
+  @override
+  Future<Either<AppException, None>> updateEmail(
+      String currentEmail, String currentPassword, String newEmail) async {
+    try {
+      var response =
+          await login(email: currentEmail, password: currentPassword);
+      return response.fold((l) => Left(AppException(l.message)), (r) async {
+        try {
+          // await Future.wait([
+          await auth.currentUser!.updateEmail(newEmail);
+          await db
+              .collection(FirebaseConstants.userCollection)
+              .doc(r.uid)
+              .set({"email": newEmail}, SetOptions(merge: true));
+          await logOutUser();
+          // ]);
+          return const Right(None());
+        } catch (e) {
+          return Left(AppException(e.toString()));
+        }
+      });
+    } catch (e) {
+      return Left(AppException(e.toString()));
     }
   }
 }

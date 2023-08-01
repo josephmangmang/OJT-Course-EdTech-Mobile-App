@@ -15,14 +15,14 @@ class LessonCoursesViewModel extends BaseViewModel {
 
   LessonCoursesViewModel(this.course);
 
-  Future<void> init() async{
+  Future<void> init() async {
     setBusy(true);
     topics = await _topicRepServices.getCourseTopics(course.id);
     setBusy(false);
   }
 
-  void topicCardClick(Topic topic , String lessonCount) {
-    _navigationRepServices.navigateToCourseLessonView(topic: topic, lessonCount: lessonCount, course: course);
+  void topicCardClick(Topic topic, String lessonCount) {
+    _navigationRepServices.navigateToCourseLessonView(
+        topic: topic, lessonCount: lessonCount, course: course);
   }
-
 }

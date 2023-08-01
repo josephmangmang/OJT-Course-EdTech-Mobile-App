@@ -83,8 +83,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
           cvv: selectedCreditCard.cvv,
           expireDate: selectedCreditCard.expireDate,
           cardId: selectedCreditCard.id,
-          paymentMethod: selectedCreditCard.paymentMethod
-          );
+          paymentMethod: selectedCreditCard.paymentMethod);
     } else {
       _navigationService.navigateToAddCreditCardView(
           oldPaymentMethod: false,

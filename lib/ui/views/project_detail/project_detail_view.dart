@@ -42,15 +42,16 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       Column(
                         children: [
                           Hero(
-                            tag:'image_cover_${course.id}',
+                            tag: 'image_cover_${course.id}',
                             child: CachedNetworkImage(
                               imageUrl: course.image,
-                              errorWidget: (context, url, error) => const SizedBox(
-                                  height: 195,
-                                  child: Icon(
-                                    Icons.error,
-                                    color: Colors.red,
-                                  )),
+                              errorWidget: (context, url, error) =>
+                                  const SizedBox(
+                                      height: 195,
+                                      child: Icon(
+                                        Icons.error,
+                                        color: Colors.red,
+                                      )),
                               placeholder: (context, url) => Container(
                                 height: 195,
                               ),
@@ -129,7 +130,9 @@ class ProjectDetailView extends StackedView<ProjectDetailViewModel> {
                       const SizedBox(
                         height: 16,
                       ),
-                      AppButton(title: AppConstants.purchaseText, onClick: viewModel.purchase)
+                      AppButton(
+                          title: AppConstants.purchaseText,
+                          onClick: viewModel.purchase)
                     ],
                   ),
                 ),

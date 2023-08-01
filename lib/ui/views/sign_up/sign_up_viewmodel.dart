@@ -39,7 +39,9 @@ class SignUpViewModel extends BaseViewModel {
       response.fold((l) {
         _snackBarService.showSnackbar(message: l.message);
       }, (r) {
-        _snackBarService.showSnackbar(message: "Account created successfully.");
+        _snackBarService.showSnackbar(
+            message: "Account created successfully.",
+            duration: const Duration(seconds: 2));
         _navigatorService.replaceWithLoginView();
       });
     }

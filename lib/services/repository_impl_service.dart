@@ -281,12 +281,37 @@ class RepositoryImplService extends RepositoryService {
         final creditCardCollection = db
             .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
-            .collection('creditCardDetails').doc(cardId).set(creditCard.toJson());
+            .collection('creditCardDetails')
+            .doc(cardId)
+            .set(creditCard.toJson());
 
         AppTempConstant.tempCard = creditCard;
-
       } on FirebaseAuthException catch (e) {
         return Left(AppException(e.message.toString()));
+      }
+      return const Right(None());
+    });
+  }
+
+  @override
+  Future<Either<AppException, None>> updateName(
+      String currentName, String newName) async {
+    final user = await _authenticationService.getCurrentUser();
+
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        if (currentName != user.name) {
+          return Left("hi" as AppException);
+        }
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .update({FirebaseConstants.name: newName});
+        await _authenticationService.logOutUser();
+      } on FirebaseAuthException catch (error) {
+        return Left(AppException(error.message.toString()));
       }
       return const Right(None());
     });

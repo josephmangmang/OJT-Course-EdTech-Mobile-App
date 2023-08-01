@@ -44,6 +44,10 @@ import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
 import 'package:edtechapp/ui/views/cart/cart_view.dart';
 import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
 import 'package:edtechapp/repository/course_repository.dart';
+import 'package:edtechapp/ui/dialogs/update_password/update_password_dialog.dart';
+import 'package:edtechapp/ui/dialogs/update_email/update_email_dialog.dart';
+import 'package:edtechapp/ui/dialogs/update_name/update_name_dialog.dart';
+import 'package:edtechapp/ui/dialogs/update_profile/update_profile_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -107,7 +111,11 @@ import 'package:edtechapp/repository/course_repository.dart';
   ],
   dialogs: [
     StackedDialog(classType: InfoAlertDialog),
-    // @stacked-dialog
+    StackedDialog(classType: UpdatePasswordDialog),
+    StackedDialog(classType: UpdateEmailDialog),
+    StackedDialog(classType: UpdateNameDialog),
+    StackedDialog(classType: UpdateProfileDialog),
+// @stacked-dialog
   ],
 )
 class App {}

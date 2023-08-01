@@ -14,8 +14,6 @@ class PaymentAdddedViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
 
-
-
   void backPressed() {
     _navigationService.back();
   }
@@ -23,5 +21,4 @@ class PaymentAdddedViewModel extends BaseViewModel {
   void paymentMethod() {
     _navigationService.navigateToPaymentCheckoutView();
   }
-
 }

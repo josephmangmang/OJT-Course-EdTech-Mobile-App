@@ -59,15 +59,18 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                             itemCount: viewModel.creditCard.length,
                             itemBuilder: (context, index) {
                               var creditCardItem = viewModel.creditCard[index];
-                                return CreditCards(
-                                  creditCardButton: () {
-                                    viewModel.setSelectedIndex(index);
-                                  },
-                                  paymentMethod: creditCardItem.paymentMethod,
-                                  expireDate: creditCardItem.expireDate,
-                                  cardNumber: creditCardItem.cardNumber,
-                                  isSelected: viewModel.isAddCreditCardClicked == true ? false : viewModel.selectedCardIndex == index,
-                                );
+                              return CreditCards(
+                                creditCardButton: () {
+                                  viewModel.setSelectedIndex(index);
+                                },
+                                paymentMethod: creditCardItem.paymentMethod,
+                                expireDate: creditCardItem.expireDate,
+                                cardNumber: creditCardItem.cardNumber,
+                                isSelected:
+                                    viewModel.isAddCreditCardClicked == true
+                                        ? false
+                                        : viewModel.selectedCardIndex == index,
+                              );
                             },
                           ),
                           Container(
@@ -76,26 +79,28 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                             decoration: BoxDecoration(
                               border: viewModel.isAddCreditCardClicked == true
                                   ? Border.all(
-                                color: const Color(0xFFE3562A),
-                                width: 2,
-                              )
+                                      color: const Color(0xFFE3562A),
+                                      width: 2,
+                                    )
                                   : null,
                             ),
-                            child: TextButton(onPressed: viewModel.onAddCreditCardClick, child: const Text(
-                              'Add credit card',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                                fontFamily: 'Rubiks'
+                            child: TextButton(
+                              onPressed: viewModel.onAddCreditCardClick,
+                              child: const Text(
+                                'Add credit card',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 20,
+                                    fontFamily: 'Rubiks'),
                               ),
-                            ),),
+                            ),
                           ),
                           const SizedBox(
                             height: 216,
                           ),
                           AppButton(
-                              title: "Continue",
-                              onClick: viewModel.onContinuePressed,
+                            title: "Continue",
+                            onClick: viewModel.onContinuePressed,
                           ),
                         ],
                       ),

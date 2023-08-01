@@ -1,7 +1,7 @@
 class PngImages {
   PngImages._();
 
-  static const rootPath ="assets/png/";
+  static const rootPath = "assets/png/";
   static const coolKidsAloneTime1 = "assets/png/Cool Kids Alone Time (1).png";
   static const coolKidsAloneTime2 = "assets/png/Cool Kids Alone Time (2).png";
   static const coolKidsAloneTime3 = "assets/png/Cool Kids Alone Time (3).png";

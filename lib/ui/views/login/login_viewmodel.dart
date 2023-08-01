@@ -34,9 +34,7 @@ class LoginViewModel extends BaseViewModel {
   Future<void> logIn() async {
     setBusy(true);
     final response = await _authenticationService.login(
-      emailController.text,
-      passwordController.text,
-    );
+        email: emailController.text, password: passwordController.text);
 
     setBusy(false);
     response.fold((l) {

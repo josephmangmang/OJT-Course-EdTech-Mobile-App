@@ -1,3 +1,4 @@
+import 'package:cloud_firestore_platform_interface/src/timestamp.dart';
 import 'package:dartz/dartz.dart';
 import 'package:edtechapp/exception/app_exception.dart';
 import 'package:edtechapp/model/user.dart';
@@ -12,7 +13,8 @@ class AuthenticationServiceMock implements AuthenticationService {
   }
 
   @override
-  Future<Either<AppException, User>> login(String email, String password) {
+  Future<Either<AppException, User>> login(
+      {required String email, required String password}) {
     return Future.delayed(const Duration(seconds: 3), () {
       return Left(AppException('Error user not found'));
     });
@@ -38,6 +40,26 @@ class AuthenticationServiceMock implements AuthenticationService {
   @override
   Future<Either<AppException, None>> logOutUser() {
     // TODO: implement logOutUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AppException, None>> updatePassword(
+      String currentPassword, String newPassword) {
+    // TODO: implement updatePassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AppException, Timestamp?>> getLastUpdatedPassword(String uid) {
+    // TODO: implement getLastUpdatedPassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AppException, None>> updateEmail(
+      String currentEmail, String newEmail, String currentPassword) {
+    // TODO: implement updateEmail
     throw UnimplementedError();
   }
 }

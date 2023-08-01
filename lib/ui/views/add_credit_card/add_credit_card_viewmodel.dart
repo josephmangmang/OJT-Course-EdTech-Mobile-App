@@ -26,14 +26,14 @@ class AddCreditCardViewModel extends BaseViewModel {
   final _snackBarService = locator<SnackbarService>();
   DateTime? selectedDate;
 
-
-  init(bool oldPaymentMethod, String name, String cardNumber, String expireDate, String cvv, String paymentMethod) async {
-      loadExistingCreditCard(name, cardNumber, expireDate, cvv, paymentMethod);
-      if (paymentMethod == "mastercard") {
-        cardType = PngImages.mastercard;
-      } else if (paymentMethod == "visa") {
-        cardType = PngImages.visa;
-      }
+  init(bool oldPaymentMethod, String name, String cardNumber, String expireDate,
+      String cvv, String paymentMethod) async {
+    loadExistingCreditCard(name, cardNumber, expireDate, cvv, paymentMethod);
+    if (paymentMethod == "mastercard") {
+      cardType = PngImages.mastercard;
+    } else if (paymentMethod == "visa") {
+      cardType = PngImages.visa;
+    }
   }
 
   void selectDate(BuildContext context) async {
@@ -52,21 +52,21 @@ class AddCreditCardViewModel extends BaseViewModel {
 
   Future<void> save(String cardId) async {
     setBusy(true);
-    if(cardId.isNotEmpty) {
+    if (cardId.isNotEmpty) {
       final response = await _repositoryService.editCreditCard(
-        nameController.text,
-        cardNumberController.text,
-        expireDateController.text,
-        cvvController.text,
-        selectedPaymentMethod,
-        cardId
-      );
+          nameController.text,
+          cardNumberController.text,
+          expireDateController.text,
+          cvvController.text,
+          selectedPaymentMethod,
+          cardId);
 
       setBusy(false);
       response.fold((l) {
         _snackBarService.showSnackbar(message: l.message);
       }, (r) async {
-        _snackBarService.showSnackbar(message: "Save Successfully", duration: const Duration(seconds: 2));
+        _snackBarService.showSnackbar(
+            message: "Save Successfully", duration: const Duration(seconds: 2));
         _navigationService.navigateToPaymentAddedView();
       });
     } else {
@@ -81,22 +81,22 @@ class AddCreditCardViewModel extends BaseViewModel {
       response.fold((l) {
         _snackBarService.showSnackbar(message: l.message);
       }, (r) async {
-        _snackBarService.showSnackbar(message: "Save Successfully", duration: const Duration(seconds: 2));
+        _snackBarService.showSnackbar(
+            message: "Save Successfully", duration: const Duration(seconds: 2));
         _navigationService.navigateToPaymentAddedView();
       });
     }
-
-
   }
 
-  loadExistingCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod) async {
-    setBusyForObject('creditCard',true);
+  loadExistingCreditCard(String name, String cardNumber, String expireDate,
+      String cvv, String paymentMethod) async {
+    setBusyForObject('creditCard', true);
     nameController.text = name;
     cardNumberController.text = cardNumber;
     expireDateController.text = expireDate;
     cvvController.text = cvv;
     selectedPaymentMethod = paymentMethod;
-    setBusyForObject('creditCard',false);
+    setBusyForObject('creditCard', false);
   }
 
   void paymentMethodDetector(String value) async {
@@ -108,8 +108,7 @@ class AddCreditCardViewModel extends BaseViewModel {
     } else if (value.startsWith(RegExp(r'[4]'))) {
       cardType = PngImages.visa;
       selectedPaymentMethod = "visa";
-    }
-    else {
+    } else {
       cardType = const Icon(Icons.warning) as String;
     }
     setBusyForObject('cardType', false);

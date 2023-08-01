@@ -30,9 +30,8 @@ class PaymentCheckoutViewModel extends BaseViewModel {
   }
 
   Future<void> payCourse() async {
-    final response = await _repository.buyCourse(
-      AppTempConstant.tempCourse!.id
-    );
+    final response =
+        await _repository.buyCourse(AppTempConstant.tempCourse!.id);
 
     response.fold((error) {
       if (error is InvalidInputException) {
@@ -42,10 +41,11 @@ class PaymentCheckoutViewModel extends BaseViewModel {
         _snackBarService.showSnackbar(message: error.message);
       }
     }, (r) {
-      _snackBarService.showSnackbar(message: "Course purchase successfully", duration: const Duration(seconds: 3));
-       Future.delayed(const Duration(seconds: 2));
+      _snackBarService.showSnackbar(
+          message: "Course purchase successfully",
+          duration: const Duration(seconds: 3));
+      Future.delayed(const Duration(seconds: 2));
       _navigationService.replaceWithYourCoursesView();
     });
   }
-
 }

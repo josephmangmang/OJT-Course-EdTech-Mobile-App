@@ -12,14 +12,14 @@ class AppYoutubePlayer extends StatelessWidget {
         initialVideoId: YoutubePlayer.convertUrlToId(video)!,
         flags: const YoutubePlayerFlags(
           autoPlay: false,
-
         ));
 
     return YoutubePlayer(
-      controller: controller,
-      showVideoProgressIndicator: true,
-      progressIndicatorColor: Colors.red,
-      progressColors: const ProgressBarColors(playedColor: Colors.red,)
-    );
+        controller: controller,
+        showVideoProgressIndicator: true,
+        progressIndicatorColor: Colors.red,
+        progressColors: const ProgressBarColors(
+          playedColor: Colors.red,
+        ));
   }
 }

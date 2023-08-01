@@ -25,7 +25,6 @@ class SearchResultsViewModel extends BaseViewModel {
     searchTextController.addListener(() {
       searchCourses(searchTextController.text);
     });
-
   }
 
   void coursePressed(Course course) {

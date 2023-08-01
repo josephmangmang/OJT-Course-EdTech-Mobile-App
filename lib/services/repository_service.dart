@@ -21,7 +21,19 @@ abstract class RepositoryService {
 
   Future<Either<AppException, None>> buyCourse(String courseId);
 
-  Future<Either<AppException, CreditCard>> getCreditCard();
+  Future<List<CreditCard>> getCreditCard();
 
-  Future<Either<AppException, None>> addCreditCard(String name, String cardNumber, String expireDate, String cvv, String paymentMethod);
+  Future<Either<AppException, None>> addCreditCard(String name,
+      String cardNumber, String expireDate, String cvv, String paymentMethod);
+
+  Future<Either<AppException, None>> updateName(
+      String currentName, String newName);
+
+  Future<Either<AppException, None>> editCreditCard(
+      String name,
+      String cardNumber,
+      String expireDate,
+      String cvv,
+      String paymentMethod,
+      String cardId);
 }

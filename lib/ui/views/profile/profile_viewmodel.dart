@@ -31,4 +31,9 @@ class ProfileViewModel extends BaseViewModel {
       _navigationService.replaceWithLoginView();
     });
   }
+
+  void uploadProfile() {
+    _snackBarService.showSnackbar(
+        message: "gwapo", duration: const Duration(seconds: 2));
+  }
 }
