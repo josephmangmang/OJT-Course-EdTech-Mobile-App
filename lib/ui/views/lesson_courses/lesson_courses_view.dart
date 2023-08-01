@@ -108,6 +108,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
   ) =>
       LessonCoursesViewModel(course);
 
+
   @override
   void onViewModelReady(LessonCoursesViewModel viewModel) {
     viewModel.init();

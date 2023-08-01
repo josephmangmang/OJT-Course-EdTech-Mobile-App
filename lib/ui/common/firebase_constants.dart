@@ -7,7 +7,8 @@ class FirebaseConstants {
   static const purchaseCourses = "purchaseCourses";
   static const cartCourses = "cartCourses";
   static const category = "category";
-  static const topics = 'topics';
+  static const topicsCollection = "topics";
+  static const questionsCollection = "questions";
 
   static const Set<String> categories = {
     "Java",
@@ -22,6 +23,8 @@ class FirebaseConstants {
     'Mobile App',
     'HTML/CSS',
   };
+
+
 
   FirebaseConstants._();
 }

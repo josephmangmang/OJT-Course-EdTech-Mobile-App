@@ -11,7 +11,7 @@ class TopicRepositoryImp implements TopicRepository {
     final results = await db
         .collection(FirebaseConstants.courseCollection)
         .doc(courseId)
-        .collection(FirebaseConstants.topics)
+        .collection(FirebaseConstants.topicsCollection)
         .get()
         .then((value) {
       return value.docs.map((e) => Topic.fromJson(e.data())).toList();

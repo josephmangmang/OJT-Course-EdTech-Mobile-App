@@ -101,18 +101,17 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: viewModel.goToTestViewPage,
                 child: AbsorbPointer(
                   child: Container(
                     width: 295,
                     height: 56,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                            width: 1, color: Color(0xFFE35629)),
+                        side: const BorderSide(width: 1, color: Color(0xFFE35629)),
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),

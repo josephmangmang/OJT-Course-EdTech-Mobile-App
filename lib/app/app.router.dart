@@ -353,14 +353,18 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i19.TestQuestionView: (data) {
+      final args = data.getArgs<TestQuestionViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i19.TestQuestionView(),
+        builder: (context) =>
+            _i19.TestQuestionView(args.course, args.topic, key: args.key),
         settings: data,
       );
     },
     _i20.ResultView: (data) {
+      final args = data.getArgs<ResultViewArguments>(nullOk: false);
       return _i27.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i20.ResultView(),
+        builder: (context) =>
+            _i20.ResultView(textResult: args.textResult, key: args.key),
         settings: data,
       );
     },
@@ -613,6 +617,63 @@ class CourseTestViewArguments {
   @override
   int get hashCode {
     return topic.hashCode ^ course.hashCode ^ key.hashCode;
+  }
+}
+
+class TestQuestionViewArguments {
+  const TestQuestionViewArguments({
+    required this.course,
+    required this.topic,
+    this.key,
+  });
+
+  final _i28.Course course;
+
+  final _i29.Topic topic;
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return '{"course": "$course", "topic": "$topic", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant TestQuestionViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.course == course && other.topic == topic && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return course.hashCode ^ topic.hashCode ^ key.hashCode;
+  }
+}
+
+class ResultViewArguments {
+  const ResultViewArguments({
+    required this.textResult,
+    this.key,
+  });
+
+  final String textResult;
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return '{"textResult": "$textResult", "key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant ResultViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.textResult == textResult && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return textResult.hashCode ^ key.hashCode;
   }
 }
 
@@ -940,28 +1001,36 @@ extension NavigatorStateExtension on _i30.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToTestQuestionView([
+  Future<dynamic> navigateToTestQuestionView({
+    required _i28.Course course,
+    required _i29.Topic topic,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.testQuestionView,
+        arguments:
+            TestQuestionViewArguments(course: course, topic: topic, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> navigateToResultView([
+  Future<dynamic> navigateToResultView({
+    required String textResult,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.resultView,
+        arguments: ResultViewArguments(textResult: textResult, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -1333,28 +1402,36 @@ extension NavigatorStateExtension on _i30.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithTestQuestionView([
+  Future<dynamic> replaceWithTestQuestionView({
+    required _i28.Course course,
+    required _i29.Topic topic,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.testQuestionView,
+        arguments:
+            TestQuestionViewArguments(course: course, topic: topic, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> replaceWithResultView([
+  Future<dynamic> replaceWithResultView({
+    required String textResult,
+    _i27.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.resultView,
+        arguments: ResultViewArguments(textResult: textResult, key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

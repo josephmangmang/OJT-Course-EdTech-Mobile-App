@@ -768,6 +768,32 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
+  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isCourseCart,
+          [courseId],
+        ),
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+            _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+                _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
+  @override
   _i8.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -805,16 +831,31 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+  _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>> getCreditCard() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getCreditCard,
           [],
         ),
         returnValue:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
         returnValueForMissingStub:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
-      ) as _i8.Future<List<_i12.CreditCard>>);
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
+          this,
+          Invocation.method(
+            #getCreditCard,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>);
   @override
   _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> addCreditCard(
     String? name,
@@ -861,98 +902,6 @@ class MockRepositoryService extends _i1.Mock implements _i10.RepositoryService {
               expireDate,
               cvv,
               paymentMethod,
-            ],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> updateName(
-    String? currentName,
-    String? newName,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #updateName,
-          [
-            currentName,
-            newName,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateName,
-            [
-              currentName,
-              newName,
-            ],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateName,
-            [
-              currentName,
-              newName,
-            ],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> editCreditCard(
-    String? name,
-    String? cardNumber,
-    String? expireDate,
-    String? cvv,
-    String? paymentMethod,
-    String? cardId,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editCreditCard,
-          [
-            name,
-            cardNumber,
-            expireDate,
-            cvv,
-            paymentMethod,
-            cardId,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #editCreditCard,
-            [
-              name,
-              cardNumber,
-              expireDate,
-              cvv,
-              paymentMethod,
-              cardId,
-            ],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #editCreditCard,
-            [
-              name,
-              cardNumber,
-              expireDate,
-              cvv,
-              paymentMethod,
-              cardId,
             ],
           ),
         )),
@@ -1157,108 +1106,57 @@ class MockRepositoryImplService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<List<_i12.CreditCard>> getCreditCard() => (super.noSuchMethod(
+  _i8.Future<_i2.Either<_i11.AppException, bool>> isCourseCart(
+          String? courseId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isCourseCart,
+          [courseId],
+        ),
+        returnValue: _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+            _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i8.Future<_i2.Either<_i11.AppException, bool>>.value(
+                _FakeEither_0<_i11.AppException, bool>(
+          this,
+          Invocation.method(
+            #isCourseCart,
+            [courseId],
+          ),
+        )),
+      ) as _i8.Future<_i2.Either<_i11.AppException, bool>>);
+  @override
+  _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>> getCreditCard() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getCreditCard,
           [],
         ),
         returnValue:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
-        returnValueForMissingStub:
-            _i8.Future<List<_i12.CreditCard>>.value(<_i12.CreditCard>[]),
-      ) as _i8.Future<List<_i12.CreditCard>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> editCreditCard(
-    String? name,
-    String? cardNumber,
-    String? expireDate,
-    String? cvv,
-    String? paymentMethod,
-    String? cardId,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editCreditCard,
-          [
-            name,
-            cardNumber,
-            expireDate,
-            cvv,
-            paymentMethod,
-            cardId,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
           this,
           Invocation.method(
-            #editCreditCard,
-            [
-              name,
-              cardNumber,
-              expireDate,
-              cvv,
-              paymentMethod,
-              cardId,
-            ],
+            #getCreditCard,
+            [],
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
+            _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>.value(
+                _FakeEither_0<_i11.AppException, _i12.CreditCard>(
           this,
           Invocation.method(
-            #editCreditCard,
-            [
-              name,
-              cardNumber,
-              expireDate,
-              cvv,
-              paymentMethod,
-              cardId,
-            ],
+            #getCreditCard,
+            [],
           ),
         )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> updateName(
-    String? currentName,
-    String? newName,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #updateName,
-          [
-            currentName,
-            newName,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateName,
-            [
-              currentName,
-              newName,
-            ],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateName,
-            [
-              currentName,
-              newName,
-            ],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
+      ) as _i8.Future<_i2.Either<_i11.AppException, _i12.CreditCard>>);
 }
 
 /// A class which mocks [SharedService].
@@ -1417,109 +1315,27 @@ class MockAuthenticationService extends _i1.Mock
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
   @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> updatePassword(
-    String? currentPassword,
-    String? newPassword,
+  _i8.Future<_i2.Either<_i11.AppException, _i18.User>> login(
+    String? email,
+    String? password,
   ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #updatePassword,
-          [
-            currentPassword,
-            newPassword,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updatePassword,
-            [
-              currentPassword,
-              newPassword,
-            ],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updatePassword,
-            [
-              currentPassword,
-              newPassword,
-            ],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>> updateEmail(
-    String? currentEmail,
-    String? currentPassword,
-    String? newEmail,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #updateEmail,
-          [
-            currentEmail,
-            currentPassword,
-            newEmail,
-          ],
-        ),
-        returnValue:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateEmail,
-            [
-              currentEmail,
-              currentPassword,
-              newEmail,
-            ],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i11.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #updateEmail,
-            [
-              currentEmail,
-              currentPassword,
-              newEmail,
-            ],
-          ),
-        )),
-      ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i18.User>> login({
-    required String? email,
-    required String? password,
-  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
-          [],
-          {
-            #email: email,
-            #password: password,
-          },
+          [
+            email,
+            password,
+          ],
         ),
         returnValue: _i8.Future<_i2.Either<_i11.AppException, _i18.User>>.value(
             _FakeEither_0<_i11.AppException, _i18.User>(
           this,
           Invocation.method(
             #login,
-            [],
-            {
-              #email: email,
-              #password: password,
-            },
+            [
+              email,
+              password,
+            ],
           ),
         )),
         returnValueForMissingStub:
@@ -1528,11 +1344,10 @@ class MockAuthenticationService extends _i1.Mock
           this,
           Invocation.method(
             #login,
-            [],
-            {
-              #email: email,
-              #password: password,
-            },
+            [
+              email,
+              password,
+            ],
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i18.User>>);
@@ -1614,32 +1429,6 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
       ) as _i8.Future<_i2.Either<_i11.AppException, _i2.None<dynamic>>>);
-  @override
-  _i8.Future<_i2.Either<_i11.AppException, _i4.Timestamp?>>
-      getLastUpdatedPassword(String? uid) => (super.noSuchMethod(
-            Invocation.method(
-              #getLastUpdatedPassword,
-              [uid],
-            ),
-            returnValue:
-                _i8.Future<_i2.Either<_i11.AppException, _i4.Timestamp?>>.value(
-                    _FakeEither_0<_i11.AppException, _i4.Timestamp?>(
-              this,
-              Invocation.method(
-                #getLastUpdatedPassword,
-                [uid],
-              ),
-            )),
-            returnValueForMissingStub:
-                _i8.Future<_i2.Either<_i11.AppException, _i4.Timestamp?>>.value(
-                    _FakeEither_0<_i11.AppException, _i4.Timestamp?>(
-              this,
-              Invocation.method(
-                #getLastUpdatedPassword,
-                [uid],
-              ),
-            )),
-          ) as _i8.Future<_i2.Either<_i11.AppException, _i4.Timestamp?>>);
 }
 
 /// A class which mocks [SharedPrefServiceService].
