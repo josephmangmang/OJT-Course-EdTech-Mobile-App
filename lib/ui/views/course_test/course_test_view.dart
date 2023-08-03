@@ -138,5 +138,5 @@ class CourseTestView extends StackedView<CourseTestViewModel> {
   CourseTestViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseTestViewModel();
+      CourseTestViewModel(course, topic);
 }

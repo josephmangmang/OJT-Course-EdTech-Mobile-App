@@ -2,11 +2,8 @@ import 'dart:io';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/model/user.dart';
-import 'package:edtechapp/services/shared_service.dart';
-import 'package:edtechapp/ui/common/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../model/course.dart';
 import '../../../repository/course_repository.dart';
@@ -59,8 +56,17 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  void coursePressed(Course course) {
-    _navigationService.navigateToProjectDetailView(course: course);
+  void coursePressed(Course course) async{
+    setBusy(true);
+    final isPurchaseCourse = await _courseRepository.isCoursePurchased(course.id);
+    setBusy(false);
+    if(isPurchaseCourse) {
+      _navigationService.navigateToLessonCoursesView(course: course);
+    }
+    else {
+      _navigationService.navigateToProjectDetailView(course: course);
+    }
+
   }
 
   void onPageChanged(int index) {

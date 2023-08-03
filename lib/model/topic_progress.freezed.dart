@@ -20,6 +20,7 @@ TopicProgress _$TopicProgressFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TopicProgress {
+  String get id => throw _privateConstructorUsedError;
   int get totalProgress => throw _privateConstructorUsedError;
   int get currentProgress => throw _privateConstructorUsedError;
 
@@ -35,7 +36,7 @@ abstract class $TopicProgressCopyWith<$Res> {
           TopicProgress value, $Res Function(TopicProgress) then) =
       _$TopicProgressCopyWithImpl<$Res, TopicProgress>;
   @useResult
-  $Res call({int totalProgress, int currentProgress});
+  $Res call({String id, int totalProgress, int currentProgress});
 }
 
 /// @nodoc
@@ -51,10 +52,15 @@ class _$TopicProgressCopyWithImpl<$Res, $Val extends TopicProgress>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? totalProgress = null,
     Object? currentProgress = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       totalProgress: null == totalProgress
           ? _value.totalProgress
           : totalProgress // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,7 @@ abstract class _$$_TopicProgressCopyWith<$Res>
       __$$_TopicProgressCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int totalProgress, int currentProgress});
+  $Res call({String id, int totalProgress, int currentProgress});
 }
 
 /// @nodoc
@@ -89,10 +95,15 @@ class __$$_TopicProgressCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? totalProgress = null,
     Object? currentProgress = null,
   }) {
     return _then(_$_TopicProgress(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       totalProgress: null == totalProgress
           ? _value.totalProgress
           : totalProgress // ignore: cast_nullable_to_non_nullable
@@ -109,11 +120,15 @@ class __$$_TopicProgressCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TopicProgress implements _TopicProgress {
   const _$_TopicProgress(
-      {required this.totalProgress, required this.currentProgress});
+      {required this.id,
+      required this.totalProgress,
+      required this.currentProgress});
 
   factory _$_TopicProgress.fromJson(Map<String, dynamic> json) =>
       _$$_TopicProgressFromJson(json);
 
+  @override
+  final String id;
   @override
   final int totalProgress;
   @override
@@ -121,7 +136,7 @@ class _$_TopicProgress implements _TopicProgress {
 
   @override
   String toString() {
-    return 'TopicProgress(totalProgress: $totalProgress, currentProgress: $currentProgress)';
+    return 'TopicProgress(id: $id, totalProgress: $totalProgress, currentProgress: $currentProgress)';
   }
 
   @override
@@ -129,6 +144,7 @@ class _$_TopicProgress implements _TopicProgress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopicProgress &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.totalProgress, totalProgress) ||
                 other.totalProgress == totalProgress) &&
             (identical(other.currentProgress, currentProgress) ||
@@ -137,7 +153,8 @@ class _$_TopicProgress implements _TopicProgress {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, totalProgress, currentProgress);
+  int get hashCode =>
+      Object.hash(runtimeType, id, totalProgress, currentProgress);
 
   @JsonKey(ignore: true)
   @override
@@ -155,12 +172,15 @@ class _$_TopicProgress implements _TopicProgress {
 
 abstract class _TopicProgress implements TopicProgress {
   const factory _TopicProgress(
-      {required final int totalProgress,
+      {required final String id,
+      required final int totalProgress,
       required final int currentProgress}) = _$_TopicProgress;
 
   factory _TopicProgress.fromJson(Map<String, dynamic> json) =
       _$_TopicProgress.fromJson;
 
+  @override
+  String get id;
   @override
   int get totalProgress;
   @override

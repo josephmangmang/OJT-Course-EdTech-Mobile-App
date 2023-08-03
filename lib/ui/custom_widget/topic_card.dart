@@ -11,15 +11,18 @@ class TopicCard extends StatelessWidget {
     Key? key,
     required this.topic,
     required this.onCardPressed,
+    required this.maxProgress,
+    required this.currentProgress,
   }) : super(key: key);
 
   final Topic topic;
   final double progressBarWidth = 222;
   final OnCardPressed onCardPressed;
+  final int maxProgress;
+  final int currentProgress;
 
   double getProgress() {
-    double temp = 5;
-    double tempPer = 100 * temp / 10;
+    double tempPer = 100 * currentProgress / maxProgress;
     double answer = progressBarWidth * tempPer / 100;
     return answer;
   }

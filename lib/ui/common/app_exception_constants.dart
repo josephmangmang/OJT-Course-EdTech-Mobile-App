@@ -1,4 +1,6 @@
 class AppExceptionConstants {
+  static const progressFailed = "Creating topic progress Failed";
+
   AppExceptionConstants._();
 
   static const userNotFound = "User not found";

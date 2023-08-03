@@ -4,6 +4,7 @@ import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/model/course.dart';
 import 'package:edtechapp/model/credit_card.dart';
+import 'package:edtechapp/repository/topic_repository.dart';
 import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/ui/common/app_temp.dart';
 import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
@@ -17,6 +18,7 @@ class PaymentCheckoutViewModel extends BaseViewModel {
   final _repository = locator<RepositoryService>();
   final _snackBarService = locator<SnackbarService>();
   final coursePrice = AppTempConstant.tempCourse!.price;
+  final _topicRepository = locator<TopicRepository>();
   late CreditCard creditCard;
 
   void init() {
@@ -40,12 +42,19 @@ class PaymentCheckoutViewModel extends BaseViewModel {
       } else {
         _snackBarService.showSnackbar(message: error.message);
       }
-    }, (r) {
-      _snackBarService.showSnackbar(
-          message: "Course purchase successfully",
-          duration: const Duration(seconds: 3));
-      Future.delayed(const Duration(seconds: 2));
-      _navigationService.replaceWithYourCoursesView();
+    }, (r) async {
+      final createTopicProgress = await _topicRepository
+          .createTopicProgress(AppTempConstant.tempCourse!.id);
+      createTopicProgress.fold((l) {
+        _snackBarService.showSnackbar(message: l.message);
+      }, (r) {
+        _snackBarService.showSnackbar(
+            message: "Course purchase successfully",
+            duration: const Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 2));
+        _navigationService.replaceWithYourCoursesView();
+      });
+
     });
   }
 }

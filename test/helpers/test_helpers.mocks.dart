@@ -1715,4 +1715,13 @@ class MockCourseRepository extends _i1.Mock implements _i20.CourseRepository {
         returnValueForMissingStub:
             _i8.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i8.Future<List<_i5.Course>>);
+  @override
+  _i8.Future<bool> isCoursePurchased(String? courseId) => (super.noSuchMethod(
+        Invocation.method(
+          #isCoursePurchased,
+          [courseId],
+        ),
+        returnValue: _i8.Future<bool>.value(false),
+        returnValueForMissingStub: _i8.Future<bool>.value(false),
+      ) as _i8.Future<bool>);
 }

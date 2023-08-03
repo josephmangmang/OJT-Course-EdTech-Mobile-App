@@ -17,9 +17,9 @@ class ResultView extends StackedView<ResultViewModel> {
     ResultViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(),
             child: Center(

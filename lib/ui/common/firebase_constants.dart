@@ -24,6 +24,10 @@ class FirebaseConstants {
     'HTML/CSS',
   };
 
+  static const progressCollection = "progress";
+
+  static const  currentProgress = "currentProgress";
+
 
 
   FirebaseConstants._();
