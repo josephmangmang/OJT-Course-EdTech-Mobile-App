@@ -19,7 +19,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
   ) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: viewModel.isBusy
+        child: viewModel.busy('profile')
             ? const Center(
                 child: CircularProgressIndicator(),
               )
@@ -45,10 +45,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
                             color: const Color(0xFF65A9E9),
                           ),
                         ),
-                        child: const CircleAvatar(
-                          backgroundImage: AssetImage(PngImages.coolKidsBust),
+                        child: CircleAvatar(
+                          backgroundImage: viewModel.image.isEmpty ? const AssetImage(PngImages.coolKidsBust) : Image.network(viewModel.image, width: 160, height: 160,).image,
                           radius: 70,
-                          backgroundColor: Color(0xFFF7F2EE),
+                          backgroundColor: const Color(0xFFF7F2EE),
                         ),
                       ),
                     ),
@@ -89,4 +89,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
     BuildContext context,
   ) =>
       ProfileViewModel();
+
+  @override
+  void onViewModelReady(ProfileViewModel viewModel) {
+    viewModel.init();
+    super.onViewModelReady(viewModel);
+  }
 }

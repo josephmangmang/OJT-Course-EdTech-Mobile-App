@@ -65,7 +65,7 @@ class ResultView extends StackedView<ResultViewModel> {
                       Container(
                         width: 341,
                         padding: const EdgeInsets.only(top: 8),
-                        child:  Text(
+                        child: Text(
                           textResult,
                           textAlign: TextAlign.center,
                           style: const TextStyle(

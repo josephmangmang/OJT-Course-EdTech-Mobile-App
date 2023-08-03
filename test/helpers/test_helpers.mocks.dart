@@ -15,6 +15,8 @@ import 'package:edtechapp/model/user.dart' as _i18;
 import 'package:edtechapp/repository/course_repository.dart' as _i20;
 import 'package:edtechapp/services/authentication_service.dart' as _i17;
 import 'package:edtechapp/services/course_impl_service.dart' as _i16;
+import 'package:edtechapp/services/image_impl_service.dart' as _i22;
+import 'package:edtechapp/services/image_service.dart' as _i21;
 import 'package:edtechapp/services/repository_impl_service.dart' as _i13;
 import 'package:edtechapp/services/repository_service.dart' as _i10;
 import 'package:edtechapp/services/share_impl_service.dart' as _i15;
@@ -1725,3 +1727,13 @@ class MockCourseRepository extends _i1.Mock implements _i20.CourseRepository {
         returnValueForMissingStub: _i8.Future<bool>.value(false),
       ) as _i8.Future<bool>);
 }
+
+/// A class which mocks [ImageService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockImageService extends _i1.Mock implements _i21.ImageService {}
+
+/// A class which mocks [ImageImplService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockImageImplService extends _i1.Mock implements _i22.ImageImplService {}

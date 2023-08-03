@@ -15,9 +15,10 @@ class QuestionRepositoryImpl implements QuestionRepository {
         .collection(FirebaseConstants.topicsCollection)
         .doc(topicId)
         .collection(FirebaseConstants.questionsCollection)
-        .get().then((value) {
-     return value.docs.map((e) => Question.fromJson(e.data())).toList();
-   });
+        .get()
+        .then((value) {
+      return value.docs.map((e) => Question.fromJson(e.data())).toList();
+    });
     return result;
   }
 }

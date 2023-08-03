@@ -303,7 +303,7 @@ class RepositoryImplService extends RepositoryService {
     }, (user) async {
       try {
         if (currentName != user.name) {
-          return Left("hi" as AppException);
+          return Left("current name not match!" as AppException);
         }
         await db
             .collection(FirebaseConstants.userCollection)

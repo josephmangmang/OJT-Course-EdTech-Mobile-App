@@ -1,6 +1,6 @@
 class AppConstants {
-  static const allAnswerCorrect = "Congratulations for getting \nall the answer correct!";
-
+  static const allAnswerCorrect =
+      "Congratulations for getting \nall the answer correct!";
 
   AppConstants._();
 
@@ -79,7 +79,7 @@ class AppConstants {
   static const notificationText = "Notifications";
   static const noCoursesFound = "No Courses Found";
   static const cartCourseText = "Course added to your cart successfully";
-  static const String quizDescriptionText = "Let's put your memory on this topic test. \nSolve task and check your knowledge.";
+  static const String quizDescriptionText =
+      "Let's put your memory on this topic test. \nSolve task and check your knowledge.";
   static const String quizText = "Quiz";
-
 }

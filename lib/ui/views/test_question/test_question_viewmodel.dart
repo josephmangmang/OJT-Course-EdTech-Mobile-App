@@ -12,7 +12,6 @@ import '../../../repository/topic_repository.dart';
 import '../../common/app_constants.dart';
 
 class TestQuestionViewModel extends BaseViewModel {
-
   Course course;
   Topic topic;
 
@@ -47,12 +46,12 @@ class TestQuestionViewModel extends BaseViewModel {
       _snackBarService.showSnackbar(message: "Please select your answer!", duration: const Duration(seconds: 3));
       return;
     }
-    if(currentQuestion!.choices[selectedChoice] == currentQuestion!.answer) {
+    if (currentQuestion!.choices[selectedChoice] == currentQuestion!.answer) {
       correctAnswers.add(currentQuestion!.id);
     }
-    if( questionCurrentIndex == questions.length -1) {
+    if (questionCurrentIndex == questions.length - 1) {
       String result;
-      if(questions.length == correctAnswers.length) {
+      if (questions.length == correctAnswers.length) {
         result = AppConstants.allAnswerCorrect;
       }
       else {

@@ -12,8 +12,8 @@ class Question with _$Question {
     required String id,
     required String image,
     required String answer,
-
   }) = _Question;
 
-  factory Question.fromJson(Map<String, dynamic> json) => _$QuestionFromJson(json);
+  factory Question.fromJson(Map<String, dynamic> json) =>
+      _$QuestionFromJson(json);
 }

@@ -28,7 +28,5 @@ class FirebaseConstants {
 
   static const  currentProgress = "currentProgress";
 
-
-
   FirebaseConstants._();
 }

@@ -133,6 +133,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                   viewModel.showUpdatePasswordPopup();
                                 });
                         }
+                        return null;
                       },
                     ),
                   ],

@@ -7,7 +7,6 @@ import '../../../model/course.dart';
 import '../../../model/topic.dart';
 
 class CourseTestViewModel extends BaseViewModel {
-
   final Course course;
   final Topic topic;
 

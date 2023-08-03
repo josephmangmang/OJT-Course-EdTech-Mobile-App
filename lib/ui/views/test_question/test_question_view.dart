@@ -80,7 +80,9 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                       placeholder: (context, url) => Container(
                         height: 175,
                         width: 311,
-                        child: const Center(child: CircularProgressIndicator(),),
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -97,17 +99,20 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                           onTap: () => viewModel.selectChoice(index),
                           child: AbsorbPointer(
                             child: Container(
-                              margin:const EdgeInsets.symmetric(vertical: 8) ,
+                              margin: const EdgeInsets.symmetric(vertical: 8),
                               width: double.infinity,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 24, vertical: 16),
-
                               decoration: BoxDecoration(
-                                color: viewModel.selectedChoice == index ? const Color(0xFFFFF5EE) : Colors.white,
+                                color: viewModel.selectedChoice == index
+                                    ? const Color(0xFFFFF5EE)
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   width: 1,
-                                  color: viewModel.selectedChoice == index ? const Color(0xFFF3705A) : const Color(0xFFBEBAB3),
+                                  color: viewModel.selectedChoice == index
+                                      ? const Color(0xFFF3705A)
+                                      : const Color(0xFFBEBAB3),
                                 ),
                               ),
                               child: Text(
@@ -128,7 +133,8 @@ class TestQuestionView extends StackedView<TestQuestionViewModel> {
                   Container(
                       margin: const EdgeInsets.symmetric(vertical: 24),
                       child: AppButton(
-                          title: AppConstants.continueText, onClick: viewModel.continueClicked))
+                          title: AppConstants.continueText,
+                          onClick: viewModel.continueClicked))
                 ],
               ),
             ),
