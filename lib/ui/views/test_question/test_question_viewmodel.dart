@@ -1,6 +1,7 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/repository/question_repository.dart';
 import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -23,6 +24,9 @@ class TestQuestionViewModel extends BaseViewModel {
   Question? currentQuestion;
 
   int selectedChoice = -1;
+
+  final ScrollController listViewController = ScrollController();
+
   TestQuestionViewModel(this.course, this.topic);
 
   final _questionRepository = locator<QuestionRepository>();
@@ -71,6 +75,7 @@ class TestQuestionViewModel extends BaseViewModel {
     questionCurrentIndex++;
     currentQuestion = questions[questionCurrentIndex];
     selectedChoice = -1;
+    listViewController.jumpTo(0);
     rebuildUi();
   }
 }
