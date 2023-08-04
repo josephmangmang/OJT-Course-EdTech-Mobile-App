@@ -54,7 +54,6 @@ class PaymentCheckoutViewModel extends BaseViewModel {
         Future.delayed(const Duration(seconds: 2));
         _navigationService.replaceWithYourCoursesView();
       });
-
     });
   }
 }

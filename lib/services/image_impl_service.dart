@@ -9,7 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import '../app/app.locator.dart';
 import 'image_service.dart';
 
-class ImageImplService implements ImageService{
+class ImageImplService implements ImageService {
   final storageRef = FirebaseStorage.instance.ref();
   final db = FirebaseFirestore.instance;
   final _authenticationService = locator<AuthenticationService>();
@@ -17,7 +17,6 @@ class ImageImplService implements ImageService{
   @override
   Future<Either<AppException, None>> uploadProfile(File image) async {
     final path = 'images/profile/${FirebaseAuth.instance.currentUser!.uid}';
-    final file = File(path);
     final user = await _authenticationService.getCurrentUser();
 
     return user.fold((error) {
@@ -27,21 +26,23 @@ class ImageImplService implements ImageService{
         final imageProfile = await storageRef.child(path).putFile(image);
         final imageUrl = await imageProfile.ref.getDownloadURL();
 
-        await db.collection(FirebaseConstants.userCollection).doc(user.uid).set({
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .set({
           'profileImageUrl': imageUrl.toString(),
         }, SetOptions(merge: true));
         return const Right(None());
       } on FirebaseException catch (error) {
         return Left(AppException(error.message.toString()));
       }
-
     });
   }
 
   @override
   Stream<String> profileImage(String userId) {
-    final result = db.collection(FirebaseConstants.userCollection).doc(userId)
-        .snapshots();
+    final result =
+        db.collection(FirebaseConstants.userCollection).doc(userId).snapshots();
 
     return result.map((snap) {
       if (snap.exists) {
@@ -51,6 +52,4 @@ class ImageImplService implements ImageService{
       }
     });
   }
-
-
 }

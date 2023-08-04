@@ -28,7 +28,7 @@ class ProfileViewModel extends BaseViewModel {
     loadProfile();
     rebuildUi();
   }
-  
+
   void yourCourse() {
     _navigationService.navigateToYourCoursesView();
   }
@@ -53,17 +53,25 @@ class ProfileViewModel extends BaseViewModel {
       description: "",
     );
   }
-  
+
+  void paymentMethod() async {
+    await _dialogService.showCustomDialog(
+      title:"Payment Method",
+      variant: DialogType.paymentMethod,
+      imageUrl: image,
+      description: "",
+    );
+  }
+
   loadProfile() async {
     setBusyForObject('profile', true);
     final user = await _authenticationService.getCurrentUser();
-    user.foldRight([], (user,List<dynamic>? previous) {
-       _imageService.profileImage(user.uid).listen((imageProfile) {
+    user.foldRight([], (user, List<dynamic>? previous) {
+      _imageService.profileImage(user.uid).listen((imageProfile) {
         image = imageProfile;
         rebuildUi();
       });
     });
-
 
     setBusyForObject('profile', false);
   }

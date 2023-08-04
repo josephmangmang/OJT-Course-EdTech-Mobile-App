@@ -11,6 +11,7 @@ class CreditCards extends StatelessWidget {
     required this.cardNumber,
     required this.expireDate,
     required this.isSelected,
+    required this.marginSize,
   }) : super(key: key);
 
   final Function() creditCardButton;
@@ -18,6 +19,7 @@ class CreditCards extends StatelessWidget {
   final String expireDate;
   final String cardNumber;
   final bool isSelected;
+  final double marginSize;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CreditCards extends StatelessWidget {
       onTap: creditCardButton,
       child: Container(
         padding: const EdgeInsets.all(14),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
+        margin: EdgeInsets.symmetric(horizontal: marginSize),
         decoration: BoxDecoration(
           border: isSelected == true
               ? Border.all(

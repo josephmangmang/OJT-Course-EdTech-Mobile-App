@@ -30,9 +30,10 @@ class TestQuestionViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _topicRepository = locator<TopicRepository>();
 
-  Future<void> init()  async{
+  Future<void> init() async {
     setBusy(true);
-    questions = await _questionRepository.getTopicQuestions(course.id, topic.id);
+    questions =
+        await _questionRepository.getTopicQuestions(course.id, topic.id);
     currentQuestion = questions[questionCurrentIndex];
     setBusy(false);
   }
@@ -41,9 +42,12 @@ class TestQuestionViewModel extends BaseViewModel {
     selectedChoice = index;
     rebuildUi();
   }
+
   Future<void> continueClicked() async {
-    if(selectedChoice < 0) {
-      _snackBarService.showSnackbar(message: "Please select your answer!", duration: const Duration(seconds: 3));
+    if (selectedChoice < 0) {
+      _snackBarService.showSnackbar(
+          message: "Please select your answer!",
+          duration: const Duration(seconds: 3));
       return;
     }
     if (currentQuestion!.choices[selectedChoice] == currentQuestion!.answer) {
@@ -53,11 +57,12 @@ class TestQuestionViewModel extends BaseViewModel {
       String result;
       if (questions.length == correctAnswers.length) {
         result = AppConstants.allAnswerCorrect;
-      }
-      else {
-        result = "${correctAnswers.length} of ${questions.length} question are correct. \n Try again next time!";
+      } else {
+        result =
+            "${correctAnswers.length} of ${questions.length} question are correct. \n Try again next time!";
         setBusy(true);
-        await _topicRepository.setTopicProgress(course.id, topic.id, correctAnswers.length);
+        await _topicRepository.setTopicProgress(
+            course.id, topic.id, correctAnswers.length);
         setBusy(false);
       }
       _navigationService.replaceWithResultView(textResult: result);

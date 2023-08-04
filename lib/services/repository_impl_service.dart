@@ -278,7 +278,7 @@ class RepositoryImplService extends RepositoryService {
       return Left(error);
     }, (user) async {
       try {
-        final creditCardCollection = db
+        await db
             .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
             .collection('creditCardDetails')
@@ -286,8 +286,8 @@ class RepositoryImplService extends RepositoryService {
             .set(creditCard.toJson());
 
         AppTempConstant.tempCard = creditCard;
-      } on FirebaseAuthException catch (e) {
-        return Left(AppException(e.message.toString()));
+      } catch (e) {
+        return Left(AppException(e.toString()));
       }
       return const Right(None());
     });
@@ -314,6 +314,28 @@ class RepositoryImplService extends RepositoryService {
         return Left(AppException(error.message.toString()));
       }
       return const Right(None());
+    });
+  }
+
+  @override
+  Future<Either<AppException, None>> deleteCreditCard(String uid) async {
+    final user = await _authenticationService.getCurrentUser();
+
+    return user.fold((error) {
+      return Left(error);
+    }, (user) async {
+      try {
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(user.uid)
+            .collection('creditCardDetails')
+            .doc(uid)
+            .delete();
+        return const Right(None());
+      } catch (e) {
+        return Left(AppException(e.toString()));
+      }
+
     });
   }
 }

@@ -10,63 +10,62 @@ import '../../../repository/course_repository.dart';
 import '../../../services/authentication_service.dart';
 import '../../../services/repository_service.dart';
 
-  class HomeViewModel extends BaseViewModel {
-    TextEditingController searchTextController = TextEditingController();
-    String category = "";
-    final _repository = locator<RepositoryService>();
-    final _authenticationService = locator<AuthenticationService>();
-    final _navigationService = locator<NavigationService>();
+class HomeViewModel extends BaseViewModel {
+  TextEditingController searchTextController = TextEditingController();
+  String category = "";
+  final _repository = locator<RepositoryService>();
+  final _authenticationService = locator<AuthenticationService>();
+  final _navigationService = locator<NavigationService>();
 
-    final _courseRepository = locator<CourseRepository>();
+  final _courseRepository = locator<CourseRepository>();
 
-    List<Course> courses = [];
-    final PageController pageController =
-        PageController(initialPage: 0); // Added currentIndex variable
+  List<Course> courses = [];
+  final PageController pageController =
+      PageController(initialPage: 0); // Added currentIndex variable
 
-    late User user;
+  late User user;
 
-    Course? course;
+  Course? course;
 
-    int currentPageIndex = 0;
-    int? previousPageIndex;
-    bool isBackPressed = false;
+  int currentPageIndex = 0;
+  int? previousPageIndex;
+  bool isBackPressed = false;
 
-    Set<String> selectedCategories = {};
+  Set<String> selectedCategories = {};
 
-    init() async {
-      loadUser();
-      loadCourses();
-    }
+  init() async {
+    loadUser();
+    loadCourses();
+  }
 
-    Future<void> searchCourse() async {
-      _navigationService.navigateToSearchResultsView();
-    }
+  Future<void> searchCourse() async {
+    _navigationService.navigateToSearchResultsView();
+  }
 
-    Future<void> categoryCourse() async {
-      setBusy(true);
-      courses = [];
-      await _repository.categoryCourse(category).then((value) {
-        if (value.isNotEmpty) {
-          courses = value;
-        }
-      });
-
-      print(searchTextController.text);
-      setBusy(false);
-      rebuildUi();
-    }
-
-  void coursePressed(Course course) async{
+  Future<void> categoryCourse() async {
     setBusy(true);
-    final isPurchaseCourse = await _courseRepository.isCoursePurchased(course.id);
+    courses = [];
+    await _repository.categoryCourse(category).then((value) {
+      if (value.isNotEmpty) {
+        courses = value;
+      }
+    });
+
+    print(searchTextController.text);
     setBusy(false);
-    if(isPurchaseCourse) {
+    rebuildUi();
+  }
+
+  void coursePressed(Course course) async {
+    setBusy(true);
+    final isPurchaseCourse =
+        await _courseRepository.isCoursePurchased(course.id);
+    setBusy(false);
+    if (isPurchaseCourse) {
       _navigationService.navigateToLessonCoursesView(course: course);
-    }
-    else {
+    } else {
       _navigationService.navigateToProjectDetailView(course: course);
     }
-
   }
 
   void onPageChanged(int index) {
@@ -77,60 +76,60 @@ import '../../../services/repository_service.dart';
     rebuildUi();
   }
 
-    void onDestinationSelected(int index) {
-      int tempIndex = currentPageIndex;
-      changePage(index);
-      previousPageIndex = tempIndex;
+  void onDestinationSelected(int index) {
+    int tempIndex = currentPageIndex;
+    changePage(index);
+    previousPageIndex = tempIndex;
+    print(
+        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+  }
+
+  void onBackPressed() {
+    if (previousPageIndex == null) {
+      _navigationService.back();
+    }
+    if (isBackPressed == true) {
+      changePage(0);
+      isBackPressed = false;
+    } else {
+      changePage(previousPageIndex!);
+      isBackPressed = true;
       print(
           "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     }
-
-    void onBackPressed() {
-      if (previousPageIndex == null) {
-        _navigationService.back();
-      }
-      if (isBackPressed == true) {
-        changePage(0);
-        isBackPressed = false;
-      } else {
-        changePage(previousPageIndex!);
-        isBackPressed = true;
-        print(
-            "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
-      }
-      previousPageIndex = null;
-    }
-
-    void changePage(int index) {
-      pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-      rebuildUi();
-    }
-
-    void onSelectedCategoryChanged(Set<String> category) {
-      selectedCategories = category;
-      rebuildUi();
-
-      loadCourses();
-    }
-
-    void loadCourses() {
-      setBusy(true);
-      final query = searchTextController.text;
-
-      _courseRepository.searchCourses(query, selectedCategories).then((value) {
-        courses = value;
-        setBusy(false);
-      });
-    }
-
-    Future<void> loadUser() async {
-      setBusyForObject('user', true);
-      final response = await _authenticationService.getCurrentUser();
-      response.fold((l) => print(l.message), (r) => user = r);
-      setBusyForObject('user', false);
-    }
+    previousPageIndex = null;
   }
+
+  void changePage(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+    rebuildUi();
+  }
+
+  void onSelectedCategoryChanged(Set<String> category) {
+    selectedCategories = category;
+    rebuildUi();
+
+    loadCourses();
+  }
+
+  void loadCourses() {
+    setBusy(true);
+    final query = searchTextController.text;
+
+    _courseRepository.searchCourses(query, selectedCategories).then((value) {
+      courses = value;
+      setBusy(false);
+    });
+  }
+
+  Future<void> loadUser() async {
+    setBusyForObject('user', true);
+    final response = await _authenticationService.getCurrentUser();
+    response.fold((l) => print(l.message), (r) => user = r);
+    setBusyForObject('user', false);
+  }
+}

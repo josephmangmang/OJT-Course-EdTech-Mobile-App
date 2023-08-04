@@ -118,6 +118,7 @@ class PaymentCheckoutView extends StackedView<PaymentCheckoutViewModel> {
                                   cardNumber: viewModel.creditCard.cardNumber,
                                   isSelected: false,
                                   expireDate: viewModel.creditCard.expireDate,
+                                  marginSize: 25,
                                 )
                               ]),
                             ],

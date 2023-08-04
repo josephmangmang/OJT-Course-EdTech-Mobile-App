@@ -70,6 +70,7 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
                                     viewModel.isAddCreditCardClicked == true
                                         ? false
                                         : viewModel.selectedCardIndex == index,
+                                marginSize: 25,
                               );
                             },
                           ),

@@ -15,7 +15,7 @@ class UpdateProfileDialog extends StackedView<UpdateProfileDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
 
-  const UpdateProfileDialog( {
+  const UpdateProfileDialog({
     Key? key,
     required this.request,
     required this.completer,
@@ -73,7 +73,14 @@ class UpdateProfileDialog extends StackedView<UpdateProfileDialogModel> {
                     width: 160,
                     height: 160,
                   )
-                : request.imageUrl!.isNotEmpty ?  Image.network(request.imageUrl!, width: 160, height: 160,) : Image.asset(PngImages.coolKidsBust, width: 160, height: 160),
+                : request.imageUrl!.isNotEmpty
+                    ? Image.network(
+                        request.imageUrl!,
+                        width: 160,
+                        height: 160,
+                      )
+                    : Image.asset(PngImages.coolKidsBust,
+                        width: 160, height: 160),
             verticalSpaceMedium,
             AppButton(
                 title: 'Pick Gallery',
@@ -123,5 +130,4 @@ class UpdateProfileDialog extends StackedView<UpdateProfileDialogModel> {
   @override
   UpdateProfileDialogModel viewModelBuilder(BuildContext context) =>
       UpdateProfileDialogModel();
-
 }

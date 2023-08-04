@@ -8,6 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'app.locator.dart';
 import '../ui/dialogs/info_alert/info_alert_dialog.dart';
+import '../ui/dialogs/payment_method/payment_method_dialog.dart';
 import '../ui/dialogs/update_email/update_email_dialog.dart';
 import '../ui/dialogs/update_name/update_name_dialog.dart';
 import '../ui/dialogs/update_password/update_password_dialog.dart';
@@ -19,6 +20,7 @@ enum DialogType {
   updateEmail,
   updateName,
   updateProfile,
+  paymentMethod,
 }
 
 void setupDialogUi() {
@@ -35,6 +37,8 @@ void setupDialogUi() {
         UpdateNameDialog(request: request, completer: completer),
     DialogType.updateProfile: (context, request, completer) =>
         UpdateProfileDialog(request: request, completer: completer),
+    DialogType.paymentMethod: (context, request, completer) =>
+        PaymentMethodDialog(request: request, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

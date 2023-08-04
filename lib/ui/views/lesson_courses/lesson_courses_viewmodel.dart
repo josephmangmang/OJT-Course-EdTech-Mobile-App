@@ -29,9 +29,11 @@ class LessonCoursesViewModel extends BaseViewModel {
     topics = await _topicRepServices.getCourseTopics(course.id);
     final user = await _authenticationService.getCurrentUser();
     user.foldRight([], (user, List<dynamic>? previous) {
-      _topicRepServices.getCourseTopicsProgress(user.uid, course.id).listen((list) {
-          topicProgress = list;
-          rebuildUi();
+      _topicRepServices
+          .getCourseTopicsProgress(user.uid, course.id)
+          .listen((list) {
+        topicProgress = list;
+        rebuildUi();
       });
     });
     setBusy(false);

@@ -36,4 +36,6 @@ abstract class RepositoryService {
       String cvv,
       String paymentMethod,
       String cardId);
+
+  Future<Either<AppException, None>> deleteCreditCard(String uid);
 }

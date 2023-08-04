@@ -19,24 +19,24 @@ class ProfileView extends StackedView<ProfileViewModel> {
   ) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: viewModel.busy('profile')
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  children: [
-                    CustomAppBar(
-                      backButtonPressed: onBackPressed,
-                      title: AppConstants.profileText,
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    GestureDetector(
-                      onTap: viewModel.uploadProfile,
-                      child: Container(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Column(
+            children: [
+              CustomAppBar(
+                backButtonPressed: onBackPressed,
+                title: AppConstants.profileText,
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              GestureDetector(
+                onTap: viewModel.uploadProfile,
+                child: viewModel.busy('profile')
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -46,40 +46,46 @@ class ProfileView extends StackedView<ProfileViewModel> {
                           ),
                         ),
                         child: CircleAvatar(
-                          backgroundImage: viewModel.image.isEmpty ? const AssetImage(PngImages.coolKidsBust) : Image.network(viewModel.image, width: 160, height: 160,).image,
+                          backgroundImage: viewModel.image.isEmpty
+                              ? const AssetImage(PngImages.coolKidsBust)
+                              : Image.network(
+                                  viewModel.image,
+                                  width: 160,
+                                  height: 160,
+                                ).image,
                           radius: 70,
                           backgroundColor: const Color(0xFFF7F2EE),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    ProfileCard(
-                      onCardPressed: viewModel.yourCourse,
-                      title: AppConstants.yourCourseText,
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    ProfileCard(
-                      onCardPressed: () {},
-                      title: AppConstants.paymentText,
-                    ),
-                    TextButton(
-                      onPressed: viewModel.logOut,
-                      child: const Text(
-                        AppConstants.logoutText,
-                        style: TextStyle(
-                          color: Color(0xFF78746D),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              ProfileCard(
+                onCardPressed: viewModel.yourCourse,
+                title: AppConstants.yourCourseText,
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              ProfileCard(
+                onCardPressed: viewModel.paymentMethod,
+                title: AppConstants.paymentText,
+              ),
+              TextButton(
+                onPressed: viewModel.logOut,
+                child: const Text(
+                  AppConstants.logoutText,
+                  style: TextStyle(
+                    color: Color(0xFF78746D),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
+            ],
+          ),
+        ),
       ),
     );
   }

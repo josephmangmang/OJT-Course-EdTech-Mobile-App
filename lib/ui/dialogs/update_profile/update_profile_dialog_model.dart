@@ -17,7 +17,6 @@ class UpdateProfileDialogModel extends BaseViewModel {
   final imageService = locator<ImageService>();
   final snackbarService = locator<SnackbarService>();
   final navigationService = locator<NavigationService>();
-  final homeViewModel = locator<HomeViewModel>();
 
   void pickImage(ImageSource source) async {
     try {
@@ -34,18 +33,15 @@ class UpdateProfileDialogModel extends BaseViewModel {
 
   void uploadImage(BuildContext context) async {
     setBusy(true);
-    var response = await imageService.uploadProfile(
-        image!);
+    var response = await imageService.uploadProfile(image!);
     response.fold(
-            (l) => snackbarService.showSnackbar(
+        (l) => snackbarService.showSnackbar(
             message: l.message, duration: const Duration(seconds: 2)), (r) {
-              Navigator.of(context).pop();
+      Navigator.of(context).pop();
       snackbarService.showSnackbar(
           message: "Profile change successfully!",
           duration: const Duration(seconds: 2));
     });
     setBusy(false);
-
   }
-
 }

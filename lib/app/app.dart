@@ -52,6 +52,7 @@ import 'package:edtechapp/ui/dialogs/update_name/update_name_dialog.dart';
 import 'package:edtechapp/ui/dialogs/update_profile/update_profile_dialog.dart';
 import 'package:edtechapp/services/image_service.dart';
 import 'package:edtechapp/services/image_impl_service.dart';
+import 'package:edtechapp/ui/dialogs/payment_method/payment_method_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -123,6 +124,7 @@ import 'package:edtechapp/services/image_impl_service.dart';
     StackedDialog(classType: UpdateEmailDialog),
     StackedDialog(classType: UpdateNameDialog),
     StackedDialog(classType: UpdateProfileDialog),
+    StackedDialog(classType: PaymentMethodDialog),
 // @stacked-dialog
   ],
 )

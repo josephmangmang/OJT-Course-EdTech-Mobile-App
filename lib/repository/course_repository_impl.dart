@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/model/course.dart';
@@ -39,16 +38,15 @@ class CourseRepositoryImpl implements CourseRepository {
     bool result = false;
     currentUser.fold((l) {
       return false;
-    }, (user) async{
-     for(var course in user.purchaseCourses) {
-       if(course == courseId) {
-         result = true;
-         break;
-       }
-       else {
-         result = false;
-       }
-     }
+    }, (user) async {
+      for (var course in user.purchaseCourses) {
+        if (course == courseId) {
+          result = true;
+          break;
+        } else {
+          result = false;
+        }
+      }
     });
     return result;
   }

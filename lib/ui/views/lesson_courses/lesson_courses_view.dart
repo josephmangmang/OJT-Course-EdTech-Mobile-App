@@ -88,14 +88,16 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                           var topicItem = viewModel.topics[index];
                           return TopicCard(
                             topic: topicItem,
-                            maxProgress: viewModel.topicProgress.isEmpty ? 0 :
-                            viewModel.topicProgress[index].totalProgress,
-                            currentProgress: viewModel.topicProgress.isEmpty ? 10 :
-                            viewModel.topicProgress[index].currentProgress,
+                            maxProgress: viewModel.topicProgress.isEmpty
+                                ? 0
+                                : viewModel.topicProgress[index].totalProgress,
+                            currentProgress: viewModel.topicProgress.isEmpty
+                                ? 10
+                                : viewModel
+                                    .topicProgress[index].currentProgress,
                             onCardPressed: () => viewModel.topicCardClick(
                                 topicItem,
                                 "${index + 1} of ${viewModel.topics.length} lessons"),
-
                           );
                         },
                       ),

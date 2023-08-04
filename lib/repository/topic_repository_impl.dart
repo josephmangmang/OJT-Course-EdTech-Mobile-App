@@ -63,7 +63,8 @@ class TopicRepositoryImp implements TopicRepository {
   }
 
   @override
-  Stream<List<TopicProgress>> getCourseTopicsProgress(String userId, String courseId)  {
+  Stream<List<TopicProgress>> getCourseTopicsProgress(
+      String userId, String courseId) {
     final result = db
         .collection(FirebaseConstants.userCollection)
         .doc(userId)
@@ -71,28 +72,35 @@ class TopicRepositoryImp implements TopicRepository {
         .doc(courseId)
         .collection(FirebaseConstants.topicsCollection)
         .snapshots();
-    return result.map((snap) => snap.docs.map((e) => TopicProgress.fromJson(e.data())).toList());
+    return result.map((snap) =>
+        snap.docs.map((e) => TopicProgress.fromJson(e.data())).toList());
   }
 
   @override
-  Future<Either<AppException, None>> setTopicProgress(String courseId, String topicId, int progress) async{
+  Future<Either<AppException, None>> setTopicProgress(
+      String courseId, String topicId, int progress) async {
     final user = await _authenticationServ.getCurrentUser();
     user.fold((l) {
       return Left(AppException(l.message));
-    }, (user) async{
+    }, (user) async {
       final topicProgress = await db
           .collection(FirebaseConstants.userCollection)
           .doc(user.uid)
           .collection(FirebaseConstants.progressCollection)
           .doc(courseId)
-          .collection(FirebaseConstants.topicsCollection).doc(topicId)
-          .get().then((value) => TopicProgress.fromJson(value.data()!));
-      if(topicProgress.currentProgress < progress) {
-        db.collection(FirebaseConstants.userCollection)
+          .collection(FirebaseConstants.topicsCollection)
+          .doc(topicId)
+          .get()
+          .then((value) => TopicProgress.fromJson(value.data()!));
+      if (topicProgress.currentProgress < progress) {
+        db
+            .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
             .collection(FirebaseConstants.progressCollection)
             .doc(courseId)
-            .collection(FirebaseConstants.topicsCollection).doc(topicId).update({FirebaseConstants.currentProgress : progress});
+            .collection(FirebaseConstants.topicsCollection)
+            .doc(topicId)
+            .update({FirebaseConstants.currentProgress: progress});
       }
       return const Right(None());
     });

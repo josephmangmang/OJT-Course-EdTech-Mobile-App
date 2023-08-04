@@ -10,5 +10,6 @@ class TopicProgress with _$TopicProgress {
     required int totalProgress,
     required int currentProgress,
   }) = _TopicProgress;
-  factory TopicProgress.fromJson(Map<String, dynamic> json) => _$TopicProgressFromJson(json);
+  factory TopicProgress.fromJson(Map<String, dynamic> json) =>
+      _$TopicProgressFromJson(json);
 }
