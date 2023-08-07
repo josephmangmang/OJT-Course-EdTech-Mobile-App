@@ -59,9 +59,9 @@ class PaymentMethodsViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  void onContinuePressed() {
+  void onContinuePressed() async {
     if (isAddCreditCardClicked == true) {
-      _navigationService.navigateToAddCreditCardView(
+      await _navigationService.navigateToAddCreditCardView(
           oldPaymentMethod: false,
           name: "",
           cardNumber: "",
@@ -69,6 +69,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
           expireDate: "",
           cardId: "",
           paymentMethod: "");
+      loadYourCards();
     }
     CreditCard selectedCreditCard = creditCard[selectedCardIndex];
     if (isMasterCardClicked != true &&
@@ -76,7 +77,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
         isAddCreditCardClicked != true) {
       _navigationService.navigateToNoPaymentView();
     } else if (isMasterCardClicked == true || isVisaCardClicked == true) {
-      _navigationService.navigateToAddCreditCardView(
+      await _navigationService.navigateToAddCreditCardView(
           oldPaymentMethod: true,
           name: selectedCreditCard.name,
           cardNumber: selectedCreditCard.cardNumber,
@@ -84,8 +85,9 @@ class PaymentMethodsViewModel extends BaseViewModel {
           expireDate: selectedCreditCard.expireDate,
           cardId: selectedCreditCard.id,
           paymentMethod: selectedCreditCard.paymentMethod);
+      loadYourCards();
     } else {
-      _navigationService.navigateToAddCreditCardView(
+      await _navigationService.navigateToAddCreditCardView(
           oldPaymentMethod: false,
           name: "",
           cardNumber: "",
@@ -93,6 +95,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
           expireDate: "",
           cardId: "",
           paymentMethod: "");
+      loadYourCards();
     }
   }
 

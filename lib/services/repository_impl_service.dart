@@ -199,7 +199,7 @@ class RepositoryImplService extends RepositoryService {
         final creditCardCollection = db
             .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
-            .collection('creditCardDetails');
+            .collection(FirebaseConstants.creditCardDetails);
 
         final newCreditCardRef =
             await creditCardCollection.add(creditCard.toJson());
@@ -208,31 +208,9 @@ class RepositoryImplService extends RepositoryService {
 
         AppTempConstant.tempCard = creditCard;
 
-        // Update the credit card entry in Firestore with the document ID
         await newCreditCardRef.update({'id': newCreditCardId});
       } on FirebaseAuthException catch (e) {
         return Left(AppException(e.message.toString()));
-      }
-      return const Right(None());
-    });
-  }
-
-  @override
-  Future<Either<AppException, None>> addCourseToCart(String courseId) async {
-    final user = await _authenticationService.getCurrentUser();
-
-    return user.fold((error) {
-      return Left(error);
-    }, (user) async {
-      try {
-        await db
-            .collection(FirebaseConstants.userCollection)
-            .doc(user.uid)
-            .update({
-          FirebaseConstants.cartCourses: FieldValue.arrayUnion([courseId])
-        });
-      } on FirebaseAuthException catch (error) {
-        return Left(AppException(error.message.toString()));
       }
       return const Right(None());
     });
@@ -246,7 +224,7 @@ class RepositoryImplService extends RepositoryService {
       final results = await db
           .collection(FirebaseConstants.userCollection)
           .doc(user.uid)
-          .collection('creditCardDetails')
+          .collection((FirebaseConstants.creditCardDetails))
           .get();
 
       return results.docs
@@ -328,7 +306,7 @@ class RepositoryImplService extends RepositoryService {
         await db
             .collection(FirebaseConstants.userCollection)
             .doc(user.uid)
-            .collection('creditCardDetails')
+            .collection((FirebaseConstants.creditCardDetails))
             .doc(uid)
             .delete();
         return const Right(None());

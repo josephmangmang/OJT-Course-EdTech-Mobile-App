@@ -6,6 +6,7 @@ class FirebaseConstants {
   static const keywords = "keywords";
   static const purchaseCourses = "purchaseCourses";
   static const cartCourses = "cartCourses";
+  static const creditCardDetails = "creditCardDetails";
   static const category = "category";
   static const topicsCollection = "topics";
   static const questionsCollection = "questions";

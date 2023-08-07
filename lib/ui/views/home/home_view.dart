@@ -75,13 +75,6 @@ class HomeView extends StackedView<HomeViewModel> {
                               const SizedBox(
                                 width: 24,
                               ),
-                              Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  SvgPicture.asset(SvgImages.background),
-                                  SvgPicture.asset(SvgImages.notification),
-                                ],
-                              ),
                             ],
                           ),
                         ),

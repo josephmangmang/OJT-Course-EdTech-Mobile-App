@@ -52,40 +52,53 @@ class AddCreditCardViewModel extends BaseViewModel {
 
   Future<void> save(String cardId) async {
     setBusy(true);
-    if (cardId.isNotEmpty) {
-      final response = await _repositoryService.editCreditCard(
+    if (nameController.text.isEmpty && cardNumberController.text.isEmpty && expireDateController.text.isEmpty && cvvController.text.isEmpty  ) {
+      _snackBarService.showSnackbar(message: "All fields are required", duration: const Duration(milliseconds: 500));
+    } else if (nameController.text.isEmpty) {
+      _snackBarService.showSnackbar(message: "Name field is required", duration: const Duration(milliseconds: 500));
+    } else if (cardNumberController.text.isEmpty) {
+      _snackBarService.showSnackbar(message: "Card Number field is required", duration: const Duration(milliseconds: 500));
+    } else if (expireDateController.text.isEmpty) {
+      _snackBarService.showSnackbar(message: "Expire field is required", duration: const Duration(milliseconds: 500));
+    } else if (cvvController.text.isEmpty) {
+      _snackBarService.showSnackbar(message: "cvv field is required", duration: const Duration(milliseconds: 500));
+    } else {
+      if (cardId.isNotEmpty) {
+        final response = await _repositoryService.editCreditCard(
+            nameController.text,
+            cardNumberController.text,
+            expireDateController.text,
+            cvvController.text,
+            selectedPaymentMethod,
+            cardId);
+
+        setBusy(false);
+        response.fold((l) {
+          _snackBarService.showSnackbar(message: l.message);
+        }, (r) async {
+          _snackBarService.showSnackbar(
+              message: "Save Successfully", duration: const Duration(seconds: 2));
+          _navigationService.replaceWithPaymentAddedView();
+        });
+      } else {
+        final response = await _repositoryService.addCreditCard(
           nameController.text,
           cardNumberController.text,
           expireDateController.text,
           cvvController.text,
           selectedPaymentMethod,
-          cardId);
-
-      setBusy(false);
-      response.fold((l) {
-        _snackBarService.showSnackbar(message: l.message);
-      }, (r) async {
-        _snackBarService.showSnackbar(
-            message: "Save Successfully", duration: const Duration(seconds: 2));
-        _navigationService.navigateToPaymentAddedView();
-      });
-    } else {
-      final response = await _repositoryService.addCreditCard(
-        nameController.text,
-        cardNumberController.text,
-        expireDateController.text,
-        cvvController.text,
-        selectedPaymentMethod,
-      );
-      setBusy(false);
-      response.fold((l) {
-        _snackBarService.showSnackbar(message: l.message);
-      }, (r) async {
-        _snackBarService.showSnackbar(
-            message: "Save Successfully", duration: const Duration(seconds: 2));
-        _navigationService.navigateToPaymentAddedView();
-      });
+        );
+        setBusy(false);
+        response.fold((l) {
+          _snackBarService.showSnackbar(message: l.message);
+        }, (r) async {
+          _snackBarService.showSnackbar(
+              message: "Save Successfully", duration: const Duration(seconds: 2));
+          _navigationService.replaceWithPaymentAddedView();
+        });
+      }
     }
+
   }
 
   loadExistingCreditCard(String name, String cardNumber, String expireDate,
