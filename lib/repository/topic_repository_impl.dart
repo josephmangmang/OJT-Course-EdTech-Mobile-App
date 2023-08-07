@@ -37,23 +37,25 @@ class TopicRepositoryImp implements TopicRepository {
       return Left(AppException(l.message));
     }, (user) async {
       try {
-        final topics = await getCourseTopics(courseId);
-        for (var topic in topics) {
-          List<Question> questions =
-              await _questionRepository.getTopicQuestions(courseId, topic.id);
-          await db
-              .collection(FirebaseConstants.userCollection)
-              .doc(user.uid)
-              .collection(FirebaseConstants.progressCollection)
-              .doc(courseId)
-              .collection(FirebaseConstants.topicsCollection)
-              .doc(topic.id)
-              .set(TopicProgress(
-                      id: topic.id,
-                      totalProgress: questions.length,
-                      currentProgress: 0)
-                  .toJson());
-        }
+        await getCourseTopics(courseId).then((topics) async {
+          for (var topic in topics) {
+            List<Question> questions =
+                await _questionRepository.getTopicQuestions(courseId, topic.id);
+            await db
+                .collection(FirebaseConstants.userCollection)
+                .doc(user.uid)
+                .collection(FirebaseConstants.progressCollection)
+                .doc(courseId)
+                .collection(FirebaseConstants.topicsCollection)
+                .doc(topic.id)
+                .set(TopicProgress(
+                        id: topic.id,
+                        totalProgress: questions.length,
+                        currentProgress: 0)
+                    .toJson());
+          }
+        });
+
         return const Right(None());
       } catch (e) {
         return Left(AppException(e.toString()));
