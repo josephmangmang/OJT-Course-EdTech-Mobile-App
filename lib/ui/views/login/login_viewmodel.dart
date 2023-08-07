@@ -38,7 +38,7 @@ class LoginViewModel extends BaseViewModel {
 
     setBusy(false);
     response.fold((l) {
-      _snackBarService.showSnackbar(message: l.message);
+      _snackBarService.showSnackbar(message: l.message, duration: const Duration(seconds: 2));
     }, (r) async {
       await _sharedPrefService.saveUser(r);
       _navigationService.replaceWithHomeView();

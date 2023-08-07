@@ -1,6 +1,7 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/model/credit_card.dart';
 import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_temp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,18 +52,11 @@ class AddCreditCardViewModel extends BaseViewModel {
   }
 
   Future<void> save(String cardId) async {
+    final verifyForm = validateForm();
     setBusy(true);
-    if (nameController.text.isEmpty && cardNumberController.text.isEmpty && expireDateController.text.isEmpty && cvvController.text.isEmpty  ) {
-      _snackBarService.showSnackbar(message: "All fields are required", duration: const Duration(milliseconds: 500));
-    } else if (nameController.text.isEmpty) {
-      _snackBarService.showSnackbar(message: "Name field is required", duration: const Duration(milliseconds: 500));
-    } else if (cardNumberController.text.isEmpty) {
-      _snackBarService.showSnackbar(message: "Card Number field is required", duration: const Duration(milliseconds: 500));
-    } else if (expireDateController.text.isEmpty) {
-      _snackBarService.showSnackbar(message: "Expire field is required", duration: const Duration(milliseconds: 500));
-    } else if (cvvController.text.isEmpty) {
-      _snackBarService.showSnackbar(message: "cvv field is required", duration: const Duration(milliseconds: 500));
-    } else {
+   if (verifyForm != null) {
+     SnackbarService().showSnackbar(message: verifyForm, duration: const Duration(seconds: 2));
+   } else {
       if (cardId.isNotEmpty) {
         final response = await _repositoryService.editCreditCard(
             nameController.text,
@@ -98,7 +92,22 @@ class AddCreditCardViewModel extends BaseViewModel {
         });
       }
     }
+  }
 
+  String? validateForm() {
+    if (nameController.text.isEmpty && cardNumberController.text.isEmpty &&
+        expireDateController.text.isEmpty && cvvController.text.isEmpty) {
+      return AppExceptionConstants.emptyField;
+    } else if (nameController.text.isEmpty) {
+      return AppExceptionConstants.emptyName;
+    } else if (cardNumberController.text.isEmpty) {
+      return AppExceptionConstants.emptyCardNumber;
+    } else if (expireDateController.text.isEmpty) {
+      return AppExceptionConstants.emptyExpire;
+    } else if (cvvController.text.isEmpty) {
+      return AppExceptionConstants.emptyCvv;
+    }
+    return null;
   }
 
   loadExistingCreditCard(String name, String cardNumber, String expireDate,
@@ -127,4 +136,6 @@ class AddCreditCardViewModel extends BaseViewModel {
     setBusyForObject('cardType', false);
     rebuildUi();
   }
+
+
 }

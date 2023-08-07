@@ -25,7 +25,7 @@ class SettingsViewModel extends BaseViewModel {
     final getLastUpdatedPasswordResponse =
         await _authenticationService.getLastUpdatedPassword(user!.uid);
     getLastUpdatedPasswordResponse.fold(
-        (l) => snackBarService.showSnackbar(message: l.message),
+        (l) => snackBarService.showSnackbar(message: l.message, duration: const Duration(seconds: 2)),
         (r) => lastUpdatedPassword = r?.toDate());
     // userInfo(0);
     setBusy(false);

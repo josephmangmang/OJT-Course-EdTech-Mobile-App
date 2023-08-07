@@ -16,4 +16,8 @@ class AppExceptionConstants {
   static const emptyEmailNamePass =
       "Please enter your name, email and password";
   static const emptyNamePass = "Please enter your name and password";
+  static const emptyCardNumber = "Please enter your credit card number";
+  static const emptyExpire = "Please enter your expire date";
+  static const emptyCvv = "Please enter your cvv";
+  static const emptyField = "All fields are required";
 }

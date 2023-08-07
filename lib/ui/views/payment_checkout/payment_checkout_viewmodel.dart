@@ -50,7 +50,7 @@ class PaymentCheckoutViewModel extends BaseViewModel {
       }, (r) {
         _snackBarService.showSnackbar(
             message: "Course purchase successfully",
-            duration: const Duration(seconds: 3));
+            duration: const Duration(seconds: 2));
         Future.delayed(const Duration(seconds: 2));
         _navigationService.replaceWithYourCoursesView();
       });
