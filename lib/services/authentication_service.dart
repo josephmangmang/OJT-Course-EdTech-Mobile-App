@@ -25,4 +25,6 @@ abstract interface class AuthenticationService {
   Future<Either<AppException, None>> logOutUser();
 
   Future<Either<AppException, Timestamp?>> getLastUpdatedPassword(String uid);
+
+  Future<Either<None, User>> facebookSignIn();
 }

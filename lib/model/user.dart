@@ -11,6 +11,7 @@ class User with _$User {
     required String uid,
     @Default([]) List<String> purchaseCourses,
     @Default([]) List<String> cartCourses,
+    @Default('') String profileImageUrl,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

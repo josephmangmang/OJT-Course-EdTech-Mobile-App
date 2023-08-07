@@ -8,6 +8,8 @@ import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_exception.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 
 import '../app/app.locator.dart';
 
@@ -180,6 +182,34 @@ class AuthenticationServiceImpl implements AuthenticationService {
       });
     } catch (e) {
       return Left(AppException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<None, User>> facebookSignIn() async {
+    final fb = FacebookLogin();
+    try {
+      // Log in
+      await fb.logOut();
+      final result = await fb.expressLogin();
+
+      if (result.status == FacebookLoginStatus.success) {
+        final FacebookAccessToken? accessToken = result.accessToken;
+        final AuthCredential authCredential = FacebookAuthProvider.credential(accessToken!.token);
+        UserCredential userCredential = await auth.signInWithCredential(authCredential);
+        final user = User(
+            uid: userCredential.user!.uid,
+            email: await fb.getUserEmail() ?? '',
+            name: userCredential.additionalUserInfo!.profile!['name'],
+            profileImageUrl: await fb.getProfileImageUrl(width: 128) ?? '');
+        await db.collection(FirebaseConstants.userCollection).doc(userCredential.user!.uid).set(user.toJson());
+        await _sharedPrefService.saveUser(user);
+        return Right(user);
+      } else {
+        return const Left(None());
+      }
+    } catch (e) {
+      return const Left(None());
     }
   }
 }

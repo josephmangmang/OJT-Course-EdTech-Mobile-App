@@ -25,6 +25,7 @@ mixin _$User {
   String get uid => throw _privateConstructorUsedError;
   List<String> get purchaseCourses => throw _privateConstructorUsedError;
   List<String> get cartCourses => throw _privateConstructorUsedError;
+  String get profileImageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $UserCopyWith<$Res> {
       String email,
       String uid,
       List<String> purchaseCourses,
-      List<String> cartCourses});
+      List<String> cartCourses,
+      String profileImageUrl});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? uid = null,
     Object? purchaseCourses = null,
     Object? cartCourses = null,
+    Object? profileImageUrl = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -84,6 +87,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.cartCourses
           : cartCourses // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -99,7 +106,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       String uid,
       List<String> purchaseCourses,
-      List<String> cartCourses});
+      List<String> cartCourses,
+      String profileImageUrl});
 }
 
 /// @nodoc
@@ -116,6 +124,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? uid = null,
     Object? purchaseCourses = null,
     Object? cartCourses = null,
+    Object? profileImageUrl = null,
   }) {
     return _then(_$_User(
       name: null == name
@@ -138,6 +147,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value._cartCourses
           : cartCourses // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      profileImageUrl: null == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$_User implements _User {
       required this.email,
       required this.uid,
       final List<String> purchaseCourses = const [],
-      final List<String> cartCourses = const []})
+      final List<String> cartCourses = const [],
+      this.profileImageUrl = ''})
       : _purchaseCourses = purchaseCourses,
         _cartCourses = cartCourses;
 
@@ -181,8 +195,12 @@ class _$_User implements _User {
   }
 
   @override
+  @JsonKey()
+  final String profileImageUrl;
+
+  @override
   String toString() {
-    return 'User(name: $name, email: $email, uid: $uid, purchaseCourses: $purchaseCourses, cartCourses: $cartCourses)';
+    return 'User(name: $name, email: $email, uid: $uid, purchaseCourses: $purchaseCourses, cartCourses: $cartCourses, profileImageUrl: $profileImageUrl)';
   }
 
   @override
@@ -196,7 +214,9 @@ class _$_User implements _User {
             const DeepCollectionEquality()
                 .equals(other._purchaseCourses, _purchaseCourses) &&
             const DeepCollectionEquality()
-                .equals(other._cartCourses, _cartCourses));
+                .equals(other._cartCourses, _cartCourses) &&
+            (identical(other.profileImageUrl, profileImageUrl) ||
+                other.profileImageUrl == profileImageUrl));
   }
 
   @JsonKey(ignore: true)
@@ -207,7 +227,8 @@ class _$_User implements _User {
       email,
       uid,
       const DeepCollectionEquality().hash(_purchaseCourses),
-      const DeepCollectionEquality().hash(_cartCourses));
+      const DeepCollectionEquality().hash(_cartCourses),
+      profileImageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -229,7 +250,8 @@ abstract class _User implements User {
       required final String email,
       required final String uid,
       final List<String> purchaseCourses,
-      final List<String> cartCourses}) = _$_User;
+      final List<String> cartCourses,
+      final String profileImageUrl}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -243,6 +265,8 @@ abstract class _User implements User {
   List<String> get purchaseCourses;
   @override
   List<String> get cartCourses;
+  @override
+  String get profileImageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

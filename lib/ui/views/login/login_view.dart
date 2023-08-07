@@ -66,15 +66,18 @@ class LoginView extends StackedView<LoginViewModel> {
                                     MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        SvgImages.socialNetworksIcons),
+                                  GestureDetector(
+                                    onTap: viewModel.facebookLogin,
+                                    child: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 6),
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFF65A9E9),
+                                          borderRadius: BorderRadius.circular(8)),
+                                      child: SvgPicture.asset(
+                                          SvgImages.socialNetworksIcons),
+                                    ),
                                   ),
                                   Container(
                                     margin: const EdgeInsets.symmetric(

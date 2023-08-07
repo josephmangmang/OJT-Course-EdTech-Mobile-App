@@ -110,8 +110,7 @@ import 'package:edtechapp/ui/dialogs/payment_method/payment_method_dialog.dart';
     LazySingleton(classType: TopicRepositoryImp, asType: TopicRepository),
     LazySingleton(
         classType: QuestionRepositoryImpl, asType: QuestionRepository),
-    LazySingleton(classType: ImageService),
-    LazySingleton(classType: ImageImplService),
+    LazySingleton(classType: ImageImplService, asType: ImageService),
 // @stacked-service
   ],
   bottomsheets: [

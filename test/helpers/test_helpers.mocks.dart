@@ -971,6 +971,33 @@ class MockRepositoryService extends _i1.Mock implements _i11.RepositoryService {
           ),
         )),
       ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
+  @override
+  _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> deleteCreditCard(
+          String? uid) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteCreditCard,
+          [uid],
+        ),
+        returnValue:
+            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #deleteCreditCard,
+            [uid],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #deleteCreditCard,
+            [uid],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
 }
 
 /// A class which mocks [RepositoryImplService].
@@ -1270,6 +1297,33 @@ class MockRepositoryImplService extends _i1.Mock
               currentName,
               newName,
             ],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
+  @override
+  _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> deleteCreditCard(
+          String? uid) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteCreditCard,
+          [uid],
+        ),
+        returnValue:
+            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #deleteCreditCard,
+            [uid],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
+                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
+          this,
+          Invocation.method(
+            #deleteCreditCard,
+            [uid],
           ),
         )),
       ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
@@ -1654,6 +1708,31 @@ class MockAuthenticationService extends _i1.Mock
               ),
             )),
           ) as _i9.Future<_i2.Either<_i12.AppException, _i4.Timestamp?>>);
+  @override
+  _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>> facebookSignIn() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #facebookSignIn,
+          [],
+        ),
+        returnValue: _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>.value(
+            _FakeEither_0<_i2.None<dynamic>, _i19.User>(
+          this,
+          Invocation.method(
+            #facebookSignIn,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>.value(
+                _FakeEither_0<_i2.None<dynamic>, _i19.User>(
+          this,
+          Invocation.method(
+            #facebookSignIn,
+            [],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>);
 }
 
 /// A class which mocks [SharedPrefServiceService].

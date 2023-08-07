@@ -62,4 +62,12 @@ class AuthenticationServiceMock implements AuthenticationService {
     // TODO: implement updateEmail
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<None, User>> facebookSignIn() {
+    // TODO: implement facebookSignIn
+    throw UnimplementedError();
+  }
+
+
 }

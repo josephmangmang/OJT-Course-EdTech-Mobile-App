@@ -44,4 +44,10 @@ class LoginViewModel extends BaseViewModel {
       _navigationService.replaceWithHomeView();
     });
   }
+
+  void facebookLogin() async {
+    final response = await _authenticationService.facebookSignIn();
+    response.fold((l) => null, (r) => _navigationService.replaceWithHomeView());
+  }
+
 }
