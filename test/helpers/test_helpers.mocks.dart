@@ -755,33 +755,6 @@ class MockRepositoryService extends _i1.Mock implements _i11.RepositoryService {
             _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i9.Future<List<_i5.Course>>);
   @override
-  _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> addCourseToCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #addCourseToCart,
-          [courseId],
-        ),
-        returnValue:
-            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-      ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
-  @override
   _i9.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -1167,33 +1140,6 @@ class MockRepositoryImplService extends _i1.Mock
               cvv,
               paymentMethod,
             ],
-          ),
-        )),
-      ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
-  @override
-  _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> addCourseToCart(
-          String? courseId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #addCourseToCart,
-          [courseId],
-        ),
-        returnValue:
-            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>.value(
-                _FakeEither_0<_i12.AppException, _i2.None<dynamic>>(
-          this,
-          Invocation.method(
-            #addCourseToCart,
-            [courseId],
           ),
         )),
       ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
@@ -1733,6 +1679,31 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
       ) as _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>);
+  @override
+  _i9.Future<_i2.Either<_i12.AppException, _i19.User>> signInWithGoogle() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signInWithGoogle,
+          [],
+        ),
+        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
+            _FakeEither_0<_i12.AppException, _i19.User>(
+          this,
+          Invocation.method(
+            #signInWithGoogle,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
+                _FakeEither_0<_i12.AppException, _i19.User>(
+          this,
+          Invocation.method(
+            #signInWithGoogle,
+            [],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i19.User>>);
 }
 
 /// A class which mocks [SharedPrefServiceService].

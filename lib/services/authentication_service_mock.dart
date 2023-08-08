@@ -64,6 +64,12 @@ class AuthenticationServiceMock implements AuthenticationService {
   }
 
   @override
+  Future<Either<AppException, User>> signInWithGoogle() {
+    // TODO: implement signInWithGoogle
+    throw UnimplementedError();
+  }
+
+  @override
   Future<Either<None, User>> facebookSignIn() {
     // TODO: implement facebookSignIn
     throw UnimplementedError();

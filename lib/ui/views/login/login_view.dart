@@ -2,6 +2,7 @@ import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/resources/svg_images.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
+import 'package:edtechapp/ui/custom_widget/social_networks.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'login_viewmodel.dart';
@@ -59,51 +60,11 @@ class LoginView extends StackedView<LoginViewModel> {
                             const SizedBox(
                               height: 8.0,
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  GestureDetector(
-                                    onTap: viewModel.facebookLogin,
-                                    child: Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 6),
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xFF65A9E9),
-                                          borderRadius: BorderRadius.circular(8)),
-                                      child: SvgPicture.asset(
-                                          SvgImages.socialNetworksIcons),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        SvgImages.socialNetworksIcons1),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 6),
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF65A9E9),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: SvgPicture.asset(
-                                        SvgImages.socialNetworkIcons2),
-                                  ),
-                                ],
-                              ),
-                            ),
+
+                            SocialNetworks(facebookClick: viewModel.facebookLogin, googleClick: viewModel.signInWithGoogle, instagramClick: (){})
                           ],
                         ),
+
                         const SizedBox(
                           height: 16.0,
                         ),

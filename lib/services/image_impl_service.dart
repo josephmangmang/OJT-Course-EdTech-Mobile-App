@@ -46,7 +46,13 @@ class ImageImplService implements ImageService {
 
     return result.map((snap) {
       if (snap.exists) {
-        return snap.data()?['profileImageUrl'];
+        if(snap.data()?['profileImageUrl'] == null) {
+          return '';
+        }
+        else {
+          return snap.data()?['profileImageUrl'];
+        }
+
       } else {
         return '';
       }

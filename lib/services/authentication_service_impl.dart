@@ -8,7 +8,7 @@ import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_exception.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 
 import '../app/app.locator.dart';
@@ -17,6 +17,12 @@ class AuthenticationServiceImpl implements AuthenticationService {
   final auth = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
   final _sharedPrefService = locator<SharedPrefServiceService>();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
 
   @override
   Future<Either<AppException, None>> forgetPassword(String email) async {
@@ -69,7 +75,6 @@ class AuthenticationServiceImpl implements AuthenticationService {
         email: email,
         uid: credential.user!.uid,
         purchaseCourses: List.empty(),
-        cartCourses: List.empty(),
       );
 
       db
@@ -180,6 +185,40 @@ class AuthenticationServiceImpl implements AuthenticationService {
           return Left(AppException(e.toString()));
         }
       });
+    } catch (e) {
+      return Left(AppException(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppException, User>> signInWithGoogle() async {
+    try {
+      await _googleSignIn.signOut();
+      final GoogleSignInAccount? googleAccount = await GoogleSignIn().signIn();
+      if (googleAccount != null) {
+        final GoogleSignInAuthentication googleAuth =
+            await googleAccount.authentication;
+        final AuthCredential authCredential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        UserCredential userCredential =
+            await auth.signInWithCredential(authCredential);
+
+        final User user = User(
+          name: googleAccount.displayName!,
+          email: googleAccount.email,
+          uid: userCredential.user!.uid,
+          profileImageUrl: googleAccount.photoUrl!,
+        );
+
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(userCredential.user!.uid)
+            .set(user.toJson());
+        return Right(user);
+      }
+      return Left(AppException("Please enter your google account"));
     } catch (e) {
       return Left(AppException(e.toString()));
     }

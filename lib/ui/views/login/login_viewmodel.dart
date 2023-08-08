@@ -39,8 +39,18 @@ class LoginViewModel extends BaseViewModel {
     setBusy(false);
     response.fold((l) {
       _snackBarService.showSnackbar(message: l.message, duration: const Duration(seconds: 2));
-    }, (r) async {
-      await _sharedPrefService.saveUser(r);
+    }, (user) async {
+      await _sharedPrefService.saveUser(user);
+      _navigationService.replaceWithHomeView();
+    });
+  }
+
+  Future<void> signInWithGoogle() async {
+    final response = await _authenticationService.signInWithGoogle();
+    response.fold((l) {
+      _snackBarService.showSnackbar(message: l.message, duration: const Duration(seconds: 2));
+    }, (user) async{
+      await _sharedPrefService.saveUser(user);
       _navigationService.replaceWithHomeView();
     });
   }
