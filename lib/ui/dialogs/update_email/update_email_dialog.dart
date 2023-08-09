@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:edtechapp/ui/common/app_colors.dart';
 import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../common/app_constants.dart';
 import 'update_email_dialog_model.dart';
 
 const double _graphicSize = 60;
@@ -71,7 +71,7 @@ class UpdateEmailDialog extends StackedView<UpdateEmailDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Current Email",
+                hintText: AppConstants.currentEmailText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,
@@ -86,7 +86,7 @@ class UpdateEmailDialog extends StackedView<UpdateEmailDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Current Password",
+                hintText: AppConstants.currentPasswordText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,
@@ -101,7 +101,7 @@ class UpdateEmailDialog extends StackedView<UpdateEmailDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Enter New Email",
+                hintText: AppConstants.enterNewEmail,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,

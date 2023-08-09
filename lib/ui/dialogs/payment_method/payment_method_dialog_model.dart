@@ -1,3 +1,5 @@
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
+import 'package:edtechapp/ui/common/payment_method_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -5,6 +7,7 @@ import '../../../app/app.locator.dart';
 import '../../../model/credit_card.dart';
 import '../../../resources/png_images.dart';
 import '../../../services/repository_service.dart';
+import '../../common/app_constants.dart';
 
 class PaymentMethodDialogModel extends BaseViewModel {
   String image = '';
@@ -18,23 +21,23 @@ class PaymentMethodDialogModel extends BaseViewModel {
   }
 
   cardType() {
-    setBusyForObject('cardType', true);
+    setBusyForObject(BusyObjectConstants.cardTypeText, true);
     for (var card in creditCard) {
-      if (card.paymentMethod == "mastercard") {
+      if (card.paymentMethod == PaymentMethodConstants.masterCardText) {
         image = PngImages.mastercard;
-      } else if (card.paymentMethod == "visa") {
+      } else if (card.paymentMethod == PaymentMethodConstants.visaText) {
         image = PngImages.visa;
       }
     }
-    setBusyForObject('cardType', false);
+    setBusyForObject(BusyObjectConstants.cardTypeText, false);
     rebuildUi();
   }
 
   loadYourCards() async {
-    setBusyForObject('yourCard', true);
+    setBusyForObject(BusyObjectConstants.yourCardText, true);
     _repositoryService.getCreditCard().then((value) {
       creditCard = value;
-      setBusyForObject('yourCard', false);
+      setBusyForObject(BusyObjectConstants.yourCardText, false);
     });
   }
 
@@ -48,7 +51,7 @@ class PaymentMethodDialogModel extends BaseViewModel {
               (l) => SnackbarService().showSnackbar(
               message: l.message, duration: const Duration(seconds: 2)), (r) {
         SnackbarService().showSnackbar(
-            message: 'Delete Successfully', duration: const Duration(seconds: 2)
+            message: AppConstants.deletedSuccessfullyText, duration: const Duration(seconds: 2)
         );
         init();
       });

@@ -218,7 +218,7 @@ class AuthenticationServiceImpl implements AuthenticationService {
             .set(user.toJson());
         return Right(user);
       }
-      return Left(AppException("Please enter your google account"));
+      return Left(AppException(AppExceptionConstants.enterGoogleAccountText));
     } catch (e) {
       return Left(AppException(e.toString()));
     }

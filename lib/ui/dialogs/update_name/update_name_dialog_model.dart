@@ -2,10 +2,9 @@ import 'package:edtechapp/app/app.router.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
-import '../../../services/authentication_service.dart';
 import '../../../services/repository_service.dart';
+import '../../common/app_constants.dart';
 
 class UpdateNameDialogModel extends BaseViewModel {
   final currentNameField = TextEditingController();
@@ -25,7 +24,7 @@ class UpdateNameDialogModel extends BaseViewModel {
             message: l.message, duration: const Duration(seconds: 2)), (r) {
       _navigatorService.replaceWithLoginView();
       snackbarService.showSnackbar(
-          message: "Email Successfully Change! Try to login",
+          message: AppConstants.nameSuccessfullyChangeText,
           duration: const Duration(seconds: 2));
     });
     setBusy(false);

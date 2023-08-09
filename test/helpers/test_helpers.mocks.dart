@@ -4,7 +4,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i9;
-import 'dart:io' as _i23;
+import 'dart:io' as _i22;
 import 'dart:ui' as _i10;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
@@ -12,16 +12,15 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:edtechapp/exception/app_exception.dart' as _i12;
 import 'package:edtechapp/model/course.dart' as _i5;
 import 'package:edtechapp/model/credit_card.dart' as _i13;
-import 'package:edtechapp/model/user.dart' as _i19;
-import 'package:edtechapp/repository/course_repository.dart' as _i21;
-import 'package:edtechapp/services/authentication_service.dart' as _i18;
-import 'package:edtechapp/services/course_impl_service.dart' as _i17;
-import 'package:edtechapp/services/image_impl_service.dart' as _i24;
-import 'package:edtechapp/services/image_service.dart' as _i22;
+import 'package:edtechapp/model/user.dart' as _i18;
+import 'package:edtechapp/repository/course_repository.dart' as _i20;
+import 'package:edtechapp/services/authentication_service.dart' as _i17;
+import 'package:edtechapp/services/image_impl_service.dart' as _i23;
+import 'package:edtechapp/services/image_service.dart' as _i21;
 import 'package:edtechapp/services/repository_impl_service.dart' as _i14;
 import 'package:edtechapp/services/repository_service.dart' as _i11;
 import 'package:edtechapp/services/share_impl_service.dart' as _i16;
-import 'package:edtechapp/services/shared_pref_service_service.dart' as _i20;
+import 'package:edtechapp/services/shared_pref_service_service.dart' as _i19;
 import 'package:edtechapp/services/shared_service.dart' as _i15;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:firebase_storage/firebase_storage.dart' as _i6;
@@ -723,38 +722,6 @@ class MockRepositoryService extends _i1.Mock implements _i11.RepositoryService {
             _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
       ) as _i9.Future<List<_i5.Course>>);
   @override
-  _i9.Future<List<_i5.Course>> searchCourse(String? searchCourse) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #searchCourse,
-          [searchCourse],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
-  _i9.Future<List<_i5.Course>> categoryCourse(String? categoryCourse) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #categoryCourse,
-          [categoryCourse],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
-  _i9.Future<List<_i5.Course>> addCourse() => (super.noSuchMethod(
-        Invocation.method(
-          #addCourse,
-          [],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
   _i9.Future<List<_i5.Course>> getUserCourses() => (super.noSuchMethod(
         Invocation.method(
           #getUserCourses,
@@ -1018,38 +985,6 @@ class MockRepositoryImplService extends _i1.Mock
   _i9.Future<List<_i5.Course>> getCourse() => (super.noSuchMethod(
         Invocation.method(
           #getCourse,
-          [],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
-  _i9.Future<List<_i5.Course>> searchCourse(String? searchCourse) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #searchCourse,
-          [searchCourse],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
-  _i9.Future<List<_i5.Course>> categoryCourse(String? categoryCourse) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #categoryCourse,
-          [categoryCourse],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
-      ) as _i9.Future<List<_i5.Course>>);
-  @override
-  _i9.Future<List<_i5.Course>> addCourse() => (super.noSuchMethod(
-        Invocation.method(
-          #addCourse,
           [],
         ),
         returnValue: _i9.Future<List<_i5.Course>>.value(<_i5.Course>[]),
@@ -1361,27 +1296,11 @@ class MockShareImplService extends _i1.Mock implements _i16.ShareImplService {
       ) as _i9.Future<void>);
 }
 
-/// A class which mocks [CourseImplService].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockCourseImplService extends _i1.Mock implements _i17.CourseImplService {
-  @override
-  _i9.Future<List<_i5.Course>?> course([String? searchCourse]) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #course,
-          [searchCourse],
-        ),
-        returnValue: _i9.Future<List<_i5.Course>?>.value(),
-        returnValueForMissingStub: _i9.Future<List<_i5.Course>?>.value(),
-      ) as _i9.Future<List<_i5.Course>?>);
-}
-
 /// A class which mocks [AuthenticationService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthenticationService extends _i1.Mock
-    implements _i18.AuthenticationService {
+    implements _i17.AuthenticationService {
   @override
   bool get isLoggedIn => (super.noSuchMethod(
         Invocation.getter(#isLoggedIn),
@@ -1511,7 +1430,7 @@ class MockAuthenticationService extends _i1.Mock
         )),
       ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
   @override
-  _i9.Future<_i2.Either<_i12.AppException, _i19.User>> login({
+  _i9.Future<_i2.Either<_i12.AppException, _i18.User>> login({
     required String? email,
     required String? password,
   }) =>
@@ -1524,8 +1443,8 @@ class MockAuthenticationService extends _i1.Mock
             #password: password,
           },
         ),
-        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-            _FakeEither_0<_i12.AppException, _i19.User>(
+        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+            _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #login,
@@ -1537,8 +1456,8 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-                _FakeEither_0<_i12.AppException, _i19.User>(
+            _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+                _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #login,
@@ -1549,7 +1468,7 @@ class MockAuthenticationService extends _i1.Mock
             },
           ),
         )),
-      ) as _i9.Future<_i2.Either<_i12.AppException, _i19.User>>);
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i18.User>>);
   @override
   _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> forgetPassword(
           String? email) =>
@@ -1578,14 +1497,14 @@ class MockAuthenticationService extends _i1.Mock
         )),
       ) as _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>>);
   @override
-  _i9.Future<_i2.Either<_i12.AppException, _i19.User>> getCurrentUser() =>
+  _i9.Future<_i2.Either<_i12.AppException, _i18.User>> getCurrentUser() =>
       (super.noSuchMethod(
         Invocation.method(
           #getCurrentUser,
           [],
         ),
-        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-            _FakeEither_0<_i12.AppException, _i19.User>(
+        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+            _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #getCurrentUser,
@@ -1593,15 +1512,15 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-                _FakeEither_0<_i12.AppException, _i19.User>(
+            _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+                _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #getCurrentUser,
             [],
           ),
         )),
-      ) as _i9.Future<_i2.Either<_i12.AppException, _i19.User>>);
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i18.User>>);
   @override
   _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> logOutUser() =>
       (super.noSuchMethod(
@@ -1655,14 +1574,14 @@ class MockAuthenticationService extends _i1.Mock
             )),
           ) as _i9.Future<_i2.Either<_i12.AppException, _i4.Timestamp?>>);
   @override
-  _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>> facebookSignIn() =>
+  _i9.Future<_i2.Either<_i2.None<dynamic>, _i18.User>> facebookSignIn() =>
       (super.noSuchMethod(
         Invocation.method(
           #facebookSignIn,
           [],
         ),
-        returnValue: _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>.value(
-            _FakeEither_0<_i2.None<dynamic>, _i19.User>(
+        returnValue: _i9.Future<_i2.Either<_i2.None<dynamic>, _i18.User>>.value(
+            _FakeEither_0<_i2.None<dynamic>, _i18.User>(
           this,
           Invocation.method(
             #facebookSignIn,
@@ -1670,24 +1589,24 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>.value(
-                _FakeEither_0<_i2.None<dynamic>, _i19.User>(
+            _i9.Future<_i2.Either<_i2.None<dynamic>, _i18.User>>.value(
+                _FakeEither_0<_i2.None<dynamic>, _i18.User>(
           this,
           Invocation.method(
             #facebookSignIn,
             [],
           ),
         )),
-      ) as _i9.Future<_i2.Either<_i2.None<dynamic>, _i19.User>>);
+      ) as _i9.Future<_i2.Either<_i2.None<dynamic>, _i18.User>>);
   @override
-  _i9.Future<_i2.Either<_i12.AppException, _i19.User>> signInWithGoogle() =>
+  _i9.Future<_i2.Either<_i12.AppException, _i18.User>> signInWithGoogle() =>
       (super.noSuchMethod(
         Invocation.method(
           #signInWithGoogle,
           [],
         ),
-        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-            _FakeEither_0<_i12.AppException, _i19.User>(
+        returnValue: _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+            _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #signInWithGoogle,
@@ -1695,24 +1614,24 @@ class MockAuthenticationService extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i9.Future<_i2.Either<_i12.AppException, _i19.User>>.value(
-                _FakeEither_0<_i12.AppException, _i19.User>(
+            _i9.Future<_i2.Either<_i12.AppException, _i18.User>>.value(
+                _FakeEither_0<_i12.AppException, _i18.User>(
           this,
           Invocation.method(
             #signInWithGoogle,
             [],
           ),
         )),
-      ) as _i9.Future<_i2.Either<_i12.AppException, _i19.User>>);
+      ) as _i9.Future<_i2.Either<_i12.AppException, _i18.User>>);
 }
 
 /// A class which mocks [SharedPrefServiceService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSharedPrefServiceService extends _i1.Mock
-    implements _i20.SharedPrefServiceService {
+    implements _i19.SharedPrefServiceService {
   @override
-  _i9.Future<void> saveUser(_i19.User? user) => (super.noSuchMethod(
+  _i9.Future<void> saveUser(_i18.User? user) => (super.noSuchMethod(
         Invocation.method(
           #saveUser,
           [user],
@@ -1721,14 +1640,14 @@ class MockSharedPrefServiceService extends _i1.Mock
         returnValueForMissingStub: _i9.Future<void>.value(),
       ) as _i9.Future<void>);
   @override
-  _i9.Future<_i19.User?> getCurrentUser() => (super.noSuchMethod(
+  _i9.Future<_i18.User?> getCurrentUser() => (super.noSuchMethod(
         Invocation.method(
           #getCurrentUser,
           [],
         ),
-        returnValue: _i9.Future<_i19.User?>.value(),
-        returnValueForMissingStub: _i9.Future<_i19.User?>.value(),
-      ) as _i9.Future<_i19.User?>);
+        returnValue: _i9.Future<_i18.User?>.value(),
+        returnValueForMissingStub: _i9.Future<_i18.User?>.value(),
+      ) as _i9.Future<_i18.User?>);
   @override
   _i9.Future<void> deleteUser() => (super.noSuchMethod(
         Invocation.method(
@@ -1761,7 +1680,7 @@ class MockSharedPrefServiceService extends _i1.Mock
 /// A class which mocks [CourseRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCourseRepository extends _i1.Mock implements _i21.CourseRepository {
+class MockCourseRepository extends _i1.Mock implements _i20.CourseRepository {
   @override
   _i9.Future<List<_i5.Course>> searchCourses(
     String? query,
@@ -1793,10 +1712,10 @@ class MockCourseRepository extends _i1.Mock implements _i21.CourseRepository {
 /// A class which mocks [ImageService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockImageService extends _i1.Mock implements _i22.ImageService {
+class MockImageService extends _i1.Mock implements _i21.ImageService {
   @override
   _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> uploadProfile(
-          _i23.File? image) =>
+          _i22.File? image) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadProfile,
@@ -1835,7 +1754,7 @@ class MockImageService extends _i1.Mock implements _i22.ImageService {
 /// A class which mocks [ImageImplService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockImageImplService extends _i1.Mock implements _i24.ImageImplService {
+class MockImageImplService extends _i1.Mock implements _i23.ImageImplService {
   @override
   _i6.Reference get storageRef => (super.noSuchMethod(
         Invocation.getter(#storageRef),
@@ -1862,7 +1781,7 @@ class MockImageImplService extends _i1.Mock implements _i24.ImageImplService {
       ) as _i4.FirebaseFirestore);
   @override
   _i9.Future<_i2.Either<_i12.AppException, _i2.None<dynamic>>> uploadProfile(
-          _i23.File? image) =>
+          _i22.File? image) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadProfile,

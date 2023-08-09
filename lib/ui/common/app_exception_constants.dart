@@ -1,6 +1,8 @@
 class AppExceptionConstants {
   static const progressFailed = "Creating topic progress Failed";
 
+  static const enterGoogleAccountText = "Please choose your google account";
+
   AppExceptionConstants._();
 
   static const userNotFound = "User not found";

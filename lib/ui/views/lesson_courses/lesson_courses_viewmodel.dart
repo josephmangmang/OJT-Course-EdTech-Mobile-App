@@ -23,7 +23,8 @@ class LessonCoursesViewModel extends BaseViewModel {
   List<Topic> topics = [];
   List<TopicProgress> topicProgress = [];
 
-  late YoutubePlayerController controller;
+  late YoutubePlayerController controller =
+      YoutubePlayerController(initialVideoId: "");
 
   StreamSubscription<List<TopicProgress>>? streamSubscription;
 
@@ -32,31 +33,45 @@ class LessonCoursesViewModel extends BaseViewModel {
   Future<void> init() async {
     setBusy(true);
     topics = await _topicRepServices.getCourseTopics(course.id);
+    if(course.video != null) {
+      controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(course.video!)!,
+        flags: const YoutubePlayerFlags(
+          controlsVisibleAtStart: false,
+          autoPlay: false,
+          mute: false,
+        ),
+      );
+    }
     final user = await _authenticationService.getCurrentUser();
     user.foldRight([], (user, List<dynamic>? previous) {
       streamSubscription?.cancel();
-       streamSubscription = _topicRepServices
+      streamSubscription = _topicRepServices
           .getCourseTopicsProgress(user.uid, course.id)
           .listen((list) {
         topicProgress = list;
         rebuildUi();
       });
     });
-
-    controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(course.video!)!,
-        flags: const YoutubePlayerFlags(
-          autoPlay: false,
-        ));
     setBusy(false);
   }
-@override
+
+  @override
   void dispose() {
     streamSubscription?.cancel();
     super.dispose();
   }
+
   void topicCardClick(Topic topic, String lessonCount) {
     _navigationRepServices.navigateToCourseLessonView(
         topic: topic, lessonCount: lessonCount, course: course);
+  }
+
+  void onVideoEnd() {
+    if (controller.value.isFullScreen) {
+      controller.toggleFullScreenMode();
+    }
+    controller.notifyListeners();
+    rebuildUi();
   }
 }

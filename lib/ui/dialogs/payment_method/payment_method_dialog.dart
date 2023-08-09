@@ -1,10 +1,10 @@
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
-import 'package:edtechapp/ui/common/app_colors.dart';
 import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
+import '../../common/app_constants.dart';
 import '../../custom_widget/credit_card.dart';
 import 'payment_method_dialog_model.dart';
 
@@ -29,7 +29,7 @@ class PaymentMethodDialog extends StackedView<PaymentMethodDialogModel> {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       backgroundColor: Colors.white,
-      child: viewModel.busy('yourCard')
+      child: viewModel.busy(BusyObjectConstants.yourCardText)
           ? const SizedBox(
               width: 160,
               height: 160,
@@ -97,7 +97,7 @@ class PaymentMethodDialog extends StackedView<PaymentMethodDialogModel> {
                     child: Visibility(
                       visible: viewModel.creditCard.isEmpty,
                       child: const Text(
-                        'Empty payment method',
+                        AppConstants.emptyPaymentMethodText,
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
@@ -107,7 +107,7 @@ class PaymentMethodDialog extends StackedView<PaymentMethodDialogModel> {
                   Visibility(
                     visible: viewModel.creditCard.isNotEmpty,
                       child: AppButton(
-                          title: 'Delete',
+                          title: AppConstants.deleteText,
                           onClick: viewModel.deletePaymentMethod)),
                   GestureDetector(
                     onTap: () => completer(DialogResponse(confirmed: true)),
@@ -126,7 +126,7 @@ class PaymentMethodDialog extends StackedView<PaymentMethodDialogModel> {
                               ),
                             )
                           : const Text(
-                              'Got it',
+                              AppConstants.gotItText,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

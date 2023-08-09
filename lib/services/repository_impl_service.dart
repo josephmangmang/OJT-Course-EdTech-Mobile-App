@@ -44,90 +44,11 @@ class RepositoryImplService extends RepositoryService {
     return listOfCourse;
   }
 
-  @override
-  Future<List<Course>> searchCourse(String searchCourse) async {
-    List<Course> listOfCourse = [];
 
-    if (searchCourse.isEmpty) {
-      try {
-        await db
-            .collection(FirebaseConstants.courseCollection)
-            .get()
-            .then((value) {
-          if (value.docs.isNotEmpty) {
-            var snapshots = value.docs;
-            listOfCourse =
-                snapshots.map((e) => Course.fromJson(e.data())).toList();
-          }
-        });
-      } catch (e) {
-        print(e.toString());
-      }
-      return listOfCourse;
-    } else {
-      try {
-        await db
-            .collection(FirebaseConstants.courseCollection)
-            .where(FirebaseConstants.keywords,
-                arrayContains: searchCourse.toLowerCase())
-            .get()
-            .then((value) {
-          if (value.docs.isNotEmpty) {
-            var snapshots = value.docs;
-            listOfCourse =
-                snapshots.map((e) => Course.fromJson(e.data())).toList();
-          }
-        });
-      } catch (e) {
-        print(e.toString());
-      }
-      return listOfCourse;
-    }
-  }
 
-  @override
-  Future<List<Course>> categoryCourse(String categoryCourse) async {
-    List<Course> listOfCourse = [];
 
-    try {
-      await db
-          .collection(FirebaseConstants.courseCollection)
-          .where(FirebaseConstants.category, isEqualTo: categoryCourse)
-          .get()
-          .then((value) {
-        if (value.docs.isNotEmpty) {
-          var snapshots = value.docs;
-          listOfCourse =
-              snapshots.map((e) => Course.fromJson(e.data())).toList();
-        }
-      });
-    } catch (e) {
-      print(e.toString());
-    }
-    return listOfCourse;
-  }
 
-  @override
-  Future<List<Course>> addCourse() async {
-    List<Course> listOfCourse = [];
 
-    try {
-      await db
-          .collection(FirebaseConstants.courseCollection)
-          .where(FirebaseConstants.id, isEqualTo: itemId)
-          .get()
-          .then((value) {
-        if (value.docs.isNotEmpty) {
-          var snapshots = value.docs;
-          listOfCourse =
-              snapshots.map((e) => Course.fromJson(e.data())).toList();
-        }
-      });
-    } catch (e) {
-      print(e.toString());
-    }
-    return listOfCourse;
-  }
 
   @override
   Future<Either<AppException, None>> buyCourse(String courseId) async {

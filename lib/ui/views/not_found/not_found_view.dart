@@ -62,9 +62,4 @@ class NotFoundView extends StackedView<NotFoundViewModel> {
   ) =>
       NotFoundViewModel();
 
-  @override
-  void onViewModelReady(NotFoundViewModel viewModel) {
-    viewModel.init();
-    super.onViewModelReady(viewModel);
-  }
 }

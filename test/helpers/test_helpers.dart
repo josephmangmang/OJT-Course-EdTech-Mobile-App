@@ -24,7 +24,6 @@ import 'test_helpers.mocks.dart';
   MockSpec<RepositoryImplService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SharedService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ShareImplService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<CourseImplService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SharedPrefServiceService>(
       onMissingStub: OnMissingStub.returnDefault),

@@ -1,8 +1,8 @@
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:intl/intl.dart';
 import '../../common/app_constants.dart';
 import 'add_credit_card_viewmodel.dart';
 
@@ -29,7 +29,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: viewModel.busy('creditCard')
+        child: viewModel.busy(BusyObjectConstants.creditCardText)
             ? const Center(child: CircularProgressIndicator())
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,11 +42,10 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      oldPaymentMethod ? 'Edit CreditCard' : 'Add CreditCard',
+                      oldPaymentMethod ? AppConstants.editCreditCardText : AppConstants.addCreditCardText,
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 24,
-                        fontFamily: 'Rubik',
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.50,
                       ),
@@ -59,7 +58,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                     child: TextField(
                       controller: viewModel.nameController,
                       decoration: const InputDecoration(
-                        hintText: 'Name',
+                        hintText: AppConstants.nameText,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10.0),
@@ -86,7 +85,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                       onChanged: viewModel.paymentMethodDetector,
                       controller: viewModel.cardNumberController,
                       decoration: InputDecoration(
-                        hintText: 'Credit card number',
+                        hintText: AppConstants.creditCardNumberText,
                         border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10.0),
@@ -104,7 +103,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                         ),
                         suffixIcon: viewModel.cardNumberController.text.isEmpty
                             ? const Icon(Icons.warning)
-                            : viewModel.busy('cardType')
+                            : viewModel.busy(BusyObjectConstants.cardTypeText)
                                 ? const Icon(Icons.warning)
                                 : Image.asset(viewModel.cardType),
                       ),
@@ -124,7 +123,6 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -164,11 +162,10 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "CVV",
+                              AppConstants.cvvText,
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
-                                fontFamily: 'Rubik',
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -205,7 +202,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
                   ),
                   const SizedBox(height: 32),
                   AppButton(
-                    title: "Save",
+                    title: AppConstants.saveText,
                     onClick: () {
                       viewModel.save(cardId);
                     },

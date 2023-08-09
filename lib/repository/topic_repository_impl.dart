@@ -8,7 +8,6 @@ import 'package:edtechapp/model/topic_progress.dart';
 import 'package:edtechapp/repository/question_repository.dart';
 import 'package:edtechapp/repository/topic_repository.dart';
 import 'package:edtechapp/services/authentication_service.dart';
-import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 
 class TopicRepositoryImp implements TopicRepository {
