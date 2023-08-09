@@ -131,7 +131,7 @@ class AddCreditCardViewModel extends BaseViewModel {
       cardType = PngImages.visa;
       selectedPaymentMethod = PaymentMethodConstants.visaText;
     } else {
-      cardType = const Icon(Icons.warning).toString();
+      cardType = const Icon(Icons.warning) as String;
     }
     setBusyForObject(BusyObjectConstants.cardTypeText, false);
     rebuildUi();
