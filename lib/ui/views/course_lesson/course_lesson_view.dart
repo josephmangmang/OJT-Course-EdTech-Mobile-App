@@ -200,7 +200,7 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
                                 margin:
                                     const EdgeInsets.symmetric(horizontal: 16),
                                 child: AppYoutubePlayer(
-                                  video: topic.video,
+                                  controller: viewModel.controller,
                                 ),
                               ),
                               Container(
@@ -244,6 +244,12 @@ class CourseLessonView extends StackedView<CourseLessonViewModel> {
         ),
       ),
     );
+  }
+
+ @override
+  void onViewModelReady(CourseLessonViewModel viewModel) {
+   viewModel.init();
+   super.onViewModelReady(viewModel);
   }
 
   @override

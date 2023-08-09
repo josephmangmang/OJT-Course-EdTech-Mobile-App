@@ -52,6 +52,7 @@ class PaymentCheckoutViewModel extends BaseViewModel {
             message: "Course purchase successfully",
             duration: const Duration(seconds: 2));
         Future.delayed(const Duration(seconds: 2));
+        _navigationService.popUntil((route) => route.settings.name == Routes.projectDetailView);
         _navigationService.replaceWithYourCoursesView();
       });
     });

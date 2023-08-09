@@ -24,8 +24,11 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
             alignment: Alignment.center,
             child: Column(
               children: [
-                CustomAppBar(
-                  title: AppConstants.paymentText,
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomAppBar(
+                    title: AppConstants.paymentText,
+                  ),
                 ),
                 const SizedBox(
                   height: 127,
@@ -61,7 +64,7 @@ class NoPaymentView extends StackedView<NoPaymentViewModel> {
                 ),
                 AppButton(
                   title: AppConstants.continueText,
-                  onClick: () {},
+                  onClick: viewModel.btnContinuePressed,
                 ),
               ],
             ),

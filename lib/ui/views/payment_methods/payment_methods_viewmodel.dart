@@ -19,7 +19,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
   bool isOldPaymentMethodVisaCardClick = false;
   bool isOldPaymentMethodMasterCardClick = false;
   int selectedCardIndex = -1;
-  late List<CreditCard> creditCard;
+  late List<CreditCard> creditCard = [];
   init() async {
     loadYourCards();
     cardType();
@@ -60,6 +60,10 @@ class PaymentMethodsViewModel extends BaseViewModel {
   }
 
   void onContinuePressed() async {
+    if (selectedCardIndex == -1) {
+    _navigationService.navigateToNoPaymentView();
+    return;
+    }
     if (isAddCreditCardClicked == true) {
       await _navigationService.navigateToAddCreditCardView(
           oldPaymentMethod: false,

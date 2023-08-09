@@ -234,14 +234,19 @@ class AuthenticationServiceImpl implements AuthenticationService {
 
       if (result.status == FacebookLoginStatus.success) {
         final FacebookAccessToken? accessToken = result.accessToken;
-        final AuthCredential authCredential = FacebookAuthProvider.credential(accessToken!.token);
-        UserCredential userCredential = await auth.signInWithCredential(authCredential);
+        final AuthCredential authCredential =
+            FacebookAuthProvider.credential(accessToken!.token);
+        UserCredential userCredential =
+            await auth.signInWithCredential(authCredential);
         final user = User(
             uid: userCredential.user!.uid,
             email: await fb.getUserEmail() ?? '',
             name: userCredential.additionalUserInfo!.profile!['name'],
             profileImageUrl: await fb.getProfileImageUrl(width: 128) ?? '');
-        await db.collection(FirebaseConstants.userCollection).doc(userCredential.user!.uid).set(user.toJson());
+        await db
+            .collection(FirebaseConstants.userCollection)
+            .doc(userCredential.user!.uid)
+            .set(user.toJson());
         await _sharedPrefService.saveUser(user);
         return Right(user);
       } else {

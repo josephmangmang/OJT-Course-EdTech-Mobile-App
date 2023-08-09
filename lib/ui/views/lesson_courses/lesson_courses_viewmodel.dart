@@ -8,6 +8,7 @@ import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../model/course.dart';
 import '../../../model/topic.dart';
@@ -22,6 +23,10 @@ class LessonCoursesViewModel extends BaseViewModel {
   List<Topic> topics = [];
   List<TopicProgress> topicProgress = [];
 
+  late YoutubePlayerController controller;
+
+  StreamSubscription<List<TopicProgress>>? streamSubscription;
+
   LessonCoursesViewModel(this.course);
 
   Future<void> init() async {
@@ -29,16 +34,27 @@ class LessonCoursesViewModel extends BaseViewModel {
     topics = await _topicRepServices.getCourseTopics(course.id);
     final user = await _authenticationService.getCurrentUser();
     user.foldRight([], (user, List<dynamic>? previous) {
-      _topicRepServices
+      streamSubscription?.cancel();
+       streamSubscription = _topicRepServices
           .getCourseTopicsProgress(user.uid, course.id)
           .listen((list) {
         topicProgress = list;
         rebuildUi();
       });
     });
+
+    controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(course.video!)!,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+        ));
     setBusy(false);
   }
-
+@override
+  void dispose() {
+    streamSubscription?.cancel();
+    super.dispose();
+  }
   void topicCardClick(Topic topic, String lessonCount) {
     _navigationRepServices.navigateToCourseLessonView(
         topic: topic, lessonCount: lessonCount, course: course);

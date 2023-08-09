@@ -49,7 +49,7 @@ class LessonCoursesView extends StackedView<LessonCoursesViewModel> {
                               child: course.video == null
                                   ? Image.asset(PngImages
                                       .coolKidsLongDistanceRelationship1)
-                                  : AppYoutubePlayer(video: course.video!),
+                                  : AppYoutubePlayer(controller: viewModel.controller,),
                             ),
                             Container(
                               alignment: Alignment.bottomLeft,

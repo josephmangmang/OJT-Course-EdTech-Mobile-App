@@ -3,6 +3,7 @@ import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
+import '../../common/app_constants.dart';
 import 'add_credit_card_viewmodel.dart';
 
 class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
@@ -13,6 +14,7 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
   final String cvv;
   final String paymentMethod;
   final String cardId;
+
   const AddCreditCardView(this.oldPaymentMethod, this.name, this.cardNumber,
       this.expireDate, this.cvv, this.cardId, this.paymentMethod,
       {Key? key})
@@ -32,7 +34,10 @@ class AddCreditCardView extends StackedView<AddCreditCardViewModel> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomAppBar(title: 'Payment'),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    child: CustomAppBar(title: AppConstants.paymentText),
+                  ),
                   const SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
