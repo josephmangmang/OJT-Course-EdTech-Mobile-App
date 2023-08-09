@@ -60,7 +60,7 @@ class PaymentMethodsViewModel extends BaseViewModel {
   }
 
   void onContinuePressed() async {
-    if (selectedCardIndex == -1) {
+    if (selectedCardIndex == -1 && isAddCreditCardClicked != true && isVisaCardClicked != true && isMasterCardClicked != true) {
     _navigationService.navigateToNoPaymentView();
     return;
     }

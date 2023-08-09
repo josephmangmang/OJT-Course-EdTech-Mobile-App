@@ -16,107 +16,110 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
 
   @override
   Widget builder(
-    BuildContext context,
-    PaymentMethodsViewModel viewModel,
-    Widget? child,
-  ) {
+      BuildContext context,
+      PaymentMethodsViewModel viewModel,
+      Widget? child,
+      ) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: viewModel.busy('yourCard')
             ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: CustomAppBar(
-                          title: AppConstants.paymentText,
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(
-                              top: 8,
-                              bottom: 78,
-                              left: 16,
-                            ),
-                            child: const Text(
-                              "Choose payment method",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            primary: false,
-                            itemCount: viewModel.creditCard.length,
-                            itemBuilder: (context, index) {
-                              var creditCardItem = viewModel.creditCard[index];
-                              return CreditCards(
-                                creditCardButton: () {
-                                  viewModel.setSelectedIndex(index);
-                                },
-                                paymentMethod: creditCardItem.paymentMethod,
-                                expireDate: creditCardItem.expireDate,
-                                cardNumber: creditCardItem.cardNumber,
-                                isSelected:
-                                    viewModel.isAddCreditCardClicked == true
-                                        ? false
-                                        : viewModel.selectedCardIndex == index,
-                                marginSize: 25,
-                              );
-                            },
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(14),
-                            margin: const EdgeInsets.symmetric(horizontal: 25),
-                            decoration: BoxDecoration(
-                              border: viewModel.isAddCreditCardClicked == true
-                                  ? Border.all(
-                                      color: const Color(0xFFE3562A),
-                                      width: 2,
-                                    )
-                                  : null,
-                            ),
-                            child: TextButton(
-                              onPressed: viewModel.onAddCreditCardClick,
-                              child: const Text(
-                                'Add credit card',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 20,
-                                    fontFamily: 'Rubiks'),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 216,
-                          ),
-                          AppButton(
-                            title: "Continue",
-                            onClick: viewModel.onContinuePressed,
-                          ),
-                        ],
-                      ),
-                    ],
+            : Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomAppBar(
+                    title: AppConstants.paymentText,
                   ),
                 ),
-              ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 78,
+                    left: 16,
+                  ),
+                  alignment: Alignment.bottomLeft,
+                  child: const Text(
+                    "Choose payment method",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: viewModel.creditCard.length,
+                          itemBuilder: (context, index) {
+                            var creditCardItem =
+                            viewModel.creditCard[index];
+                            return CreditCards(
+                              creditCardButton: () {
+                                viewModel.setSelectedIndex(index);
+                              },
+                              paymentMethod:
+                              creditCardItem.paymentMethod,
+                              expireDate: creditCardItem.expireDate,
+                              cardNumber: creditCardItem.cardNumber,
+                              isSelected:
+                              viewModel.isAddCreditCardClicked ==
+                                  true
+                                  ? false
+                                  : viewModel.selectedCardIndex ==
+                                  index,
+                              marginSize: 25,
+                            );
+                          },
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          margin: const EdgeInsets.symmetric(horizontal: 25),
+                          decoration: BoxDecoration(
+                            border: viewModel.isAddCreditCardClicked == true
+                                ? Border.all(
+                              color: const Color(0xFFE3562A),
+                              width: 2,
+                            )
+                                : null,
+                          ),
+                          child: TextButton(
+                            onPressed: viewModel.onAddCreditCardClick,
+                            child: const Text(
+                              'Add credit card',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20,
+                                  fontFamily: 'Rubiks'),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: AppButton(
+          title: "Continue",
+          onClick: viewModel.onContinuePressed,
+        ),
       ),
     );
   }
 
   @override
   PaymentMethodsViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
+      BuildContext context,
+      ) =>
       PaymentMethodsViewModel();
 
   @override
@@ -125,3 +128,4 @@ class PaymentMethodsView extends StackedView<PaymentMethodsViewModel> {
     super.onViewModelReady(viewModel);
   }
 }
+
