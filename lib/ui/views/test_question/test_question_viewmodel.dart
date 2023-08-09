@@ -1,10 +1,8 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/repository/question_repository.dart';
-import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../model/course.dart';
 import '../../../model/question.dart';

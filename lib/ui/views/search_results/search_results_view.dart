@@ -1,6 +1,5 @@
 import 'package:edtechapp/resources/svg_images.dart';
 import 'package:edtechapp/ui/views/not_found/not_found_view.dart';
-import 'package:edtechapp/ui/views/settings/settings_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_svg/svg.dart';

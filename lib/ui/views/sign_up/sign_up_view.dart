@@ -5,7 +5,6 @@ import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'sign_up_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

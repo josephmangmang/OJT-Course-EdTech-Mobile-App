@@ -3,7 +3,6 @@ import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 
 import 'no_payment_viewmodel.dart';

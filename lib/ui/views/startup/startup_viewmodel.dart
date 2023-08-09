@@ -1,6 +1,5 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';

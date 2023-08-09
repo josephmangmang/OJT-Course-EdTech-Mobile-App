@@ -4,13 +4,8 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 
-class PaymentAdddedViewModel extends BaseViewModel {
+class PaymentAddedViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-
-
-  void backPressed() {
-    _navigationService.back();
-  }
 
   void paymentMethod() {
     _navigationService.replaceWithPaymentCheckoutView();

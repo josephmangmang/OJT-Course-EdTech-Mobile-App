@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
+import '../../common/app_constants.dart';
 
 class SignUpViewModel extends BaseViewModel {
   final nameTextController = TextEditingController();
@@ -40,7 +41,7 @@ class SignUpViewModel extends BaseViewModel {
         _snackBarService.showSnackbar(message: l.message);
       }, (r) {
         _snackBarService.showSnackbar(
-            message: "Account created successfully.",
+            message: AppConstants.accountCreatedSuccessfullyText,
             duration: const Duration(seconds: 2));
         _navigatorService.replaceWithLoginView();
       });

@@ -1,5 +1,6 @@
 import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:edtechapp/ui/custom_widget/profile_card.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
               ),
               GestureDetector(
                 onTap: viewModel.uploadProfile,
-                child: viewModel.busy('profile')
+                child: viewModel.busy(BusyObjectConstants.profileText)
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )

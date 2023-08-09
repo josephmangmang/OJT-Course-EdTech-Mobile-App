@@ -1,13 +1,9 @@
-import 'package:edtechapp/resources/svg_images.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.dialogs.dart';
 import '../../../app/app.locator.dart';
 import '../../../model/user.dart';
 import '../../../services/authentication_service.dart';
-import '../../../services/shared_service.dart';
 import '../../common/app_constants.dart';
 
 class SettingsViewModel extends BaseViewModel {
@@ -33,7 +29,7 @@ class SettingsViewModel extends BaseViewModel {
 
   void showUpdatePasswordPopup() async {
     await _dialogService.showCustomDialog(
-      title: "Change Password",
+      title: AppConstants.changePasswordText,
       variant: DialogType.updatePassword,
       description: "",
     );
@@ -41,7 +37,7 @@ class SettingsViewModel extends BaseViewModel {
 
   void showUpdateEmailPopup() async {
     await _dialogService.showCustomDialog(
-      title: "Change Email",
+      title: AppConstants.changeEmailText,
       variant: DialogType.updateEmail,
       description: "",
     );

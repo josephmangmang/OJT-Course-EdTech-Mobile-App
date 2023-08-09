@@ -1,26 +1,24 @@
-import 'dart:io';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/model/user.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../model/course.dart';
 import '../../../repository/course_repository.dart';
 import '../../../services/authentication_service.dart';
-import '../../../services/repository_service.dart';
 
 class HomeViewModel extends BaseViewModel {
   TextEditingController searchTextController = TextEditingController();
 
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
-
+  final _snackBarService = locator<SnackbarService>();
   final _courseRepository = locator<CourseRepository>();
 
   List<Course> courses = [];
-  final PageController pageController =
-      PageController(initialPage: 0); // Added currentIndex variable
+  final PageController pageController = PageController(initialPage: 0);
 
   late User user;
 
@@ -41,8 +39,6 @@ class HomeViewModel extends BaseViewModel {
     _navigationService.navigateToSearchResultsView();
   }
 
-
-
   void coursePressed(Course course) async {
     setBusy(true);
     final isPurchaseCourse =
@@ -58,8 +54,7 @@ class HomeViewModel extends BaseViewModel {
   void onPageChanged(int index) {
     previousPageIndex = currentPageIndex;
     currentPageIndex = index;
-    print(
-        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
+
     rebuildUi();
   }
 
@@ -67,8 +62,6 @@ class HomeViewModel extends BaseViewModel {
     int tempIndex = currentPageIndex;
     changePage(index);
     previousPageIndex = tempIndex;
-    print(
-        "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
   }
 
   void onBackPressed() {
@@ -81,8 +74,6 @@ class HomeViewModel extends BaseViewModel {
     } else {
       changePage(previousPageIndex!);
       isBackPressed = true;
-      print(
-          "onDestination current $currentPageIndex, previous $previousPageIndex isBack$isBackPressed");
     }
     previousPageIndex = null;
   }
@@ -114,9 +105,14 @@ class HomeViewModel extends BaseViewModel {
   }
 
   Future<void> loadUser() async {
-    setBusyForObject('user', true);
+    setBusyForObject(BusyObjectConstants.userText, true);
     final response = await _authenticationService.getCurrentUser();
-    response.fold((l) => print(l.message), (r) => user = r);
-    setBusyForObject('user', false);
+    response.fold(
+        (l) => _snackBarService.showSnackbar(
+              message: l.message,
+              duration: const Duration(seconds: 2),
+            ),
+        (r) => user = r);
+    setBusyForObject(BusyObjectConstants.userText, false);
   }
 }

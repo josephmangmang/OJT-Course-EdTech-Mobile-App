@@ -18,10 +18,8 @@ import 'package:edtechapp/ui/views/settings/settings_view.dart';
 import 'package:edtechapp/ui/views/project_detail/project_detail_view.dart';
 import 'package:edtechapp/ui/views/your_courses/your_courses_view.dart';
 import 'package:edtechapp/ui/views/lesson_courses/lesson_courses_view.dart';
-import 'package:edtechapp/ui/views/not_saved/not_saved_view.dart';
 import 'package:edtechapp/ui/views/no_payment/no_payment_view.dart';
-import 'package:edtechapp/ui/views/saved/saved_view.dart';
-import 'package:edtechapp/ui/views/payment_addded/payment_added_view.dart';
+import 'package:edtechapp/ui/views/payment_added/payment_added_view.dart';
 import 'package:edtechapp/ui/views/not_found/not_found_view.dart';
 import 'package:edtechapp/ui/views/intro/intro_view.dart';
 
@@ -66,9 +64,7 @@ import 'package:edtechapp/ui/dialogs/payment_method/payment_method_dialog.dart';
         transitionsBuilder: TransitionsBuilders.slideLeftWithFade),
     MaterialRoute(page: YourCoursesView),
     MaterialRoute(page: LessonCoursesView),
-    MaterialRoute(page: NotSavedView),
     MaterialRoute(page: NoPaymentView),
-    MaterialRoute(page: SavedView),
     MaterialRoute(page: PaymentAddedView),
     MaterialRoute(page: NotFoundView),
     MaterialRoute(page: IntroPage),

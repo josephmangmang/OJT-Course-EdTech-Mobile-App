@@ -1,12 +1,12 @@
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/payment_method_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../model/credit_card.dart';
 import '../../../services/repository_service.dart';
-import '../add_credit_card/add_credit_card_view.dart';
+import '../../common/busy_object_constants.dart';
 
 class PaymentMethodsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
@@ -47,15 +47,15 @@ class PaymentMethodsViewModel extends BaseViewModel {
   }
 
   cardType() {
-    setBusyForObject('cardType', true);
+    setBusyForObject(BusyObjectConstants.cardTypeText, true);
     for (var card in creditCard) {
-      if (card.paymentMethod == "mastercard") {
+      if (card.paymentMethod == PaymentMethodConstants.masterCardText) {
         image = PngImages.mastercard;
-      } else if (card.paymentMethod == "visa") {
+      } else if (card.paymentMethod == PaymentMethodConstants.visaText) {
         image = PngImages.visa;
       }
     }
-    setBusyForObject('cardType', false);
+    setBusyForObject(BusyObjectConstants.cardTypeText, false);
     rebuildUi();
   }
 
@@ -104,11 +104,11 @@ class PaymentMethodsViewModel extends BaseViewModel {
   }
 
   loadYourCards() async {
-    setBusyForObject('yourCard', true);
+    setBusyForObject(BusyObjectConstants.yourCardText, true);
     _repositoryService.getCreditCard().then((value) {
       creditCard = value;
 
-      setBusyForObject('yourCard', false);
+      setBusyForObject(BusyObjectConstants.yourCardText, false);
     });
   }
 
@@ -118,8 +118,8 @@ class PaymentMethodsViewModel extends BaseViewModel {
 
     String selectedPaymentMethod = creditCard[index].paymentMethod;
 
-    isMasterCardClicked = selectedPaymentMethod == "mastercard";
-    isVisaCardClicked = selectedPaymentMethod == "visa";
+    isMasterCardClicked = selectedPaymentMethod == PaymentMethodConstants.masterCardText;
+    isVisaCardClicked = selectedPaymentMethod == PaymentMethodConstants.visaText;
 
     rebuildUi();
   }

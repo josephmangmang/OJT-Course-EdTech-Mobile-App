@@ -4,16 +4,15 @@ import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:edtechapp/ui/custom_widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'payment_added_viewmodel.dart';
 
-import 'saved_viewmodel.dart';
-
-class SavedView extends StackedView<SavedViewModel> {
-  const SavedView({Key? key}) : super(key: key);
+class PaymentAddedView extends StackedView<PaymentAddedViewModel> {
+  const PaymentAddedView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    SavedViewModel viewModel,
+    PaymentAddedViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
@@ -21,20 +20,21 @@ class SavedView extends StackedView<SavedViewModel> {
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 CustomAppBar(
-                  title: AppConstants.savedText,
+                  title: AppConstants.paymentText,
                 ),
                 const SizedBox(
                   height: 127,
                 ),
-                Image.asset(PngImages.coolKidsOnWheels),
+                Image.asset(PngImages.coolKidsSitting),
                 const SizedBox(
                   height: 32,
                 ),
                 const Text(
-                  AppConstants.courseSavedText,
+                  AppConstants.paymentMethodAddedText,
                   style: TextStyle(
                     color: Color(0xFF3B3936),
                     fontSize: 24,
@@ -47,7 +47,7 @@ class SavedView extends StackedView<SavedViewModel> {
                   height: 8,
                 ),
                 const Text(
-                  AppConstants.courseSavedBodyText,
+                  AppConstants.paymentMethodAddedBodyText,
                   style: TextStyle(
                     color: Color(0xFF78746D),
                     fontSize: 14,
@@ -60,7 +60,7 @@ class SavedView extends StackedView<SavedViewModel> {
                 ),
                 AppButton(
                   title: AppConstants.continueText,
-                  onClick: () {},
+                  onClick: viewModel.paymentMethod,
                 ),
               ],
             ),
@@ -71,8 +71,8 @@ class SavedView extends StackedView<SavedViewModel> {
   }
 
   @override
-  SavedViewModel viewModelBuilder(
+  PaymentAddedViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      SavedViewModel();
+      PaymentAddedViewModel();
 }

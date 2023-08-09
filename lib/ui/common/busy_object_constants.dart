@@ -5,6 +5,12 @@ class BusyObjectConstants {
 
   static const yourCardText = "yourCard";
 
+  static const userText = "user";
+
+  static const cardText = "card";
+
+  static const profileText = "profile";
+
   BusyObjectConstants._();
 
 

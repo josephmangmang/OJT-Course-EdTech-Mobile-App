@@ -1,4 +1,5 @@
 import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:edtechapp/ui/custom_widget/search_course.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    viewModel.busy('user')
+                                    viewModel.busy(BusyObjectConstants.userText)
                                         ? Container()
                                         : Text(
                                             viewModel.user.name,

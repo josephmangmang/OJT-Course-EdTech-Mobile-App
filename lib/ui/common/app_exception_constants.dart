@@ -3,6 +3,8 @@ class AppExceptionConstants {
 
   static const enterGoogleAccountText = "Please choose your google account";
 
+  static const invalidInputText = "Your input is invalid";
+
   AppExceptionConstants._();
 
   static const userNotFound = "User not found";

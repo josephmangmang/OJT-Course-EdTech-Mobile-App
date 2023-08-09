@@ -27,7 +27,6 @@ class YourCoursesViewModel extends BaseViewModel {
 
   Future<void> loadUserCourses() async {
     courses = await _repository.getUserCourses();
-    print(courses.toString());
-    print(courses.length);
+
   }
 }

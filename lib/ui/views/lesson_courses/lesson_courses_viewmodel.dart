@@ -1,19 +1,14 @@
 import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/repository/topic_repository.dart';
 import 'package:edtechapp/services/authentication_service.dart';
-import 'package:edtechapp/ui/common/firebase_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
 import '../../../model/course.dart';
 import '../../../model/topic.dart';
 import '../../../model/topic_progress.dart';
-import '../../../model/user.dart';
 
 class LessonCoursesViewModel extends BaseViewModel {
   final _topicRepServices = locator<TopicRepository>();

@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
+import '../../common/app_constants.dart';
 
 class ForgotPasswordViewModel extends BaseViewModel {
   final emailController = TextEditingController();
@@ -21,7 +22,7 @@ class ForgotPasswordViewModel extends BaseViewModel {
       _snackBarService.showSnackbar(message: l.message);
     }, (r) {
       _snackBarService.showSnackbar(
-          message: "Password reset link sent! Check your email");
+          message: AppConstants.passwordResetLinkText);
     });
   }
 }

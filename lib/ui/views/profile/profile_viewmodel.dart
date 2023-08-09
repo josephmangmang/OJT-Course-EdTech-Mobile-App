@@ -1,20 +1,13 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:edtechapp/app/app.router.dart';
 import 'package:edtechapp/services/authentication_service.dart';
-import 'package:edtechapp/ui/common/app_strings.dart';
-import 'package:edtechapp/ui/views/home/home_view.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.dialogs.dart';
 import '../../../app/app.locator.dart';
-import '../../../model/user.dart';
 import '../../../services/image_service.dart';
-import '../../../services/shared_service.dart';
-import '../../common/app_constants.dart';
-import '../../views/home/home_viewmodel.dart';
 
 class ProfileViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
@@ -47,7 +40,7 @@ class ProfileViewModel extends BaseViewModel {
 
   void uploadProfile() async {
     await _dialogService.showCustomDialog(
-      title: "Upload Profile",
+      title: AppConstants.uploadProfileText,
       variant: DialogType.updateProfile,
       imageUrl: image,
       description: "",
@@ -56,7 +49,7 @@ class ProfileViewModel extends BaseViewModel {
 
   void paymentMethod() async {
     await _dialogService.showCustomDialog(
-      title:"Payment Method",
+      title:AppConstants.paymentMethodText,
       variant: DialogType.paymentMethod,
       imageUrl: image,
       description: "",
@@ -64,7 +57,7 @@ class ProfileViewModel extends BaseViewModel {
   }
 
   loadProfile() async {
-    setBusyForObject('profile', true);
+    setBusyForObject(BusyObjectConstants.profileText, true);
     final user = await _authenticationService.getCurrentUser();
     user.foldRight([], (user, List<dynamic>? previous) {
       _imageService.profileImage(user.uid).listen((imageProfile) {
@@ -73,6 +66,6 @@ class ProfileViewModel extends BaseViewModel {
       });
     });
 
-    setBusyForObject('profile', false);
+    setBusyForObject(BusyObjectConstants.profileText, false);
   }
 }

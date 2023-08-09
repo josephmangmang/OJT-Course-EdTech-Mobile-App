@@ -36,6 +36,22 @@ class AppConstants {
 
   static const profileChangeSuccessfullyText = "Profile change successfully!";
 
+  static const passwordResetLinkText = "Password reset link sent! Check your email";
+
+  static const nextText = "Next";
+
+  static const letsStartText = "Let's Start";
+
+  static const coursePurchaseSuccessfullyText = "Course purchase successfully";
+
+  static const uploadProfileText = "Upload Profile";
+
+  static const changePasswordText = "Change Password";
+
+  static const changeEmailText = "Change Email";
+
+  static const accountCreatedSuccessfullyText = "Account created successfully.";
+
   AppConstants._();
 
   static const userPrefKey = 'USER_KEY';

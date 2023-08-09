@@ -1,3 +1,4 @@
+import 'package:edtechapp/resources/png_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
@@ -27,7 +28,7 @@ class StartupView extends StackedView<StartupViewModel> {
                   height: 250,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/png/Cool_Kids_On_Wheels.png"),
+                      image: AssetImage(PngImages.coolKidsOnWheels),
                       fit: BoxFit.contain,
                     ),
                   ),

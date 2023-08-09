@@ -1,13 +1,12 @@
-import 'dart:ffi';
-
 import 'package:edtechapp/app/app.locator.dart';
 import 'package:edtechapp/app/app.router.dart';
-import 'package:edtechapp/model/course.dart';
 import 'package:edtechapp/model/credit_card.dart';
 import 'package:edtechapp/repository/topic_repository.dart';
 import 'package:edtechapp/services/repository_service.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
+import 'package:edtechapp/ui/common/app_exception_constants.dart';
 import 'package:edtechapp/ui/common/app_temp.dart';
-import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -22,13 +21,9 @@ class PaymentCheckoutViewModel extends BaseViewModel {
   late CreditCard creditCard;
 
   void init() {
-    setBusyForObject('card', true);
+    setBusyForObject(BusyObjectConstants.cardText, true);
     creditCard = AppTempConstant.tempCard!;
-    setBusyForObject('card', false);
-  }
-
-  void check() {
-    _snackBarService.showSnackbar(message: "debug");
+    setBusyForObject(BusyObjectConstants.cardText, false);
   }
 
   Future<void> payCourse() async {
@@ -37,8 +32,7 @@ class PaymentCheckoutViewModel extends BaseViewModel {
 
     response.fold((error) {
       if (error is InvalidInputException) {
-        print(error.message);
-        _snackBarService.showSnackbar(message: 'Your input is invalid');
+        _snackBarService.showSnackbar(message: AppExceptionConstants.invalidInputText);
       } else {
         _snackBarService.showSnackbar(message: error.message);
       }
@@ -49,7 +43,7 @@ class PaymentCheckoutViewModel extends BaseViewModel {
         _snackBarService.showSnackbar(message: l.message);
       }, (r) {
         _snackBarService.showSnackbar(
-            message: "Course purchase successfully",
+            message: AppConstants.coursePurchaseSuccessfullyText,
             duration: const Duration(seconds: 2));
         Future.delayed(const Duration(seconds: 2));
         _navigationService.popUntil((route) => route.settings.name == Routes.projectDetailView);

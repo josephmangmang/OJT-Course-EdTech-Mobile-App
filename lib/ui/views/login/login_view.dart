@@ -60,11 +60,13 @@ class LoginView extends StackedView<LoginViewModel> {
                             const SizedBox(
                               height: 8.0,
                             ),
-
-                            SocialNetworks(facebookClick: viewModel.facebookLogin, googleClick: viewModel.signInWithGoogle, instagramClick: (){})
+                            SocialNetworks(
+                              facebookClick: viewModel.facebookLogin,
+                              googleClick: viewModel.signInWithGoogle,
+                              instagramClick: () {},
+                            )
                           ],
                         ),
-
                         const SizedBox(
                           height: 16.0,
                         ),

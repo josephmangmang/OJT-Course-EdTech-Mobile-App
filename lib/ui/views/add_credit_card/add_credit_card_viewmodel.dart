@@ -71,7 +71,7 @@ class AddCreditCardViewModel extends BaseViewModel {
           _snackBarService.showSnackbar(message: l.message);
         }, (r) async {
           _snackBarService.showSnackbar(
-              message: "Save Successfully", duration: const Duration(seconds: 2));
+              message: AppConstants.saveSuccessfullyText, duration: const Duration(seconds: 2));
           _navigationService.replaceWithPaymentAddedView();
         });
       } else {
@@ -122,7 +122,7 @@ class AddCreditCardViewModel extends BaseViewModel {
   }
 
   void paymentMethodDetector(String value) async {
-    setBusyForObject(BusyObjectConstants.creditCardText, true);
+    setBusyForObject(BusyObjectConstants.cardTypeText, true);
     if (value.startsWith(RegExp(
         r'((5[1-5])|(222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720))'))) {
       cardType = PngImages.mastercard;
@@ -131,7 +131,7 @@ class AddCreditCardViewModel extends BaseViewModel {
       cardType = PngImages.visa;
       selectedPaymentMethod = PaymentMethodConstants.visaText;
     } else {
-      cardType = const Icon(Icons.warning) as String;
+      cardType = const Icon(Icons.warning).toString();
     }
     setBusyForObject(BusyObjectConstants.cardTypeText, false);
     rebuildUi();

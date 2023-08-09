@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../custom_widget/account_information.dart';
 import 'settings_viewmodel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsView extends StackedView<SettingsViewModel> {
   final Function() onBackPressed;

@@ -4,23 +4,24 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
+import '../../common/app_constants.dart';
 
 class IntroViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _sharedPrefService = locator<SharedPrefServiceService>();
-  String buttonText = 'Next';
+  String buttonText = AppConstants.nextText;
   void goToLoginPage() {
     _sharedPrefService.setAppIntroGuide();
     _navigationService.replaceWithLoginView();
   }
 
   void changeText() {
-    buttonText = 'Let\'s Start';
+    buttonText = AppConstants.letsStartText;
     rebuildUi();
   }
 
   void changeTextToNext() {
-    buttonText = "Next";
+    buttonText = AppConstants.nextText;
     notifyListeners();
   }
 
