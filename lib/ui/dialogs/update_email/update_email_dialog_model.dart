@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../../services/authentication_service.dart';
+import '../../common/app_constants.dart';
 
 class UpdateEmailDialogModel extends BaseViewModel {
   final currentEmailField = TextEditingController();
@@ -25,7 +26,7 @@ class UpdateEmailDialogModel extends BaseViewModel {
             message: l.message, duration: const Duration(seconds: 2)), (r) {
       _navigatorService.replaceWithLoginView();
       snackbarService.showSnackbar(
-          message: "Email Successfully Change! Try to login",
+          message: AppConstants.emailChangeSuccessfullyText,
           duration: const Duration(seconds: 2));
     });
     setBusy(false);

@@ -10,7 +10,6 @@ class User with _$User {
     required String email,
     required String uid,
     @Default([]) List<String> purchaseCourses,
-    @Default([]) List<String> cartCourses,
     @Default('') String profileImageUrl,
   }) = _User;
 

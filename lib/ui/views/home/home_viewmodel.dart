@@ -12,8 +12,7 @@ import '../../../services/repository_service.dart';
 
 class HomeViewModel extends BaseViewModel {
   TextEditingController searchTextController = TextEditingController();
-  String category = "";
-  final _repository = locator<RepositoryService>();
+
   final _authenticationService = locator<AuthenticationService>();
   final _navigationService = locator<NavigationService>();
 
@@ -42,19 +41,7 @@ class HomeViewModel extends BaseViewModel {
     _navigationService.navigateToSearchResultsView();
   }
 
-  Future<void> categoryCourse() async {
-    setBusy(true);
-    courses = [];
-    await _repository.categoryCourse(category).then((value) {
-      if (value.isNotEmpty) {
-        courses = value;
-      }
-    });
 
-    print(searchTextController.text);
-    setBusy(false);
-    rebuildUi();
-  }
 
   void coursePressed(Course course) async {
     setBusy(true);

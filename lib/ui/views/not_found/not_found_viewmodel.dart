@@ -8,33 +8,6 @@ import '../../../app/app.locator.dart';
 import '../../../services/repository_service.dart';
 
 class NotFoundViewModel extends BaseViewModel {
-  TextEditingController searchTextController = TextEditingController();
-  final _navigationService = locator<NavigationService>();
-  final _repository = locator<RepositoryService>();
 
-  init() {
-    setBusy(true);
-    searchTextController.text = searchText;
-    setBusy(false);
-  }
 
-  void goBack() {
-    _navigationService.back();
-  }
-
-  void seachCourse() async {
-    setBusy(true);
-    searchText = searchTextController.text;
-    await _repository.searchCourse(searchTextController.text).then((value) {
-      if (value.isNotEmpty) {
-        _navigationService.replaceWithSearchResultsView();
-      } else {
-        searchTextController.text = searchText;
-      }
-    });
-
-    setBusy(false);
-
-    rebuildUi();
-  }
 }

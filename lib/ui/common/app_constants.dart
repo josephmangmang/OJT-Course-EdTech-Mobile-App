@@ -2,6 +2,40 @@ class AppConstants {
   static const allAnswerCorrect =
       "Congratulations for getting \nall the answer correct!";
 
+  static const editCreditCardText = "Edit Credit card";
+
+  static const saveSuccessfullyText = "Save Successfully!";
+
+  static const emptyPaymentMethodText = "Empty payment method";
+
+  static const deleteText = "Delete";
+
+  static const gotItText = "Got It";
+
+  static const deletedSuccessfullyText = "Deleted Successfully!";
+
+  static const currentEmailText = "Current Email";
+
+  static const currentPasswordText = "Current Password";
+
+  static const enterNewEmail = "Enter New Email";
+
+  static const emailChangeSuccessfullyText = "Email Successfully Change! Try to login";
+
+  static const currentNameText = "Current name";
+
+  static const newNameText = "New name";
+
+  static const nameSuccessfullyChangeText = "Name Successfully Change! Try to login";
+
+  static const matchPassword = "Match Password";
+
+  static const passwordChangedSuccessfullyText = "Password Successfully Change! Try to login";
+
+  static const pickGalleryText = "Pick Gallery";
+
+  static const profileChangeSuccessfullyText = "Profile change successfully!";
+
   AppConstants._();
 
   static const userPrefKey = 'USER_KEY';
@@ -82,4 +116,5 @@ class AppConstants {
   static const String quizDescriptionText =
       "Let's put your memory on this topic test. \nSolve task and check your knowledge.";
   static const String quizText = "Quiz";
+
 }

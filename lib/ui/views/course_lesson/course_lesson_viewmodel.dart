@@ -7,18 +7,21 @@ class CourseLessonViewModel extends BaseViewModel {
   final PageController pageController = PageController(initialPage: 0);
 
   int currentPageIndex = 0;
-  late YoutubePlayerController controller;
+  late YoutubePlayerController controller =
+      YoutubePlayerController(initialVideoId: "");
 
   void init() {
     setBusy(true);
     controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(topic.video)!,
-        flags: const YoutubePlayerFlags(
-          autoPlay: false,
-        ));
+      initialVideoId: YoutubePlayer.convertUrlToId(topic.video)!,
+      flags: const YoutubePlayerFlags(
+        controlsVisibleAtStart: false,
+        autoPlay: false,
+        mute: false,
+      ),
+    );
     setBusy(false);
   }
-
 
   CourseLessonViewModel(
     this.topic,
@@ -35,6 +38,14 @@ class CourseLessonViewModel extends BaseViewModel {
     currentPageIndex = index;
     pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    rebuildUi();
+  }
+
+  void onVideoEnd() {
+    if (controller.value.isFullScreen) {
+      controller.toggleFullScreenMode();
+    }
+    controller.notifyListeners();
     rebuildUi();
   }
 }

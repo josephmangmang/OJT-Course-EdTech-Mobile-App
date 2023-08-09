@@ -1,5 +1,5 @@
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:edtechapp/ui/common/app_colors.dart';
 import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -71,7 +71,7 @@ class UpdatePasswordDialog extends StackedView<UpdatePasswordDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Current Password",
+                hintText: AppConstants.currentNameText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,
@@ -101,7 +101,7 @@ class UpdatePasswordDialog extends StackedView<UpdatePasswordDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Match Password",
+                hintText: AppConstants.matchPassword,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,

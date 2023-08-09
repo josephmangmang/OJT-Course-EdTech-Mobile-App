@@ -1,12 +1,12 @@
 import 'package:edtechapp/resources/png_images.dart';
 import 'package:edtechapp/ui/custom_widget/app_button.dart';
 import 'package:flutter/material.dart';
-import 'package:edtechapp/ui/common/app_colors.dart';
 import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../common/app_constants.dart';
 import 'update_profile_dialog_model.dart';
 
 const double _graphicSize = 60;
@@ -83,7 +83,7 @@ class UpdateProfileDialog extends StackedView<UpdateProfileDialogModel> {
                         width: 160, height: 160),
             verticalSpaceMedium,
             AppButton(
-                title: 'Pick Gallery',
+                title: AppConstants.pickGalleryText,
                 onClick: () {
                   viewModel.pickImage(ImageSource.gallery);
                 }),

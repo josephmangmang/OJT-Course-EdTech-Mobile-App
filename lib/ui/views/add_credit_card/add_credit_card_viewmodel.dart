@@ -1,14 +1,14 @@
 import 'package:edtechapp/app/app.router.dart';
-import 'package:edtechapp/model/credit_card.dart';
 import 'package:edtechapp/resources/png_images.dart';
+import 'package:edtechapp/ui/common/app_constants.dart';
 import 'package:edtechapp/ui/common/app_exception_constants.dart';
-import 'package:edtechapp/ui/common/app_temp.dart';
+import 'package:edtechapp/ui/common/busy_object_constants.dart';
+import 'package:edtechapp/ui/common/payment_method_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../services/repository_service.dart';
 
@@ -30,9 +30,9 @@ class AddCreditCardViewModel extends BaseViewModel {
   init(bool oldPaymentMethod, String name, String cardNumber, String expireDate,
       String cvv, String paymentMethod) async {
     loadExistingCreditCard(name, cardNumber, expireDate, cvv, paymentMethod);
-    if (paymentMethod == "mastercard") {
+    if (paymentMethod == PaymentMethodConstants.masterCardText) {
       cardType = PngImages.mastercard;
-    } else if (paymentMethod == "visa") {
+    } else if (paymentMethod == PaymentMethodConstants.visaText) {
       cardType = PngImages.visa;
     }
   }
@@ -87,7 +87,7 @@ class AddCreditCardViewModel extends BaseViewModel {
           _snackBarService.showSnackbar(message: l.message);
         }, (r) async {
           _snackBarService.showSnackbar(
-              message: "Save Successfully", duration: const Duration(seconds: 2));
+              message: AppConstants.saveSuccessfullyText, duration: const Duration(seconds: 2));
           _navigationService.replaceWithPaymentAddedView();
         });
       }
@@ -112,28 +112,28 @@ class AddCreditCardViewModel extends BaseViewModel {
 
   loadExistingCreditCard(String name, String cardNumber, String expireDate,
       String cvv, String paymentMethod) async {
-    setBusyForObject('creditCard', true);
+    setBusyForObject(BusyObjectConstants.creditCardText, true);
     nameController.text = name;
     cardNumberController.text = cardNumber;
     expireDateController.text = expireDate;
     cvvController.text = cvv;
     selectedPaymentMethod = paymentMethod;
-    setBusyForObject('creditCard', false);
+    setBusyForObject(BusyObjectConstants.creditCardText, false);
   }
 
   void paymentMethodDetector(String value) async {
-    setBusyForObject('cardType', true);
+    setBusyForObject(BusyObjectConstants.creditCardText, true);
     if (value.startsWith(RegExp(
         r'((5[1-5])|(222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720))'))) {
       cardType = PngImages.mastercard;
-      selectedPaymentMethod = "mastercard";
+      selectedPaymentMethod = PaymentMethodConstants.masterCardText;
     } else if (value.startsWith(RegExp(r'[4]'))) {
       cardType = PngImages.visa;
-      selectedPaymentMethod = "visa";
+      selectedPaymentMethod = PaymentMethodConstants.visaText;
     } else {
       cardType = const Icon(Icons.warning) as String;
     }
-    setBusyForObject('cardType', false);
+    setBusyForObject(BusyObjectConstants.cardTypeText, false);
     rebuildUi();
   }
 

@@ -1,8 +1,4 @@
 import 'dart:io';
-
-import 'package:edtechapp/app/app.router.dart';
-import 'package:edtechapp/ui/views/home/home_viewmodel.dart';
-import 'package:edtechapp/ui/views/profile/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
@@ -11,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../../services/image_service.dart';
+import '../../common/app_constants.dart';
 
 class UpdateProfileDialogModel extends BaseViewModel {
   File? image;
@@ -19,16 +16,13 @@ class UpdateProfileDialogModel extends BaseViewModel {
   final navigationService = locator<NavigationService>();
 
   void pickImage(ImageSource source) async {
-    try {
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
       this.image = imageTemporary;
       rebuildUi();
-    } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
-    }
+
   }
 
   void uploadImage(BuildContext context) async {
@@ -39,7 +33,7 @@ class UpdateProfileDialogModel extends BaseViewModel {
             message: l.message, duration: const Duration(seconds: 2)), (r) {
       Navigator.of(context).pop();
       snackbarService.showSnackbar(
-          message: "Profile change successfully!",
+          message: AppConstants.profileChangeSuccessfullyText,
           duration: const Duration(seconds: 2));
     });
     setBusy(false);

@@ -1,12 +1,11 @@
 import 'package:edtechapp/app/app.router.dart';
-import 'package:edtechapp/services/repository_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../model/user.dart';
 import '../../../services/authentication_service.dart';
+import '../../common/app_constants.dart';
 
 class UpdatePasswordDialogModel extends BaseViewModel {
   final currentPasswordField = TextEditingController();
@@ -27,7 +26,7 @@ class UpdatePasswordDialogModel extends BaseViewModel {
             message: l.message, duration: const Duration(seconds: 2)), (r) {
       _navigatorService.replaceWithLoginView();
       snackbarService.showSnackbar(
-          message: "Password Successfully Change! Try to login",
+          message: AppConstants.passwordChangedSuccessfullyText,
           duration: const Duration(seconds: 2));
     });
     setBusy(false);

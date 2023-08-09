@@ -21,7 +21,6 @@ import '../repository/topic_repository_impl.dart';
 import '../services/authentication_service.dart';
 import '../services/authentication_service_impl.dart';
 import '../services/authentication_service_mock.dart';
-import '../services/course_impl_service.dart';
 import '../services/image_impl_service.dart';
 import '../services/image_service.dart';
 import '../services/repository_impl_service.dart';
@@ -49,7 +48,6 @@ Future<void> setupLocator({
   locator
       .registerLazySingleton<RepositoryService>(() => RepositoryImplService());
   locator.registerLazySingleton<SharedService>(() => ShareImplService());
-  locator.registerLazySingleton(() => CourseImplService());
   locator.registerLazySingleton<AuthenticationService>(
       () => AuthenticationServiceMock(),
       registerFor: {"dev"});

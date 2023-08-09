@@ -4,6 +4,7 @@ import 'package:edtechapp/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../common/app_constants.dart';
 import 'update_name_dialog_model.dart';
 
 const double _graphicSize = 60;
@@ -71,7 +72,7 @@ class UpdateNameDialog extends StackedView<UpdateNameDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "Current name",
+                hintText: AppConstants.currentNameText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,
@@ -86,7 +87,7 @@ class UpdateNameDialog extends StackedView<UpdateNameDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: "New name",
+                hintText: AppConstants.newNameText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,

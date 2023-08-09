@@ -35,7 +35,6 @@ import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/ui/views/forgot_password/forgot_password_view.dart';
 import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/services/share_impl_service.dart';
-import 'package:edtechapp/services/course_impl_service.dart';
 import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 
@@ -43,7 +42,6 @@ import '../repository/question_repository.dart';
 import '../services/authentication_service_mock.dart';
 import 'package:edtechapp/ui/views/payment_methods/payment_methods_view.dart';
 import 'package:edtechapp/ui/views/payment_checkout/payment_checkout_view.dart';
-import 'package:edtechapp/ui/views/cart/cart_view.dart';
 import 'package:edtechapp/ui/views/add_credit_card/add_credit_card_view.dart';
 import 'package:edtechapp/repository/course_repository.dart';
 import 'package:edtechapp/ui/dialogs/update_password/update_password_dialog.dart';
@@ -83,7 +81,6 @@ import 'package:edtechapp/ui/dialogs/payment_method/payment_method_dialog.dart';
     MaterialRoute(page: ForgotPasswordView),
     MaterialRoute(page: PaymentMethodsView),
     MaterialRoute(page: PaymentCheckoutView),
-    MaterialRoute(page: CartView),
     MaterialRoute(page: AddCreditCardView),
 // @stacked-route
   ],
@@ -94,7 +91,6 @@ import 'package:edtechapp/ui/dialogs/payment_method/payment_method_dialog.dart';
     LazySingleton(classType: SnackbarService),
     LazySingleton(classType: RepositoryImplService, asType: RepositoryService),
     LazySingleton(classType: ShareImplService, asType: SharedService),
-    LazySingleton(classType: CourseImplService),
     LazySingleton(
         environments: {Environment.dev},
         classType: AuthenticationServiceMock,

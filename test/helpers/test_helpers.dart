@@ -6,7 +6,6 @@ import 'package:edtechapp/services/repository_service.dart';
 import 'package:edtechapp/services/repository_impl_service.dart';
 import 'package:edtechapp/services/shared_service.dart';
 import 'package:edtechapp/services/share_impl_service.dart';
-import 'package:edtechapp/services/course_impl_service.dart';
 import 'package:edtechapp/services/authentication_service.dart';
 import 'package:edtechapp/services/shared_pref_service_service.dart';
 import 'package:edtechapp/repository/course_repository.dart';
@@ -24,7 +23,6 @@ import 'test_helpers.mocks.dart';
   MockSpec<RepositoryImplService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SharedService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ShareImplService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<CourseImplService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SharedPrefServiceService>(
       onMissingStub: OnMissingStub.returnDefault),
@@ -42,7 +40,6 @@ void registerServices() {
   getAndRegisterRepositoryImplService();
   getAndRegisterSharedService();
   getAndRegisterShareImplService();
-  getAndRegisterCourseImplService();
   getAndRegisterAuthenticationService();
   getAndRegisterSharedPrefServiceService();
   getAndRegisterCourseRepositoryService();
@@ -129,12 +126,6 @@ MockShareImplService getAndRegisterShareImplService() {
   return service;
 }
 
-MockCourseImplService getAndRegisterCourseImplService() {
-  _removeRegistrationIfExists<CourseImplService>();
-  final service = MockCourseImplService();
-  locator.registerSingleton<CourseImplService>(service);
-  return service;
-}
 
 MockAuthenticationService getAndRegisterAuthenticationService() {
   _removeRegistrationIfExists<AuthenticationService>();
