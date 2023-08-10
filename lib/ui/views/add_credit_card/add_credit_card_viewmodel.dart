@@ -121,7 +121,7 @@ class AddCreditCardViewModel extends BaseViewModel {
     setBusyForObject(BusyObjectConstants.creditCardText, false);
   }
 
-  void paymentMethodDetector(String value) async {
+  void paymentMethodDetector(String value) {
     setBusyForObject(BusyObjectConstants.cardTypeText, true);
     if (value.startsWith(RegExp(
         r'((5[1-5])|(222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720))'))) {

@@ -22,41 +22,33 @@ class YourCoursesView extends StackedView<YourCoursesViewModel> {
               )
             : Column(
                 children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        child: Wrap(
-                          children: [
-                            CustomAppBar(
-                              title: AppConstants.yourCourseText,
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            if (viewModel.courses.isEmpty)
-                              emptyView(context)
-                            else
-                              ListView.builder(
-                                shrinkWrap: true,
-                                primary: false,
-                                itemCount: viewModel.courses.length,
-                                itemBuilder: (context, index) {
-                                  var courseItem = viewModel.courses[index];
-                                  return YourCourseCard(
-                                      courseSelected: () {
-                                        viewModel.coursePressed(courseItem);
-                                      },
-                                      course: courseItem,
-                                      color: viewModel.getColor(index));
+                  CustomAppBar(
+                    title: AppConstants.yourCourseText,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  if (viewModel.courses.isEmpty)
+                    emptyView(context)
+                  else
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: viewModel.courses.length,
+                          itemBuilder: (context, index) {
+                            var courseItem = viewModel.courses[index];
+                            return YourCourseCard(
+                                courseSelected: () {
+                                  viewModel.coursePressed(courseItem);
                                 },
-                              ),
-                          ],
+                                course: courseItem,
+                                color: viewModel.getColor(index));
+                          },
                         ),
                       ),
                     ),
-                  ),
                 ],
               ),
       ),

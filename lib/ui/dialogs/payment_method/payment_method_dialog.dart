@@ -72,25 +72,29 @@ class PaymentMethodDialog extends StackedView<PaymentMethodDialogModel> {
                     ],
                   ),
                   verticalSpaceSmall,
-                  Visibility(
-                    visible: viewModel.creditCard.isNotEmpty,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: viewModel.creditCard.length,
-                      itemBuilder: (context, index) {
-                        var creditCardItem = viewModel.creditCard[index];
-                        return CreditCards(
-                          creditCardButton: () {
-                            viewModel.setSelectedIndex(index);
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Visibility(
+                        visible: viewModel.creditCard.isNotEmpty,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: viewModel.creditCard.length,
+                          itemBuilder: (context, index) {
+                            var creditCardItem = viewModel.creditCard[index];
+                            return CreditCards(
+                              creditCardButton: () {
+                                viewModel.setSelectedIndex(index);
+                              },
+                              paymentMethod: creditCardItem.paymentMethod,
+                              expireDate: creditCardItem.expireDate,
+                              cardNumber: creditCardItem.cardNumber,
+                              isSelected: viewModel.selectedCardIndex == index,
+                              marginSize: 0,
+                            );
                           },
-                          paymentMethod: creditCardItem.paymentMethod,
-                          expireDate: creditCardItem.expireDate,
-                          cardNumber: creditCardItem.cardNumber,
-                          isSelected: viewModel.selectedCardIndex == index,
-                          marginSize: 0,
-                        );
-                      },
+                        ),
+                      ),
                     ),
                   ),
                   Center(
