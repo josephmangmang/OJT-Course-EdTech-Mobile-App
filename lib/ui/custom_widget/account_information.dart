@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:relative_time/relative_time.dart';
 import '../../resources/svg_images.dart';
 
 class AccountInformation extends StatelessWidget {
@@ -69,7 +69,10 @@ class AccountInformation extends StatelessWidget {
                       ),
                       Text(
                         subtitle ??
-                            (dateTime != null ? dateTime!.toString() : ''),
+                            (dateTime != null
+                                ? RelativeTime(context, numeric: true)
+                                    .format(dateTime!)
+                                : ''),
                         style: const TextStyle(
                           color: Color(0xFF78746D),
                           fontSize: 14,
