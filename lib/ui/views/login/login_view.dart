@@ -101,7 +101,7 @@ class LoginView extends StackedView<LoginViewModel> {
                                 fontWeight: FontWeight.w400,
                               ),
                               suffixIcon: IconButton(
-                                icon: SvgPicture.asset(SvgImages.visibility1),
+                                icon: Icon(viewModel.isPasswordVisible == true ? Icons.remove_red_eye : Icons.visibility_off),
                                 onPressed: viewModel.showPassword,
                               )),
                         ),
