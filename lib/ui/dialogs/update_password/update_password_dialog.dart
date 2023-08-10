@@ -71,7 +71,7 @@ class UpdatePasswordDialog extends StackedView<UpdatePasswordDialogModel> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: AppConstants.currentNameText,
+                hintText: AppConstants.currentPasswordText,
                 labelStyle: const TextStyle(
                   color: Color(0xFF78746D),
                   fontSize: 14,
